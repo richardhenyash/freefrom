@@ -140,6 +140,8 @@ GitHub Link|Link to developer github page|4|5|Op-3|1
 Upload Pictures|Enables users to add pictures of products and ingredients|1|2|Op-2|2
 Barcode Scanner|Enables users to automatically add products by scanning a product barcode with their device camera|1|1|Op-2|2
 
+<img src="./assets/wireframes/scope-matrix.png" width="600px" style="margin: 15px;">
+
 ### Site Map ###
 An initial [Site Map](./assets/wireframes/site-map.png) was produced, and is shown below:  
 <img src="./assets/wireframes/site-map.png" width="400px" style="margin: 15px;">
