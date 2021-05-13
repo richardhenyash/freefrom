@@ -1,5 +1,5 @@
-# All Happy #
-[All Happy Live Site](https://richardhenyash.github.io/allhappy/)  
+# FreeFrom #
+[FreeFrom Live Site](https://richardhenyash.github.io/freefrom/)  
 
 <img src="./assets/testing/responsive/" width="100%" style="margin: 15px;">
 
@@ -49,8 +49,9 @@ and then putting the product back on the shelf.
 
 ## Project Goals ##
 To provide an online, open source, interactive information resource that enables consumers to identify 
-products which are suitable for food allergies and intolerances. The site could also be expanded in the future to include 
-products suitable for vegans, products which are free from palm oil, and products which are ethically sourced.
+products which are free from common allergens, and therefore suitable for food allergies and intolerances. 
+The site could also be expanded in the future to include products suitable for vegans, products which are 
+free from palm oil, and products which are ethically sourced.
 
 ## Site Owner Goals ##
 Developing the site will serve as a learning experience for the developer. The finished website will act as a showcase for the
@@ -58,8 +59,8 @@ developer's skills and will also help to raise the developer's profile. If the s
 possible to generate advertising revenue in the future.
 
 ## User Goals ##
-To find products which are suitable for food intolerances and allergies, and to add intolerance and 
-allergy safe food products to the information resource.
+To find products which are free from allergens and therefore suitable for food intolerances and allergies, 
+and to add intolerance and allergy safe food products to the information resource.
 
 ## UX ##
 
@@ -90,8 +91,8 @@ to contribute to would suit this demographic.
 * Responsive design is required as users may be viewing the site on Mobile, Tablet or Desktop.
 
 #### User Stories ####
-* ***As a User, I am searching for a product which is suitable for one or more allergies or intolerances.***
-* ***As a User, I have found a product which is suitable for one or more allergies or intolerances, and I want to add it to the database.***
+* ***As a User, I am searching for a product which is free from one or more allergens.***
+* ***As a User, I have found a product which is free from one or more allergens, and I want to add it to the database.***
 * ***As a User, I have tried a product and would like to rate it.***
 * ***As a User, I have tried a product and would like to review it.***
 * ***As a User, I would like to add a new product category.***
@@ -108,12 +109,18 @@ can be succesfully implemented during the phase 1 development.
 #### Functional Requirements ####
 * The User needs to be able to register.
 * The User needs to be able to login and logout.
-* The User needs to be able to search for products which are suitable for one or more allergies or intolerances.
+* The User needs to be able to search for products which are free from one or more allergens.
 * The User needs to be able to add products.
 * The User needs to be able to rate products.
 * The User needs to be able to review products.
+* The User needs to be able to edit products.
+* The User needs to be able to delete products (this should be restricted to users with the correct privelages).
 * The User needs to be able to add product categories (this should be restricted to users with the correct privelages).
+* The User needs to be able to edit product categories (this should be restricted to users with the correct privelages).
+* The User needs to be able to delete product categories (this should be restricted to users with the correct privelages).
 * The User needs to be able to add allergens (this should be restricted to users with the correct privelages).
+* The User needs to be able to edit allergens (this should be restricted to users with the correct privelages).
+* The User needs to be able to delete allergens (this should be restricted to users with the correct privelages).
 * The User needs to be able to contact the developer.
 
 #### Business Rules ####
@@ -172,7 +179,7 @@ An initial [Site Map](./assets/wireframes/site-map.png) was produced, and is sho
 * [Jasmine](https://jasmine.github.io/)
 
 ### Browser Support ###
-The following browsers are all supported by **AllHappy**.
+The following browsers are all supported by **FreeFrom**.
 * [Google Chrome](https://www.google.com/intl/en_uk/chrome/)
 * [Microsoft Edge](https://www.microsoft.com/en-us/edge)
 * [Safari](https://www.apple.com/uk/safari/)
