@@ -139,7 +139,11 @@ Login/Logout|User login/logout form|5|3|Op-2|1
 Search|Enables users to search the database based on one or more allergies or intolerances|5|3|Op-1|1
 Add Product|Enables users to add a product to the database|3|3|Op-2|1
 Add Category|Enables users with required privelages to add product categories to the database|3|3|Op-1, Op-2|1
-Add Allergen|Enables users with the required privelages to add allergen types to the database|3|3|Op-1, Op-2|1
+Edit Category|Enables users with required privelages to edit product categories in the database|3|3|Op-1, Op-2|1
+Delete Category|Enables users with required privelages to delete product categories from the database|3|3|Op-1, Op-2|1
+Add Allergen|Enables users with the required privelages to add allergens to the database|3|3|Op-1, Op-2|1
+Edit Allergen|Enables users with the required privelages to edit allergens in the database|3|3|Op-1, Op-2|1
+Delete Allergen|Enables users with the required privelages to deelte allergens in the database|3|3|Op-1, Op-2|1
 Rate Product|Enables users to give a star rating to a product|2|2|Op-2|1
 Review Product|Enables users to review a product|2|2|Op-2|1
 Contact Form|Form to contact developer|4|5|Op-3|1
