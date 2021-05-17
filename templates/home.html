@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>I'm extending the base template</h2>
+    <section id="search-section" class="container-sm">
+        <div class="row">
+            <div class="col-12 container-search pb-1">
+                <div class="alert alert-info text-center" role="alert">
+                    Find, rate, review and add products which are free from one or more common allergens
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group form-group-lg col-10 pr-1">
+                <input type="search" id="search" class="form-control form-control-lg" value="Search">
+            </div>
+            <div class="form-group form-group-lg col-2 pl-1">
+                <button type="button" class="btn btn-lg btn-info">
+                    <i class="fas fa-search"></i>  
+                </button>                 
+            </div>
+        </div>
+    </section>
     {% for category in categories %}
         {{ category.name }}<br>
     {% endfor %}
