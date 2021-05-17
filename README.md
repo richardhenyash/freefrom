@@ -1,7 +1,7 @@
 # FreeFrom #
 [FreeFrom Live Site](https://richardhenyash.github.io/freefrom/)  
 
-<img src="./assets/testing/responsive/" width="100%" style="margin: 15px;">
+<img src="./static/testing/responsive/" width="100%" style="margin: 15px;">
 
 ## Contents ##
 - [Background](#background)
@@ -75,7 +75,7 @@ Create database| Create an online, searchable database that enables consumers to
 Enable User contribution|Enable users to contribute to the database|5|3|Op-2
 Showcase developer's skills|The site will serve as a showcase for the developer's skills, and increase the developer's standing within the tech community|4|3|Op-3
 
-<img src="./assets/wireframes/strategy-matrix.png" width="400px" style="margin: 15px;">
+<img src="./static/wireframes/strategy-matrix.png" width="400px" style="margin: 15px;">
 
 ### Project Scope ###
 #### User Demographics ####
@@ -151,16 +151,16 @@ GitHub Link|Link to developer github page|4|5|Op-3|1
 Upload Pictures|Enables users to add pictures of products and ingredients|1|2|Op-2|2
 Barcode Scanner|Enables users to automatically add products by scanning a product barcode with their device camera|1|1|Op-2|2
 
-<img src="./assets/wireframes/scope-matrix.png" width="600px" style="margin: 15px;">
+<img src="./static/wireframes/scope-matrix.png" width="600px" style="margin: 15px;">
 
 ### Site Map ###
-An initial [Site Map](./assets/wireframes/site-map.png) was produced, and is shown below:  
-<img src="./assets/wireframes/site-map.png" width="400px" style="margin: 15px;">
+An initial [Site Map](./static/wireframes/site-map.png) was produced, and is shown below:  
+<img src="./static/wireframes/site-map.png" width="400px" style="margin: 15px;">
 
 ### Wireframes ###
-[Hand Sketches](/assets/wireframes/rev0)  
-[Initial Wireframes](/assets/wireframes/rev1) 
-[Responsive design wireframes](/assets/wireframes/rev2) 
+[Hand Sketches](/static/wireframes/rev0)  
+[Initial Wireframes](/static/wireframes/rev1) 
+[Responsive design wireframes](/static/wireframes/rev2) 
 
 ### Design Choices ###
 
@@ -207,7 +207,7 @@ After initial early user testing and feedback, the following minor design change
 
 ### Responsive Styling ###
 
-See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](./assets/testing/responsive) screen prints.
+See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](./static/testing/responsive) screen prints.
 
 ## Testing ##
 
