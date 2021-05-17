@@ -40,10 +40,12 @@ body {
 .logo {
     font-family: var(--logofont);
     font-size: 3.5rem;
+    padding-left: 1.0rem;
 }
 
 .heading {
     font-family: var(--titlefont);
+    padding-left: 1.0rem;
 }
 
 /*-- Bootstrap navbar overrides --*/
