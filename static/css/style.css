@@ -35,3 +35,22 @@ body {
     min-height: 100vh;
     background: var(--white);
 }
+
+/*-- Headings --*/
+.logo {
+    font-family: var(--logofont);
+    font-size: 3.5rem;
+}
+
+.heading {
+    font-family: var(--titlefont);
+}
+
+/*-- Bootstrap navbar overrides --*/
+.navbar {
+    background-color: var(--fireopal);
+}
+
+.navbar .dropdown-item {
+    font-size: 1.2rem;
+}
