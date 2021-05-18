@@ -6,17 +6,20 @@
         <div class="col-12 col-sm-4">
             <form>
                 <div class="mb-3">
-                    <label for="inputEmail" class="form-label input-label">Email Address:</label>
-                    <input type="email" class="form-control input-title" id="inputemail" aria-describedby="emailHelp">
+                    <label for="email" class="form-label input-label">Email Address:</label>
+                    <input type="email" class="form-control input-title" id="email" 
+                        name="email" required aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text input-label-sm">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
-                    <label for="inputUserName" class="form-label input-label">User Name:</label>
-                    <input type="text" class="form-control input-title" id="inputUserName">
+                    <label for="username" class="form-label input-label">User Name:</label>
+                    <input type="text" class="form-control input-title" id="username" 
+                        name="username" required>
                 </div>
-                <div class="mb-3">
-                    <label for="inputPassword" class="form-label input-label">Password:</label>
-                    <input type="password" class="form-control input-title" id="inputPassword">
+                <div class="mb-3 pb-2">
+                    <label for="password" class="form-label input-label">Password:</label>
+                    <input type="password" class="form-control input-title" id="password" 
+                        name="password" required>
                 </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Register</button>
             </form>

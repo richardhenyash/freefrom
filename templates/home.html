@@ -14,7 +14,7 @@
                     <input type="search" id="search" class="form-control form-select-lg input-title" placeholder="Search....">
                 </div>
                 <div class="col-8 col-md-5 container-input">
-                    <select class="form-select form-select-lg input-title" id="inputGroupSelect04" aria-label="Example select with button addon">
+                    <select class="form-select form-select-lg input-title" id="categorySelector" aria-label="Example select with button addon">
                         <option selected>Category...</option>
                         {% for category in categories %}
                             <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
