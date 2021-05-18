@@ -38,43 +38,68 @@ body {
 
 /*-- Containers --*/
 .container-search {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 2.0rem 1.25rem 1.5rem 1.25rem;
 }
 
-/*-- Headings --*/
+.container-input {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+/*-- Logo --*/
 .logo {
     font-family: var(--logofont);
     font-size: 3.5rem;
     padding-left: 1.0rem;
 }
 
+/*-- Headings --*/
 .heading {
     font-family: var(--titlefont);
     padding-left: 1.0rem;
 }
 
-/*-- Bootstrap navbar overrides --*/
+/*-- Bootstrap Navbar Overrides --*/
 .navbar {
     background-color: var(--fireopal);
 }
 
-.navbar .dropdown-item {
+.navbar-nav a {
+    font-family: var(--titlefont);
+}
+
+.dropdown-item {
     font-size: 1.2rem;
 }
 
-
-/*-- Bootstrap alert overrides --*/
-.alert-info {
+/*-- Alerts --*/
+.alert-mangotango {
     font-family: var(--titlefont);
     color: var(--white);
-    background-color: var(--vividiangreen);
-    border-color: var(--vividiangreen);
+    background-color: var(--mangotango);
+    border-color: var(--mangotango);
 }
 
-.btn-info {
+/*-- Buttons --*/
+.btn-mangotango {
     font-family: var(--titlefont);
     color: var(--white);
-    background-color: var(--vividiangreen);
-    border-color: var(--vividiangreen);
+    background-color: var(--mangotango);
+    border-color: var(--mangotango);
+}
+
+/*-- Button Hover Styling --*/
+.btn-mangotango:hover {
+    background-color: var(--pumpkin);
+    border-color: var(--pumpkin);
+}
+
+.btn-mangotango:active 
+.btn-mangotango:focus  {
+    background-color: var(--fireopal);
+    border-color: var(--fireopal);
+}
+
+/*-- Input Styling --*/
+.input-title {
+    font-family: var(--titlefont);
 }

@@ -3,19 +3,29 @@
     <section id="search-section" class="container-sm">
         <div class="row">
             <div class="col-12 container-search pb-1">
-                <div class="alert alert-info text-center" role="alert">
+                <div class="alert alert-danger text-center alert-mangotango" role="alert">
                     Find, rate, review and add products which are free from one or more common allergens
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="form-group form-group-lg col-10 pr-1">
-                <input type="search" id="search" class="form-control form-control-lg w-100" value="Search">
-            </div>
-            <div class="form-group form-group-lg col-2 pl-1">
-                <button type="button" class="btn btn-lg btn-info w-100">
-                    <i class="fas fa-search"></i>  
-                </button>                 
+            <div class="input-group input-group-lg">
+                <div class="col-12 col-md-6 container-input">
+                    <input type="search" id="search" class="form-control form-select-lg input-title" value="Search">
+                </div>
+                <div class="col-10 col-md-5 container-input">
+                    <select class="form-select form-select-lg input-title" id="inputGroupSelect04" aria-label="Example select with button addon">
+                        <option selected>Category...</option>
+                        {% for category in categories %}
+                            <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                        {% endfor %}
+                    </select>
+                </div> 
+                <div class="col-2 col-md-1 container-input">
+                    <button type="button" class="btn btn-lg btn-danger btn-mangotango w-100">
+                        <i class="fas fa-search"></i>  
+                    </button>
+                </div>           
             </div>
         </div>
     </section>
