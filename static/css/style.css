@@ -13,7 +13,7 @@
     --pumpkin: #FF711F;
     --salmon: #E97C72;
     --fireopal: #E35B4F;
-    --cgred: #DE3A2B;  
+    --venetianred: #C22C1E;  
     --lemoncurry: #CC9900;
     --orangeyellow: #F5B800;
     --mikadoyellow: #FFC71F;
@@ -72,34 +72,43 @@ body {
 }
 
 /*-- Alerts --*/
-.alert-mangotango {
+.alert-orangeyellow {
     font-family: var(--titlefont);
     color: var(--white);
-    background-color: var(--mangotango);
-    border-color: var(--mangotango);
+    background-color: var(--orangeyellow);
+    border-color: var(--orangeyellow);
 }
 
 /*-- Buttons --*/
-.btn-mangotango {
+.btn-fireopal {
     font-family: var(--titlefont);
     color: var(--white);
-    background-color: var(--mangotango);
-    border-color: var(--mangotango);
+    background-color: var(--fireopal);
+    border-color: var(--fireopal);
 }
 
 /*-- Button Hover Styling --*/
-.btn-mangotango:hover {
-    background-color: var(--pumpkin);
-    border-color: var(--pumpkin);
+.btn-fireopal:hover {
+    background-color: var(--venetianred);
+    border-color: var(--venetianred);
 }
 
-.btn-mangotango:active 
-.btn-mangotango:focus  {
-    background-color: var(--fireopal);
-    border-color: var(--fireopal);
+.btn-fireopal:active 
+.btn-fireopal:focus  {
+    background-color: var(--venetianred);
+    border-color: var(--venetianred);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
 }
 
 /*-- Input Styling --*/
 .input-title {
     font-family: var(--titlefont);
+    border: 1px solid var(--fireopal);
+}
+
+.input-title:focus {
+    border-color: var(--venetianred);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
 }
