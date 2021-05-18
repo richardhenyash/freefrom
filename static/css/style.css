@@ -112,3 +112,14 @@ body {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
 }
+
+.input-label {
+    font-family: var(--titlefont);
+    font-size: 1.25rem;
+}
+
+.input-label-sm {
+    font-family: var(--titlefont);
+    font-size: 1rem;
+}
+
