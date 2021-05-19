@@ -3,9 +3,16 @@
     <section id="search-section" class="container-sm">
         <div class="row">
             <div class="col-12 container-search pb-1">
+                {% if session.user %}
+                    <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
+                        Signed in as <b>{{ session['user'] }}</b>.<br>
+                        Find, rate, review and add products which are free from one or more common allergens.
+                    </div>
+                {% else %} 
                 <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
                     Find, rate, review and add products which are free from one or more common allergens
                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -30,7 +37,7 @@
                     <button type="button" id="btn-add" class="btn btn-lg btn-danger btn-fireopal w-100">
                         <i class="fas fa-plus"></i>  
                     </button>
-                </div>         
+                </div>
             </div>
         </div>
     </section>

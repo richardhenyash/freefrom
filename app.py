@@ -65,6 +65,7 @@ def signin():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")), "success")
+                    return redirect(url_for("home"))
             else:
                 # invalid password match
                 flash("Incorrect username and/or password", "warning")
@@ -75,6 +76,14 @@ def signin():
             return redirect(url_for("signin"))
 
     return render_template("signin.html")
+
+
+@app.route("/signout")
+def signout():
+    # remove user from session cookies
+    flash("You have been signed out", "success")
+    session.pop("user")
+    return redirect(url_for("home", _external=True, _scheme='https'))
 
 
 if __name__ == "__main__":
