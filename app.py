@@ -46,7 +46,7 @@ def register():
 
         # put the new user into "session" cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!", "success")
+        flash("Registration successful", "success")
         return redirect(url_for("home", username=session["user"], _external=True, _scheme='https'))
 
     return render_template("register.html")
