@@ -80,6 +80,16 @@
             </div>
         </nav>  
     </header>
+    <section>   
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="col-12 alert alert-{{ category }} text-center">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
     {% block content %}  
     {% endblock %} 
     <!-- JavaScript links -->
