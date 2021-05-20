@@ -40,12 +40,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 p-4">
+                {% for allergen in allergens %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox" value="{{ allergen.name }}">
+                        <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
     </section>
-    {% for category in categories %}
-        {{ category.name }}<br>
-    {% endfor %}
-    <br>
-    {% for allergen in allergens %}
-        {{ allergen.name }}<br>
-    {% endfor %}
 {% endblock %}
