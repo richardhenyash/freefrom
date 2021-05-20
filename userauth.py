@@ -53,16 +53,18 @@ def signin():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
+                    session["admin"] = existing_user["admin"]
                     flash("Welcome, {}".format(request.form.get("username")), "success")
+                    print(session)
                     return redirect(url_for("home"))
             else:
                 # invalid password match
                 flash("Incorrect username and/or password", "warning")
-                return redirect(url_for("signin"))
+                return redirect(url_for("userauth.signin"))
         else:
             #username doesn't exist
             flash("Incorrect username and/or password", "warning")
-            return redirect(url_for("signin"))
+            return redirect(url_for("userauth.signin"))
 
     return render_template("signin.html")
 
@@ -72,5 +74,7 @@ def signout():
     # remove user from session cookies
     flash("You have been signed out", "success")
     session.pop("user")
+    session.pop("admin")
+    print(session)
     return redirect(url_for("home", _external=True, _scheme='https'))
 

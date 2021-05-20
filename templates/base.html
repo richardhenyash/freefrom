@@ -44,34 +44,36 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ url_for ('home') }}">Home</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="allergenDropdown" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Allergens
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="allergenDropdown">
-                                <li><a class="dropdown-item" href="#">Add Allergen</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Allergen</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Delete Allergen</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Categories
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-                                <li><a class="dropdown-item" href="#">Add Category</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Category</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Delete Category</a></li>
-                            </ul>
-                        </li>
+                        {% if session.admin %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="allergenDropdown" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Allergens
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="allergenDropdown">
+                                    <li><a class="dropdown-item" href="#">Add Allergen</a></li>
+                                    <li><a class="dropdown-item" href="#">Edit Allergen</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Delete Allergen</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Categories
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                    <li><a class="dropdown-item" href="#">Add Category</a></li>
+                                    <li><a class="dropdown-item" href="#">Edit Category</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Delete Category</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
                         {% if session.user %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('userauth.signout') }}">Sign Out</a>
