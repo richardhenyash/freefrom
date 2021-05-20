@@ -4,7 +4,7 @@
     <div class="row pt-5">
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
-            <form method="POST" action="{{ url_for('signin') }}">
+            <form method="POST" action="{{ url_for('userauth.signin') }}">
                 <div class="mb-3">
                     <label for="username" class="form-label input-label">User Name:</label>
                     <input type="text" class="form-control input-title" id="username" 
@@ -20,7 +20,7 @@
                         required>
                 </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>
-                <a href="{{ url_for('register') }}" class="btn btn-lg btn-danger btn-fireopal">Register</a>
+                <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-fireopal">Register</a>
             </form>
         </div>
         <div class="col-sm-4"></div>

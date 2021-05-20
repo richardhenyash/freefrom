@@ -74,11 +74,11 @@
                         </li>
                         {% if session.user %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('signout') }}">Sign Out</a>
+                                <a class="nav-link" href="{{ url_for('userauth.signout') }}">Sign Out</a>
                             </li> 
                         {% else %} 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('signin') }}">Sign In</a>
+                                <a class="nav-link" href="{{ url_for('userauth.signin') }}">Sign In</a>
                             </li>
                         {% endif %}
                     </ul>
