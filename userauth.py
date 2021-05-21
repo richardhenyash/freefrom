@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from forms import RegistrationForm, SignInForm
 
 # Import PyMongo database instance
 from database import mongo
@@ -14,17 +15,27 @@ from database import mongo
 userauth = Blueprint("userauth", __name__, static_folder="static",
                  template_folder="templates")
 
-# Register function
+# Route for user Registration
 @userauth.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Route for user registration
+    """
+    form = RegistrationForm()
     if request.method == "POST":
+        # validate form data
+        form.validate()
+        print(form.errors)
         # check if username already exists in database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if existing_user:
+            # flash message to warn if username already exists in database
             flash("Username already exists", "warning")
-            return redirect(url_for("register", _external=True, _scheme='https'))
+            # return to register page
+            return redirect(url_for("userauth.register", _external=True, _scheme='https'))
 
+        # gather form data
         register = {
             "admin": False,
             "username": request.form.get("username").lower(), 
@@ -35,19 +46,28 @@ def register():
 
         # put the new user into "session" cookie
         session["user"] = request.form.get("username").lower()
+        # set user admin
+        session["admin"] = False
         flash("Registration successful", "success")
+        # return to home page
         return redirect(url_for("home", username=session["user"], _external=True, _scheme='https'))
 
-    return render_template("register.html")
+    return render_template("register.html", form=form)
 
 # SignIn function
 @userauth.route("/signin", methods=["GET", "POST"])
 def signin():
+    """
+    Route for user SignIn
+    """
+    form = SignInForm()
     if request.method == "POST":
+        # validate form data
+        form.validate()
+        print(form.errors)
         # check if username exists in database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
@@ -66,7 +86,7 @@ def signin():
             flash("Incorrect username and/or password", "warning")
             return redirect(url_for("userauth.signin"))
 
-    return render_template("signin.html")
+    return render_template("signin.html", form=form)
 
 # SignOut function
 @userauth.route("/signout")

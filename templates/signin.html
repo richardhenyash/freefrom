@@ -5,6 +5,35 @@
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
             <form method="POST" action="{{ url_for('userauth.signin') }}">
+                <div>
+                    <div class="mb-3">
+                    <div>
+                        {{ form.username.label(class="form-label input-label") }}
+                        {{ form.username(class="form-control input-title") }}
+                        {% if form.username.errors %}
+                            <ul class=errors>
+                                {% for error in form.username.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-3 pb-2">
+                    <div>
+                        {{ form.password.label(class="form-label input-label") }}
+                        {{ form.password(class="form-control input-title") }}
+                        {% if form.password.errors %}
+                            <ul class=errors>
+                                {% for error in form.password.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>                    
+                </div>
+            <!-- //
                 <div class="mb-3">
                     <label for="username" class="form-label input-label">User Name:</label>
                     <input type="text" class="form-control input-title" id="username" 
@@ -19,6 +48,7 @@
                         title="Password may contain letters or numbers and must be at between 5 and 20 characters long"
                         required>
                 </div>
+            //-->  
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>
                 <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-fireopal">Register</a>
             </form>

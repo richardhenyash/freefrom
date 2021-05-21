@@ -5,7 +5,8 @@
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
             <form method="POST" action="{{ url_for('userauth.register') }}">
-                <div class="mb-3">
+            <!-- //
+               <div class="mb-3">
                     <label for="email" class="form-label input-label">Email Address:</label>
                     <input type="email" class="form-control input-title" id="email" 
                         name="email" required aria-describedby="emailHelp">
@@ -24,6 +25,58 @@
                         name="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$"
                         title="Password may contain letters or numbers and must be at between 5 and 20 characters long"
                         required>
+                </div>
+            //-->
+            {% if form.errors %}
+                <ul class="errors">
+                    {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                        {% for error in field_errors %}
+                            <li>{{ form[field_name].label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+                <div>
+                    <div class="mb-3">
+                    <div>
+                        {{ form.email.label(class="form-label input-label") }}
+                        {{ form.email(class="form-control input-title") }}
+                        {% if form.username.errors %}
+                            <ul class=errors>
+                                {% for error in form.username.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-3">
+                    <div>
+                        {{ form.username.label(class="form-label input-label") }}
+                        {{ form.username(class="form-control input-title") }}
+                        {% if form.username.errors %}
+                            <ul class=errors>
+                                {% for error in form.username.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-3 pb-2">
+                    <div>
+                        {{ form.password.label(class="form-label input-label") }}
+                        {{ form.password(class="form-control input-title") }}
+                        {% if form.password.errors %}
+                            <ul class=errors>
+                                {% for error in form.password.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>                    
                 </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Register</button>
                 <a href="{{ url_for('userauth.signin') }}" class="btn btn-lg btn-danger btn-fireopal">Cancel</a>
