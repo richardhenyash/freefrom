@@ -11,7 +11,7 @@
                         {{ form.username.label(class="form-label input-label") }}
                         {{ form.username(class="form-control input-title") }}
                         {% if form.username.errors %}
-                            <ul class=errors>
+                            <ul class="form-errors">
                                 {% for error in form.username.errors %}
                                     <li>{{ error }}</li>
                                 {% endfor %}
@@ -25,7 +25,7 @@
                         {{ form.password.label(class="form-label input-label") }}
                         {{ form.password(class="form-control input-title") }}
                         {% if form.password.errors %}
-                            <ul class=errors>
+                            <ul class="form-errors">
                                 {% for error in form.password.errors %}
                                     <li>{{ error }}</li>
                                 {% endfor %}
@@ -33,22 +33,6 @@
                         {% endif %}
                     </div>                    
                 </div>
-            <!-- //
-                <div class="mb-3">
-                    <label for="username" class="form-label input-label">User Name:</label>
-                    <input type="text" class="form-control input-title" id="username" 
-                        name="username" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" 
-                        title="User Name may contain letters or numbers and must be between 5 and 20 characters long" 
-                        required>
-                </div>
-                <div class="mb-3 pb-2">
-                    <label for="password" class="form-label input-label">Password:</label>
-                    <input type="password" class="form-control input-title" id="password" 
-                        name="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$"
-                        title="Password may contain letters or numbers and must be at between 5 and 20 characters long"
-                        required>
-                </div>
-            //-->  
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>
                 <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-fireopal">Register</a>
             </form>

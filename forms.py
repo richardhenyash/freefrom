@@ -11,8 +11,8 @@ class RegistrationForm(Form):
     ])
     email = StringField('Email', [
         validators.DataRequired(message="Input required"),
-        validators.Length(min=5, message="Email address must be 5 or more characters long"), 
-        validators.Email(message="Please enter a valid email address")
+        validators.Email(message="Please enter a valid email address"),
+        validators.Length(min=5, message="Email address must be 5 or more characters long")
     ])
     password = StringField('Password', [
         validators.DataRequired(message="Input required"),
