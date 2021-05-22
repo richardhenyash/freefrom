@@ -41,6 +41,10 @@ body {
     padding: 2.0rem 1.25rem 1.5rem 1.25rem;
 }
 
+.container-results {
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+}
+
 .container-input {
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
@@ -126,7 +130,7 @@ body {
 
 .form-check label {
     font-family: var(--titlefont);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     width: 5.5rem;
 }
 
@@ -139,4 +143,16 @@ body {
 .form-check-input:checked {
     background-color: var(--fireopal);
     border: 1px solid var(--firopal);
+}
+
+/*-- Results table Styling --*/
+.results-table th,
+.results-table td {
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+.results-table a {
+    font-size: 1.2rem;
+    color: var(--vividiangreen)
 }

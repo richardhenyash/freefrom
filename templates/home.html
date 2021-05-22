@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <section id="search-section" class="container-sm">
+    <section id="search" class="container-sm">
         <div class="row">
             <div class="col-12 container-search pb-1">
                 {% if session.user %}
@@ -15,7 +15,7 @@
                 {% endif %}
             </div>
         </div>
-        <form method="POST" action="">
+        <form id="search-form" method="POST" action="">
             <div class="row">
                 <div class="input-group input-group-lg">
                     <div class="col-12 col-md-5 container-input">
@@ -53,5 +53,31 @@
                 </div>
             </div>
         </form>
+    </section>
+    <section id="results" class="container-sm">
+        <div class="row">
+            <div class="col-12 container-results">
+                <table class="table results-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Maufacturer</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Free From</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="">Digestives</a></td>
+                            <td>McVities</td>
+                            <td>Biscuits</td>
+                            <td>Rating</td>
+                            <td>Free From</td>
+                        <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
 {% endblock %}
