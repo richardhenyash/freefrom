@@ -107,7 +107,8 @@ body {
     border: 1px solid var(--fireopal);
 }
 
-.input-title:focus {
+.input-title:focus,
+.form-check-input:focus {
     border-color: var(--venetianred);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
@@ -133,4 +134,9 @@ body {
     font-family: var(--titlefont);
     font-size: 1rem;
     color: var(--venetianred);
+}
+
+.form-check-input:checked {
+    background-color: var(--fireopal);
+    border: 1px solid var(--firopal);
 }

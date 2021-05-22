@@ -15,41 +15,43 @@
                 {% endif %}
             </div>
         </div>
-        <div class="row">
-            <div class="input-group input-group-lg">
-                <div class="col-12 col-md-5 container-input">
-                    <input type="search" id="search" class="form-control form-select-lg input-title" placeholder="Search....">
-                </div>
-                <div class="col-8 col-md-5 container-input">
-                    <select class="form-select form-select-lg input-title" id="categorySelector" aria-label="Example select with button addon">
-                        <option selected>Category...</option>
-                        {% for category in categories %}
-                            <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
-                        {% endfor %}
-                    </select>
-                </div> 
-                <div class="col-2 col-md-1 container-input">
-                    <button type="button" id="btn-search" class="btn btn-lg btn-danger btn-fireopal w-100">
-                        <i class="fas fa-search"></i>  
-                    </button>
-                </div>       
-                <div class="col-2 col-md-1 container-input">
-                    <button type="button" id="btn-add" class="btn btn-lg btn-danger btn-fireopal w-100">
-                        <i class="fas fa-plus"></i>  
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 p-4">
-                {% for allergen in allergens %}
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox" value="{{ allergen.name }}">
-                        <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+        <form method="POST" action="">
+            <div class="row">
+                <div class="input-group input-group-lg">
+                    <div class="col-12 col-md-5 container-input">
+                        <input type="search" id="search" class="form-control form-select-lg input-title" placeholder="Search....">
                     </div>
-                {% endfor %}
+                    <div class="col-8 col-md-5 container-input">
+                        <select class="form-select form-select-lg input-title" id="categorySelector" aria-label="Example select with button addon">
+                            <option selected>Category...</option>
+                            {% for category in categories %}
+                                <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div> 
+                    <div class="col-2 col-md-1 container-input">
+                        <button type="button" id="btn-search" class="btn btn-lg btn-danger btn-fireopal w-100">
+                            <i class="fas fa-search"></i>  
+                        </button>
+                    </div>       
+                    <div class="col-2 col-md-1 container-input">
+                        <button type="button" id="btn-add" class="btn btn-lg btn-danger btn-fireopal w-100">
+                            <i class="fas fa-plus"></i>  
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-12 p-4">
+                    {% for allergen in allergens %}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox" value="{{ allergen.name }}">
+                            <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
     </section>
 {% endblock %}
