@@ -3,7 +3,6 @@ from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, SubmitField,
                      BooleanField, TextField, TextAreaField, Form, validators)
 
-
 # SignIn form
 class SignInForm(Form):
     username = StringField('User Name', [

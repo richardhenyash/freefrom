@@ -15,14 +15,15 @@
                 {% endif %}
             </div>
         </div>
-        <form id="search-form" method="POST" action="">
+        <form id="search-form" method="POST" action="{{ url_for ('search') }}">
             <div class="row">
                 <div class="input-group input-group-lg">
                     <div class="col-12 col-md-5 container-input">
-                        <input type="search" id="search" class="form-control form-select-lg input-title" placeholder="Search....">
+                        <input type="search" id="search" name="search" class="form-control form-select-lg input-title" placeholder="Search....">
                     </div>
                     <div class="col-8 col-md-5 container-input">
-                        <select class="form-select form-select-lg input-title" id="categorySelector" aria-label="Example select with button addon">
+                        <select class="form-select form-select-lg input-title" id="categorySelector"
+                            name="categorySelector" aria-label="Category Selector">
                             <option selected>Category...</option>
                             {% for category in categories %}
                                 <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
@@ -30,7 +31,7 @@
                         </select>
                     </div> 
                     <div class="col-2 col-md-1 container-input">
-                        <button type="button" id="btn-search" class="btn btn-lg btn-danger btn-fireopal w-100">
+                        <button type="submit" id="btn-search" class="btn btn-lg btn-danger btn-fireopal w-100">
                             <i class="fas fa-search"></i>  
                         </button>
                     </div>       
@@ -69,11 +70,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="">Digestives</a></td>
-                            <td>McVities</td>
+                            {% for product in products %}
+                            <td><a href="">{{ product.name }}</a></td>
+                            <td>{{ product.manufacturer }}</td>
                             <td>Biscuits</td>
                             <td>Rating</td>
                             <td>Free From</td>
+                            {% endfor %}
                         <tr>
                     </tbody>
                 </table>

@@ -38,6 +38,24 @@ def home():
     allergens = mongo.db.allergens.find()
     return render_template("home.html", categories=categories, allergens=allergens)
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    if request.method == "POST" :
+        categories = mongo.db.categories.find()
+        allergens = mongo.db.allergens.find()
+        searchstr = request.form.get("search").lower()
+        category = request.form.get("categorySelector")
+        if category == "Category...":
+            category = None
+        else:
+            category_id = mongo.db.categories.find_one({"name": category})["_id"]
+        print(category_id)
+        print(searchstr)
+        print(category)
+        products = list(mongo.db.products.find({"name": searchstr, "category_id": ObjectId(category_id)}))
+        print(products)
+        return render_template("home.html", categories=categories, allergens=allergens, products=products)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
