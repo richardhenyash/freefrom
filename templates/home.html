@@ -15,7 +15,7 @@
                 {% endif %}
             </div>
         </div>
-        <form id="search-form" method="POST" action="{{ url_for ('search') }}">
+        <form id="search-form" method="POST" action="{{ url_for('search') }}">
             <div class="row">
                 <div class="input-group input-group-lg">
                     <div class="col-12 col-md-5 container-input">
@@ -46,7 +46,18 @@
                 <div class="col-12 p-4">
                     {% for allergen in allergens %}
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox" value="{{ allergen.name }}">
+                            {% if selected_allergens %}
+                                {% if allergen in selected_allergens %}
+                                    <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
+                                {% else %}
+                                    <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
+                                {% endif %}                               
+                            {% else %}
+                                <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                    value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
+                            {% endif %}
                             <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
                         </div>
                     {% endfor %}
@@ -69,15 +80,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for product in products %}
                         <tr>
-                            {% for product in products %}
                             <td><a href="">{{ product.name }}</a></td>
                             <td>{{ product.manufacturer }}</td>
                             <td>Biscuits</td>
                             <td>Rating</td>
                             <td>Free From</td>
-                            {% endfor %}
                         <tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
