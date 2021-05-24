@@ -158,14 +158,17 @@ body {
 .results-table-header th {
     color: var(--white);
     background: var(--fireopal);
+    vertical-align: middle;
 }
 
 .results-table-row,
 .results-table-header tr {
     border-color: var(--orangeyellow);
+    vertical-align: middle;
 }
 
 .results-table-row a {
     font-size: 1.1rem;
     color: var(--vividiangreen);
+    vertical-align: middle;
 }

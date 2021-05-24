@@ -89,7 +89,45 @@ def search():
             products = list(mongo.db.products.find({"$text": {"$search": searchstr}}))
         elif (not(allergen_id_list)) and (not (category_id)) and (not(searchstr)):
             products = list(mongo.db.products.find())
+        # process search results
+        for product in products:
 
+            # get category id from product object
+            category_id = product["category_id"]
+            category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
+            # add category name to product object
+            product["category_name"] = category_name
+
+            # process reviews to get average rating
+            reviews=product["reviews"]
+            # initialise rating quantity counter
+            rq = 0
+            # initialise totalrating counter
+            totalrating = 0
+            # calculate average rating from reviews
+            for review in reviews:
+                rating = review["rating"]
+                if rating:
+                    totalrating = totalrating + rating
+                    rq = rq + 1
+            # if product has been rated
+            if totalrating > 0:
+                avrating = round((totalrating / rq), 1)
+                # add average rating to product object
+                product["average_rating"] = avrating
+                
+            # get allergens from product object
+            allergen_id_list = product["free_from_allergens"]
+            print(allergen_id_list)
+            # initialise allergen list
+            allergen_list = []
+            # get allergen names from allergen object id's
+            for allergen in allergen_id_list:
+                allergen_name = mongo.db.allergens.find_one({"_id": allergen})["name"]
+                allergen_list.append(allergen_name)
+                print(allergen_name)
+            # add allergen list to product object
+            product["free_from_allergen_names"] = allergen_list
         print(products)
         return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind(), products=products, selected_allergens=allergen_list)
     return render_template("home.html", categories=categories, allergens=allergens)

@@ -84,9 +84,9 @@
                         <tr class="table-light results-table-row">
                             <td><a href="">{{ product.name }}</a></td>
                             <td>{{ product.manufacturer }}</td>
-                            <td>Biscuits</td>
-                            <td>Rating</td>
-                            <td>Free From</td>
+                            <td>{{ product.category_name }}</td>
+                            <td>{{ product.average_rating }}</td>
+                            <td>{{ product.free_from_allergen_names|join(", ") }}</td>
                         <tr>
                         {% endfor %}
                     </tbody>
