@@ -68,25 +68,25 @@ def search():
 
         # If allergen list, category and search string are specified
         if allergen_id_list and category_id and searchstr:
-            products = list(mongo.db.products.find({"name": searchstr, "category_id": ObjectId(category_id), "free_from_allergens": { "$all": allergen_id_list }}))
+            products = list(mongo.db.products.find({"$text": {"$search": searchstr}, "category_id": ObjectId(category_id), "free_from_allergens": { "$all": allergen_id_list }}))
         # else if allergen list and category are specified and search string is not specified
         elif  allergen_id_list and category_id and (not(searchstr)):
             products = list(mongo.db.products.find({"category_id": ObjectId(category_id), "free_from_allergens": { "$all": allergen_id_list }}))
         # else if allergen list is not specified, category is specified and search string is specified
         elif  (not (allergen_id_list)) and category_id and searchstr:
-            products = list(mongo.db.products.find({"name": searchstr, "category_id": ObjectId(category_id)}))
+            products = list(mongo.db.products.find({"$text": {"$search": searchstr}, "category_id": ObjectId(category_id)}))
         # else if allergen list is not specified, category is specified and search string is not specified
         elif (not (allergen_id_list)) and category_id and (not(searchstr)):
             products = list(mongo.db.products.find({"category_id": ObjectId(category_id)}))
         # else if allergen list is specified, category is not specified and search string is specified
         elif allergen_id_list and (not (category_id)) and searchstr:
-            products = list(mongo.db.products.find({"name": searchstr, "free_from_allergens": { "$all": allergen_id_list }}))
+            products = list(mongo.db.products.find({"$text": {"$search": searchstr}, "free_from_allergens": { "$all": allergen_id_list }}))
         # else if allergen list is specified, category is not specified and search string is not specified
         elif allergen_id_list and (not (category_id)) and (not(searchstr)):
             products = list(mongo.db.products.find({"free_from_allergens": { "$all": allergen_id_list }}))
         # else if allergen list is not specified, category is not specified and search string is specified
         elif (not(allergen_id_list)) and (not (category_id)) and searchstr:
-            products = list(mongo.db.products.find({"name": searchstr}))
+            products = list(mongo.db.products.find({"$text": {"$search": searchstr}}))
         elif (not(allergen_id_list)) and (not (category_id)) and (not(searchstr)):
             products = list(mongo.db.products.find())
 
