@@ -112,10 +112,11 @@ def search():
                     rq = rq + 1
             # if product has been rated
             if totalrating > 0:
-                avrating = round((totalrating / rq), 1)
+                avrating = round(((totalrating / rq) * 2)) / 2
+                # avrating = round(totalrating / rq)
                 # add average rating to product object
                 product["average_rating"] = avrating
-                
+
             # get allergens from product object
             allergen_id_list = product["free_from_allergens"]
             print(allergen_id_list)

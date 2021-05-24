@@ -172,3 +172,7 @@ body {
     color: var(--vividiangreen);
     vertical-align: middle;
 }
+
+.results-table-row i {
+    color: var(--orangeyellow);
+}
