@@ -176,3 +176,13 @@ body {
 .results-table-row i {
     color: var(--orangeyellow);
 }
+
+/*-- Media queries --*/
+@media (max-width: 400px) {
+    .table-rating {
+        width: 6.0rem;
+    }
+    .results-table-row i {
+        font-size: 0.9rem;
+    }
+}
