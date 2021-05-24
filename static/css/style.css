@@ -132,6 +132,8 @@ body {
     font-family: var(--titlefont);
     font-size: 1.1rem;
     width: 5.5rem;
+    vertical-align: middle;
+    padding-bottom: 0.2rem;
 }
 
 .form-errors {
