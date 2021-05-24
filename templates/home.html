@@ -71,7 +71,7 @@
             <div class="col-12 container-results">
                 <table class="table results-table">
                     <thead>
-                        <tr>
+                        <tr class="table-primary results-table-header">
                             <th scope="col">Product</th>
                             <th scope="col">Maufacturer</th>
                             <th scope="col">Category</th>
@@ -81,7 +81,7 @@
                     </thead>
                     <tbody>
                         {% for product in products %}
-                        <tr>
+                        <tr class="table-light results-table-row">
                             <td><a href="">{{ product.name }}</a></td>
                             <td>{{ product.manufacturer }}</td>
                             <td>Biscuits</td>

@@ -154,7 +154,19 @@ body {
     line-height: 1.2rem;
 }
 
-.results-table a {
-    font-size: 1.2rem;
-    color: var(--vividiangreen)
+.results-table-header,
+.results-table-header th {
+    color: var(--white);
+    background: var(--fireopal);
+}
+
+.results-table-row,
+.results-table-header tr {
+    border-color: var(--orangeyellow);
+}
+
+.results-table-row a {
+    font-size: 1.1rem;
+    color: var(--fireopal);
+
 }
