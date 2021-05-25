@@ -7,6 +7,9 @@ import wtforms_validators
 
 # SignIn form
 class SignInForm(Form):
+    """
+    Sign In Form
+    """
     username = StringField('User Name', [
         validators.DataRequired(message="Input required"),
         validators.Length(min=5, max=25, message="User Name must be between 5 and 25 characters long"),
@@ -20,6 +23,9 @@ class SignInForm(Form):
 
 # Registration form, inherits from SignInForm 
 class RegistrationForm(SignInForm):
+    """
+    Registration Form
+    """
     email = StringField('Email', [
         validators.DataRequired(message="Input required"),
         validators.Email(message="Please enter a valid email address"),
@@ -28,6 +34,9 @@ class RegistrationForm(SignInForm):
 
 # Product form
 class ProductForm(Form):
+    """
+    Product Form
+    """
     name = StringField('Product Name', [
         validators.DataRequired(message="Product name required in order to add product"),
         validators.Length(min=5, max=50, message="Product name must be between 5 and 50 characters long"),
