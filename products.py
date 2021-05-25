@@ -162,11 +162,14 @@ def add():
             proceed = False
         if proceed:
             product_category_id = mongo.db.categories.find_one({"name": product_category})["_id"]
-            print(ObjectId(product_category_id))
-            #allergen_list = get_selected_allergen_list(allergens)
-            #print(allergen_list)
-            #for allergen in allergen_list:
-
+            allergen_list = get_selected_allergen_list(allergens)
+            allergen_id_list = []
+            for allergen in allergen_list:
+                allergen_id = ObjectId(allergen["_id"])
+                if allergen_id:
+                    allergen_id_list.append(allergen_id)
+            print(product_category_id)
+            print(allergen_id_list)
 
 
         #return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind())
