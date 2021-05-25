@@ -53,5 +53,5 @@ class ProductForm(Form):
     ])
     rating = IntegerField('Product Rating', [
         validators.DataRequired(message="Product rating required in order to add product"),
-        validators.NumberRange(min=1, max=5, message="product rating must be an integer between 1 and 5"),
+        validators.NumberRange(min=1, max=5, message="Please rate product between 1 and 5 stars"),
     ])

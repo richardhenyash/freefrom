@@ -40,7 +40,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4">
                     <div class="form-label input-label" for="categorySelector"><p>Free From</p></div>
-                    <div class="div px-4">
+                    <div class="div px-4 pb-2">
                     {% for allergen in allergens %}
                         <div class="form-check form-check-inline">
                                 {% if selected_allergens %}
@@ -64,21 +64,22 @@
             </div>
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    <div class="form-label input-label" for="categorySelector"><p>Rating</p></div>
-                    <div class="px-4 rating">
+                <div class="col-12 col-md-6 pt-4 rating">
+                    {{ form.rating.label(class="form-label input-label") }} 
+                    {{ form.rating(class="d-none") }}
+                        <span>&nbsp;</span>
                         <i id="star-1" class="far fa-star"></i>               
                         <i id="star-2" class="far fa-star"></i>
                         <i id="star-3" class="far fa-star"></i>
                         <i id="star-4" class="far fa-star"></i>
                         <i id="star-5" class="far fa-star"></i>
-                    </div>
+                    {{ form_error(form.rating) }}
                 </div> 
                 <div class="col-md-3"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
+                <div class="col-12 col-md-6 pt-2">
                     {{ form.review.label(class="form-label input-label") }}
                     {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
                     {{ form_error(form.review) }}
