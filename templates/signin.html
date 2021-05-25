@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% from "_formhelpers.html" import form_error %}
 <div class="container-sm">
     <div class="row pt-5">
         <div class="col-sm-4"></div>
@@ -10,13 +11,7 @@
                     <div>
                         {{ form.username.label(class="form-label input-label") }}
                         {{ form.username(class="form-control input-title") }}
-                        {% if form.username.errors %}
-                            <ul class="form-errors">
-                                {% for error in form.username.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                        {{ form_error(form.username) }}
                     </div>
                 </div>
                 <div>
@@ -24,13 +19,7 @@
                     <div>
                         {{ form.password.label(class="form-label input-label") }}
                         {{ form.password(class="form-control input-title") }}
-                        {% if form.password.errors %}
-                            <ul class="form-errors">
-                                {% for error in form.password.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                        {{ form_error(form.password) }}
                     </div>                    
                 </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>

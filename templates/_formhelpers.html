@@ -1,0 +1,10 @@
+ <!--Jinja macro to render form errors -->
+{% macro form_error(field) %}
+    {% if field.errors %}
+        <ul class="form-errors">
+            {% for error in field.errors %}
+                <li>{{ error|e }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
