@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from forms import ProductForm
 
 # Import PyMongo database instance
 from database import mongo
@@ -17,7 +18,7 @@ products = Blueprint("products", __name__, static_folder="static",
 @products.route("/search", methods=["GET", "POST"])
 def search():
     """
-    Route for search
+    Route for products search
     """
     # Get categories collection from database
     categories = mongo.db.categories.find()
@@ -132,3 +133,27 @@ def search():
         print(products)
         return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind(), products=products, selected_allergens=allergen_list)
     return render_template("home.html", categories=categories, allergens=allergens)
+
+
+@products.route("/add", methods=["GET", "POST"])
+def add():
+    """
+    Route for products add
+    """
+    # request Form data
+    form = ProductForm(request.form)
+    # Get categories collection from database
+    categories = mongo.db.categories.find()
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find()
+    if request.method == "POST":
+        # Get search string from form
+        searchstr = request.form.get("search").lower()
+        # Set searchstr to None if not specified
+        if searchstr == "":
+            searchstr = None
+
+        # Get category from form
+        category = request.form.get("categorySelector")
+    
+    return render_template("product_add.html", categories=categories, allergens=allergens, form=form)

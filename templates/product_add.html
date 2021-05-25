@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+{% from "_formhelpers.html" import form_error %}
+    <section id="product-add" class="container-sm">
+        <div class="row">
+        <form id="product-add-form" method="POST" action="{{ url_for('products.add') }}">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.name.label(class="form-label input-label") }}
+                    {{ form.name(class="form-control form-control-lg input-title") }}
+                    {{ form_error(form.name) }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    <label class="form-label input-label" for="categorySelector">Category</label>
+                    <select class="form-select form-select-lg input-title" id="categorySelector"
+                        name="categorySelector" aria-label="Category Selector">
+                        <option selected>Category...</option>
+                        {% for category in categories %}
+                            <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                        {% endfor %}
+                    </select>
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.manufacturer.label(class="form-label input-label") }}
+                    {{ form.manufacturer(class="form-control form-control-lg input-title") }}
+                    {{ form_error(form.manufacturer) }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    <div class="form-label input-label" for="categorySelector"><p>Free From</p></div>
+                    <div class="div px-4">
+                        <div class="form-check form-check-inline">
+                            {% for allergen in allergens %}
+                                {% if selected_allergens %}
+                                    {% if allergen in selected_allergens %}
+                                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                            value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
+                                    {% else %}
+                                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                            value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
+                                    {% endif %}                               
+                                {% else %}
+                                    <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
+                                {% endif %}
+                                <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    <div class="form-label input-label" for="categorySelector"><p>Rating</p></div>
+                    <div class="px-4 rating">
+                        <i class="far fa-star"></i>               
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.review.label(class="form-label input-label") }}
+                    {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
+                    {{ form_error(form.review) }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Add</button>
+                    <a href="{{ url_for('home') }}" class="btn btn-lg btn-secondary">Cancel</a>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </form>
+    </section>
+{% endblock %}
