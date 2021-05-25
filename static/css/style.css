@@ -91,6 +91,14 @@ body {
     border-color: var(--fireopal);
 }
 
+/*-- Buttons --*/
+.btn-orangeyellow {
+    font-family: var(--titlefont);
+    color: var(--white);
+    background-color: var(--orangeyellow);
+    border-color: var(--orangeyellow);
+}
+
 /*-- Button Hover Styling --*/
 .btn-fireopal:hover {
     background-color: var(--venetianred);
@@ -103,6 +111,19 @@ body {
     border-color: var(--venetianred);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
+}
+
+.btn-orangeyellow:hover {
+    background-color: var(--lemoncurry);
+    border-color: var(--lemoncurry);
+}
+
+.btn-orangeyellow:active 
+.btn-orangeyellow:focus  {
+    background-color: var(--lemoncurry);
+    border-color: var(--lemoncurry);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(255 199 31 / 25%);
 }
 
 /*-- Input Styling --*/
@@ -173,7 +194,9 @@ body {
     vertical-align: middle;
 }
 
-.results-table-row i {
+
+.results-table-row i,
+.rating i {
     color: var(--orangeyellow);
 }
 

@@ -10,7 +10,7 @@
                     <div class="mb-3">
                     <div>
                         {{ form.username.label(class="form-label input-label") }}
-                        {{ form.username(class="form-control input-title") }}
+                        {{ form.username(class="form-control form-control-lg input-title") }}
                         {{ form_error(form.username) }}
                     </div>
                 </div>
@@ -18,12 +18,12 @@
                     <div class="mb-3 pb-2">
                     <div>
                         {{ form.password.label(class="form-label input-label") }}
-                        {{ form.password(class="form-control input-title") }}
+                        {{ form.password(class="form-control form-control-lg input-title") }}
                         {{ form_error(form.password) }}
                     </div>                    
                 </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>
-                <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-fireopal">Register</a>
+                <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-orangeyellow">Register</a>
             </form>
         </div>
         <div class="col-sm-4"></div>
