@@ -39,23 +39,24 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4">
-                    <div class="form-label input-label" for="categorySelector"><p>Free From</p></div>
+                    {{ form.freefrom.label(class="form-label input-label") }} 
+                    {{ form.freefrom(class="") }}
                     <div class="div px-4 pb-2">
                     {% for allergen in allergens %}
                         <div class="form-check form-check-inline">
-                                {% if selected_allergens %}
-                                    {% if allergen in selected_allergens %}
-                                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
-                                            value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
-                                    {% else %}
-                                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
-                                            value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
-                                    {% endif %}                               
+                            {% if selected_allergens %}
+                                {% if allergen in selected_allergens %}
+                                    <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
                                 {% else %}
                                     <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
-                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
-                                {% endif %}
-                                <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
+                                {% endif %}                               
+                            {% else %}
+                                <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                    value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
+                            {% endif %}
+                            <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
                         </div>
                     {% endfor %}
                     </div>
@@ -66,7 +67,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4 rating">
                     {{ form.rating.label(class="form-label input-label") }} 
-                    {{ form.rating(class="d-none") }}
+                    {{ form.rating(class="") }}
                         <span>&nbsp;</span>
                         <i id="star-1" class="far fa-star"></i>               
                         <i id="star-2" class="far fa-star"></i>

@@ -1,7 +1,7 @@
 # Import dependencies
 from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, SubmitField,
-                     BooleanField, TextField, TextAreaField, 
+                     BooleanField, HiddenField, TextField, TextAreaField, 
                      IntegerField, Form, validators)
 import wtforms_validators
 
@@ -47,11 +47,13 @@ class ProductForm(Form):
         validators.Length(min=5, max=50, message="Manufacturer name must be between 5 and 50 characters long"),
         wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters, numbers or spaces")
     ])
+    freefrom = HiddenField('Free From', [
+        validators.Optional(),
+    ])
     review = TextAreaField('Product Review', [
         validators.DataRequired(message="Product review required in order to add product"),
         validators.Length(min=5, max=250, message="Product review must be between 5 and 250 characters long")
     ])
-    rating = IntegerField('Product Rating', [
-        validators.DataRequired(message="Product rating required in order to add product"),
-        validators.NumberRange(min=1, max=5, message="Please rate product between 1 and 5 stars"),
+    rating = HiddenField('Product Rating', [
+        validators.DataRequired(message="Please rate product between 1 and 5 stars"),
     ])

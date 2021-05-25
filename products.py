@@ -146,14 +146,49 @@ def add():
     categories = mongo.db.categories.find()
     # Get allergens collection from database
     allergens = mongo.db.allergens.find()
-    if request.method == "POST":
-        # Get search string from form
-        searchstr = request.form.get("search").lower()
-        # Set searchstr to None if not specified
-        if searchstr == "":
-            searchstr = None
+    # validate form
+    if request.method == "POST" and form.validate():
+        product_name = form.name.data
+        product_manufacturer = form.manufacturer.data
+        product_category = request.form.get("categorySelector").lower()
+        if product_category:
+            if product_category == "category...":
+                flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
+                proceed = False
+            else:
+                proceed = True
+        else:
+            flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
+            proceed = False
+        if proceed:
+            product_category_id = mongo.db.categories.find_one({"name": product_category})["_id"]
+            print(ObjectId(product_category_id))
+            #allergen_list = get_selected_allergen_list(allergens)
+            #print(allergen_list)
+            #for allergen in allergen_list:
 
-        # Get category from form
-        category = request.form.get("categorySelector")
+
+
+        #return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind())
     
-    return render_template("product_add.html", categories=categories, allergens=allergens, form=form)
+    return render_template("product_add.html", categories=categories.rewind(), allergens=allergens.rewind(), form=form)
+
+
+def get_selected_allergen_list(allergens):
+    allergen_list = []
+    for allergen in allergens.rewind():
+        # Get checkbox name
+        checkbox_name = allergen["name"] + "Checkbox"
+        # Get checkbox value from form
+        checkbox_value = request.form.get(checkbox_name)
+        # If checkbox is set, add allergen to allergen_list
+        if checkbox_value:
+            # Append selected allergens to allergen_list
+            allergen_list.append(allergen)    
+    # If allergen list is empty, set to None
+    if len(allergen_list) == 0:
+        allergen_list = None
+    return(allergen_list)
+    
+
+    
