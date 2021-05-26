@@ -146,10 +146,12 @@ def add():
     categories = mongo.db.categories.find()
     # Get allergens collection from database
     allergens = mongo.db.allergens.find()
+    # Get users collection from database
+    users = mongo.db.users.find()
     # validate form
     if request.method == "POST" and form.validate():
-        product_name = form.name.data
-        product_manufacturer = form.manufacturer.data
+        product_name = form.name.data.lower()
+        product_manufacturer = form.manufacturer.data.lower()
         product_category = request.form.get("categorySelector").lower()
         if product_category:
             if product_category == "category...":
@@ -163,17 +165,57 @@ def add():
         if proceed:
             product_category_id = mongo.db.categories.find_one({"name": product_category})["_id"]
             allergen_list = get_selected_allergen_list(allergens)
+            if allergen_list:
+                proceed = True
+            else:
+                flash("Please select allergens that the product is Free From. If you would like to add an Allergen, please contact the site Administrator", "warning")
+                proceed = False
+        if proceed:
             allergen_id_list = []
             for allergen in allergen_list:
                 allergen_id = ObjectId(allergen["_id"])
                 if allergen_id:
                     allergen_id_list.append(allergen_id)
-            print(product_category_id)
-            print(allergen_id_list)
+        if proceed:
+            product_rating = form.rating.data
+            if product_rating == "":
+                product_rating = None
+            if product_rating:
+                proceed = True
+                product_rating = int(product_rating)
+            else:
+                flash("Please rate product", "warning")
+                proceed = False
+        if proceed:
+            product_review = form.review.data
+            user_name = session["user"]
+            user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+            # set new product variable
+            new_product = {
+                "name": product_name,
+                "manufacturer": product_manufacturer,
+                "user_id": user_id,
+                "category_id": product_category_id,
+                "barcode": "",
+                "free_from_allergens": allergen_id_list,
+                "reviews": [{
+                    "user_id": user_id, 
+                    "rating": product_rating, 
+                    "review": product_review
+                }]
+            }
+            # add new record to the database
+            mongo.db.products.insert_one(new_product)
+            flash("Product succesfully added", "success")
+            form.name.data = None
+            form.manufacturer.data = None
+            form.rating.data = None
+            form.review.data = None
 
-
-        #return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind())
+        return render_template(
+            "product_add.html", categories=categories.rewind(), allergens=allergens.rewind(), form=form)
     
+    form.rating.data = None
     return render_template("product_add.html", categories=categories.rewind(), allergens=allergens.rewind(), form=form)
 
 

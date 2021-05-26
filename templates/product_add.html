@@ -18,7 +18,7 @@
                 <div class="col-12 col-md-6 pt-4">
                     <label class="form-label input-label" for="categorySelector">Category</label>
                     <select class="form-select form-select-lg input-title" id="categorySelector"
-                        name="categorySelector" aria-label="Category Selector">
+                        name="categorySelector" aria-label="Category Selector" required>
                         <option selected>Category...</option>
                         {% for category in categories %}
                             <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
@@ -40,7 +40,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4">
                     {{ form.freefrom.label(class="form-label input-label") }} 
-                    {{ form.freefrom(class="") }}
+                    {{ form.freefrom(class="form-check form-check-inline") }}
                     <div class="div px-4 pb-2">
                     {% for allergen in allergens %}
                         <div class="form-check form-check-inline">
