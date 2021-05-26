@@ -148,28 +148,37 @@ def add():
     allergens = mongo.db.allergens.find()
     # Get users collection from database
     users = mongo.db.users.find()
-    # validate form
+    # Validate form
     if request.method == "POST" and form.validate():
+        # Get product name, manufacturer and category
         product_name = form.name.data.lower()
         product_manufacturer = form.manufacturer.data.lower()
         product_category = request.form.get("categorySelector").lower()
+        # Check if category has been selected from drop down
         if product_category:
             if product_category == "category...":
+                # Display flash message
                 flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
                 proceed = False
             else:
                 proceed = True
         else:
+            # Display flash message
             flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
             proceed = False
         if proceed:
+            # Get category id
             product_category_id = mongo.db.categories.find_one({"name": product_category})["_id"]
+            # Get selected allergens
             allergen_list = get_selected_allergen_list(allergens)
+            # Check if any allergens are selected
             if allergen_list:
                 proceed = True
             else:
+                # Display flash message
                 flash("Please select allergens that the product is Free From. If you would like to add an Allergen, please contact the site Administrator", "warning")
                 proceed = False
+        # Get allergen id's and add to list
         if proceed:
             allergen_id_list = []
             for allergen in allergen_list:
@@ -177,6 +186,7 @@ def add():
                 if allergen_id:
                     allergen_id_list.append(allergen_id)
         if proceed:
+            # Get product rating
             product_rating = form.rating.data
             if product_rating == "":
                 product_rating = None
@@ -184,13 +194,17 @@ def add():
                 proceed = True
                 product_rating = int(product_rating)
             else:
+                # Display flash message
                 flash("Please rate product", "warning")
                 proceed = False
         if proceed:
+            # Get product review
             product_review = form.review.data
+            # Get user name
             user_name = session["user"]
+            # Get user id from user name
             user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-            # set new product variable
+            # Set new product variable
             new_product = {
                 "name": product_name,
                 "manufacturer": product_manufacturer,
@@ -204,8 +218,9 @@ def add():
                     "review": product_review
                 }]
             }
-            # add new record to the database
+            # Add new record to the database
             mongo.db.products.insert_one(new_product)
+            # Display flash message
             flash("Product succesfully added", "success")
             form.name.data = None
             form.manufacturer.data = None
