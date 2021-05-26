@@ -146,8 +146,6 @@ def add():
     categories = mongo.db.categories.find()
     # Get allergens collection from database
     allergens = mongo.db.allergens.find()
-    # Get users collection from database
-    users = mongo.db.users.find()
     # Validate form
     if request.method == "POST" and form.validate():
         # Get product name, manufacturer and category
@@ -234,6 +232,74 @@ def add():
     return render_template("product_add.html", categories=categories.rewind(), allergens=allergens.rewind(), form=form)
 
 
+@products.route("/edit<product>", methods=["GET", "POST"])
+def edit(product_name):
+    """
+    Route for product edit
+    """
+    # request Form data
+    form = ProductForm(request.form)
+    # Validate form
+    if request.method == "POST" and form.validate():
+        # Get product id from product name
+        product_id = mongo.db.products.find_one({"product": product_name})["_id"]
+        # Get categories collection from database
+        categories = mongo.db.categories.find()
+        # Get allergens collection from database
+        allergens = mongo.db.allergens.find()
+        # Get product category
+        product_category = request.form.get("categorySelector").lower()
+        # Check if category has been selected from drop down
+        if product_category:
+            if product_category == "category...":
+                # Display flash message
+                flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
+                proceed = False
+            else:
+                proceed = True
+        else:
+            # Display flash message
+            flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
+            proceed = False
+        if proceed:
+            # Get category id
+            product_category_id = mongo.db.categories.find_one({"name": product_category})["_id"]
+            # Get selected allergens
+            allergen_list = get_selected_allergen_list(allergens)
+            # Check if any allergens are selected
+            if allergen_list:
+                proceed = True
+            else:
+                # Display flash message
+                flash("Please select allergens that the product is Free From. If you would like to add an Allergen, please contact the site Administrator", "warning")
+                proceed = False
+        # Get allergen id's and add to list
+        if proceed:
+            allergen_id_list = []
+            for allergen in allergen_list:
+                allergen_id = ObjectId(allergen["_id"])
+                if allergen_id:
+                    allergen_id_list.append(allergen_id)
+        # Get user name
+        user_name = session["user"]
+        # Get user id from user name
+        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        if proceed:
+            # Set product update variable
+            product_update = {
+                "name": product_name,
+                "manufacturer": product_manufacturer,
+                "user_id": user_id,
+                "category_id": product_category_id,
+                "free_from_allergens": allergen_id_list
+            }
+            # Update product in database
+            mongo.db.tasks.update({"_id": ObjectId(product_id)}, product_update)
+            # Display flash message
+            flash("Product succesfully updated", "success")
+            return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind())
+
+
 def get_selected_allergen_list(allergens):
     allergen_list = []
     for allergen in allergens.rewind():
@@ -249,6 +315,4 @@ def get_selected_allergen_list(allergens):
     if len(allergen_list) == 0:
         allergen_list = None
     return(allergen_list)
-    
-
     
