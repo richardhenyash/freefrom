@@ -3,7 +3,31 @@
 {% from "_formhelpers.html" import form_error %}
     <section id="product-view" class="container-sm">
         <div class="row">
-        <form id="product-view-form" method="POST" action="{{ url_for('products.view') }}">
+        <form id="product-view-form" method="POST" action="{{ url_for('products.view', product_id=product._id) }}">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.name.label(class="form-label input-label") }}
+                    {{ form.name(class="form-control form-control-lg input-title") }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.category.label(class="form-label input-label") }}
+                    {{ form.category(class="form-control form-control-lg input-title") }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.manufacturer.label(class="form-label input-label") }}
+                    {{ form.manufacturer(class="form-control form-control-lg input-title") }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4 rating">

@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from forms import ProductForm, ProductReviewForm
+from forms import ProductForm, ProductViewForm
 
 # Import PyMongo database instance
 from database import mongo
@@ -237,18 +237,31 @@ def view(product_id):
     """
     Route for product view
     """
-    print(product_id)
     # request Form data
-    form = ProductReviewForm(request.form)
+    form = ProductViewForm(request.form)#
+    # Get categories collection from database
+    categories = mongo.db.categories.find()
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find()
     # Validate form
-    if request.method == "POST" and form.validate():
-        print(product_id)
+    #if request.method == "POST" and form.validate():
+    print(product_id)
+    product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
+    print(product)
+    form.name.data = product["name"]
+    category_id = product["category_id"]
+    category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
+    form.category.data = category_name
+    form.manufacturer.data = product["manufacturer"]
         
     # Get user name
-    user_name = session["user"]
-    # Get user id from user name
-    user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-    return render_template("product_view.html", product_id=product_id, form=form)
+    if session:
+        # Get user name
+        user_name = session["user"]
+        # Get user id from user name
+        print(user_name)
+        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+    return render_template("product_view.html", product=product, product_id=product_id, form=form)
 
 @products.route("/edit<product_name>", methods=["GET", "POST"])
 def edit(product_name):
