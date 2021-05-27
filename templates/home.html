@@ -84,7 +84,7 @@
                     <tbody>
                         {% for product in products %}
                         <tr class="table-light results-table-row">
-                            <td><a href="">{{ product.name }}</a></td>
+                            <td><a href="{{ url_for('products.view', product_id=product._id) }}">{{ product.name }}</a></td>
                             <td>{{ product.manufacturer }}</td>
                             <td>{{ product.category_name }}</td>
                             {% if product.average_rating %}

@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from forms import ProductForm
+from forms import ProductForm, ProductReviewForm
 
 # Import PyMongo database instance
 from database import mongo
@@ -232,7 +232,25 @@ def add():
     return render_template("product_add.html", categories=categories.rewind(), allergens=allergens.rewind(), form=form)
 
 
-@products.route("/edit<product>", methods=["GET", "POST"])
+@products.route("/view/<product_id>", methods=["GET", "POST"])
+def view(product_id):
+    """
+    Route for product view
+    """
+    print(product_id)
+    # request Form data
+    form = ProductReviewForm(request.form)
+    # Validate form
+    if request.method == "POST" and form.validate():
+        print(product_id)
+        
+    # Get user name
+    user_name = session["user"]
+    # Get user id from user name
+    user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+    return render_template("product_view.html", product_id=product_id, form=form)
+
+@products.route("/edit<product_name>", methods=["GET", "POST"])
 def edit(product_name):
     """
     Route for product edit

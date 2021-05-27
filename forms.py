@@ -57,3 +57,16 @@ class ProductForm(Form):
     rating = HiddenField('Product Rating', [
         validators.DataRequired(message="Please rate product between 1 and 5 stars"),
     ])
+
+class ProductReviewForm(Form):
+    """
+    Product Form
+    """
+    review = TextAreaField('Product Review', [
+        validators.DataRequired(message="Product review required in order to add product"),
+        validators.Length(min=5, max=250, message="Product review must be between 5 and 250 characters long")
+    ])
+    rating = HiddenField('Product Rating', [
+        validators.DataRequired(message="Please rate product between 1 and 5 stars"),
+    ])
+
