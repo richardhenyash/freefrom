@@ -267,15 +267,14 @@ def view(product_id):
                     "review": form.review.data
                 }
                 reviews.append(review_new)
-                print(reviews)
-                print(product)
+                product["reviews"]=reviews
                     
-            #print(product)
+            print(product)
             # Update product in database
-            #mongo.db.products.update({"_id": ObjectId(product_id)}, product)
+            mongo.db.products.update({"_id": ObjectId(product_id)}, product)
             # Display flash message
-            #flash("Product succesfully updated", "success")
-            #return render_template("product_view.html", product=product, product_id=product_id, form=form)
+            flash("Product succesfully updated", "success")
+            return render_template("product_view.html", product=product, product_id=product_id, form=form)
 
     form.name.data = product["name"]
     category_id = product["category_id"]
