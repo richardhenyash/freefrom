@@ -37,12 +37,12 @@ class ProductForm(Form):
     """
     Product Form
     """
-    name = StringField('Product Name', [
+    name = StringField('Product', [
         validators.DataRequired(message="Product name required in order to add product"),
         validators.Length(min=5, max=50, message="Product name must be between 5 and 50 characters long"),
         wtforms_validators.AlphaSpace(message="Product name must contain only letters, numbers or spaces")
     ])
-    manufacturer = StringField('Manufacturer Name', [
+    manufacturer = StringField('Manufacturer', [
         validators.DataRequired(message="Manufacturer name required in order to add product"),
         validators.Length(min=5, max=50, message="Manufacturer name must be between 5 and 50 characters long"),
         wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters, numbers or spaces")
@@ -50,11 +50,11 @@ class ProductForm(Form):
     freefrom = HiddenField('Free From', [
         validators.Optional(),
     ])
-    review = TextAreaField('Product Review', [
+    review = TextAreaField('Your Review', [
         validators.DataRequired(message="Product review required in order to add product"),
         validators.Length(min=5, max=250, message="Product review must be between 5 and 250 characters long")
     ])
-    rating = HiddenField('Product Rating', [
+    rating = HiddenField('Your Rating', [
         validators.DataRequired(message="Please rate product between 1 and 5 stars"),
     ])
 
@@ -62,15 +62,15 @@ class ProductViewForm(Form):
     """
     Product View Form
     """
-    name = StringField('Product Name', render_kw={'readonly': True})
+    name = StringField('Product', render_kw={'readonly': True})
     category = StringField('Category', render_kw={'readonly': True})
-    manufacturer = StringField('Manufacturer Name', render_kw={'readonly': True})
-    freefrom = StringField('Manufacturer Name', render_kw={'readonly': True})
-    review = TextAreaField('Product Review', [
+    manufacturer = StringField('Manufacturer', render_kw={'readonly': True})
+    freefrom = StringField('Free From', render_kw={'readonly': True})
+    review = TextAreaField('Your Review', [
         validators.DataRequired(message="Product review required in order to add product"),
         validators.Length(min=5, max=250, message="Product review must be between 5 and 250 characters long")
     ])
-    rating = HiddenField('Product Rating', [
+    rating = HiddenField('Your Rating', [
         validators.DataRequired(message="Please rate product between 1 and 5 stars"),
     ])
 

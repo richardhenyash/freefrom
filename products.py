@@ -245,7 +245,6 @@ def view(product_id):
     allergens = mongo.db.allergens.find()
     # Validate form
     #if request.method == "POST" and form.validate():
-    print(product_id)
     product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
     print(product)
     form.name.data = product["name"]
@@ -255,12 +254,20 @@ def view(product_id):
     form.manufacturer.data = product["manufacturer"]
         
     # Get user name
+    user_review = None
     if session:
         # Get user name
         user_name = session["user"]
         # Get user id from user name
-        print(user_name)
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        product_reviews = product["reviews"]
+        for review in product_reviews:
+            print(review["user_id"])
+            print(ObjectId(user_id))
+            if review["user_id"] == (ObjectId(user_id)):
+                user_review = review
+                form.rating.data = user_review["rating"]
+                form.review.data = user_review["review"]
     return render_template("product_view.html", product=product, product_id=product_id, form=form)
 
 @products.route("/edit<product_name>", methods=["GET", "POST"])
