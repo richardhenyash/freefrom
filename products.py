@@ -238,16 +238,45 @@ def view(product_id):
     Route for product view
     """
     # request Form data
-    form = ProductViewForm(request.form)#
+    form = ProductViewForm(request.form)
     # Get categories collection from database
     categories = mongo.db.categories.find()
     # Get allergens collection from database
     allergens = mongo.db.allergens.find()
-    # Validate form
-    #if request.method == "POST" and form.validate():
     # Get product from product_id
     product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
     print(product)
+    if request.method == "POST" and form.validate():
+            print(product["reviews"])
+            # Get user name
+            user_name = session["user"]
+            # Get user id from user name
+            user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+            print(user_id)
+            review_newflag = True
+            reviews = product["reviews"]
+            for review in reviews:
+                if review["user_id"] == user_id:
+                    review["rating"] = int(form.rating.data)
+                    review["review"] = form.review.data
+                    review_newflag = False
+            if review_newflag == True:
+                review_new = {
+                    "user_id": user_id,
+                    "rating": int(form.rating.data),
+                    "review": form.review.data
+                }
+                reviews.append(review_new)
+                print(reviews)
+                print(product)
+                    
+            #print(product)
+            # Update product in database
+            #mongo.db.products.update({"_id": ObjectId(product_id)}, product)
+            # Display flash message
+            #flash("Product succesfully updated", "success")
+            #return render_template("product_view.html", product=product, product_id=product_id, form=form)
+
     form.name.data = product["name"]
     category_id = product["category_id"]
     category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
@@ -259,7 +288,7 @@ def view(product_id):
         allergen_name = mongo.db.allergens.find_one({"_id": allergen_id})["name"]
         product_free_from_allergens_list.append(allergen_name)
     form.freefrom.data = ', '.join(map(str, product_free_from_allergens_list)).title()
-        
+    
     # Get user name
     user_review = None
     if session:
