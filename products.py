@@ -253,6 +253,12 @@ def view(product_id):
     category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
     form.category.data = category_name
     form.manufacturer.data = product["manufacturer"]
+    product_allergen_id_list = product["free_from_allergens"]
+    product_free_from_allergens_list = []
+    for allergen_id in product_allergen_id_list:
+        allergen_name = mongo.db.allergens.find_one({"_id": allergen_id})["name"]
+        product_free_from_allergens_list.append(allergen_name)
+    form.freefrom.data = ', '.join(map(str, product_free_from_allergens_list)).title()
         
     # Get user name
     user_review = None
