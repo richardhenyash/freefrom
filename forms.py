@@ -74,3 +74,21 @@ class ProductViewForm(Form):
         validators.DataRequired(message="Please rate product between 1 and 5 stars"),
     ])
 
+class ProductEditForm(Form):
+    """
+    Product Edit Form
+    """
+    name = StringField('Product', [
+        validators.DataRequired(message="Product name required in order to edit product"),
+        validators.Length(min=5, max=50, message="Product name must be between 5 and 50 characters long"),
+        wtforms_validators.AlphaSpace(message="Product name must contain only letters, numbers or spaces")
+    ])
+    manufacturer = StringField('Manufacturer', [
+        validators.DataRequired(message="Manufacturer name required in order to edit product"),
+        validators.Length(min=5, max=50, message="Manufacturer name must be between 5 and 50 characters long"),
+        wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters, numbers or spaces")
+    ])
+    freefrom = HiddenField('Free From', [
+        validators.Optional(),
+    ])
+
