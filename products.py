@@ -328,6 +328,8 @@ def edit(product_id):
         user_name = session["user"]
         # Get user id from user name
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        # Placeholder for barcode, may be added in the future
+        barcode = ""
         if proceed:
             # Set product update variable
             product_update = {
@@ -335,7 +337,9 @@ def edit(product_id):
                 "manufacturer": product_manufacturer,
                 "user_id": user_id,
                 "category_id": product_category_id,
-                "free_from_allergens": allergen_id_list
+                "barcode": barcode,
+                "free_from_allergens": allergen_id_list,
+                "reviews": product["reviews"]
             }
             print(product_update)
             # Update product in database
