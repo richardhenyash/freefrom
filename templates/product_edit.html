@@ -3,16 +3,27 @@
 {% from "_formhelpers.html" import form_error %}
     <section id="product-edit" class="container-sm">
         <div class="row">
-        <form id="product-edit-form" method="POST" action="{{ url_for('products.edit', product=product) }}">
+        <form id="product-edit-form" method="POST" action="{{ url_for('products.edit', product_id=product_id) }}">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4">
+                    {{ form.name.label(class="form-label input-label") }}
+                    {{ form.name(class="form-control form-control-lg input-title") }}
+                    {{ form_error(form.name) }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4">
                     <label class="form-label input-label" for="categorySelector">Category</label>
                     <select class="form-select form-select-lg input-title" id="categorySelector"
                         name="categorySelector" aria-label="Category Selector" required>
-                        <option selected>Category...</option>
+                            <option selected>{{ product_category[0]|upper }}{{product_category[1:] }}</option>
                         {% for category in categories %}
-                            <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                            {% if category.name != product_category %}
+                                <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </div> 
@@ -36,7 +47,7 @@
                     {% for allergen in allergens %}
                         <div class="form-check form-check-inline">
                             {% if selected_allergens %}
-                                {% if allergen in selected_allergens %}
+                                {% if allergen["_id"] in selected_allergens %}
                                     <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
                                         value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
                                 {% else %}

@@ -40,6 +40,11 @@
                         <i id="star-4" class="far fa-star"></i>
                         <i id="star-5" class="far fa-star"></i>
                     {{ form_error(form.rating) }}
+                    <span>&nbsp;</span>
+                    <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
                 </div> 
                 <div class="col-md-3"></div>
             </div>
@@ -49,8 +54,17 @@
                     {{ form.review.label(class="form-label input-label") }}
                     {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
                     {{ form_error(form.review) }}
-                </div> 
+                </div>
                 <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-2">
+                        <a href="{{ url_for('home') }}" class="btn btn-lg btn-secondary">Back</a>
+                        <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-fireopal">Edit Product</a>
+                    </div> 
+                    <div class="col-md-3"></div>
+                </div>
             </div>
         </form>
     </section>

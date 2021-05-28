@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from forms import ProductForm, ProductViewForm
+from forms import ProductForm, ProductEditForm, ProductViewForm
 
 # Import PyMongo database instance
 from database import mongo
@@ -245,6 +245,7 @@ def view(product_id):
     allergens = mongo.db.allergens.find()
     # Validate form
     #if request.method == "POST" and form.validate():
+    # Get product from product_id
     product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
     print(product)
     form.name.data = product["name"]
@@ -270,21 +271,26 @@ def view(product_id):
                 form.review.data = user_review["review"]
     return render_template("product_view.html", product=product, product_id=product_id, form=form)
 
-@products.route("/edit<product_name>", methods=["GET", "POST"])
-def edit(product_name):
+@products.route("/edit<product_id>", methods=["GET", "POST"])
+def edit(product_id):
     """
     Route for product edit
     """
     # request Form data
-    form = ProductForm(request.form)
-    # Validate form
+    form = ProductEditForm(request.form)
+    # Get categories collection from database
+    categories = mongo.db.categories.find()
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find()
+    # Get products collection from database
+    products = mongo.db.products.find()
+    # Get product from product_id
+    product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
     if request.method == "POST" and form.validate():
-        # Get product id from product name
-        product_id = mongo.db.products.find_one({"product": product_name})["_id"]
-        # Get categories collection from database
-        categories = mongo.db.categories.find()
-        # Get allergens collection from database
-        allergens = mongo.db.allergens.find()
+        # Get product name from form
+        product_name = form.name.data
+        # Get product manufacturer from form
+        product_manufacturer = form.manufacturer.data
         # Get product category
         product_category = request.form.get("categorySelector").lower()
         # Check if category has been selected from drop down
@@ -331,12 +337,25 @@ def edit(product_name):
                 "category_id": product_category_id,
                 "free_from_allergens": allergen_id_list
             }
+            print(product_update)
             # Update product in database
-            mongo.db.tasks.update({"_id": ObjectId(product_id)}, product_update)
+            mongo.db.products.update({"_id": ObjectId(product_id)}, product_update)
             # Display flash message
             flash("Product succesfully updated", "success")
-            return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind())
-
+            product_view_form = ProductViewForm(request.form)
+            return render_template("product_view.html", product=product_update, product_id=product_id, form=product_view_form)
+    
+    # Update product name in form
+    form.name.data = product["name"]
+    # Update product manufcaturer in form
+    form.manufacturer.data = product["manufacturer"]
+    # Get product category id
+    product_category_id = product["category_id"]
+    # Get product category
+    product_category = mongo.db.categories.find_one({"_id": product_category_id})["name"]
+    # Get Selected allergens
+    selected_allergens = product["free_from_allergens"]
+    return render_template("product_edit.html", categories=categories.rewind(), allergens=allergens.rewind(), product_id=product_id, product_category=product_category, selected_allergens=selected_allergens, form=form)
 
 def get_selected_allergen_list(allergens):
     allergen_list = []
