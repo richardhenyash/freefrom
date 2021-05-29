@@ -201,11 +201,11 @@ body {
 }
 
 /*-- Media queries --*/
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .table-rating {
         width: 6.0rem;
     }
     .results-table-row i {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
