@@ -1,7 +1,7 @@
 //  Event Handlers //
 
-// On load event handler
-$(document).ready(function() {
+// On load event handler for product view form to update rating stars
+$("#product-view-form").ready(function() {
     let rating = $('input[name="rating"]');
     let ratingval
     if (rating) {
@@ -22,7 +22,7 @@ $(document).ready(function() {
             $("#star-1").removeClass("far fa-star").addClass("fas fa-star");
             $("#star-2").removeClass("far fa-star").addClass("fas fa-star");
             $("#star-3").removeClass("far fa-star").addClass("fas fa-star");
-            $("#star-4").removeClass("far fa-star").addClass("fas fa-star");
+            $("#star-4").removeClass("far fa-star").addClass("far fa-star");
             $("#star-5").removeClass("far fa-star").addClass("far fa-star");
         } else if (ratingval == 4) {
             $("#star-1").removeClass("far fa-star").addClass("fas fa-star");
