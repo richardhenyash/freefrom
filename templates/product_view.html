@@ -50,7 +50,11 @@
                             <i id="star-5" class="far fa-star"></i>
                         {{ form_error(form.rating) }}
                         <span>&nbsp;</span>
-                        <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
+                        {% if user_review %}
+                            <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Add</button>
+                        {% endif %}
                     </div>
                     <div class="col-md-3"></div>
                 </div>

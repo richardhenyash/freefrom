@@ -245,48 +245,67 @@ def view(product_id):
     allergens = mongo.db.allergens.find()
     # Get product from product_id
     product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
-    print(product)
     if request.method == "POST" and form.validate():
-            print(product["reviews"])
             # Get user name
             user_name = session["user"]
             # Get user id from user name
             user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-            print(user_id)
+            # Set new review flag
             review_newflag = True
+            # Get reviews
             reviews = product["reviews"]
+            # Loop through reviews, find review that belongs to logged in user
             for review in reviews:
+                # Update user review
                 if review["user_id"] == user_id:
                     review["rating"] = int(form.rating.data)
                     review["review"] = form.review.data
                     review_newflag = False
+                    user_review = {
+                        "user_id": user_id,
+                        "rating": int(form.rating.data),
+                        "review": form.review.data
+                }
+            # If user has not reviewed product before
             if review_newflag == True:
+                # Create new review object
                 review_new = {
                     "user_id": user_id,
                     "rating": int(form.rating.data),
                     "review": form.review.data
                 }
+                # Append new review to reviews
                 reviews.append(review_new)
+                # Update product object with new or edited review
                 product["reviews"]=reviews
+                user_review=review_new
                     
             print(product)
             # Update product in database
             mongo.db.products.update({"_id": ObjectId(product_id)}, product)
             # Display flash message
             flash("Product succesfully updated", "success")
-            return render_template("product_view.html", product=product, product_id=product_id, form=form)
+            return render_template("product_view.html", product=product, product_id=product_id, user_review=user_review, form=form)
 
+    # Set product name in form object
     form.name.data = product["name"]
+    # Get category id from product object
     category_id = product["category_id"]
+    # Get category name from categories collection
     category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
+    # Set category name in form object
     form.category.data = category_name
+    # Set manufacturer name in form object
     form.manufacturer.data = product["manufacturer"]
+    # Get product allergen id list
     product_allergen_id_list = product["free_from_allergens"]
+    # Get allergen names from allergen collection
     product_free_from_allergens_list = []
     for allergen_id in product_allergen_id_list:
         allergen_name = mongo.db.allergens.find_one({"_id": allergen_id})["name"]
         product_free_from_allergens_list.append(allergen_name)
-    form.freefrom.data = ', '.join(map(str, product_free_from_allergens_list)).title()
+    # Set free from in form object
+    form.freefrom.data = ', '.join(map(str, product_free_from_allergens_list))
     
     # Get user name
     user_review = None
@@ -295,15 +314,18 @@ def view(product_id):
         user_name = session["user"]
         # Get user id from user name
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        # Get product reviews
         product_reviews = product["reviews"]
+        # Cycle through product reviews
         for review in product_reviews:
-            print(review["user_id"])
-            print(ObjectId(user_id))
+            # If review belongs to logged in user
             if review["user_id"] == (ObjectId(user_id)):
                 user_review = review
+                # Set rating in form object
                 form.rating.data = user_review["rating"]
+                # Set review in form object
                 form.review.data = user_review["review"]
-    return render_template("product_view.html", product=product, product_id=product_id, form=form)
+    return render_template("product_view.html", product=product, product_id=product_id, user_review=user_review, form=form)
 
 @products.route("/edit<product_id>", methods=["GET", "POST"])
 def edit(product_id):
