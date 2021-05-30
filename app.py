@@ -9,6 +9,7 @@ from bson.objectid import ObjectId
 # Import Blueprints
 from userauth import userauth
 from products import products
+from allergens import allergens
 
 # Import PyMongo database instance
 from database import mongo
@@ -25,6 +26,8 @@ app = Flask(__name__)
 app.register_blueprint(userauth)
 # Blueprint for products
 app.register_blueprint(products)
+# Blueprint for allergens
+app.register_blueprint(allergens)
 
 # Configure database access variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")

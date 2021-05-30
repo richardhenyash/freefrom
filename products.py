@@ -130,7 +130,6 @@ def search():
                 print(allergen_name)
             # add allergen list to product object
             product["free_from_allergen_names"] = allergen_list
-        print(products)
         return render_template("home.html", categories=categories.rewind(), allergens=allergens.rewind(), products=products, selected_allergens=allergen_list)
     return render_template("home.html", categories=categories, allergens=allergens)
 
@@ -327,7 +326,7 @@ def view(product_id):
                 form.review.data = user_review["review"]
     return render_template("product_view.html", product=product, product_id=product_id, user_review=user_review, form=form)
 
-@products.route("/edit<product_id>", methods=["GET", "POST"])
+@products.route("/edit/<product_id>", methods=["GET", "POST"])
 def edit(product_id):
     """
     Route for product edit
