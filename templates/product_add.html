@@ -65,6 +65,15 @@
             </div>
             <div class="row">
                 <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-2">
+                    {{ form.review.label(class="form-label input-label") }}
+                    {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
+                    {{ form_error(form.review) }}
+                </div> 
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4 rating">
                     {{ form.rating.label(class="form-label input-label") }} 
                     {{ form.rating(class="") }}
@@ -75,15 +84,6 @@
                         <i id="star-4" class="far fa-star"></i>
                         <i id="star-5" class="far fa-star"></i>
                     {{ form_error(form.rating) }}
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-2">
-                    {{ form.review.label(class="form-label input-label") }}
-                    {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
-                    {{ form_error(form.review) }}
                 </div> 
                 <div class="col-md-3"></div>
             </div>
