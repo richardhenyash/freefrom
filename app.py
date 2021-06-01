@@ -10,6 +10,7 @@ from bson.objectid import ObjectId
 from userauth import userauth
 from products import products
 from allergens import allergens
+from categories import categories
 
 # Import PyMongo database instance
 from database import mongo
@@ -28,6 +29,8 @@ app.register_blueprint(userauth)
 app.register_blueprint(products)
 # Blueprint for allergens
 app.register_blueprint(allergens)
+# Blueprint for categories
+app.register_blueprint(categories)
 
 # Configure database access variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")

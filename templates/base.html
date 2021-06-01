@@ -65,12 +65,12 @@
                                     Categories
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-                                    <li><a class="dropdown-item" href="#">Add Category</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit Category</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('categories.category_add') }}">Add Category</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('categories.category_edit') }}">Edit Category</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Delete Category</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('categories.category_delete') }}">Delete Category</a></li>
                                 </ul>
                             </li>
                         {% endif %}

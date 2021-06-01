@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 {% from "_formhelpers.html" import form_error %}
-    <section id="allergen-delete" class="container-sm">
+    <section id="category-delete" class="container-sm">
         <div class="row">
-        <form id="allergen-delete-form" method="POST" action="{{ url_for('allergens.allergen_delete') }}">
+        <form id="category-delete-form" method="POST" action="{{ url_for('categories.category_delete') }}">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-6 pt-4">
-                    <label class="form-label input-label" for="allergenSelector">Existing Allergen Name</label>
-                    <select class="form-select form-select-lg input-title" id="allergenSelector"
-                        name="allergenSelector" aria-label="Allergen Selector" required>
-                            <option selected>Allergen...</option>
-                            {% for allergen in allergens %}
-                                <option value="{{ allergen.name }}">{{ allergen.name }}</option>
-                            {% endfor %}
+                    <label class="form-label input-label" for="categorySelector">Category</label>
+                    <select class="form-select form-select-lg input-title" id="categorySelector"
+                        name="categorySelector" aria-label="Category Selector" required>
+                        <option selected>Category...</option>
+                        {% for category in categories %}
+                            <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                        {% endfor %}
                     </select>
                 </div> 
                 <div class="col-md-3"></div>

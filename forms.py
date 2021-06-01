@@ -102,3 +102,14 @@ class AllergenForm(Form):
         wtforms_validators.AlphaSpace(message="Allergen name must contain only letters or spaces")
     ])
 
+class CategoryForm(Form):
+    """
+    Catgory Form
+    """
+    name = StringField('New Category Name', [
+        validators.DataRequired(message="Category name required in order to add allergen"),
+        validators.Length(min=3, max=30, message="Category name must be between 5 and 30 characters long"),
+        wtforms_validators.AlphaSpace(message="Category name must contain only letters or spaces")
+    ])
+
+
