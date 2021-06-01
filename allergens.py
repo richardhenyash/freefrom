@@ -56,7 +56,7 @@ def allergen_edit():
     if request.method == "POST" and form.validate():
         # Get existing allergen name
         existing_allergen_name = request.form.get("allergenSelector").lower()
-        # Check if category has been selected from drop down
+        # Check if allergen has been selected from drop down
         if existing_allergen_name:
             if existing_allergen_name == "allergen...":
                 # Display flash message
@@ -66,7 +66,7 @@ def allergen_edit():
                 proceed = True
         else:
             # Display flash message
-            flash("Please select Product Category. If you would like to add a product category, please contact the site Administrator", "warning")
+            flash("Please select Allergen to update", "warning")
             proceed = False
         if proceed:
             # Set new allergen name variable
@@ -89,3 +89,41 @@ def allergen_edit():
             return render_template("allergen_edit.html", allergens=allergens, form=form)
         
     return render_template("allergen_edit.html", allergens=allergens, form=form)
+
+
+@allergens.route("/allergen_delete", methods=["GET", "POST"])
+def allergen_delete():
+    """
+    Route for allergen delete
+    """
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find()
+    # Get categories collection from database
+    categories = mongo.db.categories.find()
+    if request.method == "POST":
+        # Get existing allergen name
+        existing_allergen_name = request.form.get("allergenSelector").lower()
+        # Check if allergen has been selected from drop down
+        if existing_allergen_name:
+            if existing_allergen_name == "allergen...":
+                # Display flash message
+                flash("Please select Allergen to delete", "warning")
+                proceed = False
+            else:
+                proceed = True
+        else:
+            # Display flash message
+            flash("Please select Allergen to delete", "warning")
+            proceed = False
+        if proceed:
+            # Get allergen id
+            allergen_id = mongo.db.allergens.find_one({"name": existing_allergen_name})["_id"]
+            # Delete allergen from the database
+            mongo.db.allergens.remove({"_id": ObjectId(allergen_id)})
+            # Display flash message
+            flash("Allergen succesfully deleted from the database", "success")
+            return render_template("home.html", categories=categories, allergens=allergens)
+        else:
+            return render_template("allergen_delete.html", allergens=allergens)
+        
+    return render_template("allergen_delete.html", allergens=allergens)
