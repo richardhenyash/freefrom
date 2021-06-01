@@ -10,7 +10,7 @@
                     <label class="form-label input-label" for="allergenSelector">Existing Allergen Name</label>
                     <select class="form-select form-select-lg input-title" id="allergenSelector"
                         name="allergenSelector" aria-label="Allergen Selector" required>
-                            <option selected>Allergen...</option>
+                            <option selected>allergen...</option>
                             {% for allergen in allergens %}
                                 <option value="{{ allergen.name }}">{{ allergen.name }}</option>
                             {% endfor %}
