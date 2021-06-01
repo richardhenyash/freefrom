@@ -99,6 +99,6 @@ class AllergenForm(Form):
     name = StringField('New Allergen Name', [
         validators.DataRequired(message="Allergen name required in order to add allergen"),
         validators.Length(min=3, max=20, message="Allergen name must be between 5 and 20 characters long"),
-        wtforms_validators.AlphaSpace(message="Allergen name must contain only letters, numbers or spaces")
+        wtforms_validators.AlphaSpace(message="Allergen name must contain only letters or spaces")
     ])
 
