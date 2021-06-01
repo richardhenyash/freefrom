@@ -6,6 +6,11 @@
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
             <form method="POST" action="{{ url_for('userauth.signin') }}">
+
+                <div class="div">
+                    <span class="form-label input-label">Don't have an account?&nbsp</span>
+                    <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-orangeyellow">Register</a>
+                </div>
                 <div>
                     <div class="mb-3">
                     <div>
@@ -23,7 +28,7 @@
                     </div>                    
                 </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>
-                <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-orangeyellow">Register</a>
+                <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Cancel</a>
             </form>
         </div>
         <div class="col-sm-4"></div>
