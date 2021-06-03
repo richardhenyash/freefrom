@@ -209,6 +209,15 @@ body {
     font-size: 1rem;
 }
 
+#productsTable_previous a {
+    border: 1px solid var(--salmon);
+}
+
+#productsTable_next a {
+    border: 1px solid var(--salmon);
+}
+
+/*-- Bootstrap Style Overrides --*/
 .page-item.active .page-link {
     background-color: var(--fireopal);
     border: 1px solid var(--fireopal);
@@ -217,14 +226,6 @@ body {
 .page-item.active .page-link:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
-}
-
-#productsTable_previous a {
-    border: 1px solid var(--salmon);
-}
-
-#productsTable_next a {
-    border: 1px solid var(--salmon);
 }
 
 .form-control, .form-select {
@@ -236,7 +237,6 @@ body {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
 }
-
 
 /*-- Media queries --*/
 @media (max-width: 420px) {
