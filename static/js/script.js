@@ -1,5 +1,10 @@
 //  Event Handlers //
 
+// DataTables event handler
+$(document).ready(function() {
+    $("#productsTable").DataTable();
+} );
+
 // On load event handler for product view form to update rating stars
 $("#product-view-form").ready(function() {
     let rating = $('input[name="rating"]');

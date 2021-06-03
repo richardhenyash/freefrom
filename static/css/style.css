@@ -168,11 +168,13 @@ body {
     border: 1px solid var(--firopal);
 }
 
-/*-- Results table Styling --*/
+/*-- Results Table Styling --*/
+
 .results-table th,
 .results-table td {
     font-size: 1rem;
     line-height: 1.2rem;
+    word-wrap: break-word;
 }
 
 .results-table-header,
@@ -194,17 +196,50 @@ body {
     vertical-align: middle;
 }
 
-
 .results-table-row i,
 .rating i {
     color: var(--orangeyellow);
 }
 
+/*-- Data Tables Style Overrides --*/
+.dataTables_length label,
+.dataTables_filter label,
+.dataTables_paginate li,
+.dataTables_info {
+    font-size: 1rem;
+}
+
+.page-item.active .page-link {
+    background-color: var(--fireopal);
+    border: 1px solid var(--fireopal);
+}  
+
+.page-item.active .page-link:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
+}
+
+#productsTable_previous a {
+    border: 1px solid var(--salmon);
+}
+
+#productsTable_next a {
+    border: 1px solid var(--salmon);
+}
+
+.form-control, .form-select {
+    border: 1px solid var(--salmon);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--fireopal);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
+}
+
+
 /*-- Media queries --*/
-@media (max-width: 500px) {
-    .table-rating {
-        width: 6.0rem;
-    }
+@media (max-width: 420px) {
     .results-table-row i {
         font-size: 0.8rem;
     }

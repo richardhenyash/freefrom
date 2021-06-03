@@ -71,51 +71,51 @@
     <section id="results" class="container-sm">
         <div class="row">
             <div class="col-12 container-results">
-                <table class="table results-table">
+                <table id="productsTable" class="table table-striped results-table">
                     <thead>
                         <tr class="table-primary results-table-header">
-                            <th scope="col">Product</th>
-                            <th scope="col">Manufacturer</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Rating</th>
-                            <th scope="col">Free From</th>
+                            <th>Product</th>
+                            <th>Manufacturer</th>
+                            <th>Category</th>
+                            <th>Rating</th>
+                            <th>Free From</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for product in products %}
-                        <tr class="table-light results-table-row">
-                            <td><a href="{{ url_for('products.view', product_id=product._id) }}">{{ product.name }}</a></td>
-                            <td>{{ product.manufacturer }}</td>
-                            <td>{{ product.category_name }}</td>
-                            {% if product.average_rating %}
-                                {% if product.average_rating == 0.0 %}
-                                    <td class="table-rating"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 0.5 %}
-                                    <td class="table-rating"><i class="fas fa-star-alt"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 1.0 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 1.5 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star-half-alt"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 2.0 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 2.5 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star-half-alt"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 3.0 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 3.5 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star-half-alt"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 4.0 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"></i></td>
-                                {% elif product.average_rating == 4.5 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star-half-alt"></i></td>
-                                {% elif product.average_rating == 5.0 %} 
-                                    <td class="table-rating"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></td>
-                                {% endif %} 
-                            {% else %}
-                                <td>Not Rated</td>
-                            {% endif %}
-                            <td>{{ product.free_from_allergen_names|join(", ") }}</td>
-                        <tr>
+                            <tr class="table-light results-table-row">
+                                <td><a href="{{ url_for('products.view', product_id=product._id) }}">{{ product.name }}</td>
+                                <td>{{ product.manufacturer }}</td>
+                                <td>{{ product.category_name }}</td>
+                                {% if product.average_rating %}
+                                    {% if product.average_rating == 0.0 %}
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 0.5 %}
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star-alt"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 1.0 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 1.5 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star-half-alt"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 2.0 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 2.5 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star-half-alt"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 3.0 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 3.5 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star-half-alt"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 4.0 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"></i></td>
+                                    {% elif product.average_rating == 4.5 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star-half-alt"></i></td>
+                                    {% elif product.average_rating == 5.0 %} 
+                                        <td class="table-rating"><span class="d-none">{{ product.average_rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></td>
+                                    {% endif %} 
+                                {% else %}
+                                    <td>Not Rated</td>
+                                {% endif %}
+                                <td>{{ product.free_from_allergen_names|join(", ") }}</td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
