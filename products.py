@@ -264,7 +264,7 @@ def view(product_id):
                         "user_id": user_id,
                         "rating": int(form.rating.data),
                         "review": form.review.data
-                }
+                }   
             # If user has not reviewed product before
             if review_newflag == True:
                 # Create new review object
@@ -279,7 +279,6 @@ def view(product_id):
                 product["reviews"]=reviews
                 user_review=review_new
                     
-            print(product)
             # Update product in database
             mongo.db.products.update({"_id": ObjectId(product_id)}, product)
             # Display flash message
@@ -315,6 +314,8 @@ def view(product_id):
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
         # Get product reviews
         product_reviews = product["reviews"]
+        # Initialise other user review list
+        other_user_reviews = []
         # Cycle through product reviews
         for review in product_reviews:
             # If review belongs to logged in user
@@ -324,7 +325,19 @@ def view(product_id):
                 form.rating.data = user_review["rating"]
                 # Set review in form object
                 form.review.data = user_review["review"]
-    return render_template("product_view.html", product=product, product_id=product_id, user_review=user_review, form=form)
+                            # Add review to other user reviews list
+            else:
+                other_user = mongo.db.users.find_one({"_id": (ObjectId(review["user_id"]))})
+                if other_user:
+                    other_user_name = other_user["username"]
+                    other_user_review = {
+                        "username": other_user_name,
+                        "rating": review["rating"],
+                        "review": review["review"]
+                    }
+                    other_user_reviews.append(other_user_review)  
+        print(other_user_reviews) 
+    return render_template("product_view.html", product=product, product_id=product_id, user_review=user_review, other_user_reviews=other_user_reviews, form=form)
 
 @products.route("/edit/<product_id>", methods=["GET", "POST"])
 def edit(product_id):
