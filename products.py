@@ -307,13 +307,13 @@ def view(product_id):
     
     # Get user name
     user_review = None
+    other_user_reviews = None
+    product_reviews = product["reviews"]
     if session:
         # Get user name
         user_name = session["user"]
         # Get user id from user name
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-        # Get product reviews
-        product_reviews = product["reviews"]
         # Initialise other user review list
         other_user_reviews = []
         # Cycle through product reviews
@@ -325,18 +325,12 @@ def view(product_id):
                 form.rating.data = user_review["rating"]
                 # Set review in form object
                 form.review.data = user_review["review"]
-                            # Add review to other user reviews list
+            # else, add review to other user reviews list
             else:
-                other_user = mongo.db.users.find_one({"_id": (ObjectId(review["user_id"]))})
-                if other_user:
-                    other_user_name = other_user["username"]
-                    other_user_review = {
-                        "username": other_user_name,
-                        "rating": review["rating"],
-                        "review": review["review"]
-                    }
-                    other_user_reviews.append(other_user_review)  
-        print(other_user_reviews) 
+                other_user_reviews = get_other_user_reviews(product)
+    else:
+        other_user_reviews = get_other_user_reviews(product)
+
     return render_template("product_view.html", product=product, product_id=product_id, user_review=user_review, other_user_reviews=other_user_reviews, form=form)
 
 @products.route("/edit/<product_id>", methods=["GET", "POST"])
@@ -429,6 +423,7 @@ def edit(product_id):
     selected_allergens = product["free_from_allergens"]
     return render_template("product_edit.html", categories=categories.rewind(), allergens=allergens.rewind(), product_id=product_id, product_category=product_category, selected_allergens=selected_allergens, form=form)
 
+
 def get_selected_allergen_list(allergens):
     allergen_list = []
     for allergen in allergens.rewind():
@@ -444,4 +439,25 @@ def get_selected_allergen_list(allergens):
     if len(allergen_list) == 0:
         allergen_list = None
     return(allergen_list)
+
+
+def get_other_user_reviews(product):
+    if product:
+        product_reviews = product["reviews"]
+    # Initialise other user review list
+    other_user_reviews = []
+    # Cycle through product reviews
+    for review in product_reviews:        
+            other_user = mongo.db.users.find_one({"_id": (ObjectId(review["user_id"]))})
+            if other_user:
+                other_user_name = other_user["username"]
+                other_user_review = {
+                    "username": other_user_name,
+                    "rating": review["rating"],
+                    "review": review["review"]
+                }
+                other_user_reviews.append(other_user_review)
+    if len(other_user_reviews) < 1:
+        other_user_reviews = None
+    return other_user_reviews
     

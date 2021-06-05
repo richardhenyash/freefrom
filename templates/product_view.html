@@ -97,29 +97,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for review in other_user_reviews %}
-                            <tr class="table-light results-table-row">
-                                <td>{{ review.username }}</td>
-                                {% if review.rating %}
-                                    {% if review.rating == 0.0 %}
-                                        <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                    {% elif review.rating == 1.0 %} 
-                                        <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                    {% elif review.rating == 2.0 %} 
-                                        <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                    {% elif review.rating == 3.0 %} 
-                                        <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
-                                    {% elif review.rating == 4.0 %} 
-                                        <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"></i></td>
-                                    {% elif review.rating == 5.0 %} 
-                                        <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></td>
-                                    {% endif %} 
-                                {% else %}
-                                    <td>Not Rated</td>
-                                {% endif %}
-                                <td>{{ review.review }}</td>
-                            </tr>
-                        {% endfor %}
+                        {% if other_user_reviews %}
+                            {% for review in other_user_reviews %}
+                                <tr class="table-light results-table-row">
+                                    <td>{{ review.username }}</td>
+                                    {% if review.rating %}
+                                        {% if review.rating == 0.0 %}
+                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                        {% elif review.rating == 1.0 %} 
+                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                        {% elif review.rating == 2.0 %} 
+                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                        {% elif review.rating == 3.0 %} 
+                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                        {% elif review.rating == 4.0 %} 
+                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"></i></td>
+                                        {% elif review.rating == 5.0 %} 
+                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></td>
+                                        {% endif %} 
+                                    {% else %}
+                                        <td>Not Rated</td>
+                                    {% endif %}
+                                    <td>{{ review.review }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
                     </tbody>
                 </table>
             </div>
