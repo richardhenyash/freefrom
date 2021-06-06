@@ -28,8 +28,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
     <!-- Link to Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% endblock %}
     <title>FreeFrom</title>
 </head>
@@ -118,8 +118,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
     <!-- Link to custom JavaScript files -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% endblock %}
 </body>
 </html>
