@@ -32,6 +32,28 @@ class RegistrationForm(SignInForm):
         validators.Length(min=5, message="Email address must be 5 or more characters long")
     ])
 
+
+# Contact form
+class ContactForm(Form):
+    """
+    Contact Form
+    """
+    name = StringField('Name', [
+        validators.DataRequired(message="Input required"),
+        validators.Length(min=3, max=100, message="User Name must be between 3 and 100 characters long"),
+        wtforms_validators.AlphaSpace(message="Name must contain only letters or spaces")
+    ])
+    email = StringField('Email', [
+        validators.DataRequired(message="Input required"),
+        validators.Email(message="Please enter a valid email address"),
+        validators.Length(min=5, message="Email address must be 5 or more characters long")
+    ])
+    message = TextAreaField('Message', [
+        validators.DataRequired(message="Message required"),
+        validators.Length(min=10, max=500, message="Message must be between 10 and 500 characters long")
+    ])
+
+
 # Product form
 class ProductForm(Form):
     """
@@ -40,12 +62,12 @@ class ProductForm(Form):
     name = StringField('Product', [
         validators.DataRequired(message="Product name required in order to add product"),
         validators.Length(min=5, max=50, message="Product name must be between 5 and 50 characters long"),
-        wtforms_validators.AlphaSpace(message="Product name must contain only letters, numbers or spaces")
+        wtforms_validators.AlphaSpace(message="Product name must contain only letters or spaces")
     ])
     manufacturer = StringField('Manufacturer', [
         validators.DataRequired(message="Manufacturer name required in order to add product"),
         validators.Length(min=5, max=50, message="Manufacturer name must be between 5 and 50 characters long"),
-        wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters, numbers or spaces")
+        wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters or spaces")
     ])
     freefrom = HiddenField('Free From', [
         validators.Optional(),
@@ -81,12 +103,12 @@ class ProductEditForm(Form):
     name = StringField('Product', [
         validators.DataRequired(message="Product name required in order to edit product"),
         validators.Length(min=5, max=50, message="Product name must be between 5 and 50 characters long"),
-        wtforms_validators.AlphaSpace(message="Product name must contain only letters, numbers or spaces")
+        wtforms_validators.AlphaSpace(message="Product name must contain only letters or spaces")
     ])
     manufacturer = StringField('Manufacturer', [
         validators.DataRequired(message="Manufacturer name required in order to edit product"),
         validators.Length(min=5, max=50, message="Manufacturer name must be between 5 and 50 characters long"),
-        wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters, numbers or spaces")
+        wtforms_validators.AlphaSpace(message="Manufacturer name must contain only letters or spaces")
     ])
     freefrom = HiddenField('Free From', [
         validators.Optional(),

@@ -11,6 +11,7 @@ from userauth import userauth
 from products import products
 from allergens import allergens
 from categories import categories
+from mail import mail
 
 # Import PyMongo database instance
 from database import mongo
@@ -31,6 +32,8 @@ app.register_blueprint(products)
 app.register_blueprint(allergens)
 # Blueprint for categories
 app.register_blueprint(categories)
+# Blueprint for contact
+app.register_blueprint(mail)
 
 # Configure database access variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
