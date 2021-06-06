@@ -90,7 +90,7 @@ body {
     color: var(--fireopal);
 }
 
-/*-- Icon pseudo styling --*/
+/*-- Icon and pseudo class styling --*/
 .container-404 i:hover,
 .container-404 i:active,
 .container-404 i:focus,
@@ -104,6 +104,29 @@ body {
 .container-404 i:visited,
 .container-footer i:visited {
     color: var(--fireopal);
+    text-decoration: none;
+}
+
+/*-- Footer link styling --*/
+.container-footer a {
+    font-family: var(--titlefont);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--fireopal);
+    text-decoration: none;
+}
+
+/*-- Footer link pseudo class styling --*/
+.container-footer a:hover,
+.container-footer a:active,
+.container-footer a:focus {
+    color: var(--venetianred);
+    text-decoration: none;
+}
+
+container-footer a:visited {
+    color: var(--fireopal);
+    text-decoration: none;
 }
 
 /*-- Buttons --*/
