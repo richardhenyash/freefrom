@@ -21,6 +21,7 @@
     --ultrared: #EB6F82;
     --salmonpink: #F093A1;
     --white: #FFFFFF;
+    --black: #212529;
 }
 
 /*-- HTML--*/
@@ -103,6 +104,10 @@ body {
 .btn-fireopal:hover {
     background-color: var(--venetianred);
     border-color: var(--venetianred);
+}
+
+.container-404 i {
+    color: var(--fireopal);
 }
 
 .btn-fireopal:active 
