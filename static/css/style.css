@@ -84,6 +84,28 @@ body {
     border-color: var(--orangeyellow);
 }
 
+/*-- Icon styling --*/
+.container-404 i,
+.container-footer i {
+    color: var(--fireopal);
+}
+
+/*-- Icon pseudo styling --*/
+.container-404 i:hover,
+.container-404 i:active,
+.container-404 i:focus,
+.container-footer i:hover,
+.container-footer i:active,
+.container-footer i:focus {
+    color: var(--venetianred);
+    text-decoration: none;
+}
+
+.container-404 i:visited,
+.container-footer i:visited {
+    color: var(--fireopal);
+}
+
 /*-- Buttons --*/
 .btn-fireopal {
     font-family: var(--titlefont);
@@ -104,16 +126,6 @@ body {
 .btn-fireopal:hover {
     background-color: var(--venetianred);
     border-color: var(--venetianred);
-}
-
-.container-404 i {
-    color: var(--fireopal);
-}
-
-.container-404 i:hover,
-.container-404 i:active,
-.container-404 i:focus {
-    color: var(--venetianred);
 }
 
 .btn-fireopal:active 

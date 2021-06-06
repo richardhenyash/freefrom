@@ -104,6 +104,12 @@
     </section>
     {% block content %}  
     {% endblock %} 
+    <!-- Footer -->
+    <footer class="container-sm">
+        <div class="container-footer pt-4 text-center">
+            <a href="https://github.com/richardhenyash" aria-label="Link to developer GitHub page" rel="noreferrer noopener" target="_blank"><i class="fab fa-github-square fa-lg"></i></a>
+        </div>
+    </footer>
     <!-- JavaScript links -->
     <!-- Link to JQuery JavaScript file -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
@@ -119,7 +125,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
     <!-- Link to custom JavaScript files -->
     {% block scripts %}
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/events.js') }}"></script>
     {% endblock %}
 </body>
 </html>
