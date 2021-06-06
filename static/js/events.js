@@ -1,4 +1,11 @@
-//  Event Handlers //
+/**
+* @fileOverview JavaScript Event Handler Library.
+* @author <a href="https://github.com/richardhenyash">Richard Ash</a>
+* @version 1.1.1
+*/
+/*jshint esversion: 6 */
+
+// Initialisation Event Handlers //
 
 // DataTables event handlers
 $(document).ready(function() {
