@@ -110,6 +110,12 @@ body {
     color: var(--fireopal);
 }
 
+.container-404 i:hover,
+.container-404 i:active,
+.container-404 i:focus {
+    color: var(--venetianred);
+}
+
 .btn-fireopal:active 
 .btn-fireopal:focus  {
     background-color: var(--venetianred);
