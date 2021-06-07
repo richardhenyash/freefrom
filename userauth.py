@@ -12,8 +12,10 @@ from database import mongo
 
 
 # Initiate Blueprint
-userauth = Blueprint("userauth", __name__, static_folder="static",
-                 template_folder="templates")
+userauth = Blueprint(
+    "userauth", __name__,
+    static_folder="static", template_folder="templates")
+
 
 # Route for user Registration
 @userauth.route("/register", methods=["GET", "POST"])
@@ -33,12 +35,14 @@ def register():
             # flash message to warn if username already exists in database
             flash("Username already exists", "warning")
             # return to register page
-            return redirect(url_for("userauth.register", _external=True, _scheme='https'))
+            return redirect(url_for(
+                "userauth.register",
+                _external=True, _scheme='https'))
 
         # gather form data
         register = {
             "admin": False,
-            "username": form.username.data.lower(), 
+            "username": form.username.data.lower(),
             "email": form.email.data.lower(),
             "password": generate_password_hash(form.password.data)
         }
@@ -50,9 +54,13 @@ def register():
         session["admin"] = False
         flash("Registration successful", "success")
         # return to home page
-        return redirect(url_for("home", username=session["user"], _external=True, _scheme='https'))
+        return redirect(
+            url_for(
+                "home", username=session["user"],
+                external=True, _scheme='https'))
 
     return render_template("register.html", form=form)
+
 
 # SignIn function
 @userauth.route("/signin", methods=["GET", "POST"])
@@ -70,22 +78,26 @@ def signin():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], form.password.data):
-                    session["user"] = form.username.data.lower()
-                    session["admin"] = existing_user["admin"]
-                    flash("Welcome, {}".format(form.username.data.lower()), "success")
-                    print(session)
-                    return redirect(url_for("home"))
+                    existing_user["password"], form.password.data):
+                session["user"] = form.username.data.lower()
+                session["admin"] = existing_user["admin"]
+                flash(
+                    "Welcome, {}"
+                    .format(form.username.data.lower()),
+                    "success")
+                print(session)
+                return redirect(url_for("home"))
             else:
                 # invalid password match
                 flash("Incorrect username and/or password", "warning")
                 return redirect(url_for("userauth.signin"))
         else:
-            #username doesn't exist
+            # username doesn't exist
             flash("Incorrect username and/or password", "warning")
             return redirect(url_for("userauth.signin"))
 
     return render_template("signin.html", form=form)
+
 
 # SignOut function
 @userauth.route("/signout")
@@ -96,4 +108,3 @@ def signout():
     session.pop("admin")
     print(session)
     return redirect(url_for("home", _external=True, _scheme='https'))
-
