@@ -146,7 +146,6 @@ def search():
 
             # get allergens from product object
             allergen_id_list = product["free_from_allergens"]
-            print(allergen_id_list)
             # initialise allergen list
             allergen_list = []
             # get allergen names from allergen object id's
@@ -154,7 +153,6 @@ def search():
                 allergen_name = mongo.db.allergens.find_one(
                     {"_id": allergen})["name"]
                 allergen_list.append(allergen_name)
-                print(allergen_name)
             # add allergen list to product object
             product["free_from_allergen_names"] = allergen_list
         return render_template(
@@ -473,7 +471,6 @@ def edit(product_id):
                 "free_from_allergens": allergen_id_list,
                 "reviews": product["reviews"]
             }
-            print(product_update)
             # Update product in database
             mongo.db.products.update(
                 {"_id": ObjectId(product_id)}, product_update)
