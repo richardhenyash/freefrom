@@ -41,7 +41,7 @@ def contact():
         contact_email = form.email.data
         contact_message = form.message.data
         if user_name:
-            message = "Message from FreeFrom \nName: " + contact_name + "\nUser name: " + user_name + "\nEmail Address: " + contact_email + "\nMessage: " + contact_message
+            message = "Message from FreeFrom \nName: " + contact_name + "\nUser Name: " + user_name + "\nEmail Address: " + contact_email + "\nMessage: " + contact_message
         else:
             message = "Message from FreeFrom \nName: " + contact_name + "\nEmail Address: " + contact_email + "\nMessage: " + contact_message
         
@@ -50,7 +50,7 @@ def contact():
         try:
             server.login(mail_username, mail_password)
         except:
-            flash("Could not log into email server, please check configuration variables", "warning")
+            flash("Could not log into email server, please check configuration variables", "danger")
             return render_template("contact.html", form=form)
         else:
             msg = EmailMessage()
