@@ -52,7 +52,8 @@ def home():
     categories = mongo.db.categories.find()
     allergens = mongo.db.allergens.find()
     if categories and allergens:
-        return render_template("home.html", categories=categories, allergens=allergens)
+        return render_template(
+            "home.html", categories=categories, allergens=allergens)
     else:
         print("Could not connect to the Mongo DB")
 
@@ -68,4 +69,3 @@ if __name__ == "__main__":
             port=int(os.environ.get("PORT")),
             # Update to debug=False prior to deployment/submission
             debug=True)
-
