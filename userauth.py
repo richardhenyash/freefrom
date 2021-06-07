@@ -85,7 +85,6 @@ def signin():
                     "Welcome, {}"
                     .format(form.username.data.lower()),
                     "success")
-                print(session)
                 return redirect(url_for("home"))
             else:
                 # invalid password match
@@ -106,5 +105,4 @@ def signout():
     flash("You have been signed out", "success")
     session.pop("user")
     session.pop("admin")
-    print(session)
     return redirect(url_for("home", _external=True, _scheme='https'))
