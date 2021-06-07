@@ -70,7 +70,7 @@
                 <div class="col-12 col-md-6 pt-4">
                     <a href="{{ url_for('products.view', product_id=product_id) }}" class="btn btn-lg btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
-                    {% if session.admin %}
+                    {% if session.admin or user_product %}
                         <a href="{{ url_for('products.delete', product_id=product_id) }}" class="btn btn-lg btn-orangeyellow">Delete</a>
                     {% endif %}
                 </div>

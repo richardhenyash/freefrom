@@ -489,11 +489,20 @@ def edit(product_id):
         {"_id": product_category_id})["name"]
     # Get Selected allergens
     selected_allergens = product["free_from_allergens"]
+    # Get user name
+    user_name = session["user"]
+    # Get user id from user name
+    user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+    if product["user_id"] == user_id:
+        user_product = True
+    else:
+        user_product = False
     return render_template(
         "product_edit.html", categories=categories.rewind(),
         allergens=allergens.rewind(), product_id=product_id,
         product_category=product_category,
-        selected_allergens=selected_allergens, form=form)
+        selected_allergens=selected_allergens,
+        user_product=user_product, form=form)
 
 
 @products.route("/delete/<product_id>", methods=["GET", "POST"])
