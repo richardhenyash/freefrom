@@ -11,8 +11,9 @@ from database import mongo
 
 
 # Initiate Blueprint
-allergens = Blueprint("allergens", __name__, static_folder="static",
-                 template_folder="templates")
+allergens = Blueprint(
+    "allergens", __name__, static_folder="static",
+    template_folder="templates")
 
 
 @allergens.route("/allergen_add", methods=["GET", "POST"])
@@ -36,11 +37,14 @@ def allergen_add():
             return render_template("allergen_add.html", form=form)
         else:
             # Add new allergen to the database
-            mongo.db.allergens.insert_one({"name":allergen_name})
+            mongo.db.allergens.insert_one({"name": allergen_name})
             # Display flash message
             flash("Allergen succesfully added", "success")
-        return render_template("home.html", categories=categories, allergens=allergens, form=form)
+        return render_template(
+            "home.html", categories=categories,
+            allergens=allergens, form=form)
     return render_template("allergen_add.html", form=form)
+
 
 @allergens.route("/allergen_edit", methods=["GET", "POST"])
 def allergen_edit():
@@ -55,7 +59,8 @@ def allergen_edit():
     allergens = mongo.db.allergens.find()
     if request.method == "POST" and form.validate():
         # Get existing allergen name
-        existing_allergen_name = request.form.get("allergenSelector").lower()
+        existing_allergen_name = request.form.get(
+            "allergenSelector").lower()
         # Check if allergen has been selected from drop down
         if existing_allergen_name:
             if existing_allergen_name == "allergen...":
@@ -78,17 +83,24 @@ def allergen_edit():
                 proceed = False
         if proceed:
             # Get allergen id
-            allergen_id = mongo.db.allergens.find_one({"name": existing_allergen_name})["_id"]
+            allergen_id = mongo.db.allergens.find_one(
+                {"name": existing_allergen_name})["_id"]
             # Update allergen in the database
             allergen_update = {"name": allergen_name}
-            mongo.db.allergens.update({"_id": ObjectId(allergen_id)}, allergen_update)
+            mongo.db.allergens.update(
+                {"_id": ObjectId(allergen_id)}, allergen_update)
             # Display flash message
             flash("Allergen succesfully updated", "success")
-            return render_template("home.html", categories=categories, allergens=allergens, form=form)
+            return render_template(
+                "home.html", categories=categories,
+                allergens=allergens, form=form)
         else:
-            return render_template("allergen_edit.html", allergens=allergens, form=form)
-        
-    return render_template("allergen_edit.html", allergens=allergens, form=form)
+            return render_template(
+                "allergen_edit.html",
+                allergens=allergens, form=form)
+
+    return render_template(
+        "allergen_edit.html", allergens=allergens, form=form)
 
 
 @allergens.route("/allergen_delete", methods=["GET", "POST"])
@@ -117,13 +129,17 @@ def allergen_delete():
             proceed = False
         if proceed:
             # Get allergen id
-            allergen_id = mongo.db.allergens.find_one({"name": existing_allergen_name})["_id"]
+            allergen_id = mongo.db.allergens.find_one(
+                {"name": existing_allergen_name})["_id"]
             # Delete allergen from the database
             mongo.db.allergens.remove({"_id": ObjectId(allergen_id)})
             # Display flash message
             flash("Allergen succesfully deleted", "success")
-            return render_template("home.html", categories=categories, allergens=allergens)
+            return render_template(
+                "home.html", categories=categories, allergens=allergens)
         else:
-            return render_template("allergen_delete.html", allergens=allergens)
-        
-    return render_template("allergen_delete.html", allergens=allergens)
+            return render_template(
+                "allergen_delete.html", allergens=allergens)
+
+    return render_template(
+        "allergen_delete.html", allergens=allergens)
