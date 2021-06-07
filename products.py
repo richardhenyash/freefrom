@@ -326,15 +326,12 @@ def view(product_id):
                 reviews.append(review_new)
                 # Update product object with new or edited review
                 product["reviews"] = reviews
-                user_review = review_new
 
             # Update product in database
             mongo.db.products.update({"_id": ObjectId(product_id)}, product)
             # Display flash message
-            flash("Product succesfully updated", "success")
-            return render_template(
-                "product_view.html", product=product,
-                product_id=product_id, user_review=user_review, form=form)
+            flash("Rating and review succesfully updated", "success")
+            return redirect(url_for('products.view', product_id=product_id))
 
     # Set product name in form object
     form.name.data = product["name"]
@@ -482,10 +479,7 @@ def edit(product_id):
                 {"_id": ObjectId(product_id)}, product_update)
             # Display flash message
             flash("Product succesfully updated", "success")
-            product_view_form = ProductViewForm(request.form)
-            return render_template(
-                "product_view.html", product=product_update,
-                product_id=product_id, form=product_view_form)
+            return redirect(url_for('products.view', product_id=product_id))
 
     # Update product name in form
     form.name.data = product["name"]
@@ -503,6 +497,23 @@ def edit(product_id):
         allergens=allergens.rewind(), product_id=product_id,
         product_category=product_category,
         selected_allergens=selected_allergens, form=form)
+
+
+@products.route("/delete/<product_id>", methods=["GET", "POST"])
+def delete(product_id):
+    """
+    Route for product delete
+    """
+    if request.method == "POST":
+        # Delete product from database
+        mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
+        flash("Product succesfully deleted", "success")
+        return redirect(url_for('products.search'))
+
+    product = mongo.db.products.find_one(
+        {"_id": (ObjectId(product_id))})
+    return render_template(
+        "product_delete.html", product_id=product_id, product=product)
 
 
 def get_selected_allergen_list(allergens):
