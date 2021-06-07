@@ -41,16 +41,27 @@ def contact():
         contact_email = form.email.data
         contact_message = form.message.data
         if user_name:
-            message = "Message from FreeFrom \nName: " + contact_name + "\nUser Name: " + user_name + "\nEmail Address: " + contact_email + "\nMessage: " + contact_message
+            message = (
+                "Message from FreeFrom \nName: " +
+                contact_name +
+                "\nUser Name: " + user_name +
+                "\nEmail Address: " + contact_email +
+                "\nMessage: " + contact_message)
         else:
-            message = "Message from FreeFrom \nName: " + contact_name + "\nEmail Address: " + contact_email + "\nMessage: " + contact_message
-        
+            message = (
+                "Message from FreeFrom \nName: " +
+                contact_name +
+                "\nEmail Address: " + contact_email +
+                "\nMessage: " + contact_message)
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         try:
             server.login(mail_username, mail_password)
         except:
-            flash("Could not log into email server, please check configuration variables", "danger")
+            flash(
+                "Could not log into email server, " +
+                "please check configuration variables",
+                "danger")
             return render_template("contact.html", form=form)
         else:
             msg = EmailMessage()
@@ -61,14 +72,20 @@ def contact():
             try:
                 server.send_message(msg)
             except:
-                flash("Contact email has not been succesfully sent, please try again", "warning")
+                flash(
+                    "Contact email has not been succesfully sent, " +
+                    "please try again",
+                    "warning")
                 return render_template("contact.html", form=form)
             else:
-                flash("Contact email has been succesfully sent", "success")
-            return render_template("home.html")      
+                flash(
+                    "Contact email has been succesfully sent",
+                    "success")
+            return render_template("home.html")
 
     # If user is logged in, set email address field automatically
     if user_name:
-        user_email = mongo.db.users.find_one({"username": user_name})["email"]
+        user_email = mongo.db.users.find_one(
+            {"username": user_name})["email"]
         form.email.data = user_email
     return render_template("contact.html", form=form)
