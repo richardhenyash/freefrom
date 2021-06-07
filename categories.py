@@ -11,8 +11,9 @@ from database import mongo
 
 
 # Initiate Blueprint
-categories = Blueprint("categories", __name__, static_folder="static",
-                 template_folder="templates")
+categories = Blueprint(
+    "categories", __name__, static_folder="static",
+    template_folder="templates")
 
 
 @categories.route("/category_add", methods=["GET", "POST"])
@@ -39,8 +40,11 @@ def category_add():
             mongo.db.categories.insert_one({"name": category_name})
             # Display flash message
             flash("Category succesfully added", "success")
-        return render_template("home.html", categories=categories, allergens=allergens, form=form)
+        return render_template(
+            "home.html", categories=categories,
+            allergens=allergens, form=form)
     return render_template("category_add.html", form=form)
+
 
 @categories.route("/categories_edit", methods=["GET", "POST"])
 def category_edit():
@@ -55,7 +59,8 @@ def category_edit():
     allergens = mongo.db.allergens.find()
     if request.method == "POST" and form.validate():
         # Get existing category name
-        existing_category_name = request.form.get("categorySelector").lower()
+        existing_category_name = request.form.get(
+            "categorySelector").lower()
         # Check if category has been selected from drop down
         if existing_category_name:
             if existing_category_name == "category...":
@@ -78,17 +83,25 @@ def category_edit():
                 proceed = False
         if proceed:
             # Get category id
-            category_id = mongo.db.categories.find_one({"name": existing_category_name})["_id"]
+            category_id = mongo.db.categories.find_one(
+                {"name": existing_category_name})["_id"]
             # Update category in the database
             category_update = {"name": category_name}
-            mongo.db.categories.update({"_id": ObjectId(category_id)}, category_update)
+            mongo.db.categories.update(
+                {"_id": ObjectId(category_id)}, category_update)
             # Display flash message
             flash("Category succesfully updated", "success")
-            return render_template("home.html", categories=categories, allergens=allergens)
+            return render_template(
+                "home.html", categories=categories,
+                allergens=allergens)
         else:
-            return render_template("category_edit.html", categories=categories, form=form)
-        
-    return render_template("category_edit.html", categories=categories, form=form)
+            return render_template(
+                "category_edit.html",
+                categories=categories, form=form)
+
+    return render_template(
+        "category_edit.html",
+        categories=categories, form=form)
 
 
 @categories.route("/categories_delete", methods=["GET", "POST"])
@@ -102,7 +115,8 @@ def category_delete():
     categories = mongo.db.categories.find()
     if request.method == "POST":
         # Get existing category name
-        existing_category_name = request.form.get("categorySelector").lower()
+        existing_category_name = request.form.get(
+            "categorySelector").lower()
         # Check if category has been selected from drop down
         if existing_category_name:
             if existing_category_name == "category...":
@@ -117,13 +131,18 @@ def category_delete():
             proceed = False
         if proceed:
             # Get category id
-            category_id = mongo.db.categories.find_one({"name": existing_category_name})["_id"]
+            category_id = mongo.db.categories.find_one(
+                {"name": existing_category_name})["_id"]
             # Delete category from the database
             mongo.db.categories.remove({"_id": ObjectId(category_id)})
             # Display flash message
             flash("Category succesfully deleted", "success")
-            return render_template("home.html", categories=categories, allergens=allergens)
+            return render_template(
+                "home.html",
+                categories=categories, allergens=allergens)
         else:
-            return render_template("category_delete.html", categories=categories)
-        
-    return render_template("category_delete.html", categories=categories)
+            return render_template(
+                "category_delete.html", categories=categories)
+
+    return render_template(
+        "category_delete.html", categories=categories)
