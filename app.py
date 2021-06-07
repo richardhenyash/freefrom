@@ -41,7 +41,6 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 # Initiate instance of PyMongo
-# mongo = PyMongo(app)
 mongo.init_app(app)
 
 
@@ -52,7 +51,10 @@ def home():
     """
     categories = mongo.db.categories.find()
     allergens = mongo.db.allergens.find()
-    return render_template("home.html", categories=categories, allergens=allergens)
+    if categories and allergens:
+        return render_template("home.html", categories=categories, allergens=allergens)
+    else:
+        print("Could not connect to the Mongo DB")
 
 
 @app.errorhandler(404)
