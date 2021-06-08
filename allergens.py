@@ -37,9 +37,12 @@ def allergen_add():
             return render_template("allergen_add.html", form=form)
         else:
             # Add new allergen to the database
-            mongo.db.allergens.insert_one({"name": allergen_name})
+            mongo.db.allergens.insert_one(
+                {"name": allergen_name})
             # Display flash message
-            flash("Allergen succesfully added", "success")
+            flash(
+                "Allergen " + allergen_name +
+                " succesfully added", "success")
         return render_template(
             "home.html", categories=categories,
             allergens=allergens, form=form)
@@ -90,7 +93,7 @@ def allergen_edit():
             mongo.db.allergens.update(
                 {"_id": ObjectId(allergen_id)}, allergen_update)
             # Display flash message
-            flash("Allergen succesfully updated", "success")
+            flash("Allergen " + allergen_name + " succesfully updated", "success")
             return render_template(
                 "home.html", categories=categories,
                 allergens=allergens, form=form)
@@ -155,10 +158,16 @@ def allergen_delete_confirm(allergen_id):
     # Get categories collection from database
     categories = mongo.db.categories.find()
     if request.method == "POST":
+        # Get allergen name from database
+        allergen_name = mongo.db.allergens.find_one(
+            {"_id": (ObjectId(allergen_id))})["name"]
         # Delete allergen from the database
-        mongo.db.allergens.delete_one({"_id": (ObjectId(allergen_id))})
+        mongo.db.allergens.delete_one(
+            {"_id": (ObjectId(allergen_id))})
         # Display flash message
-        flash("Allergen succesfully deleted", "success")
+        flash(
+            "Allergen " + allergen_name +
+            " succesfully deleted", "success")
         return render_template(
                 "home.html",
                 categories=categories, allergens=allergens)
