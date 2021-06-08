@@ -135,7 +135,8 @@ def category_delete():
                 {"name": existing_category_name})
             category_id = category["_id"]
             return render_template(
-                "category_delete_confirm.html", category_id=category_id, category=category)
+                "category_delete_confirm.html",
+                category_id=category_id, category=category)
         else:
             return render_template(
                 "category_delete.html", categories=categories)
@@ -143,7 +144,10 @@ def category_delete():
     return render_template(
         "category_delete.html", categories=categories)
 
-@categories.route("/categories_delete_confirm/<category_id>", methods=["GET", "POST"])
+
+@categories.route(
+    "/categories_delete_confirm/<category_id>",
+    methods=["GET", "POST"])
 def category_delete_confirm(category_id):
     """
     Route for category delete confirm
@@ -164,4 +168,5 @@ def category_delete_confirm(category_id):
     category = mongo.db.categories.find_one(
         {"_id": (ObjectId(category_id))})
     return render_template(
-        "category_delete_confirm.html", category_id=category_id, category=category)
+        "category_delete_confirm.html",
+        category_id=category_id, category=category)
