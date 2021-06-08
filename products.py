@@ -519,7 +519,7 @@ def delete(product_id):
     product = mongo.db.products.find_one(
         {"_id": (ObjectId(product_id))})
     return render_template(
-        "product_delete.html", product_id=product_id, product=product)
+        "product_delete_confirm.html", product_id=product_id, product=product)
 
 
 def get_selected_allergen_list(allergens):
