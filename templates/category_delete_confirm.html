@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-{% from "_formhelpers.html" import form_error %}
     <section id="category-delete-confirm" class="container-sm">
         <div class="row">
         <form id="category-delete-confirm-form" method="POST" action="{{ url_for('categories.category_delete_confirm', category_id=category_id) }}">

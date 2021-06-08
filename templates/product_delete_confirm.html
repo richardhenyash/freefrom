@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-{% from "_formhelpers.html" import form_error %}
     <section id="product-delete" class="container-sm">
         <div class="row">
         <form id="product-delete-form" method="POST" action="{{ url_for('products.delete', product_id=product_id) }}">
