@@ -39,7 +39,9 @@ def category_add():
             # Add new category to the database
             mongo.db.categories.insert_one({"name": category_name})
             # Display flash message
-            flash("Category succesfully added", "success")
+            flash(
+                "Category " + category_name +
+                " succesfully added", "success")
         return render_template(
             "home.html", categories=categories,
             allergens=allergens, form=form)
@@ -90,7 +92,9 @@ def category_edit():
             mongo.db.categories.update(
                 {"_id": ObjectId(category_id)}, category_update)
             # Display flash message
-            flash("Category succesfully updated", "success")
+            flash(
+                "Category " + category_name +
+                " succesfully updated", "success")
             return render_template(
                 "home.html", categories=categories,
                 allergens=allergens)
@@ -157,10 +161,15 @@ def category_delete_confirm(category_id):
     # Get categories collection from database
     categories = mongo.db.categories.find()
     if request.method == "POST":
+        # Get category name from database
+        category_name = mongo.db.categories.find_one(
+            {"_id": (ObjectId(category_id))})["name"]
         # Delete category from the database
         mongo.db.categories.delete_one({"_id": (ObjectId(category_id))})
         # Display flash message
-        flash("Category succesfully deleted", "success")
+        flash(
+            "Category " + category_name +
+            " succesfully deleted", "success")
         return render_template(
                 "home.html",
                 categories=categories, allergens=allergens)
