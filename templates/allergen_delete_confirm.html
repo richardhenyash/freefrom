@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <section id="allergen-delete-confirm" class="container-sm">
+        <div class="row">
+        <form id="allergen-delete-confirm-form" method="POST" action="{{ url_for('allergens.allergen_delete_confirm', allergen_id=allergen_id) }}">
+            <div class="row">
+                <div class="col-12 container-search pb-1">
+                    <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
+                        Are you sure you want to delete allergen {{ allergen.name }} from the database?
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-6 pt-4 text-center">
+                    <a href="{{ url_for('allergens.allergen_delete') }}" class="btn btn-lg btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Delete</button>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </form>
+    </section>
+{% endblock %}

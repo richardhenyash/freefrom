@@ -128,18 +128,43 @@ def allergen_delete():
             flash("Please select Allergen to delete", "warning")
             proceed = False
         if proceed:
-            # Get allergen id
-            allergen_id = mongo.db.allergens.find_one(
-                {"name": existing_allergen_name})["_id"]
-            # Delete allergen from the database
-            mongo.db.allergens.remove({"_id": ObjectId(allergen_id)})
-            # Display flash message
-            flash("Allergen succesfully deleted", "success")
+            # Get allergen
+            allergen = mongo.db.allergens.find_one(
+                {"name": existing_allergen_name})
+            allergen_id = allergen["_id"]
             return render_template(
-                "home.html", categories=categories, allergens=allergens)
+                "allergen_delete_confirm.html",
+                allergen_id=allergen_id, allergen=allergen)
         else:
             return render_template(
                 "allergen_delete.html", allergens=allergens)
 
     return render_template(
         "allergen_delete.html", allergens=allergens)
+
+
+@allergens.route(
+    "/allergen_delete_confirm/<allergen_id>",
+    methods=["GET", "POST"])
+def allergen_delete_confirm(allergen_id):
+    """
+    Route for allergen delete confirm
+    """
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find()
+    # Get categories collection from database
+    categories = mongo.db.categories.find()
+    if request.method == "POST":
+        # Delete allergen from the database
+        mongo.db.allergens.delete_one({"_id": (ObjectId(allergen_id))})
+        # Display flash message
+        flash("Allergen succesfully deleted", "success")
+        return render_template(
+                "home.html",
+                categories=categories, allergens=allergens)
+
+    allergen = mongo.db.allergens.find_one(
+        {"_id": (ObjectId(allergen_id))})
+    return render_template(
+        "allergen_delete_confirm.html",
+        allergen_id=allergen_id, allergen=allergen)
