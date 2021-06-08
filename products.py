@@ -262,7 +262,9 @@ def add():
             # Add new record to the database
             mongo.db.products.insert_one(new_product)
             # Display flash message
-            flash("Product succesfully added", "success")
+            flash(
+                product_name + " succesfully added" +
+                " to products", "success")
             form.name.data = None
             form.manufacturer.data = None
             form.rating.data = None
@@ -328,7 +330,10 @@ def view(product_id):
             # Update product in database
             mongo.db.products.update({"_id": ObjectId(product_id)}, product)
             # Display flash message
-            flash("Rating and review succesfully updated", "success")
+            flash(
+                "Rating and review succesfully " +
+                "updated for " + product["name"],
+                "success")
             return redirect(url_for('products.view', product_id=product_id))
 
     # Set product name in form object
@@ -475,7 +480,7 @@ def edit(product_id):
             mongo.db.products.update(
                 {"_id": ObjectId(product_id)}, product_update)
             # Display flash message
-            flash("Product succesfully updated", "success")
+            flash(product_name + " succesfully updated", "success")
             return redirect(url_for('products.view', product_id=product_id))
 
     # Update product name in form
@@ -511,9 +516,14 @@ def delete(product_id):
     Route for product delete
     """
     if request.method == "POST":
+        # Get product name from database
+        product_name = mongo.db.products.find_one(
+            {"_id": (ObjectId(product_id))})["name"]
         # Delete product from database
         mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
-        flash("Product succesfully deleted", "success")
+        flash(
+            product_name +
+            " succesfully deleted from products", "success")
         return redirect(url_for('products.search'))
 
     product = mongo.db.products.find_one(
