@@ -93,7 +93,9 @@ def allergen_edit():
             mongo.db.allergens.update(
                 {"_id": ObjectId(allergen_id)}, allergen_update)
             # Display flash message
-            flash("Allergen " + allergen_name + " succesfully updated", "success")
+            flash(
+                "Allergen " + allergen_name +
+                " succesfully updated", "success")
             return render_template(
                 "home.html", categories=categories,
                 allergens=allergens, form=form)
