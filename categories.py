@@ -130,19 +130,38 @@ def category_delete():
             flash("Please select Category to delete", "warning")
             proceed = False
         if proceed:
-            # Get category id
-            category_id = mongo.db.categories.find_one(
-                {"name": existing_category_name})["_id"]
-            # Delete category from the database
-            mongo.db.categories.remove({"_id": ObjectId(category_id)})
-            # Display flash message
-            flash("Category succesfully deleted", "success")
+            # Get category
+            category = mongo.db.categories.find_one(
+                {"name": existing_category_name})
+            category_id = category["_id"]
             return render_template(
-                "home.html",
-                categories=categories, allergens=allergens)
+                "category_delete_confirm.html", category_id=category_id, category=category)
         else:
             return render_template(
                 "category_delete.html", categories=categories)
 
     return render_template(
         "category_delete.html", categories=categories)
+
+@categories.route("/categories_delete_confirm/<category_id>", methods=["GET", "POST"])
+def category_delete_confirm(category_id):
+    """
+    Route for category delete confirm
+    """
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find()
+    # Get categories collection from database
+    categories = mongo.db.categories.find()
+    if request.method == "POST":
+        # Delete category from the database
+        mongo.db.categories.delete_one({"_id": (ObjectId(category_id))})
+        # Display flash message
+        flash("Category succesfully deleted", "success")
+        return render_template(
+                "home.html",
+                categories=categories, allergens=allergens)
+
+    category = mongo.db.categories.find_one(
+        {"_id": (ObjectId(category_id))})
+    return render_template(
+        "category_delete_confirm.html", category_id=category_id, category=category)
