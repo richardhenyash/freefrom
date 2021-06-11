@@ -1,12 +1,8 @@
 # Import dependencies
 import os
 import smtplib
-from flask import (
-    Blueprint, Flask, flash, render_template,
-    redirect, request, session, url_for)
+from flask import (Blueprint, flash, render_template, request, session)
 from email.message import EmailMessage
-from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
 from forms import ContactForm
 
 # Import PyMongo database instance

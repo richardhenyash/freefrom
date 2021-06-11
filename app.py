@@ -1,10 +1,6 @@
 # Import dependencies
 import os
-from flask import (
-    Blueprint, Flask, flash, render_template,
-    redirect, request, session, url_for)
-from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
+from flask import (Flask, render_template)
 
 # Import Blueprints
 from userauth import userauth
