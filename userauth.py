@@ -55,9 +55,7 @@ def register():
         flash("Registration successful", "success")
         # return to home page
         return redirect(
-            url_for(
-                "home", username=session["user"],
-                external=True, _scheme='https'))
+            url_for("home", username=session["user"]))
 
     return render_template("register.html", form=form)
 
@@ -105,4 +103,4 @@ def signout():
     flash("You have been signed out", "success")
     session.pop("user")
     session.pop("admin")
-    return redirect(url_for("home", _external=True, _scheme='https'))
+    return redirect(url_for("home"))

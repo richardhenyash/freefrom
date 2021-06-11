@@ -30,6 +30,14 @@
                         {{ form_error(form.password) }}
                     </div>                    
                 </div>
+                <div>
+                    <div class="mb-3 pb-2">
+                    <div>
+                        {{ form.confirmpassword.label(class="form-label input-label") }}
+                        {{ form.confirmpassword(class="form-control form-control-lg input-title") }}
+                        {{ form_error(form.confirmpassword) }}
+                    </div>                    
+                </div>
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Register</button>
                 <a href="{{ url_for('userauth.signin') }}" class="btn btn-lg btn-secondary">Cancel</a>
             </form>

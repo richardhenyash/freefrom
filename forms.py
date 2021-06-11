@@ -21,11 +21,11 @@ class SignInForm(Form):
             message="Username must contain only letters, " +
             "numbers or underscore")
     ])
-    password = StringField('Password', [
+    password = PasswordField('Password', [
         validators.DataRequired(message="Input required"),
         validators.Length(
             min=5, max=25,
-            message="Password must be between 5 and 25 characters long"),
+            message="Password must be between 5 and 25 characters long")
     ])
 
 
@@ -40,6 +40,10 @@ class RegistrationForm(SignInForm):
         validators.Length(
             min=5,
             message="Email address must be 5 or more characters long")
+    ])
+    confirmpassword = PasswordField('Confirm Password', [
+        validators.DataRequired(message="Input required"),
+        validators.EqualTo("password", message='Passwords must match')
     ])
 
 
