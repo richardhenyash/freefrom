@@ -15,7 +15,7 @@ class SignInForm(Form):
             min=5, max=25,
             message="User Name must be between 5 and 25 characters long"),
         wtforms_validators.AlphaNumeric(
-            message="User name must contain only letters or numbers")
+            message="User Name must contain only letters or numbers")
     ])
     password = PasswordField('Password', [
         validators.DataRequired(message="Input required"),
