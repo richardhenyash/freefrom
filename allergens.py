@@ -1,8 +1,7 @@
 # Import dependencies
 from flask import (
-    Blueprint, Flask, flash, render_template,
-    redirect, request, session, url_for)
-from flask_pymongo import PyMongo
+    Blueprint, flash, render_template,
+    redirect, request, url_for)
 from bson.objectid import ObjectId
 from forms import AllergenForm
 
@@ -23,10 +22,6 @@ def allergen_add():
     """
     # request Form data
     form = AllergenForm(request.form)
-    # Get categories collection from database
-    categories = mongo.db.categories.find()
-    # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
     if request.method == "POST" and form.validate():
         # Set new allergen name variable
         allergen_name = form.name.data.lower()
@@ -43,9 +38,7 @@ def allergen_add():
             flash(
                 "Allergen " + allergen_name +
                 " succesfully added", "success")
-        return render_template(
-            "home.html", categories=categories,
-            allergens=allergens, form=form)
+        return redirect(url_for('products.search'))
     return render_template("allergen_add.html", form=form)
 
 
@@ -56,8 +49,6 @@ def allergen_edit():
     """
     # request Form data
     form = AllergenForm(request.form)
-    # Get categories collection from database
-    categories = mongo.db.categories.find()
     # Get allergens collection from database
     allergens = mongo.db.allergens.find()
     if request.method == "POST" and form.validate():
@@ -96,9 +87,7 @@ def allergen_edit():
             flash(
                 "Allergen " + allergen_name +
                 " succesfully updated", "success")
-            return render_template(
-                "home.html", categories=categories,
-                allergens=allergens, form=form)
+            return redirect(url_for('products.search'))
         else:
             return render_template(
                 "allergen_edit.html",
@@ -115,8 +104,6 @@ def allergen_delete():
     """
     # Get allergens collection from database
     allergens = mongo.db.allergens.find()
-    # Get categories collection from database
-    categories = mongo.db.categories.find()
     if request.method == "POST":
         # Get existing allergen name
         existing_allergen_name = request.form.get("allergenSelector").lower()
@@ -155,10 +142,6 @@ def allergen_delete_confirm(allergen_id):
     """
     Route for allergen delete confirm
     """
-    # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
-    # Get categories collection from database
-    categories = mongo.db.categories.find()
     if request.method == "POST":
         # Get allergen name from database
         allergen_name = mongo.db.allergens.find_one(
@@ -170,9 +153,7 @@ def allergen_delete_confirm(allergen_id):
         flash(
             "Allergen " + allergen_name +
             " succesfully deleted", "success")
-        return render_template(
-                "home.html",
-                categories=categories, allergens=allergens)
+        return redirect(url_for('products.search'))
 
     allergen = mongo.db.allergens.find_one(
         {"_id": (ObjectId(allergen_id))})
