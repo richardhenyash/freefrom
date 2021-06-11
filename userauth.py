@@ -1,9 +1,7 @@
 # Import dependencies
 from flask import (
-    Blueprint, Flask, flash, render_template,
+    Blueprint, flash, render_template,
     redirect, request, session, url_for)
-from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegistrationForm, SignInForm
 
