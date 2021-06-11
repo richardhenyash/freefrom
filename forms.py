@@ -1,8 +1,6 @@
 # Import dependencies
-from flask_wtf import FlaskForm
-from wtforms import (StringField, PasswordField, SubmitField,
-                     BooleanField, HiddenField, TextField,
-                     TextAreaField, IntegerField, Form, validators)
+from wtforms import (StringField, PasswordField, HiddenField,
+                     TextAreaField, Form, validators)
 import wtforms_validators
 
 
@@ -16,10 +14,8 @@ class SignInForm(Form):
         validators.Length(
             min=5, max=25,
             message="User Name must be between 5 and 25 characters long"),
-        validators.Regexp(
-            "\w+$",
-            message="Username must contain only letters, " +
-            "numbers or underscore")
+        wtforms_validators.AlphaNumeric(
+            message="User name must contain only letters or numbers")
     ])
     password = PasswordField('Password', [
         validators.DataRequired(message="Input required"),
