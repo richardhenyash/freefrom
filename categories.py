@@ -1,8 +1,6 @@
 # Import dependencies
 from flask import (
-    Blueprint, Flask, flash, render_template,
-    redirect, request, session, url_for)
-from flask_pymongo import PyMongo
+    Blueprint, flash, render_template, redirect, request, url_for)
 from bson.objectid import ObjectId
 from forms import CategoryForm
 
@@ -23,10 +21,6 @@ def category_add():
     """
     # request Form data
     form = CategoryForm(request.form)
-    # Get categories collection from database
-    categories = mongo.db.categories.find()
-    # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
     if request.method == "POST" and form.validate():
         # Set new category name variable
         category_name = form.name.data.lower()
@@ -42,9 +36,7 @@ def category_add():
             flash(
                 "Category " + category_name +
                 " succesfully added", "success")
-        return render_template(
-            "home.html", categories=categories,
-            allergens=allergens, form=form)
+        return redirect(url_for('products.search'))
     return render_template("category_add.html", form=form)
 
 
@@ -57,8 +49,6 @@ def category_edit():
     form = CategoryForm(request.form)
     # Get categories collection from database
     categories = mongo.db.categories.find()
-    # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
     if request.method == "POST" and form.validate():
         # Get existing category name
         existing_category_name = request.form.get(
@@ -95,9 +85,7 @@ def category_edit():
             flash(
                 "Category " + category_name +
                 " succesfully updated", "success")
-            return render_template(
-                "home.html", categories=categories,
-                allergens=allergens)
+            return redirect(url_for('products.search'))
         else:
             return render_template(
                 "category_edit.html",
@@ -113,8 +101,6 @@ def category_delete():
     """
     Route for category delete
     """
-    # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
     # Get categories collection from database
     categories = mongo.db.categories.find()
     if request.method == "POST":
@@ -156,10 +142,6 @@ def category_delete_confirm(category_id):
     """
     Route for category delete confirm
     """
-    # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
-    # Get categories collection from database
-    categories = mongo.db.categories.find()
     if request.method == "POST":
         # Get category name from database
         category_name = mongo.db.categories.find_one(
@@ -170,9 +152,7 @@ def category_delete_confirm(category_id):
         flash(
             "Category " + category_name +
             " succesfully deleted", "success")
-        return render_template(
-                "home.html",
-                categories=categories, allergens=allergens)
+        return redirect(url_for('products.search'))
 
     category = mongo.db.categories.find_one(
         {"_id": (ObjectId(category_id))})
