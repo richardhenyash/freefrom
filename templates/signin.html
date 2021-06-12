@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 {% from "_formhelpers.html" import form_error %}
-<div class="container-sm">
+<section id="signin" class="container-sm" aria-label="Sign In">
     <div class="row pt-5">
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
             <form method="POST" action="{{ url_for('userauth.signin') }}">
                 <div class="div pb-2">
-                    <span class="form-label input-label">Don't have an account?&nbsp</span>
+                    <span class="form-label input-label">Don't have an account?&nbsp;</span>
                     <a href="{{ url_for('userauth.register') }}" class="btn btn-lg btn-danger btn-orangeyellow">Register</a>
                 </div>
                 <div>
                     <div class="mb-3">
-                    <div>
                         {{ form.username.label(class="form-label input-label") }}
                         {{ form.username(class="form-control form-control-lg input-title") }}
                         {{ form_error(form.username) }}
@@ -20,7 +19,6 @@
                 </div>
                 <div>
                     <div class="mb-3 pb-2">
-                    <div>
                         {{ form.password.label(class="form-label input-label") }}
                         {{ form.password(class="form-control form-control-lg input-title") }}
                         {{ form_error(form.password) }}
@@ -32,5 +30,5 @@
         </div>
         <div class="col-sm-4"></div>
     </div>
-</div>
+</section>
 {% endblock %}

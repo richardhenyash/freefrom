@@ -214,6 +214,13 @@ container-footer a:visited {
     border: 1px solid var(--firopal);
 }
 
+/*-- Geading Styling --*/
+.section-heading {
+    font-family: var(--titlefont);
+    font-size: 1.25rem;
+    font-weight: normal;
+}
+
 /*-- Results Table Styling --*/
 
 .results-table th,

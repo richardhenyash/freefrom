@@ -1,81 +1,82 @@
 {% extends "base.html" %}
 {% block content %}
 {% from "_formhelpers.html" import form_error %}
-    <section id="product-edit" class="container-sm">
+    <section id="product-edit" class="container-sm" aria-label="Product Edit">
         <div class="row">
-        <form id="product-edit-form" method="POST" action="{{ url_for('products.edit', product_id=product_id) }}">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    {{ form.name.label(class="form-label input-label") }}
-                    {{ form.name(class="form-control form-control-lg input-title") }}
-                    {{ form_error(form.name) }}
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    <label class="form-label input-label" for="categorySelector">Category</label>
-                    <select class="form-select form-select-lg input-title" id="categorySelector"
-                        name="categorySelector" aria-label="Category Selector" required>
-                            <option selected>{{ product_category[0]|upper }}{{product_category[1:] }}</option>
-                        {% for category in categories %}
-                            {% if category.name != product_category %}
-                                <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    {{ form.manufacturer.label(class="form-label input-label") }}
-                    {{ form.manufacturer(class="form-control form-control-lg input-title") }}
-                    {{ form_error(form.manufacturer) }}
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    {{ form.freefrom.label(class="form-label input-label") }} 
-                    {{ form.freefrom(class="form-check form-check-inline") }}
-                    <div class="div px-4 pb-2">
-                    {% for allergen in allergens %}
-                        <div class="form-check form-check-inline">
-                            {% if selected_allergens %}
-                                {% if allergen["_id"] in selected_allergens %}
-                                    <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
-                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
+            <form id="product-edit-form" method="POST" action="{{ url_for('products.edit', product_id=product_id) }}">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-4">
+                        {{ form.name.label(class="form-label input-label") }}
+                        {{ form.name(class="form-control form-control-lg input-title") }}
+                        {{ form_error(form.name) }}
+                    </div> 
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-4">
+                        <label class="form-label input-label" for="categorySelector">Category</label>
+                        <select class="form-select form-select-lg input-title" id="categorySelector"
+                            name="categorySelector" aria-label="Category Selector">
+                                <option selected>{{ product_category[0]|upper }}{{product_category[1:] }}</option>
+                            {% for category in categories %}
+                                {% if category.name != product_category %}
+                                    <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div> 
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-4">
+                        {{ form.manufacturer.label(class="form-label input-label") }}
+                        {{ form.manufacturer(class="form-control form-control-lg input-title") }}
+                        {{ form_error(form.manufacturer) }}
+                    </div> 
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-4">
+                        {{ form.freefrom.label(class="form-label input-label") }} 
+                        {{ form.freefrom(class="form-check form-check-inline") }}
+                        <div class="div px-4 pb-2">
+                        {% for allergen in allergens %}
+                            <div class="form-check form-check-inline">
+                                {% if selected_allergens %}
+                                    {% if allergen["_id"] in selected_allergens %}
+                                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                            value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
+                                    {% else %}
+                                        <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
+                                            value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
+                                    {% endif %}                               
                                 {% else %}
                                     <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
-                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
-                                {% endif %}                               
-                            {% else %}
-                                <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
-                                    value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
-                            {% endif %}
-                            <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+                                        value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
+                                {% endif %}
+                                <label class="form-check-label" for="{{ allergen.name }}Checkbox">{{ allergen.name }}</label>
+                            </div>
+                        {% endfor %}
                         </div>
-                    {% endfor %}
                     </div>
+                    <div class="col-md-3"></div>
                 </div>
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    <a href="{{ url_for('products.view', product_id=product_id) }}" class="btn btn-lg btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
-                    {% if session.admin or user_product %}
-                        <a href="{{ url_for('products.delete', product_id=product_id) }}" class="btn btn-lg btn-orangeyellow">Delete</a>
-                    {% endif %}
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-4">
+                        <a href="{{ url_for('products.view', product_id=product_id) }}" class="btn btn-lg btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
+                        {% if session.admin or user_product %}
+                            <a href="{{ url_for('products.delete', product_id=product_id) }}" class="btn btn-lg btn-orangeyellow">Delete</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3"></div>
                 </div>
-                <div class="col-md-3"></div>
-            </div>
-        </form>
+            </form>
+        </div>
     </section>
 {% endblock %}

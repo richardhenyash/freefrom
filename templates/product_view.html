@@ -1,95 +1,92 @@
 {% extends "base.html" %}
 {% block content %}
 {% from "_formhelpers.html" import form_error %}
-    <section id="product-view" class="container-sm">
+    <section id="product-view" class="container-sm" aria-label="Product View">
         <div class="row">
-        <form id="product-view-form" method="POST" action="{{ url_for('products.view', product_id=product._id) }}">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    {{ form.name.label(class="form-label input-label") }}
-                    {{ form.name(class="form-control form-control-lg input-title") }}
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    {{ form.category.label(class="form-label input-label") }}
-                    {{ form.category(class="form-control form-control-lg input-title") }}
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-6 pt-4">
-                    {{ form.manufacturer.label(class="form-label input-label") }}
-                    {{ form.manufacturer(class="form-control form-control-lg input-title") }}
-                </div> 
-                <div class="col-md-3"></div>
-            </div>
-            {% if session.user %}
+            <form id="product-view-form" method="POST" action="{{ url_for('products.view', product_id=product._id) }}">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
-                        {{ form.freefrom.label(class="form-label input-label") }}
-                        {{ form.freefrom(class="form-control form-control-lg input-title") }}
+                        {{ form.name.label(class="form-label input-label") }}
+                        {{ form.name(class="form-control form-control-lg input-title") }}
                     </div> 
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
-                    <div class="col-12 col-md-6 pt-2">
-                        {{ form.review.label(class="form-label input-label") }}
-                        {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
-                        {{ form_error(form.review) }}
-                    </div>
+                    <div class="col-12 col-md-6 pt-4">
+                        {{ form.category.label(class="form-label input-label") }}
+                        {{ form.category(class="form-control form-control-lg input-title") }}
+                    </div> 
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
-                    <div class="col-12 col-md-6 pt-4 rating">
-                        {{ form.rating.label(class="form-label input-label") }} 
-                        {{ form.rating(class="") }}
-                            <span>&nbsp;</span>
-                            <i id="star-1" class="far fa-star"></i>               
-                            <i id="star-2" class="far fa-star"></i>
-                            <i id="star-3" class="far fa-star"></i>
-                            <i id="star-4" class="far fa-star"></i>
-                            <i id="star-5" class="far fa-star"></i>
-                        {{ form_error(form.rating) }}
-                        <span class="pr-4">&nbsp;</span>
-                        {% if user_review %}
-                            <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
-                        {% else %}
-                            <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Add</button>
-                        {% endif %}
+                    <div class="col-12 col-md-6 pt-4">
+                        {{ form.manufacturer.label(class="form-label input-label") }}
+                        {{ form.manufacturer(class="form-control form-control-lg input-title") }}
+                    </div> 
+                    <div class="col-md-3"></div>
+                </div>
+                {% if session.user %}
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-12 col-md-6 pt-4">
+                            {{ form.freefrom.label(class="form-label input-label") }}
+                            {{ form.freefrom(class="form-control form-control-lg input-title") }}
+                        </div> 
+                        <div class="col-md-3"></div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-12 col-md-6 pt-2">
+                            {{ form.review.label(class="form-label input-label") }}
+                            {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
+                            {{ form_error(form.review) }}
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-12 col-md-6 pt-4 rating">
+                            {{ form.rating.label(class="form-label input-label") }} 
+                            {{ form.rating(class="d-none") }}
+                                <span>&nbsp;</span>
+                                <i id="star-1" class="far fa-star"></i>               
+                                <i id="star-2" class="far fa-star"></i>
+                                <i id="star-3" class="far fa-star"></i>
+                                <i id="star-4" class="far fa-star"></i>
+                                <i id="star-5" class="far fa-star"></i>
+                            {{ form_error(form.rating) }}
+                            <span class="pr-4">&nbsp;</span>
+                            {% if user_review %}
+                                <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Add</button>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                {% endif %}
+                <div class="row pt-4 pb-4">
                     <div class="col-md-3"></div>
-                </div>
-                    </div> 
+                        <div class="col-12 col-md-6 pt-2">
+                            <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Back</a>
+                            {% if session.user %}
+                                <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-fireopal">Edit Product</a>
+                            {% endif %}
+                        </div> 
                     <div class="col-md-3"></div>
-                </div>
-            {% endif %}
-            <div class="row pt-4 pb-4">
-                <div class="col-md-3"></div>
-                    <div class="col-12 col-md-6 pt-2">
-                        <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Back</a>
-                        {% if session.user %}
-                            <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-fireopal">Edit Product</a>
-                        {% endif %}
-                    </div> 
-                    <div class="col-md-3"></div>
-                </div>
-            </div>
-        </form>
+                </div>                
+            </form>
+        </div>
     </section>
-    <section id="reviews" class="container-sm">
+    <section id="reviews" class="container-sm" aria-label="Product Reviews">
         <div class="row pt-4">
             <div class="col-md-3"></div>
              <div class="col-12 col-md-6 pt-2">
                 {% if other_user_reviews %}
-                    <div class="input-label">Reviews</div>
+                    <h3 class="section-heading">Reviews</h3>
                 {% endif %}
                 <table id="reviewsTable" class="table table-striped responsive results-table" style="width:100%">
                     <thead>
@@ -106,17 +103,58 @@
                                     <td>{{ review.username }}</td>
                                     {% if review.rating %}
                                         {% if review.rating == 0.0 %}
-                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                            <td class="table-rating">
+                                                <span class="d-none">{{ review.rating }}</span>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </td>
                                         {% elif review.rating == 1.0 %} 
-                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                            <td class="table-rating">
+                                                <span class="d-none">{{ review.rating }}</span>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </td>
                                         {% elif review.rating == 2.0 %} 
-                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                            <td class="table-rating">
+                                                <span class="d-none">{{ review.rating }}</span>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </td>
                                         {% elif review.rating == 3.0 %} 
-                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"><i class="far fa-star"></i></td>
+                                            <td class="table-rating">
+                                                <span class="d-none">{{ review.rating }}</span>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </td>
                                         {% elif review.rating == 4.0 %} 
-                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="far fa-star"></i></td>
+                                            <td class="table-rating">
+                                                <span class="d-none">{{ review.rating }}</span>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </td>
                                         {% elif review.rating == 5.0 %} 
-                                            <td class="table-rating"><span class="d-none">{{ review.rating }}</span><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"></i></td>
+                                            <td class="table-rating">
+                                                <span class="d-none">{{ review.rating }}</span>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </td>
                                         {% endif %} 
                                     {% else %}
                                         <td>Not Rated</td>
@@ -128,6 +166,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-3"></div>
         </div>
     </section>
 {% endblock %}

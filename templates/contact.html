@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% block content %}  
 {% from "_formhelpers.html" import form_error %}
-<div class="container-sm">
+<section id="contact-form" class="container-sm" aria-label="Contact Form">
     <div class="row pt-5">
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
             <form method="POST" action="{{ url_for('mail.contact') }}">
                 <div>
                     <div class="mb-3">
-                    <div>
                         {{ form.name.label(class="form-label input-label") }}
                         {{ form.name(class="form-control form-control-lg input-title") }}
                         {{ form_error(form.name) }}
@@ -16,7 +15,6 @@
                 </div>
                 <div>
                     <div class="mb-3">
-                    <div>
                         {{ form.email.label(class="form-label input-label") }}
                         {{ form.email(class="form-control form-control-lg input-title") }}
                         {{ form_error(form.email) }}
@@ -24,7 +22,6 @@
                 </div>
                 <div>
                     <div class="mb-3 pb-2">
-                    <div>                       
                         {{ form.message.label(class="form-label input-label") }}
                         {{ form.message(rows="8", cols="5", class="form-control form-control-lg input-title") }}
                         {{ form_error(form.message) }}
@@ -36,5 +33,5 @@
         </div>
         <div class="col-sm-4"></div>
     </div>
-</div>
+</section>
 {% endblock %}
