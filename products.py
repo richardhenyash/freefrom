@@ -21,9 +21,9 @@ def search():
     Route for products search
     """
     # Get categories collection from database
-    categories = mongo.db.categories.find()
+    categories = mongo.db.categories.find().sort("name", 1)
     # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
+    allergens = mongo.db.allergens.find().sort("name", 1)
     if request.method == "POST":
         # Get search string from form
         search_str = request.form.get("search").lower()
@@ -136,9 +136,9 @@ def add():
     # request Form data
     form = ProductForm(request.form)
     # Get categories collection from database
-    categories = mongo.db.categories.find()
+    categories = mongo.db.categories.find().sort("name", 1)
     # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
+    allergens = mongo.db.allergens.find().sort("name", 1)
     # Validate form
     if request.method == "POST" and form.validate():
         # Get product name, manufacturer and category
@@ -357,9 +357,9 @@ def edit(product_id):
     # request Form data
     form = ProductEditForm(request.form)
     # Get categories collection from database
-    categories = mongo.db.categories.find()
+    categories = mongo.db.categories.find().sort("name", 1)
     # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
+    allergens = mongo.db.allergens.find().sort("name", 1)
     # Get product from product_id
     product = mongo.db.products.find_one(
         {"_id": (ObjectId(product_id))})
