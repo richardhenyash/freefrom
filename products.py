@@ -26,14 +26,15 @@ def search():
     allergens = mongo.db.allergens.find()
     if request.method == "POST":
         # Get search string from form
-        searchstr = request.form.get("search").lower()
-        # Set searchstr to None if not specified
-        if searchstr == "":
-            searchstr = None
+        search_str = request.form.get("search").lower()
+        # Set search_str to None if not specified
+        if search_str == "":
+            search_str = None
 
         # Get category from form
         category = request.form.get("categorySelector")
-        # Set category variable to None if no category selected
+        # Set category and category_id variables to None
+        # if no category is selected
         if category == "Category...":
             category = None
             category_id = None
@@ -61,60 +62,24 @@ def search():
                 allergen_id_list.append(allergen_id)
                 # Append selected allergens to allergen_list
                 allergen_list.append(allergen)
-        # If allergen id list is empty, set to None
-        if len(allergen_id_list) == 0:
-            allergen_id_list = None
-        # If allergen list is empty, set to None
-        if len(allergen_list) == 0:
-            allergen_list = None
 
-        # Search the database conditionally based on the form inputs
+        # Build mongo db search dictionary
+        search_dict = {}
+        if search_str:
+            search_dict["$text"] = {"$search": search_str}
+        if category_id:
+            search_dict["category_id"] = ObjectId(category_id)
+        if allergen_id_list:
+            search_dict["free_from_allergens"] = {"$all": allergen_id_list}
 
-        # If allergen list, category and search string are specified
-        if allergen_id_list and category_id and searchstr:
+        # Search the database based on the dictionary
+        if search_dict:
             products = list(
-                mongo.db.products.find(
-                    {"$text": {"$search": searchstr},
-                        "category_id": ObjectId(category_id),
-                        "free_from_allergens": {"$all": allergen_id_list}}))
-        # else if allergen list and category are specified
-        # and search string is not specified
-        elif allergen_id_list and category_id and (not(searchstr)):
-            products = list(
-                mongo.db.products.find(
-                    {"category_id": ObjectId(category_id),
-                        "free_from_allergens": {"$all": allergen_id_list}}))
-        # else if allergen list is not specified, category is specified
-        # and search string is specified
-        elif (not (allergen_id_list)) and category_id and searchstr:
-            products = list(mongo.db.products.find(
-                {"$text": {"$search": searchstr},
-                    "category_id": ObjectId(category_id)}))
-        # else if allergen list is not specified, category is specified
-        # and search string is not specified
-        elif (not (allergen_id_list)) and category_id and (not(searchstr)):
-            products = list(mongo.db.products.find(
-                {"category_id": ObjectId(category_id)}))
-        # else if allergen list is specified, category is not specified
-        # and search string is specified
-        elif allergen_id_list and (not (category_id)) and searchstr:
-            products = list(mongo.db.products.find(
-                {"$text": {"$search": searchstr},
-                    "free_from_allergens": {"$all": allergen_id_list}}))
-        # else if allergen list is specified, category is not specified
-        # and search string is not specified
-        elif allergen_id_list and (not (category_id)) and (not(searchstr)):
-            products = list(mongo.db.products.find(
-                {"free_from_allergens": {"$all": allergen_id_list}}))
-        # else if allergen list is not specified, category is not specified
-        # and search string is specified
-        elif (not(allergen_id_list)) and (not (category_id)) and searchstr:
-            products = list(mongo.db.products.find(
-                {"$text": {"$search": searchstr}}))
-        elif (not(allergen_id_list)) and (
-                not (category_id)) and (not(searchstr)):
+                mongo.db.products.find(search_dict))
+        else:
             products = list(mongo.db.products.find())
-        # process search results
+
+        # Process the search results
         for product in products:
 
             # get category id from product object
@@ -356,7 +321,6 @@ def view(product_id):
     # Get user name
     user_review = None
     other_user_reviews = None
-    product_reviews = product["reviews"]
     if session:
         # Get user name
         user_name = session["user"]
@@ -365,7 +329,7 @@ def view(product_id):
         # Initialise other user review list
         other_user_reviews = []
         # Cycle through product reviews
-        for review in product_reviews:
+        for review in product["reviews"]:
             # If review belongs to logged in user
             if review["user_id"] == (ObjectId(user_id)):
                 user_review = review
@@ -375,9 +339,9 @@ def view(product_id):
                 form.review.data = user_review["review"]
             # else, add review to other user reviews list
             else:
-                other_user_reviews = get_other_user_reviews(product)
+                other_user_reviews = get_other_user_reviews(product, user_id)
     else:
-        other_user_reviews = get_other_user_reviews(product)
+        other_user_reviews = get_other_user_reviews(product, None)
 
     return render_template(
         "product_view.html", product=product, product_id=product_id,
@@ -536,19 +500,14 @@ def get_selected_allergen_list(allergens):
         if checkbox_value:
             # Append selected allergens to allergen_list
             allergen_list.append(allergen)
-    # If allergen list is empty, set to None
-    if len(allergen_list) == 0:
-        allergen_list = None
     return(allergen_list)
 
 
-def get_other_user_reviews(product):
-    if product:
-        product_reviews = product["reviews"]
+def get_other_user_reviews(product, user_id):
     # Initialise other user review list
     other_user_reviews = []
     # Cycle through product reviews
-    for review in product_reviews:
+    for review in product["reviews"]:
         other_user = mongo.db.users.find_one(
             {"_id": (ObjectId(review["user_id"]))})
         if other_user:
@@ -559,6 +518,4 @@ def get_other_user_reviews(product):
                 "review": review["review"]
             }
             other_user_reviews.append(other_user_review)
-    if len(other_user_reviews) < 1:
-        other_user_reviews = None
     return other_user_reviews
