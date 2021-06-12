@@ -1,6 +1,6 @@
 # Import dependencies
-from wtforms import (StringField, PasswordField, HiddenField,
-                     TextAreaField, Form, validators)
+from wtforms import (
+    StringField, PasswordField, TextAreaField, Form, validators)
 import wtforms_validators
 
 
@@ -95,7 +95,7 @@ class ProductForm(Form):
         wtforms_validators.AlphaSpace(
             message="Manufacturer name must contain only letters or spaces")
     ])
-    freefrom = HiddenField('Free From', [
+    freefrom = StringField('Free From', [
         validators.Optional(),
     ])
     review = TextAreaField('Your Review', [
@@ -105,9 +105,10 @@ class ProductForm(Form):
             min=5, max=250,
             message="Product review must be between 5 and 250 characters long")
     ])
-    rating = HiddenField('Your Rating', [
-        validators.DataRequired(
-            message="Please rate product between 1 and 5 stars"),
+    rating = StringField('Your Rating', [
+        validators.Length(
+            min=1, max=1,
+            message="Please rate product between 1 and 5 stars")
     ])
 
 
@@ -126,9 +127,10 @@ class ProductViewForm(Form):
             min=5, max=250,
             message="Product review must be between 5 and 250 characters long")
     ])
-    rating = HiddenField('Your Rating', [
-        validators.DataRequired(
-            message="Please rate product between 1 and 5 stars"),
+    rating = StringField('Your Rating', [
+        validators.Length(
+            min=1, max=1,
+            message="Please rate product between 1 and 5 stars")
     ])
 
 
@@ -155,7 +157,7 @@ class ProductEditForm(Form):
         wtforms_validators.AlphaSpace(
             message="Manufacturer name must contain only letters or spaces")
     ])
-    freefrom = HiddenField('Free From', [
+    freefrom = StringField('Free From', [
         validators.Optional(),
     ])
 
