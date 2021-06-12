@@ -36,6 +36,7 @@ def contact():
         contact_name = form.name.data
         contact_email = form.email.data
         contact_message = form.message.data
+        # Build message string, include user name if logged in
         if user_name:
             message = (
                 "Message from FreeFrom \nName: " +
@@ -51,28 +52,34 @@ def contact():
                 "\nMessage: " + contact_message)
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
+        # Attempt to log in to email server
         try:
             server.login(mail_username, mail_password)
-        except:
+        # Display flash message if there is is an exception
+        except smtplib.SMTPException:
             flash(
                 "Could not log into email server, " +
                 "please check configuration variables",
                 "danger")
             return render_template("contact.html", form=form)
         else:
+            # Set message variable
             msg = EmailMessage()
             msg["Subject"] = "New contact message from FreeFrom"
             msg["From"] = mail_username
             msg["To"] = mail_username
             msg.set_content(message)
+            # Attempt to send message
             try:
                 server.send_message(msg)
-            except:
+            # Display flash message if there is is an exception
+            except smtplib.SMTPException:
                 flash(
                     "Contact email has not been succesfully sent, " +
                     "please try again",
                     "warning")
                 return render_template("contact.html", form=form)
+            # Display flash message if email is succesfully sent
             else:
                 flash(
                     "Contact email has been succesfully sent",
