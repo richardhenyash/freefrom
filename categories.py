@@ -48,7 +48,7 @@ def category_edit():
     # request Form data
     form = CategoryForm(request.form)
     # Get categories collection from database
-    categories = mongo.db.categories.find()
+    categories = mongo.db.categories.find().sort("name", 1)
     if request.method == "POST" and form.validate():
         # Get existing category name
         existing_category_name = request.form.get(
@@ -102,7 +102,7 @@ def category_delete():
     Route for category delete
     """
     # Get categories collection from database
-    categories = mongo.db.categories.find()
+    categories = mongo.db.categories.find().sort("name", 1)
     if request.method == "POST":
         # Get existing category name
         existing_category_name = request.form.get(

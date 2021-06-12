@@ -50,7 +50,7 @@ def allergen_edit():
     # request Form data
     form = AllergenForm(request.form)
     # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
+    allergens = mongo.db.allergens.find().sort("name", 1)
     if request.method == "POST" and form.validate():
         # Get existing allergen name
         existing_allergen_name = request.form.get(
@@ -103,7 +103,7 @@ def allergen_delete():
     Route for allergen delete
     """
     # Get allergens collection from database
-    allergens = mongo.db.allergens.find()
+    allergens = mongo.db.allergens.find().sort("name", 1)
     if request.method == "POST":
         # Get existing allergen name
         existing_allergen_name = request.form.get("allergenSelector").lower()
