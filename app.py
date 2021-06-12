@@ -1,5 +1,6 @@
 # Import dependencies
 import os
+from bson import errors
 from flask import (Flask, render_template)
 
 # Import Blueprints
@@ -54,10 +55,31 @@ def home():
         print("Could not connect to the Mongo DB")
 
 
+@app.errorhandler(Exception)
+def error_generic(e):
+    """
+    Generic error handler
+    """
+    errstr = "something went wrong"
+    return render_template('error.html', error=errstr), 500
+
+
 @app.errorhandler(404)
-def page_not_found(e):
-    # note that we set the 404 status explicitly
-    return render_template('404.html'), 404
+def error_page_not_found(e):
+    """
+    Error handler for page not found
+    """
+    errstr = "looks like you've lost your way"
+    return render_template('error.html', error=errstr), 404
+
+
+@app.errorhandler(errors.InvalidId)
+def error_invalid_id(e):
+    """
+    Error handler for invalid bson id
+    """
+    errstr = "invalid bson id - object not found"
+    return render_template('error.html', error=errstr), 500
 
 
 if __name__ == "__main__":

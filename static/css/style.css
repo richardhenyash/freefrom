@@ -85,15 +85,15 @@ body {
 }
 
 /*-- Icon styling --*/
-.container-404 i,
+.container-error i,
 .container-footer i {
     color: var(--fireopal);
 }
 
 /*-- Icon and pseudo class styling --*/
-.container-404 i:hover,
-.container-404 i:active,
-.container-404 i:focus,
+.container-error i:hover,
+.container-error i:active,
+.container-error i:focus,
 .container-footer i:hover,
 .container-footer i:active,
 .container-footer i:focus {
@@ -101,7 +101,7 @@ body {
     text-decoration: none;
 }
 
-.container-404 i:visited,
+.container-error i:visited,
 .container-footer i:visited {
     color: var(--fireopal);
     text-decoration: none;
