@@ -50,7 +50,9 @@ def contact():
                 contact_name +
                 "\nEmail Address: " + contact_email +
                 "\nMessage: " + contact_message)
+        # Set server variable
         server = smtplib.SMTP("smtp.gmail.com", 587)
+        # Put the SMTP connection in TLS (Transport Layer Security) mode
         server.starttls()
         # Attempt to log in to email server
         try:
