@@ -1,7 +1,7 @@
 # FreeFrom #
-[FreeFrom Live Site](https://richardhenyash.github.io/freefrom/)  
+[FreeFrom Live Site](https://freefrom.herokuapp.com/)  
 
-<img src="/static/testing/responsive/" width="100%" style="margin: 15px;">
+<img src="/static/testing/responsive/freefrom-responsive.png" width="100%" style="margin: 15px;">
 
 ## Contents ##
 - [Background](#background)
