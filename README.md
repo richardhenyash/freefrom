@@ -1,7 +1,7 @@
 # FreeFrom #
 [FreeFrom Live Site](https://richardhenyash.github.io/freefrom/)  
 
-<img src="./static/testing/responsive/" width="100%" style="margin: 15px;">
+<img src="/static/testing/responsive/" width="100%" style="margin: 15px;">
 
 ## Contents ##
 - [Background](#background)
@@ -50,8 +50,8 @@ and then putting the product back on the shelf.
 ## Project Goals ##
 To provide an online, open source, interactive information resource that enables consumers to identify 
 products which are free from common allergens, and therefore suitable for food allergies and intolerances. 
-The site could also be expanded in the future to include products suitable for vegans, products which are 
-free from palm oil, and products which are ethically sourced.
+The site could also be expanded in the future to include for example products suitable for vegans, 
+products which are free from palm oil, and products which are ethically sourced.
 
 ## Site Owner Goals ##
 Developing the site will serve as a learning experience for the developer. The finished website will act as a showcase for the
@@ -75,7 +75,7 @@ Create database| Create an online, searchable database that enables consumers to
 Enable User contribution|Enable users to contribute to the database|5|3|Op-2
 Showcase developer's skills|The site will serve as a showcase for the developer's skills, and increase the developer's standing within the tech community|4|3|Op-3
 
-<img src="./static/wireframes/strategy-matrix.png" width="400px" style="margin: 15px;">
+<img src="/static/wireframes/strategy-matrix.png" width="400px" style="margin: 15px;">
 
 ### Project Scope ###
 #### User Demographics ####
@@ -151,20 +151,48 @@ GitHub Link|Link to developer github page|4|5|Op-3|1
 Upload Pictures|Enables users to add pictures of products and ingredients|1|2|Op-2|2
 Barcode Scanner|Enables users to automatically add products by scanning a product barcode with their device camera|1|1|Op-2|2
 
-<img src="./static/wireframes/scope-matrix.png" width="600px" style="margin: 15px;">
+<img src="/static/wireframes/scope-matrix.png" width="600px" style="margin: 15px;">
 
 ### Site Map ###
-An initial [Site Map](./static/wireframes/site-map.png) was produced, and is shown below:  
-<img src="./static/wireframes/site-map.png" width="400px" style="margin: 15px;">
+An initial [Site Map](/static/wireframes/site-map.png) was produced, and is shown below:  
+<img src="/static/wireframes/site-map.png" width="400px" style="margin: 15px;">
 
-### Wireframes ###
-[Hand Sketches](/static/wireframes/rev0)  
-[Initial Wireframes](/static/wireframes/rev1) 
-[Responsive design wireframes](/static/wireframes/rev2) 
+### Wireframes ### 
+[Initial Wireframes](/static/wireframes/rev0) were produced showing the Home, Sign In, Register, View Product, 
+Edit Product, Add Product, Add Category, Edit Category, Delete Category, Add Allergen, Edit Allergen, Delete Allergen and 
+Contact Developer page layouts. The Home page is shown below:  
+
+<img src="/static/wireframes/rev0/home.png" width="600px" style="margin: 15px;">
+
+[Responsive design wireframes](/static/wireframes/rev1) were then produced showing the Home page layout on Table and Phone. 
+The [Responsive design wireframes](/static/wireframes/rev1) are shown below:  
+
+<img src="/static/wireframes/rev1/home-tablet.png" width="300px" align="left" style="margin: 15px;">
+<img src="/static/wireframes/rev1/home-phone.png" width="300px" style="margin: 15px;">
 
 ### Design Choices ###
 
 #### Fonts ####
+[Architect's Daughter](https://fonts.google.com/specimen/Architects+Daughter) has been chosen as the logo font for the [FreeFrom logo](/static/testing/logo.png). 
+The font has a hand drawn appearence, looks very attractive with the dove logo and fits well with the overall site theme.  
+* font-family: "Architects Daughter", sans-serif;
+
+[Montserrat](https://fonts.google.com/specimen/Montserrat) has been chosen as the title font and is used for the 
+navigation menu, controls, forms and footer links. [Montserrat](https://fonts.google.com/specimen/Montserrat) has 
+a simple, clean, rounded look and is available in a good selection of weights.
+* font-family: "Montserrat", sans-serif;
+
+[Open Sans](https://fonts.google.com/specimen/Montserrat) has been chosen as the body font and is used for the search results and review tables. 
+[Open Sans](https://fonts.google.com/specimen/Montserrat) is complimentary to [Montserrat](https://fonts.google.com/specimen/Montserrat) and has 
+a similar clean look and feel but is not quite as wide, which will allow for more information to be displayed in the search results and review tables. 
+[Open Sans](https://fonts.google.com/specimen/Montserrat) is also available in a good selection of weights.
+* font-family: "Open Sans", sans-serif;
+
+
+[Architect's Daughter](https://fonts.google.com/specimen/Architects+Daughter) and [Montserrat](https://fonts.google.com/specimen/Montserrat) and 
+are available from [Google Fonts](https://fonts.google.com/) and are licensed under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).  
+[Open Sans](https://fonts.google.com/specimen/Montserrat) is available from [Google Fonts](https://fonts.google.com/) and is licensed under the 
+[Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
 #### Colours ####
 
@@ -207,7 +235,7 @@ After initial early user testing and feedback, the following minor design change
 
 ### Responsive Styling ###
 
-See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](./static/testing/responsive) screen prints.
+See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](/static/testing/responsive) screen prints.
 
 ## Testing ##
 
@@ -216,6 +244,24 @@ Further testing information and screen prints can be found in [TESTING.md](TESTI
 ## Deployment ##
 
 ## Credits ##
+
+DataTables
+https://datatables.net/
+
+
+WTForms:
+https://wtforms.readthedocs.io/en/2.3.x/
+https://wtforms.readthedocs.io/en/2.3.x/crash_course/
+
+WTForms Validators:
+https://pypi.org/project/wtforms-validators/
+
+
+Jinja:
+https://jinja.palletsprojects.com/en/3.0.x/
+
+SMTP Lib:
+https://docs.python.org/3/library/smtplib.html
 
 Many thanks to the following:
 
