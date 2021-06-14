@@ -215,13 +215,24 @@ is shown below:
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Python](https://www.python.org/)
+
+### Databases ###
+* [Mongo DB](https://www.mongodb.com/)
 
 ### Frameworks Libraries and Tools ###
-* [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
-* [jQuery](https://jquery.com/)
+* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 * [Font Awesome](https://fontawesome.com/)
 * [Google Fonts](https://fonts.google.com/)
-* [Email JS](https://www.emailjs.com/)
+* [jQuery](https://jquery.com/)
+* [PyMongo](https://pypi.org/project/pymongo/)
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+* [DataTables](https://datatables.net/)
+* [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
+* [WTForms-Validators](https://pypi.org/project/wtforms-validators/)
+* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
+* [SMTPLib](https://docs.python.org/3/library/smtplib.html)
 * [Jasmine](https://jasmine.github.io/)
 
 ### Browser Support ###
