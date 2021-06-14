@@ -18,9 +18,8 @@ $(document).ready(function() {
 // On load event handler for product view form to update rating stars
 $("#product-view-form").ready(function() {
     let rating = $('input[name="rating"]');
-    let ratingval
     if (rating) {
-        let ratingval = parseInt(rating.val())
+        let ratingval = parseInt(rating.val());
         if (ratingval == 1) {
             $("#star-1").removeClass("far fa-star").addClass("fas fa-star");
             $("#star-2").removeClass("far fa-star").addClass("far fa-star");
