@@ -5,23 +5,13 @@
     --titlefont: "Montserrat", sans-serif;
     --bodyfont: "Open Sans", sans-serif;
 /*-- Colour Palette--*/
-    --maximumbluegreen: #00C5CC;
     --vividiangreen: #009EA3;
-    --skobeloff: #00767A;
-    --atomictangerine: #FFA570;
-    --mangotango: #FF8B47;
-    --pumpkin: #FF711F;
     --salmon: #E97C72;
     --fireopal: #E35B4F;
     --venetianred: #C22C1E;  
     --lemoncurry: #CC9900;
     --orangeyellow: #F5B800;
-    --mikadoyellow: #FFC71F;
-    --paradisepink: #E74B63;
-    --ultrared: #EB6F82;
-    --salmonpink: #F093A1;
     --white: #FFFFFF;
-    --black: #212529;
 }
 
 /*-- HTML--*/
@@ -63,17 +53,10 @@ body {
     padding-left: 1.0rem;
 }
 
-/*-- Bootstrap Navbar Overrides --*/
-.navbar {
-    background-color: var(--fireopal);
-}
-
-.navbar-nav a {
+.section-heading {
     font-family: var(--titlefont);
-}
-
-.dropdown-item {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    font-weight: normal;
 }
 
 /*-- Alerts --*/
@@ -84,51 +67,6 @@ body {
     border-color: var(--orangeyellow);
 }
 
-/*-- Icon styling --*/
-.container-error i,
-.container-footer i {
-    color: var(--fireopal);
-}
-
-/*-- Icon and pseudo class styling --*/
-.container-error i:hover,
-.container-error i:active,
-.container-error i:focus,
-.container-footer i:hover,
-.container-footer i:active,
-.container-footer i:focus {
-    color: var(--venetianred);
-    text-decoration: none;
-}
-
-.container-error i:visited,
-.container-footer i:visited {
-    color: var(--fireopal);
-    text-decoration: none;
-}
-
-/*-- Footer link styling --*/
-.container-footer a {
-    font-family: var(--titlefont);
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--fireopal);
-    text-decoration: none;
-}
-
-/*-- Footer link pseudo class styling --*/
-.container-footer a:hover,
-.container-footer a:active,
-.container-footer a:focus {
-    color: var(--venetianred);
-    text-decoration: none;
-}
-
-container-footer a:visited {
-    color: var(--fireopal);
-    text-decoration: none;
-}
-
 /*-- Buttons --*/
 .btn-fireopal {
     font-family: var(--titlefont);
@@ -137,7 +75,6 @@ container-footer a:visited {
     border-color: var(--fireopal);
 }
 
-/*-- Buttons --*/
 .btn-orangeyellow {
     font-family: var(--titlefont);
     color: var(--white);
@@ -214,15 +151,7 @@ container-footer a:visited {
     border: 1px solid var(--firopal);
 }
 
-/*-- Geading Styling --*/
-.section-heading {
-    font-family: var(--titlefont);
-    font-size: 1.25rem;
-    font-weight: normal;
-}
-
 /*-- Results Table Styling --*/
-
 .results-table th,
 .results-table td {
     font-size: 1rem;
@@ -254,6 +183,52 @@ container-footer a:visited {
     color: var(--orangeyellow);
 }
 
+
+/*-- Icon styling --*/
+.container-error i,
+.container-footer i {
+    color: var(--fireopal);
+}
+
+/*-- Icon and pseudo class styling --*/
+.container-error i:hover,
+.container-error i:active,
+.container-error i:focus,
+.container-footer i:hover,
+.container-footer i:active,
+.container-footer i:focus {
+    color: var(--venetianred);
+    text-decoration: none;
+}
+
+.container-error i:visited,
+.container-footer i:visited {
+    color: var(--fireopal);
+    text-decoration: none;
+}
+
+/*-- Footer link styling --*/
+.container-footer a {
+    font-family: var(--titlefont);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--fireopal);
+    text-decoration: none;
+}
+
+/*-- Footer link pseudo class styling --*/
+.container-footer a:hover,
+.container-footer a:active,
+.container-footer a:focus {
+    color: var(--venetianred);
+    text-decoration: none;
+}
+
+container-footer a:visited {
+    color: var(--fireopal);
+    text-decoration: none;
+}
+
 /*-- Data Tables Style Overrides --*/
 .dataTables_length label,
 .dataTables_filter label,
@@ -271,22 +246,38 @@ container-footer a:visited {
 }
 
 /*-- Bootstrap Style Overrides --*/
-.page-item.active .page-link {
+/*-- Bootstrap Navbar Overrides --*/
+.navbar {
     background-color: var(--fireopal);
-    border: 1px solid var(--fireopal);
-}  
-
-.page-item.active .page-link:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
 }
 
+.navbar-nav a {
+    font-family: var(--titlefont);
+}
+
+.dropdown-item {
+    font-size: 1.2rem;
+}
+
+
+/*-- Bootstrap Form Overrides --*/
 .form-control, .form-select {
     border: 1px solid var(--salmon);
 }
 
 .form-control:focus, .form-select:focus {
     border-color: var(--fireopal);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
+}
+
+/*-- Bootstrap Table Overrides --*/
+.page-item.active .page-link {
+    background-color: var(--fireopal);
+    border: 1px solid var(--fireopal);
+}  
+
+.page-item.active .page-link:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
 }
