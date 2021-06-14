@@ -189,12 +189,26 @@ a similar clean look and feel but is not quite as wide, which will allow for mor
 * font-family: "Open Sans", sans-serif;
 
 
-[Architect's Daughter](https://fonts.google.com/specimen/Architects+Daughter) and [Montserrat](https://fonts.google.com/specimen/Montserrat) and 
+[Architect's Daughter](https://fonts.google.com/specimen/Architects+Daughter) and [Montserrat](https://fonts.google.com/specimen/Montserrat) 
 are available from [Google Fonts](https://fonts.google.com/) and are licensed under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).  
 [Open Sans](https://fonts.google.com/specimen/Montserrat) is available from [Google Fonts](https://fonts.google.com/) and is licensed under the 
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
 #### Colours ####
+White was chosen as the background colour to enable a smple and clear design to be implemented.  
+Bright foreground colours were chosen to contrast with the white background. Colour ideas were generated 
+using the [ColorSpace](https://mycolor.space/) colour palette generator. The final colour palette selected 
+is shown below: 
+
+<img src="/static/wireframes/colour-palette.png" width="800px" style="margin: 15px;">  
+
+* #FFFFFF - "White" - used for the background.
+* #009EA3 - "Vividian Green" - used for results and review table links.
+* #E97C72 - "Salmon" - used for form control borders and results and review table next and previous buttons.
+* #E35B4F - "Fire Opal" - used for navbar backgorund, buttons, results table header backround, inputs and footer links.
+* #C22C1E - "Venetian Red" - used as a higlighting colour for items coloured with "Fire Opal".
+* #F5B800 - "Orange Yellow" - used for alerts, buttons, results and review table row borders and stars.
+* #CC9900 - "Lemon Curry" - used as a higlighting colour for items coloured with "Orange Yellow".
 
 ## Technologies ##
 ### Languages ###
