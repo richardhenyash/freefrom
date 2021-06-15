@@ -25,6 +25,8 @@
         - [Fonts](#fonts)
         - [Colours](#colours)
 - [Technologies](#technologies)
+    - [Database](#database)
+    - [Deployment](#deployment)
     - [Languages](#languages)
     - [Frameworks Libraries and Tools](#frameworks-libraries-and-tools)
     - [Browser Support](#browser-support)
@@ -211,14 +213,19 @@ is shown below:
 * #CC9900 - "Lemon Curry" - used as a higlighting colour for items coloured with "Orange Yellow".
 
 ## Technologies ##
+
+### Database ###
+* [Mongo DB](https://www.mongodb.com/)
+
+### Deployment ###
+* [GitHub]https://github.com/
+* [Heroku]https://dashboard.heroku.com/)
+
 ### Languages ###
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Python](https://www.python.org/)
-
-### Databases ###
-* [Mongo DB](https://www.mongodb.com/)
 
 ### Frameworks Libraries and Tools ###
 * [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
@@ -248,10 +255,49 @@ For further information please see  the **Browser Compatibility** section in [TE
 ## Structure ##
 
 ### Information Architecture ###
+[Mongo DB](https://www.mongodb.com/) has been selected to host the back end database for [FreeFrom](https://freefrom.herokuapp.com/). 
+[Mongo DB](https://www.mongodb.com/) is a non relational [NoSQL](https://www.mongodb.com/nosql-explained) database hosting platform, 
+which provides an easily scalable platform to base the [FreeFrom](https://freefrom.herokuapp.com/) site on. The project data schema 
+was modelled using [Moon Modeller](https://www.datensen.com/data-modeling/moon-modeler-for-databases.html) and is shown below:  
+
+<img src="/static/wireframes/schema.png" width="800px" style="margin: 15px;"> 
+
+Please note that the field "allergens_suitability" in the "products" collection was renamed to "free_from_allergens". This change was 
+unfortunately not picked up in the note below the "products" collection in the schema diagram and unfortunately the free 14 day
+trial for the sowftware ended. 
+
+[FreeFrom](https://freefrom.herokuapp.com/) is deployed using [Heroku]https://dashboard.heroku.com/).
 
 ### Features Implemented ###
 
 #### Features Implemented in Phase 1 ####
+* **FreeFrom** logo, links to home page if selected:  
+<img src="/static/testing/logo.png" width="300px" style="margin: 5px;">  
+
+* **Search Input**, allows user to optionally input product search criteria to filter search results:  
+<img src="/static/testing/search.png" width="500px" style="margin: 5px;">  
+
+* **Category Selector**, allows user to optionally select category to filter search results:  
+<img src="/static/testing/category.png" width="500px" style="margin: 5px;">  
+
+* **Allergen Selector**, allows user to optionally select allergens to filter search results:  
+<img src="/static/testing/allergen-selector.png" width="80%" style="margin: 5px;">  
+
+* **Product Results Table**, displays product search results. Product name links to **Product View** page:
+<img src="/static/testing/results-table.png" width="80%" style="margin: 5px;"> 
+
+* **Product View**, displays product details. If user is logged in, allows review and rating to 
+be added or updated.  
+**Add** button enables user to review and rate product.  
+**Add** button text is changed to **Update** if the user has already reviewed the product.  
+**Update** button updates review and rating if product has already been reviewed by the user.  
+**Product Edit** button links to **Product Edit** page.  
+User reviews are shown in reviews table:  
+<img src="/static/testing/product-view.png" width="600px" style="margin: 5px;">  
+
+* **Product Edit**, displays form allowing product to be edited:  
+<img src="/static/testing/product-edit.png" width="600px" style="margin: 5px;">  
+
 
 #### Features To Be Implemented In Future Development Phases ####
 
