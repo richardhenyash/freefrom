@@ -37,6 +37,8 @@
         - [Features To Be Implemented In Future Development Phases](#features-to-be-implemented-in-future-development-phases)
         - [Design Changes During The Phase 1 Development](#design-changes-during-the-phase-1-development)
     - [Responsive Styling](#responsive-styling)
+    - [Python Code Logic](#python-code-logic)
+    - [JavaScript Code Logic](#javascript-code-logic)
 - [Testing](#testing)
 - [Deployment](#deployment)
 - [Credits](#credits)
@@ -280,6 +282,12 @@ trial for the sowftware ended.
 * **Category Selector**, allows user to optionally select category to filter search results:  
 <img src="/static/testing/category.png" width="500px" style="margin: 5px;">  
 
+* **Search Button**, searches the database and returns matched products in the **Product Results Table**:  
+<img src="/static/testing/search-button.png" width="100px" style="margin: 5px;">  
+
+* **Add Button**, links to the **Product Add** form. Only shown if user is logged in:  
+<img src="/static/testing/add-button.png" width="100px" style="margin: 5px;">  
+
 * **Allergen Selector**, allows user to optionally select allergens to filter search results:  
 <img src="/static/testing/allergen-selector.png" width="80%" style="margin: 5px;">  
 
@@ -287,26 +295,71 @@ trial for the sowftware ended.
 <img src="/static/testing/results-table.png" width="80%" style="margin: 5px;"> 
 
 * **Product View**, displays product details. If user is logged in, allows review and rating to 
-be added or updated.  
+be added or updated.   
 **Add** button enables user to review and rate product.  
 **Add** button text is changed to **Update** if the user has already reviewed the product.  
 **Update** button updates review and rating if product has already been reviewed by the user.  
 **Product Edit** button links to **Product Edit** page.  
-User reviews are shown in reviews table:  
-<img src="/static/testing/product-view.png" width="600px" style="margin: 5px;">  
+User reviews are shown below in the user reviews table:  
+<img src="/static/testing/product-view-add-review.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/product-view-update-review.png" width="500px%" style="margin: 5px;">  
 
 * **Product Edit**, displays form allowing product to be edited:  
-<img src="/static/testing/product-edit.png" width="600px" style="margin: 5px;">  
+<img src="/static/testing/product-edit.png" width="500px" style="margin: 5px;">  
 
+* **Product Add**, displays form allowing product to be added:  
+<img src="/static/testing/product-add.png" width="500px" style="margin: 5px;">  
+
+* **Allergen Add**, displays form allowing Allergen to be added:  
+<img src="/static/testing/allergen-add.png" width="500px" style="margin: 5px;">  
+
+* **Allergen Edit**, displays form allowing Allergen to be edited:  
+<img src="/static/testing/allergen-edit.png" width="500px" style="margin: 5px;">  
+
+* **Allergen Delete**, displays form allowing Allergen to be deleted:  
+<img src="/static/testing/allergen-delete.png" width="500px" style="margin: 5px;">  
+
+* **Allergen Delete Confirm**, displays form confirming Allergen sohuld be deleted:  
+<img src="/static/testing/allergen-delete-confirm.png" width="800px" style="margin: 5px;">  
+
+* **Category Add**, displays form allowing Category to be added:  
+<img src="/static/testing/category-add.png" width="500px" style="margin: 5px;">  
+
+* **Category Edit**, displays form allowing Category to be edited:  
+<img src="/static/testing/category-edit.png" width="500px" style="margin: 5px;">  
+
+* **Category Delete**, displays form allowing Category to be deleted:  
+<img src="/static/testing/category-delete.png" width="500px" style="margin: 5px;">  
+
+* **Category Delete Confirm**, displays form confirming Category should be deleted:  
+<img src="/static/testing/category-delete-confirm.png" width="800px" style="margin: 5px;">  
+
+* **Footer Contact Developer Link**, links to **Contact Developer** form:  
+<img src="/static/testing/contact-link.png" width="150px" style="margin: 5px;">  
+
+* **Footer GitHub Link**, links to developer page on [GitHub](https://github.com/richardhenyash):  
+<img src="/static/testing/github-link.png" width="40px" style="margin: 5px;">  
 
 #### Features To Be Implemented In Future Development Phases ####
+* Currently, when the user navigates back to the **Home** page from the **Product View** page, 
+the previous search results are not displayed. Adding this functionality was investigated and
+is likely to involve significant restructuring and re-testing of the python code. This feature 
+is recommended to be implemented in a future development phase.
 
 #### Design Changes During The Phase 1 Development ####
-After initial early user testing and feedback, the following minor design changes were made:
+There were no major changes in design or information architecture during the Phase 1 development.
 
 ### Responsive Styling ###
+* The **Navigation Menu** is collapsible, and collapses to an icon on small devices less than 768 pixels wide. 
+This is implemented using the [Bootstrap Navbar](https://getbootstrap.com/docs/5.0/components/navbar/) component.  
+* The **Search Input**, **Category Selector**, **Search Button** and **Add Button** are responsively styled, 
+and stack on small devices less than 768 pixels wide.  
 
 See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](/static/testing/responsive) screen prints.
+
+### Python Code Logic ###
+
+### JavaScript Code Logic ###
 
 ## Testing ##
 
