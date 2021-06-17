@@ -1,5 +1,5 @@
 /**
-* @fileOverview JavaScript Event Handler Library.
+* @fileOverview JavaScript Event Handler Module.
 * @author <a href="https://github.com/richardhenyash">Richard Ash</a>
 * @version 1.1.1
 */
