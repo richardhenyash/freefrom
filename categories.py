@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+FreeFrom Categories Python module
+Version 1.1.1
+"""
 # Import dependencies
 from flask import (
     Blueprint, flash, render_template, redirect, request, url_for)

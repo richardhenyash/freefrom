@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+FreeFrom Allergens Python module
+Version 1.1.1
+"""
 # Import dependencies
 from flask import (
     Blueprint, flash, render_template,

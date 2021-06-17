@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+FreeFrom Application Python module
+Version 1.1.1
+"""
 # Import dependencies
 import os
 from bson import errors

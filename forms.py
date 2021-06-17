@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+FreeFrom Forms Python module
+Version 1.1.1
+"""
 # Import dependencies
 from wtforms import (
     StringField, PasswordField, TextAreaField, Form, validators)
