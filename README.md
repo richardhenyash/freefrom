@@ -340,6 +340,9 @@ User reviews are shown below in the user reviews table:
 * **Footer GitHub Link**, links to developer page on [GitHub](https://github.com/richardhenyash):  
 <img src="/static/testing/github-link.png" width="40px" style="margin: 5px;">  
 
+* **Contact Developer**, enables developer to be contacted by email:  
+<img src="/static/testing/contact.png" width="300px" style="margin: 5px;">  
+
 #### Features To Be Implemented In Future Development Phases ####
 * Currently, when the user navigates back to the **Home** page from the **Product View** page, 
 the previous search results are not displayed. Adding this functionality was investigated and
@@ -358,6 +361,28 @@ and stack on small devices less than 768 pixels wide.
 See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](/static/testing/responsive) screen prints.
 
 ### Python Code Logic ###
+The **Python Code** for the project has been split into the following modules, using the 
+[Flask Blueprint](https://flask.palletsprojects.com/en/2.0.x/blueprints/) function:
+
+* [Application](/app.py) - Flask routes and functions related to the **Flask Application** and **Error Handling**.
+* [Allergens](/allergens.py) - Flask routes and functions related to **Allergens**.
+* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
+* [Database](/database.py) - Functions related to the **Mongo Database**.
+* [Environment](/database.py) - Environmental variables, imported when working locally in debug mode.
+* [Forms](/categories.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
+* [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
+
+The high level code logic is explained in the UML diagrams below:  
+
+<img src="/static/wireframes/userauth-logic.png" width="100%" style="margin: 5px;">  
+
+<img src="/static/wireframes/products-logic.png" width="100%" style="margin: 5px;">  
+
+<img src="/static/wireframes/categories-logic.png" width="100%" style="margin: 5px;">  
+
+<img src="/static/wireframes/allergens-logic.png" width="100%" style="margin: 5px;">  
+
+<img src="/static/wireframes/mail-logic.png" width="100%" style="margin: 5px;">  
 
 ### JavaScript Code Logic ###
 
@@ -386,6 +411,10 @@ https://jinja.palletsprojects.com/en/3.0.x/
 
 SMTP Lib:
 https://docs.python.org/3/library/smtplib.html
+
+Python:
+https://www.python.org/dev/peps/pep-0263/
+https://stackoverflow.com/questions/1523427/what-is-the-common-header-format-of-python-files
 
 Many thanks to the following:
 
