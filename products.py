@@ -343,6 +343,8 @@ def view(product_id):
                 form.rating.data = user_review["rating"]
                 # Set review in form object
                 form.review.data = user_review["review"]
+                # add review to other user reviews list
+                other_user_reviews = get_other_user_reviews(product, user_id)
             # else, add review to other user reviews list
             else:
                 other_user_reviews = get_other_user_reviews(product, user_id)
