@@ -54,6 +54,8 @@ $("#product-view-form").ready(function() {
     }
 });
 
+// On Click Event Handlers //
+
 // On click event added to rating stars //
 $("#star-5").click(function() {
     $("#star-1").removeClass("far fa-star").addClass("fas fa-star");
