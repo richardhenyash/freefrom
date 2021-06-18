@@ -371,18 +371,24 @@ The **Python Code** for the project has been split into the following modules, u
 * [Environment](/database.py) - Environmental variables, imported when working locally in debug mode.
 * [Forms](/categories.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
 * [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
+* [User Authentication](userauth.py) - Flask routes and functions related to **User Authentication**.
 
-The high level code logic is explained in the UML diagrams below:  
+The high level code logic is explained in the [UML Diagrams](/static/wireframes/uml/) below: 
 
-<img src="/static/wireframes/userauth-logic.png" width="100%" style="margin: 5px;">  
+#### Products ####
+<img src="/static/wireframes/uml/products-logic.png" width="100%" style="margin: 5px;">  
 
-<img src="/static/wireframes/products-logic.png" width="100%" style="margin: 5px;">  
+#### Categories ####
+<img src="/static/wireframes/uml/categories-logic.png" width="100%" style="margin: 5px;">  
 
-<img src="/static/wireframes/categories-logic.png" width="100%" style="margin: 5px;">  
+#### Allergens ####
+<img src="/static/wireframes/uml/allergens-logic.png" width="100%" style="margin: 5px;">  
 
-<img src="/static/wireframes/allergens-logic.png" width="100%" style="margin: 5px;">  
+#### User Authentication ####
+<img src="/static/wireframes/uml/userauth-logic.png" width="100%" style="margin: 5px;">  
 
-<img src="/static/wireframes/mail-logic.png" width="100%" style="margin: 5px;">  
+#### Mail ####
+<img src="/static/wireframes/uml/mail-logic.png" width="100%" style="margin: 5px;">  
 
 ### JavaScript Code Logic ###
 
