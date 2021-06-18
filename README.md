@@ -38,6 +38,12 @@
         - [Design Changes During The Phase 1 Development](#design-changes-during-the-phase-1-development)
     - [Responsive Styling](#responsive-styling)
     - [Python Code Logic](#python-code-logic)
+        - [Products](#products)
+        - [Categories](#categories)
+        - [Allergens](#allergens)
+        - [User Authentication](#user-authentication)
+        - [Mail](#mail)
+    - [Form Validation](#form-validation)
     - [JavaScript Code Logic](#javascript-code-logic)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -238,7 +244,7 @@ is shown below:
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 * [DataTables](https://datatables.net/)
 * [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
-* [WTForms-Validators](https://pypi.org/project/wtforms-validators/)
+* [wftorms-validators](https://pypi.org/project/wtforms-validators/)
 * [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
 * [SMTPLib](https://docs.python.org/3/library/smtplib.html)
@@ -369,7 +375,7 @@ The **Python Code** for the project has been split into the following modules, u
 * [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Database](/database.py) - Functions related to the **Mongo Database**.
 * [Environment](/database.py) - Environmental variables, imported when working locally in debug mode.
-* [Forms](/categories.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
+* [Forms](/forms.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
 * [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
 * [User Authentication](userauth.py) - Flask routes and functions related to **User Authentication**.
 
@@ -390,7 +396,28 @@ The high level code logic is explained in the [UML Diagrams](/static/wireframes/
 #### Mail ####
 <img src="/static/wireframes/uml/mail-logic.png" width="100%" style="margin: 5px;">  
 
+### Form Validation ###
+Form validation is achieved in [Python](https://www.python.org/) using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
+Custom **Form Classes** are defined within the [Forms](/forms.py) module for each required form. 
+See the [WTForms Crash Course](https://wtforms.readthedocs.io/en/2.3.x/crash_course/?highlight=crash%20course) 
+for help in getting up and running with [WTForms](https://wtforms.readthedocs.io/en/2.3.x/).
+Additional custom validators have been imported from [wftorms-validators]https://pypi.org/project/wtforms-validators/) and implemented.
+
 ### JavaScript Code Logic ###
+[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) has been used to implement the following features:  
+
+* Initialisation of [DataTables](https://datatables.net/), which are used to display the **Product** search results on the **Home** 
+page and the **Reviews** on the **Product View** page in a searchable, sortable, paginated data table format using a plug in.
+
+* Clickable **Rating** stars on the **Product View** and **Product Add** forms. When the star icons are clicked on the 
+**Product View** and **Product Add** forms, a hidden form input with the id of "Rating" is updated to the correct "star" rating 
+between 1 and 5 using the **JavaScript** on click event handlers defined in the [Events](/static/js/events.js) module.
+
+* When the **Product View** form is ready, the hidden form input with id "Rating" is read and the **Rating** star icons 
+are updated to reflect the correct rating value.
+
+See [UML Diagram](/static/wireframes/uml/) below:  
+<img src="/static/wireframes/uml/events-logic.png" width="100%" style="margin: 5px;">  
 
 ## Testing ##
 
