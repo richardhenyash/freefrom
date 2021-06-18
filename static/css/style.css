@@ -129,12 +129,12 @@ body {
 
 .input-label-sm {
     font-family: var(--titlefont);
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .form-check label {
     font-family: var(--titlefont);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     width: 5.5rem;
     vertical-align: middle;
     padding-bottom: 0.2rem;
@@ -142,7 +142,7 @@ body {
 
 .form-errors {
     font-family: var(--titlefont);
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--venetianred);
 }
 
@@ -154,7 +154,7 @@ body {
 /*-- Results Table Styling --*/
 .results-table th,
 .results-table td {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.2rem;
     word-wrap: break-word;
 }
@@ -173,7 +173,7 @@ body {
 }
 
 .results-table-row a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--vividiangreen);
     vertical-align: middle;
 }
@@ -210,7 +210,7 @@ body {
 /*-- Footer link styling --*/
 .container-footer a {
     font-family: var(--titlefont);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: var(--fireopal);
     text-decoration: none;
@@ -234,7 +234,7 @@ container-footer a:visited {
 .dataTables_filter label,
 .dataTables_paginate li,
 .dataTables_info {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 #productsTable_previous a {
