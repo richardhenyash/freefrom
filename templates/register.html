@@ -6,6 +6,10 @@
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
             <form method="POST" action="{{ url_for('userauth.register') }}">
+                <div class="div pb-2">
+                    <span class="form-label input-label">Already have an account?&nbsp;</span>
+                    <a href="{{ url_for('userauth.signin') }}" class="btn btn-lg btn-danger btn-orangeyellow">Sign In</a>
+                </div>
                 <div>
                     <div class="mb-3">
                         {{ form.email.label(class="form-label input-label") }}
