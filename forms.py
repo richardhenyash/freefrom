@@ -88,8 +88,6 @@ class ProductForm(Form):
         validators.Length(
             min=5, max=50,
             message="Product name must be between 5 and 50 characters long"),
-        wtforms_validators.AlphaSpace(
-            message="Product name must contain only letters or spaces")
     ])
     manufacturer = StringField('Manufacturer', [
         validators.DataRequired(
@@ -98,8 +96,6 @@ class ProductForm(Form):
             min=5, max=50,
             message="Manufacturer name must be between 5 " +
             "and 50 characters long"),
-        wtforms_validators.AlphaSpace(
-            message="Manufacturer name must contain only letters or spaces")
     ])
     freefrom = StringField('Free From', [
         validators.Optional(),
