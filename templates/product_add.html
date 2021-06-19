@@ -19,10 +19,22 @@
                         <label class="form-label input-label" for="categorySelector">Category</label>
                         <select class="form-select form-select-lg input-title" id="categorySelector"
                             name="categorySelector" aria-label="Category Selector">
-                            <option selected>Category...</option>
-                            {% for category in categories %}
-                                <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
-                            {% endfor %}
+                            {% if product_category %}
+                                <option selected>{{ product_category[0]|upper }}{{product_category[1:] }}</option>
+                            {% else %}
+                                <option selected>Category...</option>
+                            {% endif %} 
+                            {% if product_category %}         
+                                {% for category in categories %}
+                                    {% if category.name != product_category %}
+                                        <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                {% for category in categories %}
+                                    <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                                {% endfor %}
+                            {% endif %}
                         </select>
                     </div> 
                     <div class="col-md-3"></div>
@@ -45,7 +57,7 @@
                         {% for allergen in allergens %}
                             <div class="form-check form-check-inline">
                                 {% if selected_allergens %}
-                                    {% if allergen in selected_allergens %}
+                                    {% if allergen.name in selected_allergens %}
                                         <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
                                             value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
                                     {% else %}

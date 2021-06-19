@@ -150,20 +150,16 @@ def add():
         # Get product name, manufacturer and category
         product_name = form.name.data.lower()
         product_manufacturer = form.manufacturer.data.lower()
+        # Get selected category
         product_category = request.form.get("categorySelector").lower()
+        # Get selected allergens
+        allergen_list = get_selected_allergen_list(allergens)
+        # Add selected allergen names to selected_allergens list
+        selected_allergens = []
+        for allergen in allergen_list:
+            selected_allergens.append(allergen["name"])
         # Check if category has been selected from drop down
-        if product_category:
-            if product_category == "category...":
-                # Display flash message
-                flash(
-                    ("Please select Product Category. " +
-                        "If you would like to add a product category, " +
-                        "please contact the site Administrator"),
-                    "warning")
-                proceed = False
-            else:
-                proceed = True
-        else:
+        if product_category == "category...":
             # Display flash message
             flash(
                 ("Please select Product Category. " +
@@ -171,12 +167,12 @@ def add():
                     "please contact the site Administrator"),
                 "warning")
             proceed = False
+        else:
+            proceed = True
         if proceed:
             # Get category id
             product_category_id = mongo.db.categories.find_one(
                 {"name": product_category})["_id"]
-            # Get selected allergens
-            allergen_list = get_selected_allergen_list(allergens)
             # Check if any allergens are selected
             if allergen_list:
                 proceed = True
@@ -242,7 +238,9 @@ def add():
 
         return render_template(
             "product_add.html", categories=categories.rewind(),
-            allergens=allergens.rewind(), form=form)
+            allergens=allergens.rewind(),
+            product_category=product_category,
+            selected_allergens=selected_allergens, form=form)
 
     form.rating.data = None
     return render_template(
