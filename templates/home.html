@@ -9,13 +9,13 @@
                         Find, rate, review and add products which are free from one or more common allergens.
                     </div>
                 {% else %} 
-                <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
-                    Find, rate, review and add products which are free from one or more common allergens<br>
-                    <a href="{{ url_for('userauth.signin') }}">Sign In</a>
-                     or 
-                    <a href="{{ url_for('userauth.register') }}">Register</a> 
-                    to add, edit and rate products.
-                </div>
+                    <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
+                        Find, rate, review and add products which are free from one or more common allergens.<br>
+                        <a href="{{ url_for('userauth.signin') }}">Sign In</a>
+                        or 
+                        <a href="{{ url_for('userauth.register') }}">Register</a> 
+                        to add, edit and rate products.
+                    </div>
                 {% endif %}
             </div>
         </div>

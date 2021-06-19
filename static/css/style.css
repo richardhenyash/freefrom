@@ -67,7 +67,7 @@ body {
     border-color: var(--orangeyellow);
 }
 
-/*-- Alert Link Styling --*/
+/*-- Alert Links --*/
 .alert a {
     font-weight: 500;
     color: var(--fireopal);
@@ -125,7 +125,7 @@ body {
     box-shadow: 0 0 0 0.25rem rgb(255 199 31 / 25%);
 }
 
-/*-- Input Styling --*/
+/*-- Inputs --*/
 .input-title {
     font-family: var(--titlefont);
     border: 1px solid var(--fireopal);
@@ -167,7 +167,7 @@ body {
     border: 1px solid var(--firopal);
 }
 
-/*-- Results Table Styling --*/
+/*-- Results Table --*/
 .results-table th,
 .results-table td {
     font-size: 1.1rem;
@@ -200,13 +200,13 @@ body {
 }
 
 
-/*-- Icon styling --*/
+/*-- Icons --*/
 .container-error i,
 .container-footer i {
     color: var(--fireopal);
 }
 
-/*-- Icon and pseudo class styling --*/
+/*-- Icon pseudo class styling --*/
 .container-error i:hover,
 .container-error i:active,
 .container-error i:focus,
@@ -223,7 +223,7 @@ body {
     text-decoration: none;
 }
 
-/*-- Footer link styling --*/
+/*-- Footer links --*/
 .container-footer a {
     font-family: var(--titlefont);
     font-size: 1.4rem;
