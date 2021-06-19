@@ -238,6 +238,8 @@ def add():
             form.manufacturer.data = None
             form.rating.data = None
             form.review.data = None
+            product_id = mongo.db.products.find_one({"name": product_name})["_id"]
+            return redirect(url_for('products.view', product_id=product_id))
 
         return render_template(
             "product_add.html", categories=categories.rewind(),

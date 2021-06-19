@@ -4,7 +4,8 @@
     <section id="product-view" class="container-sm" aria-label="Product View">
         {% if not session.user %}
         <div class="row">
-            <div class="col-12 container-search pb-1">
+            <div class="col-md-3"></div>
+            <div class="col-12 col-md-6 container-search pb-1">
                 <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
                     <a href="{{ url_for('userauth.signin') }}">Sign In</a>
                      or 
@@ -12,6 +13,7 @@
                     to add, edit and rate products.
                 </div>
             </div>
+            <div class="col-md-3"></div>
         </div>
         {% endif %}
         <div class="row">
@@ -21,8 +23,7 @@
                     <div class="col-12 col-md-6 pt-4">
                         {{ form.name.label(class="form-label input-label") }}
                         {{ form.name(class="form-control form-control-lg form-control-readonly input-title") }}
-                    </div> 
-                    <div class="col-md-3"></div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
@@ -40,15 +41,15 @@
                     </div> 
                     <div class="col-md-3"></div>
                 </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-12 col-md-6 pt-4">
+                        {{ form.freefrom.label(class="form-label input-label") }}
+                        {{ form.freefrom(class="form-control form-control-lg input-title") }}
+                    </div> 
+                    <div class="col-md-3"></div>
+                </div>
                 {% if session.user %}
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-12 col-md-6 pt-4">
-                            {{ form.freefrom.label(class="form-label input-label") }}
-                            {{ form.freefrom(class="form-control form-control-lg input-title") }}
-                        </div> 
-                        <div class="col-md-3"></div>
-                    </div>
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-12 col-md-6 pt-2">
@@ -79,17 +80,19 @@
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-                {% endif %}
-                <div class="row pt-4 pb-4">
-                    <div class="col-md-3"></div>
-                        <div class="col-12 col-md-6 pt-2">
+                    <div class="row pt-4 pb-2">
+                        <div class="col-md-3"></div>
+                        <div class="col-12 col-md-6 pt-4">
                             <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Back</a>
                             {% if session.user %}
-                                <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal">Edit Product</a>
+                            <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal">Edit
+                                Product</a>
+                            <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow">Add Product</i></a>
                             {% endif %}
-                        </div> 
-                    <div class="col-md-3"></div>
-                </div>                
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                {% endif %}             
             </form>
         </div>
     </section>
