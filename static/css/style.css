@@ -67,6 +67,22 @@ body {
     border-color: var(--orangeyellow);
 }
 
+/*-- Alert Link Styling --*/
+.alert a {
+    font-weight: 500;
+    color: var(--fireopal);
+    text-decoration: none;
+}
+
+/*-- Alert Link Pseudo Class Styling --*/
+.alert a:hover,
+.alert a:active,
+.alert a:focus,
+.alert a:visited {
+    color: var(--venetianred);
+    text-decoration: none;
+}
+
 /*-- Buttons --*/
 .btn-fireopal {
     font-family: var(--titlefont);
@@ -269,6 +285,12 @@ container-footer a:visited {
     border-color: var(--fireopal);
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
+}
+
+.form-control-readonly:focus {
+    border-color: var(--salmon);
+    outline: 0;
+    box-shadow: None;
 }
 
 /*-- Bootstrap Table Overrides --*/
