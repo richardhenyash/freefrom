@@ -84,7 +84,7 @@ def error_invalid_id(e):
     """
     Error handler for invalid bson id
     """
-    errstr = "object not found"
+    errstr = "product not found"
     return render_template('error.html', error=errstr), 500
 
 
