@@ -146,7 +146,7 @@ def add():
     # Get allergens collection from database
     allergens = mongo.db.allergens.find().sort("name", 1)
     # Validate form
-    if request.method == "POST" and form.validate():
+    if request.method == "POST":
         # Get product name, manufacturer and category
         product_name = form.name.data.lower()
         product_manufacturer = form.manufacturer.data.lower()
@@ -159,16 +159,19 @@ def add():
         for allergen in allergen_list:
             selected_allergens.append(allergen["name"])
         # Check if category has been selected from drop down
-        if product_category == "category...":
-            # Display flash message
-            flash(
-                ("Please select Product Category. " +
-                    "If you would like to add a product category, " +
-                    "please contact the site Administrator"),
-                "warning")
-            proceed = False
+        if form.validate():
+            if product_category == "category...":
+                # Display flash message
+                flash(
+                    ("Please select Product Category. " +
+                        "If you would like to add a product category, " +
+                        "please contact the site Administrator"),
+                    "warning")
+                proceed = False
+            else:
+                proceed = True
         else:
-            proceed = True
+            proceed = False
         if proceed:
             # Get category id
             product_category_id = mongo.db.categories.find_one(
