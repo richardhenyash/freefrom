@@ -226,8 +226,8 @@ is shown below:
 * [Mongo DB](https://www.mongodb.com/)
 
 ### Deployment ###
-* [GitHub]https://github.com/
-* [Heroku]https://dashboard.heroku.com/)
+* [GitHub](https://github.com/
+* [Heroku](https://dashboard.heroku.com/)
 
 ### Languages ###
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -274,13 +274,16 @@ Please note that the field "allergens_suitability" in the "products" collection 
 unfortunately not picked up in the note below the "products" collection in the schema diagram and unfortunately the free 14 day
 trial for the sowftware ended. 
 
-[FreeFrom](https://freefrom.herokuapp.com/) is deployed using [Heroku]https://dashboard.heroku.com/).
+[FreeFrom](https://freefrom.herokuapp.com/) is deployed using [Heroku](https://dashboard.heroku.com/).
 
 ### Features Implemented ###
 
 #### Features Implemented in Phase 1 ####
 * **FreeFrom** logo, links to home page if selected:  
-<img src="/static/testing/logo.png" width="300px" style="margin: 5px;">  
+<img src="/static/testing/logo.png" width="300px" style="margin: 5px;"> 
+
+* **Home Page Alert**, explains the purpose of the site, shows user name if signed in:  
+<img src="/static/testing/home-alert.png" width="700px" style="margin: 5px;"> 
 
 * **Search Input**, allows user to optionally input product search criteria to filter search results:  
 <img src="/static/testing/search.png" width="500px" style="margin: 5px;">  
@@ -299,6 +302,12 @@ trial for the sowftware ended.
 
 * **Product Results Table**, displays product search results. Product name links to **Product View** page:
 <img src="/static/testing/results-table.png" width="80%" style="margin: 5px;"> 
+
+* **Sign In**, displays form allowing user to sign in. Includes link to **Register**:  
+<img src="/static/testing/signin.png" width="500px" style="margin: 5px;"> 
+
+* **Register**, displays form allowing user to register:  
+<img src="/static/testing/register.png" width="500px" style="margin: 5px;"> 
 
 * **Product View**, displays product details. If user is logged in, allows review and rating to 
 be added or updated.   
@@ -356,7 +365,34 @@ is likely to involve significant restructuring and re-testing of the python code
 is recommended to be implemented in a future development phase.
 
 #### Design Changes During The Phase 1 Development ####
-There were no major changes in design or information architecture during the Phase 1 development.
+The following design changes were implemented following initial user feedback:
+* The **Home** page alert was updated to include links to **Sign In** and **Register** 
+if the user is not signed in:  
+<img src="/static/testing/home-alert-new.png" width="700px" style="margin: 5px;">
+
+* The **Home** page search button was updated to take up the space of the search and add buttons 
+if the user is not signed in:  
+<img src="/static/testing/search-new.png" width="700px" style="margin: 5px;">  
+<img src="/static/testing/search-new-signedin.png" width="600px" style="margin: 5px;">
+
+* The **Register** form was updated to include a link to **Sign In**:  
+<img src="/static/testing/register-new.png" width="500px" style="margin: 5px;">  
+
+* The **Product Add** route was updated to redirect to the **Product View** of the 
+successfully added product.  
+
+* The **Product View** form was updated to include an **Add Product** button:  
+<img src="/static/testing/product-view-update-review-new.png" width="500px" style="margin: 5px;"> 
+
+* The form validation for the **Product** form was updated to allow speacial characters 
+(e.g. &, - etc) in product names.
+
+* Selection higlighting was turned off on the **Product View** form fields.
+
+* Font sizes were increased slightly.
+
+* Additional error checking was implemented.
+
 
 ### Responsive Styling ###
 * The **Navigation Menu** is collapsible, and collapses to an icon on small devices less than 768 pixels wide. 
