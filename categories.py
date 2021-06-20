@@ -81,17 +81,26 @@ def category_edit():
                 proceed = False
         if proceed:
             # Get category id
-            category_id = mongo.db.categories.find_one(
-                {"name": existing_category_name})["_id"]
-            # Update category in the database
-            category_update = {"name": category_name}
-            mongo.db.categories.update(
-                {"_id": ObjectId(category_id)}, category_update)
-            # Display flash message
-            flash(
-                "Category " + category_name +
-                " succesfully updated", "success")
-            return redirect(url_for('products.search'))
+            category = mongo.db.categories.find_one(
+                {"name": existing_category_name})
+            # Check if category is still in database
+            if category:
+                category_id = category["_id"]
+                # Update category in the database
+                category_update = {"name": category_name}
+                mongo.db.categories.update(
+                    {"_id": ObjectId(category_id)}, category_update)
+                # Display flash message
+                flash(
+                    "Category " + category_name +
+                    " succesfully updated", "success")
+                return redirect(url_for('products.search'))
+            else:
+                # Display flash message
+                flash(
+                    "Ooops.... category " + existing_category_name +
+                    " no longer exists in the database", "danger")
+                return redirect(url_for('categories.category_edit'))
         else:
             return render_template(
                 "category_edit.html",
@@ -129,10 +138,18 @@ def category_delete():
             # Get category
             category = mongo.db.categories.find_one(
                 {"name": existing_category_name})
-            category_id = category["_id"]
-            return render_template(
-                "category_delete_confirm.html",
-                category_id=category_id, category=category)
+            # Check if category is still in database
+            if category:
+                category_id = category["_id"]
+                return render_template(
+                    "category_delete_confirm.html",
+                    category_id=category_id, category=category)
+            else:
+                # Display flash message
+                flash(
+                    "Ooops.... category " + existing_category_name +
+                    " no longer exists in the database", "danger")
+                return redirect(url_for('categories.category_delete'))
         else:
             return render_template(
                 "category_delete.html", categories=categories)
@@ -149,16 +166,26 @@ def category_delete_confirm(category_id):
     Route for category delete confirm
     """
     if request.method == "POST":
-        # Get category name from database
-        category_name = mongo.db.categories.find_one(
-            {"_id": (ObjectId(category_id))})["name"]
-        # Delete category from the database
-        mongo.db.categories.delete_one({"_id": (ObjectId(category_id))})
-        # Display flash message
-        flash(
-            "Category " + category_name +
-            " succesfully deleted", "success")
-        return redirect(url_for('products.search'))
+        # Get category from database
+        category = mongo.db.categories.find_one(
+            {"_id": (ObjectId(category_id))})
+        # Check if category is still in database
+        if category:
+            # Get category name
+            category_name = category["name"]
+            # Delete category from the database
+            mongo.db.categories.delete_one({"_id": (ObjectId(category_id))})
+            # Display flash message
+            flash(
+                "Category " + category_name +
+                " succesfully deleted", "success")
+            return redirect(url_for('products.search'))
+        else:
+            # Display flash message
+            flash(
+                "Ooops.... selected category no longer " +
+                "exists in the database", "danger")
+            return redirect(url_for('categories.category_delete'))
 
     category = mongo.db.categories.find_one(
         {"_id": (ObjectId(category_id))})

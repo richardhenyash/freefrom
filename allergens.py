@@ -83,17 +83,26 @@ def allergen_edit():
                 proceed = False
         if proceed:
             # Get allergen id
-            allergen_id = mongo.db.allergens.find_one(
-                {"name": existing_allergen_name})["_id"]
-            # Update allergen in the database
-            allergen_update = {"name": allergen_name}
-            mongo.db.allergens.update(
-                {"_id": ObjectId(allergen_id)}, allergen_update)
-            # Display flash message
-            flash(
-                "Allergen " + allergen_name +
-                " succesfully updated", "success")
-            return redirect(url_for('products.search'))
+            allergen = mongo.db.allergens.find_one(
+                {"name": existing_allergen_name})
+            # Check if allergen is still in database
+            if allergen:
+                allergen_id = allergen["_id"]
+                # Update allergen in the database
+                allergen_update = {"name": allergen_name}
+                mongo.db.allergens.update(
+                    {"_id": ObjectId(allergen_id)}, allergen_update)
+                # Display flash message
+                flash(
+                    "Allergen " + allergen_name +
+                    " succesfully updated", "success")
+                return redirect(url_for('products.search'))
+            else:
+                # Display flash message
+                flash(
+                    "Ooops.... allergen " + existing_allergen_name +
+                    " no longer exists in the database", "danger")
+                return redirect(url_for('allergens.allergen_edit'))
         else:
             return render_template(
                 "allergen_edit.html",
@@ -129,10 +138,18 @@ def allergen_delete():
             # Get allergen
             allergen = mongo.db.allergens.find_one(
                 {"name": existing_allergen_name})
-            allergen_id = allergen["_id"]
-            return render_template(
-                "allergen_delete_confirm.html",
-                allergen_id=allergen_id, allergen=allergen)
+            # Check if allergen is still in database
+            if allergen:
+                allergen_id = allergen["_id"]
+                return render_template(
+                    "allergen_delete_confirm.html",
+                    allergen_id=allergen_id, allergen=allergen)
+            else:
+                # Display flash message
+                flash(
+                    "Ooops.... allergen " + existing_allergen_name +
+                    " no longer exists in the database", "danger")
+                return redirect(url_for('allergens.allergen_delete'))
         else:
             return render_template(
                 "allergen_delete.html", allergens=allergens)
@@ -149,17 +166,26 @@ def allergen_delete_confirm(allergen_id):
     Route for allergen delete confirm
     """
     if request.method == "POST":
-        # Get allergen name from database
-        allergen_name = mongo.db.allergens.find_one(
-            {"_id": (ObjectId(allergen_id))})["name"]
-        # Delete allergen from the database
-        mongo.db.allergens.delete_one(
+        # Get allergen from database
+        allergen = mongo.db.allergens.find_one(
             {"_id": (ObjectId(allergen_id))})
-        # Display flash message
-        flash(
-            "Allergen " + allergen_name +
-            " succesfully deleted", "success")
-        return redirect(url_for('products.search'))
+        if allergen:
+            # Get allergen name
+            allergen_name = allergen["name"]
+            # Delete allergen from the database
+            mongo.db.allergens.delete_one(
+                {"_id": (ObjectId(allergen_id))})
+            # Display flash message
+            flash(
+                "Allergen " + allergen_name +
+                " succesfully deleted", "success")
+            return redirect(url_for('products.search'))
+        else:
+            # Display flash message
+            flash(
+                "Ooops.... selected allergen no longer " +
+                "exists in the database", "danger")
+            return redirect(url_for('allergens.allergen_delete'))
 
     allergen = mongo.db.allergens.find_one(
         {"_id": (ObjectId(allergen_id))})
