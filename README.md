@@ -226,7 +226,7 @@ is shown below:
 * [Mongo DB](https://www.mongodb.com/)
 
 ### Deployment ###
-* [GitHub](https://github.com/
+* [GitHub](https://github.com/)
 * [Heroku](https://dashboard.heroku.com/)
 
 ### Languages ###
@@ -294,7 +294,7 @@ trial for the sowftware ended.
 * **Search Button**, searches the database and returns matched products in the **Product Results Table**:  
 <img src="/static/testing/search-button.png" width="100px" style="margin: 5px;">  
 
-* **Add Button**, links to the **Product Add** form. Only shown if user is logged in:  
+* **Add Button**, links to the **Product Add** form. Only shown if user is signed in:  
 <img src="/static/testing/add-button.png" width="100px" style="margin: 5px;">  
 
 * **Allergen Selector**, allows user to optionally select allergens to filter search results:  
@@ -309,7 +309,7 @@ trial for the sowftware ended.
 * **Register**, displays form allowing user to register:  
 <img src="/static/testing/register.png" width="500px" style="margin: 5px;"> 
 
-* **Product View**, displays product details. If user is logged in, allows review and rating to 
+* **Product View**, displays product details. If user is signed in, allows review and rating to 
 be added or updated.   
 **Add** button enables user to review and rate product.  
 **Add** button text is changed to **Update** if the user has already reviewed the product.  
@@ -373,7 +373,7 @@ if the user is not signed in:
 * The **Home** page search button was updated to take up the space of the search and add buttons 
 if the user is not signed in:  
 <img src="/static/testing/search-new.png" width="700px" style="margin: 5px;">  
-<img src="/static/testing/search-new-signedin.png" width="600px" style="margin: 5px;">
+<img src="/static/testing/search-new-signedin.png" width="700px" style="margin: 5px;">
 
 * The **Register** form was updated to include a link to **Sign In**:  
 <img src="/static/testing/register-new.png" width="500px" style="margin: 5px;">  
@@ -384,8 +384,8 @@ successfully added product.
 * The **Product View** form was updated to include an **Add Product** button:  
 <img src="/static/testing/product-view-update-review-new.png" width="500px" style="margin: 5px;"> 
 
-* The form validation for the **Product** form was updated to allow speacial characters 
-(e.g. &, - etc) in product names.
+* The form validation for the **Product** form was updated to allow special characters 
+(e.g. "&", "-" etc) in product names.
 
 * Selection higlighting was turned off on the **Product View** form fields.
 
