@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+    <!-- Category delete confirm -->
     <section id="category-delete-confirm" class="container-sm" aria-label="Category Delete Confirm">
         <div class="row">
+            <!-- Category delete confirm form -->
             <form id="category-delete-confirm-form" method="POST" action="{{ url_for('categories.category_delete_confirm', category_id=category_id) }}">
                 <div class="row">
                     <div class="col-12 container-search pb-1">
@@ -13,7 +15,9 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4 text-center">
+                        <!-- Cancel button redirects to category delete -->
                         <a href="{{ url_for('categories.category_delete') }}" class="btn btn-lg btn-secondary">Cancel</a>
+                        <!-- Delete button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Delete</button>
                     </div>
                     <div class="col-md-3"></div>

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-{% from "_formhelpers.html" import form_error %}
+    <!-- Allergen delete -->
     <section id="allergen-delete" class="container-sm" aria-label="Allergen Delete">
         <div class="row">
+            <!-- Allergen delete form -->
             <form id="allergen-delete-form" method="POST" action="{{ url_for('allergens.allergen_delete') }}">
+                <!-- Allergen selector -->
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
@@ -11,6 +13,7 @@
                         <select class="form-select form-select-lg input-title" id="allergenSelector"
                             name="allergenSelector" aria-label="Allergen Selector">
                                 <option selected>allergen...</option>
+                                <!-- Iterate over allergens and populate drop down allergen selector -->
                                 {% for allergen in allergens %}
                                     <option value="{{ allergen.name }}">{{ allergen.name }}</option>
                                 {% endfor %}
@@ -21,7 +24,9 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- Delete button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Delete</button>
+                        <!-- Cancel button redirects to product search -->
                         <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Cancel</a>
                     </div>
                     <div class="col-md-3"></div>

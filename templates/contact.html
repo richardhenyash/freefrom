@@ -1,33 +1,44 @@
 {% extends "base.html" %}
-{% block content %}  
+{% block content %}
+<!-- Import form error macro -->
 {% from "_formhelpers.html" import form_error %}
+<!-- Contact developer -->
 <section id="contact-form" class="container-sm" aria-label="Contact Form">
     <div class="row pt-5">
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
+            <!-- Contact form -->
             <form method="POST" action="{{ url_for('mail.contact') }}">
                 <div>
                     <div class="mb-3">
+                        <!-- WTForms name field -->
                         {{ form.name.label(class="form-label input-label") }}
                         {{ form.name(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.name) }}
                     </div>
                 </div>
                 <div>
                     <div class="mb-3">
+                        <!-- WTForms email field -->
                         {{ form.email.label(class="form-label input-label") }}
                         {{ form.email(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.email) }}
                     </div>
                 </div>
                 <div>
                     <div class="mb-3 pb-2">
+                        <!-- WTForms message field -->
                         {{ form.message.label(class="form-label input-label") }}
                         {{ form.message(rows="8", cols="5", class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.message) }}
                     </div>                    
                 </div>
+                <!-- Contact button submits form -->
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Contact</button>
+                <!-- Cancel button redirects to product search -->
                 <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Cancel</a>
             </form>
         </div>

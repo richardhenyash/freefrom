@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- Import form error macro -->
 {% from "_formhelpers.html" import form_error %}
+    <!-- Allergen edit -->
     <section id="allergen-edit" class="container-sm" aria-label="Allergen Edit">
         <div class="row">
+            <!-- Allergen edit form -->
             <form id="allergen-edit-form" method="POST" action="{{ url_for('allergens.allergen_edit') }}">
+                <!-- Allergen selector -->
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
@@ -11,6 +15,7 @@
                         <select class="form-select form-select-lg input-title" id="allergenSelector"
                             name="allergenSelector" aria-label="Allergen Selector">
                                 <option selected>allergen...</option>
+                                <!-- Iterate over allergens and populate drop down allergen selector -->
                                 {% for allergen in allergens %}
                                     <option value="{{ allergen.name }}">{{ allergen.name }}</option>
                                 {% endfor %}
@@ -21,8 +26,10 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- WTForms name field -->
                         {{ form.name.label(class="form-label input-label") }}
                         {{ form.name(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.name) }}
                     </div> 
                     <div class="col-md-3"></div>
@@ -30,7 +37,9 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- Update button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
+                        <!-- Cancel button redirects to product search -->
                         <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Cancel</a>
                     </div>
                     <div class="col-md-3"></div>

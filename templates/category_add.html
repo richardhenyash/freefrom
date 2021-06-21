@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- Import form error macro -->
 {% from "_formhelpers.html" import form_error %}
+    <!-- Category add -->
     <section id="category-add" class="container-sm" aria-label="Category Add">
         <div class="row">
+            <!-- Category add form -->
             <form id="category-add-form" method="POST" action="{{ url_for('categories.category_add') }}">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- WTForms name field -->
                         {{ form.name.label(class="form-label input-label") }}
                         {{ form.name(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.name) }}
                     </div>
                     <div class="col-md-3"></div>
@@ -16,7 +21,9 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- Add button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Add</button>
+                        <!-- Cancel button redirects to product search -->
                         <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Cancel</a>
                     </div>
                     <div class="col-md-3"></div>

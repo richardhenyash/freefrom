@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -48,7 +49,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ url_for ('home') }}">Home</a>
                         </li>
+                        <!-- If signed in user has admin privelages -->
                         {% if session.admin %}
+                            <!-- Show allergens menu -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="allergenDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -63,6 +66,7 @@
                                     <li><a class="dropdown-item" href="{{ url_for('allergens.allergen_delete') }}">Delete Allergen</a></li>
                                 </ul>
                             </li>
+                            <!-- Show categories menu -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -78,11 +82,14 @@
                                 </ul>
                             </li>
                         {% endif %}
+                        <!-- If user is signed in -->
                         {% if session.user %}
+                            <!-- Show Sign Out on menu -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('userauth.signout') }}">Sign Out</a>
                             </li> 
-                        {% else %} 
+                        {% else %}
+                            <!-- Else show Sign In on menu -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('userauth.signin') }}">Sign In</a>
                             </li>
@@ -92,8 +99,9 @@
             </div>
         </nav>  
     </header>
+    <!-- Flash Messages -->
     <section id="flash-messages" aria-label="Flash Messages">   
-        <!-- Display Flash Messages -->
+        <!-- Iterate over messages object and display flash messages -->
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 {% for category, message in messages %}

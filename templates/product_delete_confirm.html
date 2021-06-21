@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <!-- Product delete confirm form -->
     <section id="product-delete-confirm" class="container-sm" aria-label="Product Delete Confirm">
         <div class="row">
             <form id="product-delete-form" method="POST" action="{{ url_for('products.delete', product_id=product_id) }}">
@@ -13,7 +14,9 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4 text-center">
+                        <!-- Cancel button redirects to product edit -->
                         <a href="{{ url_for('products.edit', product_id=product_id) }}" class="btn btn-lg btn-secondary">Cancel</a>
+                        <!-- Delete button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Delete</button>
                     </div>
                     <div class="col-md-3"></div>

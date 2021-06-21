@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+    <!-- Product search -->
     <section id="search-input" class="container-sm" aria-label="Search Input">
         <div class="row">
             <div class="col-12 container-search pb-1">
+                <!-- If user is signed in -->
                 {% if session.user %}
+                    <!-- Display alert including user name -->
                     <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
                         Signed in as <b>{{ session['user'] }}</b>.<br>
                         Find, rate, review and add products which are free from one or more common allergens.
                     </div>
-                {% else %} 
+                {% else %}
+                    <!-- Else display alert with sign in and register links -->
                     <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
                         Find, rate, review and add products which are free from one or more common allergens.<br>
                         <a href="{{ url_for('userauth.signin') }}">Sign In</a>
@@ -19,22 +23,28 @@
                 {% endif %}
             </div>
         </div>
+        <!-- Search form -->
         <form id="search-form" method="POST" action="{{ url_for('products.search') }}">
             <div class="row">
                 <div class="input-group input-group-lg">
+                    <!-- Search text input -->
                     <div class="col-12 col-md-5 container-input">
                         <input type="search" id="search" name="search" class="form-control form-select-lg input-title" placeholder="Search....">
                     </div>
+                    <!-- Category selector -->
                     <div class="col-8 col-md-5 container-input">
                         <select class="form-select form-select-lg input-title" id="categorySelector"
                             name="categorySelector" aria-label="Category Selector">
                             <option selected>Category...</option>
+                            <!-- Iterate over categories and populate drop down category selector -->
                             {% for category in categories %}
                                 <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
                             {% endfor %}
                         </select>
-                    </div> 
+                    </div>
+                    <!-- If user is signed in -->
                     {% if session.user %} 
+                        <!-- Display search and add buttons -->
                         <div class="col-2 col-md-1 container-input">
                             <button type="submit" id="btn-search" class="btn btn-lg btn-danger btn-fireopal w-100">
                                 <i class="fas fa-search"></i>  
@@ -46,6 +56,7 @@
                             </a>
                         </div>
                     {% else %}
+                        <!-- Else display only search button -->
                         <div class="col-4 col-md-2 container-input">
                             <button type="submit" id="btn-search" class="btn btn-lg btn-danger btn-fireopal w-100">
                                 <i class="fas fa-search"></i>  
@@ -54,19 +65,26 @@
                     {% endif %}
                 </div>
             </div>
+            <!-- Allergen selector -->
             <div class="row">
                 <div class="col-12 p-4">
+                    <!-- Iterate over allergens and populate drop down allergen selector -->
                     {% for allergen in allergens %}
                         <div class="form-check form-check-inline">
+                            <!-- If selected_allergens has been passed through as an argument -->
                             {% if selected_allergens %}
+                                <!-- If allergen has already been selected -->
                                 {% if allergen in selected_allergens %}
+                                    <!-- Show as checked -->
                                     <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
                                         value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
                                 {% else %}
+                                    <!-- Else show unchecked -->
                                     <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
                                         value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">    
                                 {% endif %}                               
                             {% else %}
+                                <!-- Else show unchecked -->
                                 <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
                                     value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox">
                             {% endif %}
@@ -77,11 +95,15 @@
             </div>
         </form>
     </section>
+    <!-- If products are found -->
     {% if products %}
+        <!-- Search results -->
         <section id="search-results" class="container-sm" aria-label="Search Results">
             <div class="row">
                 <div class="col-12 container-results">
+                    <!-- Search results DataTable -->
                     <table id="productsTable" class="table table-striped responsive results-table" style="width:100%">
+                        <!-- Table headers -->
                         <thead>
                             <tr class="table-primary results-table-header">
                                 <th data-priority="1">Product</th>
@@ -92,12 +114,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Iterate over products and populate table row with product information -->
                             {% for product in products %}
                                 <tr class="table-light results-table-row">
+                                    <!-- Product name -->
                                     <td><a href="{{ url_for('products.view', product_id=product._id) }}">{{ product.name }}</a></td>
+                                    <!-- Product manufacturer -->
                                     <td>{{ product.manufacturer }}</td>
+                                    <!-- Product category -->
                                     <td>{{ product.category_name }}</td>
+                                    <!-- Product average rating, shown with star icons -->
+                                    <!-- If product is rated -->
                                     {% if product.average_rating %}
+                                        <!-- If product is rated 0.0 -->
                                         {% if product.average_rating == 0.0 %}
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -107,6 +136,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 0.5 -->
                                         {% elif product.average_rating == 0.5 %}
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -116,6 +146,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 1.0 -->
                                         {% elif product.average_rating == 1.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -125,6 +156,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 1.5 -->
                                         {% elif product.average_rating == 1.5 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -134,6 +166,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 2.0 -->
                                         {% elif product.average_rating == 2.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -143,6 +176,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 2.5 -->
                                         {% elif product.average_rating == 2.5 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -152,6 +186,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 3.0 -->
                                         {% elif product.average_rating == 3.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -161,6 +196,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 3.5 -->
                                         {% elif product.average_rating == 3.5 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -170,6 +206,7 @@
                                                 <i class="fas fa-star-half-alt"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 4.0 -->
                                         {% elif product.average_rating == 4.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -179,6 +216,7 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If product is rated 4.5 -->
                                         {% elif product.average_rating == 4.5 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -188,6 +226,7 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star-half-alt"></i>
                                             </td>
+                                        <!-- If product is rated 5.0 -->
                                         {% elif product.average_rating == 5.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ product.average_rating }}</span>
@@ -198,9 +237,12 @@
                                                 <i class="fas fa-star"></i>
                                             </td>
                                         {% endif %} 
+                                    <!-- If product is not rated -->
                                     {% else %}
+                                        <!-- Display text Not Rated -->
                                         <td>Not Rated</td>
                                     {% endif %}
+                                    <!-- Product free from list, joined with comma -->
                                     <td>{{ product.free_from_allergen_names|join(", ") }}</td>
                                 </tr>
                             {% endfor %}

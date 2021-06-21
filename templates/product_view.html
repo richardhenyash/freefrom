@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+ <!--Import form error macro -->
 {% from "_formhelpers.html" import form_error %}
+    <!-- Product view -->
     <section id="product-view" class="container-sm" aria-label="Product View">
+        <!-- If user is not signed in -->
         {% if not session.user %}
         <div class="row">
             <div class="col-md-3"></div>
+            <!-- Show alert with sign in and register links -->
             <div class="col-12 col-md-6 container-search pb-1">
                 <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
                     <a href="{{ url_for('userauth.signin') }}">Sign In</a>
@@ -17,10 +21,12 @@
         </div>
         {% endif %}
         <div class="row">
+            <!-- Product view form -->
             <form id="product-view-form" method="POST" action="{{ url_for('products.view', product_id=product._id) }}">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- WTForms name field -->
                         {{ form.name.label(class="form-label input-label") }}
                         {{ form.name(class="form-control form-control-lg form-control-readonly input-title") }}
                     </div>
@@ -28,6 +34,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- WTForms category field -->
                         {{ form.category.label(class="form-label input-label") }}
                         {{ form.category(class="form-control form-control-lg form-control-readonly input-title") }}
                     </div> 
@@ -36,6 +43,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- WTForms manufacturer field -->
                         {{ form.manufacturer.label(class="form-label input-label") }}
                         {{ form.manufacturer(class="form-control form-control-lg form-control-readonly input-title") }}
                     </div> 
@@ -44,17 +52,21 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
+                        <!-- WTForms freefrom field -->
                         {{ form.freefrom.label(class="form-label input-label") }}
                         {{ form.freefrom(class="form-control form-control-lg input-title") }}
                     </div> 
                     <div class="col-md-3"></div>
                 </div>
+                <!-- If user is signed in -->
                 {% if session.user %}
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-12 col-md-6 pt-2">
+                            <!-- WTForms review field -->
                             {{ form.review.label(class="form-label input-label") }}
                             {{ form.review(rows="5", cols="5", class="form-control form-control-lg input-title") }}
+                            <!-- Display form errors -->
                             {{ form_error(form.review) }}
                         </div>
                         <div class="col-md-3"></div>
@@ -62,19 +74,25 @@
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-12 col-md-6 pt-4 rating">
+                            <!-- WTForms rating field, not displayed -->
                             {{ form.rating.label(class="form-label input-label") }} 
                             {{ form.rating(class="d-none") }}
+                                <!-- Rating star icons -->
                                 <span>&nbsp;</span>
                                 <i id="star-1" class="far fa-star"></i>               
                                 <i id="star-2" class="far fa-star"></i>
                                 <i id="star-3" class="far fa-star"></i>
                                 <i id="star-4" class="far fa-star"></i>
                                 <i id="star-5" class="far fa-star"></i>
+                            <!-- Display form errors -->
                             {{ form_error(form.rating) }}
                             <span class="pr-4">&nbsp;</span>
+                            <!-- If user has reviewed product before -->
                             {% if user_review %}
+                                <!-- Show update button -->
                                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
                             {% else %}
+                                <!-- Else show add button -->
                                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Add</button>
                             {% endif %}
                         </div>
@@ -83,11 +101,15 @@
                     <div class="row pt-4 pb-2">
                         <div class="col-md-3"></div>
                         <div class="col-12 col-md-6 pt-4">
+                            <!-- Back button redirects to product search -->
                             <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Back</a>
+                            <!-- If user is signed in -->
                             {% if session.user %}
-                            <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal">Edit
-                                Product</a>
-                            <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow">Add Product</i></a>
+                                <!-- Show Edit Product button -->
+                                <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal">Edit
+                                    Product</a>
+                                <!-- Show Add Product button -->
+                                <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow">Add Product</i></a>
                             {% endif %}
                         </div>
                         <div class="col-md-3"></div>
@@ -96,14 +118,19 @@
             </form>
         </div>
     </section>
+    <!-- Product reviews -->
     <section id="reviews" class="container-sm" aria-label="Product Reviews">
         <div class="row pt-4">
             <div class="col-md-3"></div>
              <div class="col-12 col-md-6 pt-2">
+                <!-- If product has been reviewed by other users -->
                 {% if other_user_reviews %}
+                    <!-- Review heading -->
                     <h3 class="section-heading">Reviews</h3>
                 {% endif %}
+                <!-- Reviews DataTable -->
                 <table id="reviewsTable" class="table table-striped responsive results-table" style="width:100%">
+                    <!-- Table header -->
                     <thead>
                         <tr class="table-primary results-table-header">
                             <th data-priority="1">User Name</th>
@@ -112,11 +139,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- If product has been reviewed by other users -->
                         {% if other_user_reviews %}
                             {% for review in other_user_reviews %}
                                 <tr class="table-light results-table-row">
+                                    <!-- username -->
                                     <td>{{ review.username }}</td>
+                                    <!-- If product has been rated -->
                                     {% if review.rating %}
+                                        <!-- If rating is 0.0 -->
                                         {% if review.rating == 0.0 %}
                                             <td class="table-rating">
                                                 <span class="d-none">{{ review.rating }}</span>
@@ -126,6 +157,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If rating is 1.0 -->
                                         {% elif review.rating == 1.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ review.rating }}</span>
@@ -135,6 +167,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If rating is 2.0 -->
                                         {% elif review.rating == 2.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ review.rating }}</span>
@@ -144,6 +177,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If rating is 3.0 -->
                                         {% elif review.rating == 3.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ review.rating }}</span>
@@ -153,6 +187,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If rating is 4.0 -->
                                         {% elif review.rating == 4.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ review.rating }}</span>
@@ -162,6 +197,7 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </td>
+                                        <!-- If rating is 5.0 -->
                                         {% elif review.rating == 5.0 %} 
                                             <td class="table-rating">
                                                 <span class="d-none">{{ review.rating }}</span>
@@ -172,7 +208,9 @@
                                                 <i class="fas fa-star"></i>
                                             </td>
                                         {% endif %} 
+                                    <!-- Else if product is not rated -->
                                     {% else %}
+                                        <!-- Display Not Rated text -->
                                         <td>Not Rated</td>
                                     {% endif %}
                                     <td>{{ review.review }}</td>

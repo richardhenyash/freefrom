@@ -1,10 +1,13 @@
 {% extends "base.html" %}
-{% block content %}  
+{% block content %}
+ <!--Import form error macro -->
 {% from "_formhelpers.html" import form_error %}
+<!-- Register -->
 <section id="register" class="container-sm" aria-label="Register">
     <div class="row pt-5">
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
+            <!-- Register form -->
             <form method="POST" action="{{ url_for('userauth.register') }}">
                 <div class="div pb-2">
                     <span class="form-label input-label">Already have an account?&nbsp;</span>
@@ -12,33 +15,43 @@
                 </div>
                 <div>
                     <div class="mb-3">
+                        <!-- WTForms email field -->
                         {{ form.email.label(class="form-label input-label") }}
                         {{ form.email(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.email) }}
                     </div>
                 </div>
                 <div>
                     <div class="mb-3">
+                        <!-- WTForms username field -->
                         {{ form.username.label(class="form-label input-label") }}
                         {{ form.username(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.username) }}
                     </div>
                 </div>
                 <div>
                     <div class="mb-3 pb-2">
+                        <!-- WTForms password field -->
                         {{ form.password.label(class="form-label input-label") }}
                         {{ form.password(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.password) }}
                     </div>                    
                 </div>
                 <div>
                     <div class="mb-3 pb-2">
+                        <!-- WTForms confirmpassword field -->
                         {{ form.confirmpassword.label(class="form-label input-label") }}
                         {{ form.confirmpassword(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.confirmpassword) }}
                     </div>                    
                 </div>
+                <!-- Register button submits form -->
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Register</button>
+                <!-- Cancel button redirects to sign in -->
                 <a href="{{ url_for('userauth.signin') }}" class="btn btn-lg btn-secondary">Cancel</a>
             </form>
         </div>

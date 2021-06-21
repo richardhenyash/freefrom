@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+ <!--Import form error macro -->
 {% from "_formhelpers.html" import form_error %}
+<!-- Sign in -->
 <section id="signin" class="container-sm" aria-label="Sign In">
     <div class="row pt-5">
         <div class="col-sm-4"></div>
         <div class="col-12 col-sm-4">
+            <!-- Sign in form -->
             <form method="POST" action="{{ url_for('userauth.signin') }}">
                 <div class="div pb-2">
                     <span class="form-label input-label">Don't have an account?&nbsp;</span>
@@ -12,19 +15,25 @@
                 </div>
                 <div>
                     <div class="mb-3">
+                        <!-- WTForms username field -->
                         {{ form.username.label(class="form-label input-label") }}
                         {{ form.username(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.username) }}
                     </div>
                 </div>
                 <div>
                     <div class="mb-3 pb-2">
+                        <!-- WTForms password field -->
                         {{ form.password.label(class="form-label input-label") }}
                         {{ form.password(class="form-control form-control-lg input-title") }}
+                        <!-- Display form errors -->
                         {{ form_error(form.password) }}
                     </div>                    
                 </div>
+                <!-- Sign in button submits form -->
                 <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Sign In</button>
+                <!-- Cancel button redirects to product seach -->
                 <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Cancel</a>
             </form>
         </div>
