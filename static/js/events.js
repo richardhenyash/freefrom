@@ -8,12 +8,15 @@
 // Initialisation Event Handlers //
 
 // DataTables event handlers
+
+// Products Table
 $(document).ready(function() {
     $("#productsTable").DataTable();
-} );
+});
+// Reviews Table
 $(document).ready(function() {
     $("#reviewsTable").DataTable();
-} );
+});
 
 // On load event handler for product view form to update rating stars
 $("#product-view-form").ready(function() {
