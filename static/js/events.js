@@ -12,6 +12,7 @@
 // Products Table
 $(document).ready(function() {
     $("#productsTable").DataTable({
+        // Fix width of rating column
         "columnDefs": [
             { "width": "6rem", "targets": 3 }
         ]
@@ -20,8 +21,9 @@ $(document).ready(function() {
 // Reviews Table
 $(document).ready(function() {
     $("#reviewsTable").DataTable({
+        // Fix width of rating column
         "columnDefs": [
-            { "width": "6rem", "targets": 3 }
+            { "width": "6rem", "targets": 1 }
         ]
     });
 });
