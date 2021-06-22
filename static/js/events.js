@@ -11,11 +11,19 @@
 
 // Products Table
 $(document).ready(function() {
-    $("#productsTable").DataTable();
+    $("#productsTable").DataTable({
+        "columnDefs": [
+            { "width": "6rem", "targets": 3 }
+        ]
+    });
 });
 // Reviews Table
 $(document).ready(function() {
-    $("#reviewsTable").DataTable();
+    $("#reviewsTable").DataTable({
+        "columnDefs": [
+            { "width": "6rem", "targets": 3 }
+        ]
+    });
 });
 
 // On load event handler for product view form to update rating stars

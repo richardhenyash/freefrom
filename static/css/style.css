@@ -197,6 +197,7 @@ body {
 .results-table-row i,
 .rating i {
     color: var(--orangeyellow);
+    font-size: 1.0rem;
 }
 
 
@@ -302,11 +303,4 @@ container-footer a:visited {
 .page-item.active .page-link:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
-}
-
-/*-- Media queries --*/
-@media (max-width: 768px) {
-    .results-table-row i {
-        font-size: 0.9rem;
-    }
 }
