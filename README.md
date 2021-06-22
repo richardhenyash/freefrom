@@ -299,7 +299,8 @@ For further information see [Deployment](#deployment).
 * **Category Selector**, allows user to optionally select category to filter search results:  
 <img src="/static/testing/category.png" width="500px" style="margin: 5px;">  
 
-* **Search Button**, searches the database and returns matched products in the **Product Results Table**:  
+* **Search Button**, searches the database and returns matched products in the **Product Results Table**. 
+Resizes if user is not signed in and add button is not displayed:  
 <img src="/static/testing/search-button.png" width="100px" style="margin: 5px;">  
 
 * **Add Button**, links to the **Product Add** form. Only shown if user is signed in:  
