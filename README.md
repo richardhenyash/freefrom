@@ -418,16 +418,16 @@ The **Python Code** for the project has been split into the following modules, u
 The high level code logic is explained in the [UML Diagrams](/static/wireframes/uml/) below: 
 
 #### [Products](/static/wireframes/uml/products-logic.png) ####
-<img src="/static/wireframes/uml/products-logic.png" width="600px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/products-logic.png" width="800px" style="margin: 5px;">  
 
 #### [Categories](/static/wireframes/uml/categories-logic.png) ####
-<img src="/static/wireframes/uml/categories-logic.png" width="600px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/categories-logic.png" width="700px" style="margin: 5px;">  
 
 #### [Allergens](/static/wireframes/uml/allergens-logic.png) ####
-<img src="/static/wireframes/uml/allergens-logic.png" width="600px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/allergens-logic.png" width="700px" style="margin: 5px;">  
 
 #### [User Authentication](/static/wireframes/uml/userauth-logic.png) ####
-<img src="/static/wireframes/uml/userauth-logic.png" width="600px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/userauth-logic.png" width="700px" style="margin: 5px;">  
 
 #### [Mail](/static/wireframes/uml/mail-logic.png) ####
 <img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 5px;">  
