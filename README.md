@@ -418,26 +418,54 @@ The **Python Code** for the project has been split into the following modules, u
 The high level code logic is explained in the [UML Diagrams](/static/wireframes/uml/) below: 
 
 #### Products ####
-<img src="/static/wireframes/uml/products-logic.png" width="100%" style="margin: 5px;">  
+<img src="/static/wireframes/uml/products-logic.png" width="600px" style="margin: 5px;">  
 
 #### Categories ####
-<img src="/static/wireframes/uml/categories-logic.png" width="100%" style="margin: 5px;">  
+<img src="/static/wireframes/uml/categories-logic.png" width="600px" style="margin: 5px;">  
 
 #### Allergens ####
-<img src="/static/wireframes/uml/allergens-logic.png" width="100%" style="margin: 5px;">  
+<img src="/static/wireframes/uml/allergens-logic.png" width="600px" style="margin: 5px;">  
 
 #### User Authentication ####
-<img src="/static/wireframes/uml/userauth-logic.png" width="100%" style="margin: 5px;">  
+<img src="/static/wireframes/uml/userauth-logic.png" width="600px" style="margin: 5px;">  
 
 #### Mail ####
-<img src="/static/wireframes/uml/mail-logic.png" width="100%" style="margin: 5px;">  
+<img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 5px;">  
 
 ### Form Validation ###
 Form validation is achieved in [Python](https://www.python.org/) using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
 Custom **Form Classes** are defined within the [Forms](/forms.py) module for each required form. 
-See the [WTForms Crash Course](https://wtforms.readthedocs.io/en/2.3.x/crash_course/?highlight=crash%20course) 
-for help in getting up and running with [WTForms](https://wtforms.readthedocs.io/en/2.3.x/).
 Additional custom validators have been imported from [wftorms-validators]https://pypi.org/project/wtforms-validators/) and implemented.
+See below table for form validation implemented using WTForms:  
+
+Form|Field|WTForms Field Type|Required|Minimum Length|Maximum Length|Notes
+----|-----|------------------|--------|--------------|--------------|-----
+Sign In|User Name|StringField|Yes|5|25|May only contain letters or numbers
+Sign In|Password|PasswordField|Yes|5|25|
+Register|User Name|StringField|Yes|5|25|Inherits field from Sign In form class
+Register|Password|PasswordField|Yes|5|25|Inherits field from Sign In form class
+Register|Email|PasswordField|Yes|5|None|Inherits field from Sign In form class
+Register|Confirm Password|PasswordField|Yes|None|None|Must match Password
+Contact|Name|StringField|Yes|3|100|May only contain letters or spaces
+Contact|Email|StringField|Yes|5|None|
+Contact|Message|TextAreaField|Yes|10|500|
+Product Add|Name|StringField|Yes|5|50|
+Product Add|Manufacturer|StringField|Yes|5|50|
+Product Add|FreeFrom|StringField|No|None|None|Automatically populated from check boxes
+Product Add|Review|TextAreaField|Yes|5|50|
+Product Add|Rating|StringField|No|1|1|Automatically populated using JavaScript event handlers
+Product View|Name|StringField|No|None|None|Read Only
+Product View|Manufacturer|StringField|No|None|None|Read Only
+Product View|FreeFrom|StringField|No|None|None|Read Only
+Product View|Review|TextAreaField|Yes|5|250|
+Product View|Rating|StringField|No|1|1|Automatically populated using JavaScript event handlers
+Product Edit|Name|StringField|Yes|5|50|
+Product Edit|Manufacturer|StringField|Yes|5|50|
+Product Edit|FreeFrom|StringField|No|None|None|Automatically populated from check boxes
+Allergen Add|Name|StringField|Yes|3|20|May only contain letters or spaces
+Allergen Edit|Name|StringField|Yes|3|20|May only contain letters or spaces
+Category Add|Name|StringField|Yes|3|30|May only contain letters or spaces
+Category Edit|Name|StringField|Yes|3|30|May only contain letters or spaces
 
 ### JavaScript Code Logic ###
 [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) has been used to implement the following features:  
@@ -453,7 +481,7 @@ between 1 and 5 using the **JavaScript** on click event handlers defined in the 
 are updated to reflect the correct rating value.
 
 See [UML Diagram](/static/wireframes/uml/) below:  
-<img src="/static/wireframes/uml/events-logic.png" width="100%" style="margin: 5px;">  
+<img src="/static/wireframes/uml/events-logic.png" width="300px" style="margin: 5px;">  
 
 ## Testing ##
 
