@@ -265,14 +265,18 @@ For further information please see  the **Browser Compatibility** section in [TE
 ### Information Architecture ###
 [Mongo DB](https://www.mongodb.com/) has been selected to host the back end database for [FreeFrom](https://freefrom.herokuapp.com/). 
 [Mongo DB](https://www.mongodb.com/) is a non relational [NoSQL](https://www.mongodb.com/nosql-explained) database hosting platform, 
-which provides an easily scalable platform to base the [FreeFrom](https://freefrom.herokuapp.com/) site on. The project data schema 
+which provides an easily scalable platform to base the [FreeFrom](https://freefrom.herokuapp.com/) site on.  
+
+The project data schema 
 was modelled using [Moon Modeller](https://www.datensen.com/data-modeling/moon-modeler-for-databases.html) and is shown below:  
 
 <img src="/static/wireframes/schema.png" width="800px" style="margin: 15px;"> 
 
-Please note that the field "allergens_suitability" in the "products" collection was renamed to "free_from_allergens". This change was 
-unfortunately not picked up in the note below the "products" collection in the schema diagram and unfortunately the free 14 day
-trial for the sowftware ended. 
+As shown in the schema diagram, there are four collections, **Users**, **Products**, **Categories** and **Allergens**.  
+
+Please note that the field **allergens_suitability** in the **Products** collection was renamed to **free_from_allergens**. 
+This change was unfortunately not picked up in the note below the "products" collection in the schema diagram shown above 
+and unfortunately the free 14 day trial for the software ended. 
 
 [FreeFrom](https://freefrom.herokuapp.com/) is deployed using [Heroku](https://dashboard.heroku.com/).
 
@@ -435,7 +439,7 @@ The high level code logic is explained in the [UML Diagrams](/static/wireframes/
 ### Form Validation ###
 Form validation is achieved in [Python](https://www.python.org/) using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
 Custom **Form Classes** are defined within the [Forms](/forms.py) module for each required form. 
-Additional custom validators have been imported from [wftorms-validators]https://pypi.org/project/wtforms-validators/) and implemented.
+Additional custom validators have been imported from [wftorms-validators](https://pypi.org/project/wtforms-validators/) and implemented.
 See below table for form validation implemented using WTForms:  
 
 Form|Field|WTForms Field Type|Required|Minimum Length|Maximum Length|Notes
@@ -512,6 +516,10 @@ https://docs.python.org/3/library/smtplib.html
 Python:
 https://www.python.org/dev/peps/pep-0263/
 https://stackoverflow.com/questions/1523427/what-is-the-common-header-format-of-python-files
+
+Logo:
+https://www.vectorstock.com/
+
 
 Many thanks to the following:
 
