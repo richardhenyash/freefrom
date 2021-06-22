@@ -307,6 +307,6 @@ container-footer a:visited {
 /*-- Media queries --*/
 @media (max-width: 768px) {
     .results-table-row i {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 }
