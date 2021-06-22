@@ -21,9 +21,11 @@ $(document).ready(function() {
 // Reviews Table
 $(document).ready(function() {
     $("#reviewsTable").DataTable({
-        // Fix width of rating column
         "columnDefs": [
-            { "width": "6rem", "targets": 1 }
+            // Fix width of user name column
+            { "width": "25%", "targets": 0 }
+            // Fix width of rating column
+            { "width": "6rem", "targets": 1 },
         ]
     });
 });
