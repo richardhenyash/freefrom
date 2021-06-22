@@ -22,10 +22,10 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#reviewsTable").DataTable({
         "columnDefs": [
-            // Fix width of user name column
-            { "width": "25%", "targets": 0 }
             // Fix width of rating column
             { "width": "6rem", "targets": 1 },
+            // Fix width of user name column
+            { "width": "25%", "targets": 0 }
         ]
     });
 });
