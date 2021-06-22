@@ -417,19 +417,19 @@ The **Python Code** for the project has been split into the following modules, u
 
 The high level code logic is explained in the [UML Diagrams](/static/wireframes/uml/) below: 
 
-#### Products ####
+#### [Products](/static/wireframes/uml/products-logic.png) ####
 <img src="/static/wireframes/uml/products-logic.png" width="600px" style="margin: 5px;">  
 
-#### Categories ####
+#### [Categories](/static/wireframes/uml/categories-logic.png) ####
 <img src="/static/wireframes/uml/categories-logic.png" width="600px" style="margin: 5px;">  
 
-#### Allergens ####
+#### [Allergens](/static/wireframes/uml/allergens-logic.png) ####
 <img src="/static/wireframes/uml/allergens-logic.png" width="600px" style="margin: 5px;">  
 
-#### User Authentication ####
+#### [User Authentication](/static/wireframes/uml/userauth-logic.png) ####
 <img src="/static/wireframes/uml/userauth-logic.png" width="600px" style="margin: 5px;">  
 
-#### Mail ####
+#### [Mail](/static/wireframes/uml/mail-logic.png) ####
 <img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 5px;">  
 
 ### Form Validation ###
