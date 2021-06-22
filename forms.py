@@ -177,7 +177,7 @@ class AllergenForm(Form):
 
 class CategoryForm(Form):
     """
-    Catgory Form
+    Category Form
     """
     name = StringField('New Category Name', [
         validators.DataRequired(
