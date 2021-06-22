@@ -275,14 +275,18 @@ was modelled using [Moon Modeller](https://www.datensen.com/data-modeling/moon-m
 As shown in the schema diagram, there are four collections, **Users**, **Products**, **Categories** and **Allergens**.  
 
 Please note that the field **allergens_suitability** in the **Products** collection was renamed to **free_from_allergens**. 
-This change was unfortunately not picked up in the note below the "products" collection in the schema diagram shown above 
+This change was not picked up in the note below the "products" collection in the schema diagram shown above 
 and unfortunately the free 14 day trial for the software ended. 
 
-[FreeFrom](https://freefrom.herokuapp.com/) is deployed using [Heroku](https://dashboard.heroku.com/).
+[FreeFrom](https://freefrom.herokuapp.com/) is deployed using [Heroku](https://dashboard.heroku.com/). 
+For further information see [Deployment](#deployment).
 
 ### Features Implemented ###
 
 #### Features Implemented in Phase 1 ####
+* **Home Page**, enables users to search for products which are free from one or more allergens:  
+<img src="/static/testing/home.png" width="800px" style="margin: 5px;"> 
+
 * **FreeFrom** logo, links to home page if selected:  
 <img src="/static/testing/logo.png" width="300px" style="margin: 5px;"> 
 
