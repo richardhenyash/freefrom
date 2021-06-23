@@ -538,3 +538,50 @@ def get_other_user_reviews(product, user_id):
             }
             other_user_reviews.append(other_user_review)
     return other_user_reviews
+
+
+"""
+Product Class
+=============
+Contains the Product Class to enable create, read, update and delete of
+products stored in the MongoDB and preparaton of data
+Classes: Product
+"""
+
+
+class Product():
+    """
+    A class that represents a Product.
+    Performs the relevant DB functions
+    along with data preparation.
+    """
+    # This is called whenever a class is instantiated
+    def __init__(self, name, manufacturer, user_id, category_id, barcode, free_from_allergens, reviews, _id=None):
+        """
+        Product initialisation
+        """
+        self._id = _id
+        self.name = name
+        self.manufacturer = manufacturer
+        self.user_id = user_id
+        self.category_id = category_id
+        self.barcode = barcode
+        self.free_from_allergens = free_from_allergens
+        self.reviews = reviews
+    def get(self):
+        """Formats and returns the current Product attributes as a dictionary.
+        The format of the dictionary allows the return of this method
+        to be written directly to the Database.
+        """
+        info = {"name": self.name, "manufacturer": self.manufacturer,
+                "user_id": self.user_id, "category_id": self.category_id,
+                "barcode": self.barcode,
+                "free_from_allergens": self.free_from_allergens,
+                "reviews": self.reviews}
+        return info
+    def add(self):
+        """Adds a Product to the Database.
+        Writes the output of the get method directly to the database.
+        """
+        mongo.db.products.insert_one(self.get())
+
