@@ -256,9 +256,8 @@ def view(product_id):
     form = ProductViewForm(request.form)
     # Get product from product_id
     product = Product.get_one(product_id)
-    print(product)
     productobj = Product.set_one(product_id)
-    print(productobj.name)
+    print(product)
     if product and request.method == "POST" and form.validate():
         # Get user name
         user_name = session["user"]
@@ -293,8 +292,11 @@ def view(product_id):
             # Update product object with new or edited review
             product["reviews"] = reviews
 
+        user_review_new = productobj.update_reviews(form)
+        print(user_review_new)
+
         # Update product in database
-        mongo.db.products.update({"_id": ObjectId(product_id)}, product)
+        mongo.db.products.update({"_id": ObjectId(product_id)}, Product.get_info())
         # Display flash message
         flash(
             "Rating and review succesfully " +
@@ -578,6 +580,41 @@ class Product():
         Writes the output of the get method directly to the database.
         """
         mongo.db.products.insert_one(self.get_info())
+
+    def update_reviews(self, form):
+        # Get user name
+        user_name = session["user"]
+        # Get user id from user name
+        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        # Set new review flag
+        review_newflag = True
+        # Get reviews
+        reviews = self.reviews
+        # Loop through reviews, find review that belongs to logged in user
+        for review in reviews:
+            # Update user review
+            if review["user_id"] == user_id:
+                review["rating"] = int(form.rating.data)
+                review["review"] = form.review.data
+                review_newflag = False
+                user_review = {
+                    "user_id": user_id,
+                    "rating": int(form.rating.data),
+                    "review": form.review.data
+                }
+        # If user has not reviewed product before
+        if review_newflag:
+            # Create new review object
+            review_new = {
+                "user_id": user_id,
+                "rating": int(form.rating.data),
+                "review": form.review.data
+            }
+            # Append new review to reviews
+            reviews.append(review_new)
+        print(reviews)
+        print(user_review)
+        return(user_review)
 
     @staticmethod
     def delete_one(product_id):
