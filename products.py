@@ -214,23 +214,16 @@ def add():
             user_name = session["user"]
             # Get user id from user name
             user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-            # Set new product variable
-            new_product = {
-                "name": product_name,
-                "manufacturer": product_manufacturer,
-                "user_id": user_id,
-                "category_id": product_category_id,
-                "barcode": "",
-                "free_from_allergens": allergen_id_list,
-                "reviews": [{
-                    "user_id": user_id,
-                    "rating": product_rating,
-                    "review": product_review
-                }]
-            }
-            # Add new record to the database
-            mongo.db.products.insert_one(new_product)
-            # Display flash message
+            # Create instance of product
+            new_product = Product(
+                product_name, product_manufacturer, user_id,
+                product_category_id, "", allergen_id_list,
+                [
+                    {"user_id": user_id,
+                     "rating": product_rating,
+                     "review": product_review}])
+            new_product.add_one()
+            print(new_product.get_info())
             flash(
                 product_name + " succesfully added" +
                 " to products", "success")
@@ -262,7 +255,10 @@ def view(product_id):
     # request Form data
     form = ProductViewForm(request.form)
     # Get product from product_id
-    product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
+    product = Product.get_one(product_id)
+    print(product)
+    productobj = Product.set_one(product_id)
+    print(productobj.name)
     if product and request.method == "POST" and form.validate():
         # Get user name
         user_name = session["user"]
@@ -492,18 +488,11 @@ def delete(product_id):
     Route for product delete
     """
     if request.method == "POST":
-        # Get product name from database
-        product_name = mongo.db.products.find_one(
-            {"_id": (ObjectId(product_id))})["name"]
-        # Delete product from database
-        mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
-        flash(
-            product_name +
-            " succesfully deleted from products", "success")
+        Product.delete_one(product_id)
         return redirect(url_for('products.search'))
 
-    product = mongo.db.products.find_one(
-        {"_id": (ObjectId(product_id))})
+    product = Product.get_one(product_id)
+    print(product)
     return render_template(
         "product_delete_confirm.html", product_id=product_id, product=product)
 
@@ -552,11 +541,12 @@ Classes: Product
 class Product():
     """
     A class that represents a Product.
-    Performs the relevant DB functions
+    Performs the relevant database CRUD functionality
     along with data preparation.
     """
     # This is called whenever a class is instantiated
-    def __init__(self, name, manufacturer, user_id, category_id, barcode, free_from_allergens, reviews, _id=None):
+    def __init__(self, name, manufacturer, user_id, category_id, barcode,
+                 free_from_allergens, reviews, _id=None):
         """
         Product initialisation
         """
@@ -568,10 +558,12 @@ class Product():
         self.barcode = barcode
         self.free_from_allergens = free_from_allergens
         self.reviews = reviews
-    def get(self):
-        """Formats and returns the current Product attributes as a dictionary.
-        The format of the dictionary allows the return of this method
-        to be written directly to the Database.
+
+    def get_info(self):
+        """
+        Formats and returns the current Product object attributes as a.
+        dictionary. The format of the dictionary allows the return
+        of this method to be written directly to the Database.
         """
         info = {"name": self.name, "manufacturer": self.manufacturer,
                 "user_id": self.user_id, "category_id": self.category_id,
@@ -579,9 +571,61 @@ class Product():
                 "free_from_allergens": self.free_from_allergens,
                 "reviews": self.reviews}
         return info
-    def add(self):
-        """Adds a Product to the Database.
+
+    def add_one(self):
+        """
+        Adds a Product to the Database.
         Writes the output of the get method directly to the database.
         """
-        mongo.db.products.insert_one(self.get())
+        mongo.db.products.insert_one(self.get_info())
 
+    @staticmethod
+    def delete_one(product_id):
+        """
+        Removes a Product from the database
+        """
+        product_name = Product.get_name(product_id)
+        mongo.db.products.delete_one({"_id": ObjectId(product_id)})
+        flash(
+            product_name +
+            " succesfully deleted from products", "success")
+        return(product_id)
+
+    # Can be called without instantiating a class
+    @staticmethod
+    def get_name(product_id):
+        """
+        Gets a product name from a Product ID
+        """
+        product_name = mongo.db.products.find_one(
+            {"_id": (ObjectId(product_id))})["name"]
+        return(product_name)
+
+    @staticmethod
+    def get_one(product_id):
+        """
+        Gets a Product object from the database, given the ObjectID
+        """
+        product = mongo.db.products.find_one({"_id": ObjectId(product_id)})
+        return (product)
+    
+    @staticmethod
+    def get_user_id(product_id):
+        """
+        Gets a product name from a Product ID
+        """
+        user_id = mongo.db.products.find_one(
+            {"_id": (ObjectId(product_id))})["user_id"]
+        return(user_id)
+    
+    @classmethod
+    def set_one(cls, product_id):
+        """
+        Gets a Product from the database and creates an 
+        instance, given the ObjectID
+        """
+        product = mongo.db.products.find_one({"_id": ObjectId(product_id)})
+        print(product)
+        return cls(**product)
+
+    
