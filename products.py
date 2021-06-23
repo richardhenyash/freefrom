@@ -255,68 +255,25 @@ def view(product_id):
     # request Form data
     form = ProductViewForm(request.form)
     # Get product from product_id
-    product = Product.get_one(product_id)
     productobj = Product.set_one(product_id)
-    print(product)
-    if product and request.method == "POST" and form.validate():
-        # Get user name
-        user_name = session["user"]
-        # Get user id from user name
-        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-        # Set new review flag
-        review_newflag = True
-        # Get reviews
-        reviews = product["reviews"]
-        # Loop through reviews, find review that belongs to logged in user
-        for review in reviews:
-            # Update user review
-            if review["user_id"] == user_id:
-                review["rating"] = int(form.rating.data)
-                review["review"] = form.review.data
-                review_newflag = False
-                user_review = {
-                    "user_id": user_id,
-                    "rating": int(form.rating.data),
-                    "review": form.review.data
-                }
-        # If user has not reviewed product before
-        if review_newflag:
-            # Create new review object
-            review_new = {
-                "user_id": user_id,
-                "rating": int(form.rating.data),
-                "review": form.review.data
-            }
-            # Append new review to reviews
-            reviews.append(review_new)
-            # Update product object with new or edited review
-            product["reviews"] = reviews
-
-        user_review_new = productobj.update_reviews(form)
-        print(user_review_new)
-
-        # Update product in database
-        mongo.db.products.update({"_id": ObjectId(product_id)}, Product.get_info())
-        # Display flash message
-        flash(
-            "Rating and review succesfully " +
-            "updated for " + product["name"],
-            "success")
+    product = Product.get_one(product_id)
+    if productobj and request.method == "POST" and form.validate():
+        productobj.update_reviews(product_id, form)
         return redirect(url_for('products.view', product_id=product_id))
-    elif product:
+    elif productobj:
         # Set product name in form object
-        form.name.data = product["name"]
+        form.name.data = productobj.name
         # Get category id from product object
-        category_id = product["category_id"]
+        category_id = productobj.category_id
         # Get category name from categories collection
         category_name = mongo.db.categories.find_one(
             {"_id": category_id})["name"]
         # Set category name in form object
         form.category.data = category_name
         # Set manufacturer name in form object
-        form.manufacturer.data = product["manufacturer"]
+        form.manufacturer.data = productobj.manufacturer
         # Get product allergen id list
-        product_allergen_id_list = product["free_from_allergens"]
+        product_allergen_id_list = productobj.free_from_allergens
         # Get allergen names from allergen collection
         product_free_from_allergens_list = []
         for allergen_id in product_allergen_id_list:
@@ -338,7 +295,7 @@ def view(product_id):
             # Initialise other user review list
             other_user_reviews = []
             # Cycle through product reviews
-            for review in product["reviews"]:
+            for review in productobj.reviews:
                 # If review belongs to logged in user
                 if review["user_id"] == (ObjectId(user_id)):
                     user_review = review
@@ -577,11 +534,24 @@ class Product():
     def add_one(self):
         """
         Adds a Product to the Database.
-        Writes the output of the get method directly to the database.
+        Writes the output of the get_info method directly to the database.
         """
         mongo.db.products.insert_one(self.get_info())
 
-    def update_reviews(self, form):
+    def update_one(self, product_id):
+        """
+        Update a Product to the Database.
+        Writes the output of the get_info method directly to the database.
+        """
+        # Update product in database
+        mongo.db.products.update(
+            {"_id": ObjectId(product_id)}, self.get_info())
+
+    def update_reviews(self, product_id, form):
+        """
+        Updates Product review in the database from the Product view
+        form input.
+        """
         # Get user name
         user_name = session["user"]
         # Get user id from user name
@@ -592,16 +562,11 @@ class Product():
         reviews = self.reviews
         # Loop through reviews, find review that belongs to logged in user
         for review in reviews:
-            # Update user review
+            # Update user review if user has reviewed product before
             if review["user_id"] == user_id:
                 review["rating"] = int(form.rating.data)
                 review["review"] = form.review.data
                 review_newflag = False
-                user_review = {
-                    "user_id": user_id,
-                    "rating": int(form.rating.data),
-                    "review": form.review.data
-                }
         # If user has not reviewed product before
         if review_newflag:
             # Create new review object
@@ -612,9 +577,12 @@ class Product():
             }
             # Append new review to reviews
             reviews.append(review_new)
-        print(reviews)
-        print(user_review)
-        return(user_review)
+        self.reviews = reviews
+        self.update_one(product_id)
+        flash(
+            "Rating and review succesfully " +
+            "updated for " + self.name,
+            "success")
 
     @staticmethod
     def delete_one(product_id):
