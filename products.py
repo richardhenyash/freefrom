@@ -621,8 +621,8 @@ class Product():
     @classmethod
     def set_one(cls, product_id):
         """
-        Gets a Product from the database and creates an 
-        instance, given the ObjectID
+        Returns a Product from the database and creates
+        a Product instance with the returned data, given the ObjectID
         """
         product = mongo.db.products.find_one({"_id": ObjectId(product_id)})
         print(product)
