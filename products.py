@@ -10,6 +10,7 @@ from flask import (
     redirect, request, session, url_for)
 from bson.objectid import ObjectId
 from forms import ProductForm, ProductEditForm, ProductViewForm
+from userauth import User
 
 # Import PyMongo database instance
 from database import mongo
@@ -254,69 +255,23 @@ def view(product_id):
     """
     # request Form data
     form = ProductViewForm(request.form)
-    # Get product from product_id
-    productobj = Product.set_one(product_id)
-    product = Product.get_one(product_id)
-    if productobj and request.method == "POST" and form.validate():
-        productobj.update_reviews(product_id, form)
+    # Instantiate product object from product_id
+    product = Product.set_one(product_id)
+    if product and request.method == "POST" and form.validate():
+        product.update_reviews(product_id, form)
         return redirect(url_for('products.view', product_id=product_id))
-    elif productobj:
-        # Set product name in form object
-        form.name.data = productobj.name
-        # Get category id from product object
-        category_id = productobj.category_id
-        # Get category name from categories collection
-        category_name = mongo.db.categories.find_one(
-            {"_id": category_id})["name"]
-        # Set category name in form object
-        form.category.data = category_name
-        # Set manufacturer name in form object
-        form.manufacturer.data = productobj.manufacturer
-        # Get product allergen id list
-        product_allergen_id_list = productobj.free_from_allergens
-        # Get allergen names from allergen collection
-        product_free_from_allergens_list = []
-        for allergen_id in product_allergen_id_list:
-            allergen_name = mongo.db.allergens.find_one(
-                {"_id": allergen_id})["name"]
-            product_free_from_allergens_list.append(allergen_name)
-        # Set free from in form object
-        form.freefrom.data = ', '.join(
-            map(str, product_free_from_allergens_list))
-
-        # Get user name
-        user_review = None
-        other_user_reviews = None
-        if session:
-            # Get user name
-            user_name = session["user"]
-            # Get user id from user name
-            user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-            # Initialise other user review list
-            other_user_reviews = []
-            # Cycle through product reviews
-            for review in productobj.reviews:
-                # If review belongs to logged in user
-                if review["user_id"] == (ObjectId(user_id)):
-                    user_review = review
-                    # Set rating in form object
-                    form.rating.data = user_review["rating"]
-                    # Set review in form object
-                    form.review.data = user_review["review"]
-                    # add review to other user reviews list
-                    other_user_reviews = get_other_user_reviews(
-                        product, user_id)
-                # else, add review to other user reviews list
-                else:
-                    other_user_reviews = get_other_user_reviews(
-                        product, user_id)
-        else:
-            other_user_reviews = get_other_user_reviews(product, None)
+    elif product:
+        # Set product view form
+        product.set_view_form(form)        
+        # Get all reviews
+        reviews = product.get_reviews()
+        # Get user review
+        user_review = product.get_user_review(form)
 
         return render_template(
             "product_view.html",
             product=product, product_id=product_id,
-            user_review=user_review, other_user_reviews=other_user_reviews,
+            user_review=user_review, reviews=reviews,
             form=form)
     else:
         flash("Ooops.... product not found :)", "danger")
@@ -470,24 +425,6 @@ def get_selected_allergen_list(allergens):
     return(allergen_list)
 
 
-def get_other_user_reviews(product, user_id):
-    # Initialise other user review list
-    other_user_reviews = []
-    # Cycle through product reviews
-    for review in product["reviews"]:
-        other_user = mongo.db.users.find_one(
-            {"_id": (ObjectId(review["user_id"]))})
-        if other_user:
-            other_user_name = other_user["username"]
-            other_user_review = {
-                "username": other_user_name,
-                "rating": review["rating"],
-                "review": review["review"]
-            }
-            other_user_reviews.append(other_user_review)
-    return other_user_reviews
-
-
 """
 Product Class
 =============
@@ -540,7 +477,7 @@ class Product():
 
     def update_one(self, product_id):
         """
-        Update a Product to the Database.
+        Update a Product in the Database.
         Writes the output of the get_info method directly to the database.
         """
         # Update product in database
@@ -555,7 +492,7 @@ class Product():
         # Get user name
         user_name = session["user"]
         # Get user id from user name
-        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        user_id = User.get_id(user_name)
         # Set new review flag
         review_newflag = True
         # Get reviews
@@ -584,6 +521,72 @@ class Product():
             "updated for " + self.name,
             "success")
 
+    def get_reviews(self):
+        """
+        Gets all Product reviews and returns a list of reviews including user names.
+        """
+        # Get user name
+        reviews_new = []
+        for review in self.reviews:
+            # Get user name
+            username = User.get_name(review["user_id"])
+            # Set new review object including user name
+            review_new = {"username": username, "rating": review["rating"], "review": review["review"]}
+            # Append to new reviews list
+            reviews_new.append(review_new)
+        return(reviews_new)
+
+    def get_user_review(self, form):
+        """
+        Gets Product review belonging to the logged in user
+        from the database and populates the product view form.
+        """
+        # Get user name
+        user_review = None
+        other_user_reviews = None
+        if session:
+            # Get user name
+            user_name = session["user"]
+            # Get user id from user name
+            user_id = User.get_id(user_name)
+            # Initialise other user review list
+            other_user_reviews = []
+            # Cycle through product reviews
+            for review in self.reviews:
+                # If review belongs to logged in user
+                if review["user_id"] == (ObjectId(user_id)):
+                    user_review = review
+                    # Set rating in form object
+                    form.rating.data = user_review["rating"]
+                    # Set review in form object
+                    form.review.data = user_review["review"]
+            return(user_review)
+
+    def set_view_form(self, form):
+        """
+        Sets product view form from the Product object.
+        """
+        form.name.data = self.name
+        category_id = self.category_id
+        # Get category name from categories collection
+        category_name = mongo.db.categories.find_one(
+            {"_id": category_id})["name"]
+        # Set category name in form object
+        form.category.data = category_name
+        form.manufacturer.data = self.manufacturer
+        # Get product allergen id list
+        product_allergen_id_list = self.free_from_allergens
+        # Get allergen names from allergen collection
+        product_free_from_allergens_list = []
+        for allergen_id in product_allergen_id_list:
+            allergen_name = mongo.db.allergens.find_one(
+                {"_id": allergen_id})["name"]
+            product_free_from_allergens_list.append(allergen_name)
+        # Set free from in form object
+        form.freefrom.data = ', '.join(
+            map(str, product_free_from_allergens_list))
+        return(form)
+
     @staticmethod
     def delete_one(product_id):
         """
@@ -600,7 +603,7 @@ class Product():
     @staticmethod
     def get_name(product_id):
         """
-        Gets a product name from a Product ID
+        Gets a product name from a Product Object ID
         """
         product_name = mongo.db.products.find_one(
             {"_id": (ObjectId(product_id))})["name"]
@@ -617,7 +620,7 @@ class Product():
     @staticmethod
     def get_user_id(product_id):
         """
-        Gets a product name from a Product ID
+        Gets a product user ID from a Product Object ID
         """
         user_id = mongo.db.products.find_one(
             {"_id": (ObjectId(product_id))})["user_id"]
@@ -630,7 +633,6 @@ class Product():
         a Product instance with the returned data, given the ObjectID
         """
         product = mongo.db.products.find_one({"_id": ObjectId(product_id)})
-        print(product)
         return cls(**product)
 
     

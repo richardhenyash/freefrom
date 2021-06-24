@@ -124,7 +124,7 @@
             <div class="col-md-3"></div>
              <div class="col-12 col-md-6 pt-2">
                 <!-- If product has been reviewed by other users -->
-                {% if other_user_reviews %}
+                {% if reviews %}
                     <!-- Review heading -->
                     <h3 class="section-heading">Reviews</h3>
                 {% endif %}
@@ -140,8 +140,8 @@
                     </thead>
                     <tbody>
                         <!-- If product has been reviewed by other users -->
-                        {% if other_user_reviews %}
-                            {% for review in other_user_reviews %}
+                        {% if reviews %}
+                            {% for review in reviews %}
                                 <tr class="table-light results-table-row">
                                     <!-- username -->
                                     <td>{{ review.username }}</td>
