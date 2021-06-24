@@ -288,12 +288,13 @@ def edit(product_id):
     # request Form data
     form = ProductEditForm(request.form)
     # Get categories collection from database
-    categories = mongo.db.categories.find().sort("name", 1)
+    categories = Category.get_all()
     # Get allergens collection from database
-    allergens = mongo.db.allergens.find().sort("name", 1)
+    allergens = Allergen.get_all()
     # Get product from product_id
-    product = mongo.db.products.find_one(
-        {"_id": (ObjectId(product_id))})
+    product = Product.get_one(product_id)
+    # Create an instance of the Product class from product_id
+    productobj = Product.set_one(product_id)
     if request.method == "POST" and form.validate():
         # Get product name from form
         product_name = form.name.data
@@ -371,25 +372,14 @@ def edit(product_id):
             flash(product_name + " succesfully updated", "success")
             return redirect(url_for('products.view', product_id=product_id))
 
-    # Update product name in form
-    form.name.data = product["name"]
-    # Update product manufcaturer in form
-    form.manufacturer.data = product["manufacturer"]
-    # Get product category id
-    product_category_id = product["category_id"]
-    # Get product category
-    product_category = mongo.db.categories.find_one(
-        {"_id": product_category_id})["name"]
-    # Get Selected allergens
-    selected_allergens = product["free_from_allergens"]
-    # Get user name
-    user_name = session["user"]
-    # Get user id from user name
-    user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-    if product["user_id"] == user_id:
-        user_product = True
-    else:
-        user_product = False
+    # Set product edit form fields
+    productobj.set_edit_form(form)
+    # Get Category name
+    product_category = Category.get_name(productobj.category_id)
+    # Get Selected allergens list
+    selected_allergens = productobj.free_from_allergens
+    # Set user product flag
+    user_product = productobj.user_product()
     return render_template(
         "product_edit.html", categories=categories.rewind(),
         allergens=allergens.rewind(), product_id=product_id,
@@ -568,12 +558,9 @@ class Product():
         Sets product view form from the Product object.
         """
         form.name.data = self.name
-        print(self.category_id)
         form.category.data = Category.get_name(self.category_id)
         form.manufacturer.data = self.manufacturer
         product_free_from_allergens_list = []
-        print(self.free_from_allergens)
-        print(len(self.free_from_allergens))
         # Get allergen names from allergen id's
         for allergen_id in self.free_from_allergens:
             product_free_from_allergens_list.append(Allergen.get_name(allergen_id))
@@ -581,6 +568,26 @@ class Product():
         form.freefrom.data = ', '.join(
             map(str, product_free_from_allergens_list))
         return(form)
+
+    def set_edit_form(self, form):
+        """
+        Sets product edit form from the Product object.
+        """
+        form.name.data = self.name
+        form.manufacturer.data = self.manufacturer
+        return(form)
+
+    def user_product(self):
+        # Get user name
+        user_name = session["user"]
+        # Get user id from user name
+        user_id = User.get_id(user_name)
+        # Check if product is owned by user
+        if self.user_id == user_id:
+            user_product = True
+        else:
+            user_product = False
+        return user_product
 
     @staticmethod
     def delete_one(product_id):
