@@ -192,3 +192,52 @@ def allergen_delete_confirm(allergen_id):
     return render_template(
         "allergen_delete_confirm.html",
         allergen_id=allergen_id, allergen=allergen)
+
+    
+"""
+Allergen Class
+=============
+Contains the Allergen Class to enable create, read, update and delete of
+allergens stored in the MongoDB and preparaton of data
+Classes: Allergen
+"""
+
+
+class Allergen():
+    """
+    A class that represents an Allergen.
+    Performs the relevant database CRUD functionality
+    along with data preparation.
+    """
+    def __init__(self, name, _id=None):
+        """
+        Allergen initialisation
+        """
+        self._id = _id
+        self.name = name
+
+    def get_info(self):
+        """
+        Formats and returns the current Allergen object attributes as
+        a dictionary. The format of the dictionary allows the return
+        of this method to be written directly to the Database.
+        """
+        info = {"name": self.name}
+
+    @staticmethod
+    def get_id(allergen_name):
+        """
+        Gets an allergen ObjectId from an allergen name
+        """
+        allergen_id = mongo.db.allergens.find_one({"name": allergen_name})["_id"]
+        return(allergen_id)
+    
+    @staticmethod
+    def get_name(allergen_id):
+        """
+        Gets an allergen name from an allergen ObjectId
+        """
+        print("test")
+        allergen_name = mongo.db.allergens.find_one({"_id": allergen_id})["name"]
+        return(allergen_name)
+
