@@ -11,6 +11,8 @@ from flask import (
 from bson.objectid import ObjectId
 from forms import ProductForm, ProductEditForm, ProductViewForm
 from userauth import User
+from categories import Category
+from allergens import Allergen
 
 # Import PyMongo database instance
 from database import mongo
@@ -440,7 +442,6 @@ class Product():
     Performs the relevant database CRUD functionality
     along with data preparation.
     """
-    # This is called whenever a class is instantiated
     def __init__(self, name, manufacturer, user_id, category_id, barcode,
                  free_from_allergens, reviews, _id=None):
         """
@@ -477,7 +478,7 @@ class Product():
 
     def update_one(self, product_id):
         """
-        Update a Product in the Database.
+        Updates a Product in the Database.
         Writes the output of the get_info method directly to the database.
         """
         # Update product in database
@@ -486,8 +487,8 @@ class Product():
 
     def update_reviews(self, product_id, form):
         """
-        Updates Product review in the database from the Product view
-        form input.
+        Updates a Product review in the database for the signed in user
+        from the Product view form input.
         """
         # Get user name
         user_name = session["user"]
@@ -567,22 +568,16 @@ class Product():
         Sets product view form from the Product object.
         """
         form.name.data = self.name
-        category_id = self.category_id
-        # Get category name from categories collection
-        category_name = mongo.db.categories.find_one(
-            {"_id": category_id})["name"]
-        # Set category name in form object
-        form.category.data = category_name
+        print(self.category_id)
+        form.category.data = Category.get_name(self.category_id)
         form.manufacturer.data = self.manufacturer
-        # Get product allergen id list
-        product_allergen_id_list = self.free_from_allergens
-        # Get allergen names from allergen collection
         product_free_from_allergens_list = []
-        for allergen_id in product_allergen_id_list:
-            allergen_name = mongo.db.allergens.find_one(
-                {"_id": allergen_id})["name"]
-            product_free_from_allergens_list.append(allergen_name)
-        # Set free from in form object
+        print(self.free_from_allergens)
+        print(len(self.free_from_allergens))
+        # Get allergen names from allergen id's
+        for allergen_id in self.free_from_allergens:
+            product_free_from_allergens_list.append(Allergen.get_name(allergen_id))
+        # Set free from field in form object
         form.freefrom.data = ', '.join(
             map(str, product_free_from_allergens_list))
         return(form)
@@ -599,7 +594,6 @@ class Product():
             " succesfully deleted from products", "success")
         return(product_id)
 
-    # Can be called without instantiating a class
     @staticmethod
     def get_name(product_id):
         """
