@@ -239,8 +239,8 @@ class Category():
         """
         Gets an category ObjectId from an category name
         """
-        allergen_id = mongo.db.categories.find_one({"name": category_name})["_id"]
-        return(allergen_id)
+        category_id = mongo.db.categories.find_one({"name": category_name})["_id"]
+        return(category_id)
     
     @staticmethod
     def get_name(category_id):
