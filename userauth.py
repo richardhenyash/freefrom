@@ -108,3 +108,57 @@ def signout():
     session.pop("user")
     session.pop("admin")
     return redirect(url_for("home"))
+
+
+"""
+User Class
+=============
+Contains the User Class to enable create, read, update and delete of
+users stored in the MongoDB and preparaton of data
+Classes: User
+"""
+
+
+class User():
+    """
+    A class that represents a User.
+    Performs the relevant database CRUD functionality
+    along with data preparation.
+    """
+    # This is called whenever a class is instantiated
+    def __init__(self, admin, username, email, password, _id=None):
+        """
+        Product initialisation
+        """
+        self._id = _id
+        self.admin = admin
+        self.username = username
+        self.email = email
+        self.password = password
+
+    def get_info(self):
+        """
+        Formats and returns the current User object attributes as a.
+        dictionary. The format of the dictionary allows the return
+        of this method to be written directly to the Database.
+        """
+        info = {"admin": self.admin, "username": self.username,
+                "email": self.email, "password": self.password}
+
+    # Can be called without instantiating a class
+    @staticmethod
+    def get_id(user_name):
+        """
+        Gets a user name from a user ID
+        """
+        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        return(user_id)
+    
+    @staticmethod
+    def get_name(user_id):
+        """
+        Gets a user ID from a user name
+        """
+        user_name = mongo.db.users.find_one({"_id": user_id})["username"]
+        return(user_name)
+
