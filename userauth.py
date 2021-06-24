@@ -125,7 +125,6 @@ class User():
     Performs the relevant database CRUD functionality
     along with data preparation.
     """
-    # This is called whenever a class is instantiated
     def __init__(self, admin, username, email, password, _id=None):
         """
         Product initialisation
@@ -145,11 +144,10 @@ class User():
         info = {"admin": self.admin, "username": self.username,
                 "email": self.email, "password": self.password}
 
-    # Can be called without instantiating a class
     @staticmethod
     def get_id(user_name):
         """
-        Gets a user name from a user ID
+        Gets a user Object Id from a user name
         """
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
         return(user_id)
@@ -157,7 +155,7 @@ class User():
     @staticmethod
     def get_name(user_id):
         """
-        Gets a user ID from a user name
+        Gets a user name from a user Object Id
         """
         user_name = mongo.db.users.find_one({"_id": user_id})["username"]
         return(user_name)
