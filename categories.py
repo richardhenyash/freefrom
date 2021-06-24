@@ -225,6 +225,16 @@ class Category():
         info = {"name": self.name}
 
     @staticmethod
+    def get_all():
+        categories = mongo.db.categories.find().sort("name", 1)
+        return(categories)
+
+    @staticmethod
+    def get_all():
+        categories = mongo.db.categories.find().sort("name", 1)
+        return(categories)
+
+    @staticmethod
     def get_id(category_name):
         """
         Gets an category ObjectId from an category name
@@ -239,5 +249,4 @@ class Category():
         """
         category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
         return(category_name)
-
-
+    

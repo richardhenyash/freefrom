@@ -225,6 +225,11 @@ class Allergen():
         info = {"name": self.name}
 
     @staticmethod
+    def get_all():
+        allergens = mongo.db.allergens.find().sort("name", 1)
+        return(allergens)
+
+    @staticmethod
     def get_id(allergen_name):
         """
         Gets an allergen ObjectId from an allergen name
@@ -237,7 +242,6 @@ class Allergen():
         """
         Gets an allergen name from an allergen ObjectId
         """
-        print("test")
         allergen_name = mongo.db.allergens.find_one({"_id": allergen_id})["name"]
         return(allergen_name)
 
