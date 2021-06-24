@@ -192,3 +192,52 @@ def category_delete_confirm(category_id):
     return render_template(
         "category_delete_confirm.html",
         category_id=category_id, category=category)
+
+
+"""
+Category Class
+=============
+Contains the Category Class to enable create, read, update and delete of
+categories stored in the MongoDB and preparaton of data
+Classes: Category
+"""
+
+
+class Category():
+    """
+    A class that represents an Category.
+    Performs the relevant database CRUD functionality
+    along with data preparation.
+    """
+    def __init__(self, name, _id=None):
+        """
+        Category initialisation
+        """
+        self._id = _id
+        self.name = name
+
+    def get_info(self):
+        """
+        Formats and returns the current Category object attributes as
+        a dictionary. The format of the dictionary allows the return
+        of this method to be written directly to the Database.
+        """
+        info = {"name": self.name}
+
+    @staticmethod
+    def get_id(category_name):
+        """
+        Gets an category ObjectId from an category name
+        """
+        allergen_id = mongo.db.categories.find_one({"name": category_name})["_id"]
+        return(allergen_id)
+    
+    @staticmethod
+    def get_name(category_id):
+        """
+        Gets a category name from an category ObjectId
+        """
+        category_name = mongo.db.categories.find_one({"_id": category_id})["name"]
+        return(category_name)
+
+
