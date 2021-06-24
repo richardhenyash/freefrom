@@ -194,14 +194,17 @@ body {
     vertical-align: middle;
 }
 
-.results-table-row i,
-.rating i {
+.results-table-row i {
     color: var(--orangeyellow);
     font-size: 1.0rem;
 }
 
-
 /*-- Icons --*/
+.rating i {
+    color: var(--orangeyellow);
+    font-size: 1.3rem;
+}
+
 .container-error i,
 .container-footer i {
     color: var(--fireopal);
