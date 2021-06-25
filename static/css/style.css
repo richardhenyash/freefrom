@@ -306,9 +306,10 @@ container-footer a:visited {
 }
 
 .page-item .page-link:hover {
-    color: var(--venetianred);
+    color: var(--white);
+    background-color: var(--salmon);
+    border: 1px solid var(--salmon);
 }
-
 
 .page-item.active .page-link {
     background-color: var(--fireopal);
@@ -323,6 +324,5 @@ container-footer a:visited {
 }
 
 .page-item.active .page-link:hover {
-    color: var(--white);
     background-color: var(--venetianred);
 }
