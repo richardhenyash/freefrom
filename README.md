@@ -25,6 +25,7 @@
         - [Fonts](#fonts)
         - [Colours](#colours)
 - [Technologies](#technologies)
+    - [Integrated Development Environment](#Integrated-Development-Environment])
     - [Database](#database)
     - [Deployment](#deployment)
     - [Languages](#languages)
@@ -43,7 +44,7 @@
         - [Allergens](#allergens)
         - [User Authentication](#user-authentication)
         - [Mail](#mail)
-        - [Python Code Refactoring](#python-code-refactoring)
+    - [Python Code Refactoring](#python-code-refactoring)
     - [Form Validation](#form-validation)
     - [JavaScript Code Logic](#javascript-code-logic)
 - [Testing](#testing)
@@ -223,11 +224,13 @@ is shown below:
 
 ## Technologies ##
 
+### Integrated Development Environment ##
+* [GitHub](https://github.com/)
+
 ### Database ###
 * [Mongo DB](https://www.mongodb.com/)
 
 ### Deployment ###
-* [GitHub](https://github.com/)
 * [Heroku](https://dashboard.heroku.com/)
 
 ### Languages ###
@@ -237,19 +240,18 @@ is shown below:
 * [Python](https://www.python.org/)
 
 ### Frameworks Libraries and Tools ###
-* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
-* [Font Awesome](https://fontawesome.com/)
-* [Google Fonts](https://fonts.google.com/)
-* [jQuery](https://jquery.com/)
-* [PyMongo](https://pypi.org/project/pymongo/)
-* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-* [DataTables](https://datatables.net/)
-* [WTForms](https://wtforms.readthedocs.io/en/2.3.x/)
-* [wftorms-validators](https://pypi.org/project/wtforms-validators/)
-* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
-* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
-* [SMTPLib](https://docs.python.org/3/library/smtplib.html)
-* [Jasmine](https://jasmine.github.io/)
+* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/), to assist with responsive design.
+* [Font Awesome](https://fontawesome.com/), for icons.
+* [Google Fonts](https://fonts.google.com/), for fonts.
+* [jQuery](https://jquery.com/), to assist with JavaScript coding and DOM manipulation.
+* [PyMongo](https://pypi.org/project/pymongo/), to enable interaction with [Mongo DB](https://www.mongodb.com/).
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/), to render and display web pages.
+* [DataTables](https://datatables.net/), to enable easy display of data tables.
+* [WTForms](https://wtforms.readthedocs.io/en/2.3.x/), for form validation.
+* [wftorms-validators](https://pypi.org/project/wtforms-validators/), for additional form validators.
+* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/), to enable easy display of database information using templating.
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/), to enable generation and checking of secure password hashes.
+* [SMTPLib](https://docs.python.org/3/library/smtplib.html), to enable contact email to be sent.
 
 ### Browser Support ###
 The following browsers are all supported by **FreeFrom**.
@@ -440,7 +442,18 @@ The high level code logic is explained in the [UML Diagrams](/static/wireframes/
 <img src="/static/wireframes/uml/userauth-logic.png" width="700px" style="margin: 5px;">  
 
 #### [Mail](/static/wireframes/uml/mail-logic.png) ####
-<img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 5px;"> 
+
+### Python Code Refactoring ###
+After attending an online [Code Institute](https://codeinstitute.net/) seminar on [Python Classes](https://www.w3schools.com/python/python_classes.asp) 
+given by [Ben Kavanagh](https://github.com/BAK2K3), consideration was given to re-factoring the code using an object orientated approach. 
+A new [Class](https://github.com/richardhenyash/freefrom/tree/class) branch was created on in the 
+[Project Code Repository Location](https://github.com/richardhenyash/freefrom). Classes and class methods were created in the 
+**products**, **allergens**, **categories** and **userauth** python code modules. The class orientated approach was succesfully 
+implemented as a test on the **Product View** route, which resulted in a significant simplification of the code. Unfortunately, 
+due to time constaints, it was not possible to implement the object orientated approach across the project, but this should 
+definitely be considered for a future project development phase, and as a better method of working for future
+projects.
 
 ### Form Validation ###
 Form validation is achieved in [Python](https://www.python.org/) using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
@@ -469,8 +482,8 @@ Product View|Manufacturer|StringField|No|None|None|Read Only
 Product View|FreeFrom|StringField|No|None|None|Read Only
 Product View|Review|TextAreaField|Yes|5|250|
 Product View|Rating|StringField|No|1|1|Automatically populated using JavaScript event handlers
-Product Edit|Name|StringField|Yes|5|50|
-Product Edit|Manufacturer|StringField|Yes|5|50|
+Product Edit|Name|StringField|Yes|3|50|
+Product Edit|Manufacturer|StringField|Yes|3|50|
 Product Edit|FreeFrom|StringField|No|None|None|Automatically populated from check boxes
 Allergen Add|Name|StringField|Yes|3|20|May only contain letters or spaces
 Allergen Edit|Name|StringField|Yes|3|20|May only contain letters or spaces
@@ -498,39 +511,71 @@ See [UML Diagram](/static/wireframes/uml/) below:
 Further testing information and screen prints can be found in [TESTING.md](TESTING.md).
 
 ## Deployment ##
+The project has been developed using [Gitpod](https://www.Gitpod.io/) and [GitHub](https://github.com/). 
+The project was regularly commited to [GitHub](https://github.com/) during the initial development phase.
+The website resides as a repository in [GitHub](https://github.com/).and has been been deployed 
+using [Heroku](https://dashboard.heroku.com/).
+
+In order to make a fork or clone of the project, a [GitHub](https://www.Gitpod.io/) account is required. 
+The [Gitpod Browser Extension](https://www.Gitpod.io/docs/browser-extension/) is also recommended.  
+
+The project may be forked by following these steps:
+* Go to the [Project Code Repository Location](https://github.com/richardhenyash/freefrom) on [GitHub](https://github.com/).
+* In the top-right corner of the page, click "Fork".  
+
+For further information on forking a [GitHub](https://github.com/) repository, 
+see the [GitHub Documentation](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
+
+The project may be cloned by following these steps:
+* Go to the [Project Code Repository Location](https://github.com/richardhenyash/freefrom) on [GitHub](https://github.com/).
+* Select the "Code" dropdown and choose "GitHub CLI" under "Clone". This will give you a URL that may be copied into the clipboard. 
+* Open the Git Bash command line interface in [Gitpod](https://www.Gitpod.io/).
+* Change the current working directory to the location where you would like the cloned directory to reside.
+* Type git clone, and then paste the URL copied earlier, eg:  
+$ git clone https://github.com/richardhenyash/balloon-pop-maths
+* Press Enter to create the local clone.
+
+The code may also be downloaded to a local computer by following these steps:
+* Go to the [Project Code Repository Location](https://github.com/richardhenyash/freefrom) on [GitHub](https://github.com/).
+* Select the "Code" dropdown and choose the "Download ZIP" option.
+* This will download a copy of the entire project locally as a .zip file.  
+
+For further information on cloning a [GitHub](https://github.com/) repository, see the [GitHub Documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+
+The steps required to deploy the website to [Heroku](https://dashboard.heroku.com/) are as follows:
+* Create a `requirements.txt` file using the terminal command `pip freeze > requirements.txt`.
+* Create a `Procfile` with the terminal command `echo web: python app.py > Procfile`.
+* git add and git commit the new `requirements.txt` and `Procfile` and then git push the project to GitHub.
+* Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+* From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+* Confirm the linking of the heroku app to the correct GitHub repository.
+* In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+* Set the following config vars:
+* To get your MONGO_URI read the MongoDB Atlas documentation here
+* In the heroku dashboard, click "Deploy".
+* In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
+* The site is now successfully deployed.
 
 ## Credits ##
 
-DataTables
-https://datatables.net/
-
-
-WTForms:
-https://wtforms.readthedocs.io/en/2.3.x/
-https://wtforms.readthedocs.io/en/2.3.x/crash_course/
-
-WTForms Validators:
-https://pypi.org/project/wtforms-validators/
-
-
-Jinja:
-https://jinja.palletsprojects.com/en/3.0.x/
-
-SMTP Lib:
-https://docs.python.org/3/library/smtplib.html
-
-Python:
-https://www.python.org/dev/peps/pep-0263/
-https://stackoverflow.com/questions/1523427/what-is-the-common-header-format-of-python-files
-
-Logo:
-https://www.vectorstock.com/
-
-
-Many thanks to the following:
-
+* [Vector Stock](https://www.vectorstock.com/) for the attractive dove logo.
+* [DataTables](https://datatables.net/) for the brilliant tables plug in.
+* [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) for the excellent form validation library and 
+[Crash Course](https://wtforms.readthedocs.io/en/2.3.x/crash_course/) which I followed to implement the **Form Validation**.
+* [wftorms-validators](https://pypi.org/project/wtforms-validators/) for the awesome additional form validation library.
+* My mentor [Reuben Ferrante](https://github.com/arex18) for the examples which helped me implement the **Form Validation** 
+and [Flask Blueprints](https://flask.palletsprojects.com/en/2.0.x/blueprints/).
+* [Google Fonts](https://fonts.google.com/) for the attractive fonts used on the site, which enabled me to get started quickly.
+* [hex 2 rgba](http://hex2rgba.devoth.com/) for the hex to RGBA conversion tool.
+* The excellent [Code Institute](https://codeinstitute.net/) course material which enabled me to succefully implement the project.
+* [ColorSpace](https://mycolor.space/) for the colour ideas generated using the colour pallete generator.
 
 ## Acknowledgements ##
 
 Many thanks to the following for help and inspiration during this project:
-
+* My mentor [Reuben Ferrante](https://github.com/arex18) for helping to get me started off on the right footing and for the insightful
+review and comments on the site.
+* [Neringa Bickmore](https://github.com/neringabickmore) for your encouragement with my project idea.
+* [Ben Kavanagh](https://github.com/BAK2K3) for the very helpful comments on the site and general 
+ encouragement, and for the excellent online seminar on **Python Classes**.
+* The [Code Institute](https://codeinstitute.net/) [slack](https://slack.com/intl/en-gb/) community, for all your encouragement and help.
