@@ -43,6 +43,7 @@
         - [Allergens](#allergens)
         - [User Authentication](#user-authentication)
         - [Mail](#mail)
+        - [Python Code Refactoring](#python-code-refactoring)
     - [Form Validation](#form-validation)
     - [JavaScript Code Logic](#javascript-code-logic)
 - [Testing](#testing)
@@ -458,8 +459,8 @@ Register|Confirm Password|PasswordField|Yes|None|None|Must match Password
 Contact|Name|StringField|Yes|3|100|May only contain letters or spaces
 Contact|Email|StringField|Yes|5|None|
 Contact|Message|TextAreaField|Yes|10|500|
-Product Add|Name|StringField|Yes|5|50|
-Product Add|Manufacturer|StringField|Yes|5|50|
+Product Add|Name|StringField|Yes|3|50|
+Product Add|Manufacturer|StringField|Yes|3|50|
 Product Add|FreeFrom|StringField|No|None|None|Automatically populated from check boxes
 Product Add|Review|TextAreaField|Yes|5|50|
 Product Add|Rating|StringField|No|1|1|Automatically populated using JavaScript event handlers

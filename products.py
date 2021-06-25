@@ -38,10 +38,10 @@ def search():
             search_str = None
 
         # Get category from form
-        category = request.form.get("categorySelector")
+        category = request.form.get("categorySelector").lower()
         # Set category and category_id variables to None
         # if no category is selected
-        if category == "Category...":
+        if category == "category...":
             category = None
             category_id = None
         # Otherwise get category_id from category collection

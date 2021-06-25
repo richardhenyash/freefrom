@@ -24,11 +24,11 @@
                         <label class="form-label input-label" for="categorySelector">Category</label>
                         <select class="form-select form-select-lg input-title" id="categorySelector"
                             name="categorySelector" aria-label="Category Selector">
-                                <option selected>{{ product_category[0]|upper }}{{product_category[1:] }}</option>
+                                <option selected>{{ product_category }}</option>
                             <!-- Iterate over categories and populate drop down category selector -->
                             {% for category in categories %}
                                 {% if category.name != product_category %}
-                                    <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                                    <option value="{{ category.name }}">{{ category.name }}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>

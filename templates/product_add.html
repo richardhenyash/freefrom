@@ -28,10 +28,10 @@
                             <!-- If product_category is passed through as an argument -->
                             {% if product_category %}
                                 <!-- Populate category selector -->
-                                <option selected>{{ product_category[0]|upper }}{{product_category[1:] }}</option>
+                                <option selected>{{ product_category }}</option>
                             {% else %}
-                                <!-- Else display Category... in selector -->
-                                <option selected>Category...</option>
+                                <!-- Else display category... in selector -->
+                                <option selected>category...</option>
                             {% endif %}
                             <!-- If product_category is passed through as an argument -->
                             {% if product_category %}
@@ -39,13 +39,13 @@
                                 {% for category in categories %}
                                     <!-- Populate drop down category selector if category is not equal to product_category --> 
                                     {% if category.name != product_category %}
-                                        <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                                        <option value="{{ category.name }}">{{ category.name }}</option>
                                     {% endif %}
                                 {% endfor %}
                             {% else %}
                                 <!-- Else iterate over categories and populate drop down category selector -->   
                                 {% for category in categories %}
-                                    <option value="{{ category.name }}">{{ category.name[0]|upper }}{{category.name[1:] }}</option>
+                                    <option value="{{ category.name }}">{{ category.name }}</option>
                                 {% endfor %}
                             {% endif %}
                         </select>
