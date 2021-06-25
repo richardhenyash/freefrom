@@ -331,14 +331,11 @@ def view(product_id):
 
         # Get user name
         user_review = None
-        other_user_reviews = None
         if session:
             # Get user name
             user_name = session["user"]
             # Get user id from user name
             user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-            # Initialise other user review list
-            other_user_reviews = []
             # Cycle through product reviews
             for review in product["reviews"]:
                 # If review belongs to logged in user
@@ -348,20 +345,12 @@ def view(product_id):
                     form.rating.data = user_review["rating"]
                     # Set review in form object
                     form.review.data = user_review["review"]
-                    # add review to other user reviews list
-                    other_user_reviews = get_other_user_reviews(
-                        product, user_id)
-                # else, add review to other user reviews list
-                else:
-                    other_user_reviews = get_other_user_reviews(
-                        product, user_id)
-        else:
-            other_user_reviews = get_other_user_reviews(product, None)
+        reviews = get_reviews(product)
 
         return render_template(
             "product_view.html",
             product=product, product_id=product_id,
-            user_review=user_review, other_user_reviews=other_user_reviews,
+            user_review=user_review, reviews=reviews,
             form=form)
     else:
         flash("Ooops.... product not found :)", "danger")
@@ -509,6 +498,9 @@ def delete(product_id):
 
 
 def get_selected_allergen_list(allergens):
+    """
+    Return list of selected allergens
+    """
     allergen_list = []
     for allergen in allergens.rewind():
         # Get checkbox name
@@ -522,19 +514,23 @@ def get_selected_allergen_list(allergens):
     return(allergen_list)
 
 
-def get_other_user_reviews(product, user_id):
-    # Initialise other user review list
-    other_user_reviews = []
+def get_reviews(product):
+    """
+    Return reviews for product, with username
+    """
+    # Initialise review list
+    reviews = []
     # Cycle through product reviews
     for review in product["reviews"]:
-        other_user = mongo.db.users.find_one(
+        user = mongo.db.users.find_one(
             {"_id": (ObjectId(review["user_id"]))})
-        if other_user:
-            other_user_name = other_user["username"]
-            other_user_review = {
-                "username": other_user_name,
+        if user:
+            # Get user name
+            user_name = user["username"]
+            user_review = {
+                "username": user_name,
                 "rating": review["rating"],
                 "review": review["review"]
             }
-            other_user_reviews.append(other_user_review)
-    return other_user_reviews
+            reviews.append(user_review)
+    return reviews
