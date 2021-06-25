@@ -86,15 +86,15 @@ class ProductForm(Form):
         validators.DataRequired(
             message="Product name required in order to add product"),
         validators.Length(
-            min=5, max=50,
-            message="Product name must be between 5 and 50 characters long"),
+            min=3, max=50,
+            message="Product name must be between 3 and 50 characters long"),
     ])
     manufacturer = StringField('Manufacturer', [
         validators.DataRequired(
             message="Manufacturer name required in order to add product"),
         validators.Length(
-            min=5, max=50,
-            message="Manufacturer name must be between 5 " +
+            min=3, max=50,
+            message="Manufacturer name must be between 3 " +
             "and 50 characters long"),
     ])
     freefrom = StringField('Free From', [
@@ -144,16 +144,16 @@ class ProductEditForm(Form):
         validators.DataRequired(
             message="Product name required in order to edit product"),
         validators.Length(
-            min=5, max=50,
-            message="Product name must be between 5 and 50 characters long"),
+            min=3, max=50,
+            message="Product name must be between 3 and 50 characters long"),
     ])
     manufacturer = StringField('Manufacturer', [
         validators.DataRequired(
             message="Manufacturer name required in order to edit product"),
         validators.Length(
-            min=5, max=50,
+            min=3, max=50,
             message="Manufacturer name must be between " +
-            "5 and 50 characters long"),
+            "3 and 50 characters long"),
     ])
     freefrom = StringField('Free From', [
         validators.Optional(),
