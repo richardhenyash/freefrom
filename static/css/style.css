@@ -298,12 +298,31 @@ container-footer a:visited {
 }
 
 /*-- Bootstrap Table Overrides --*/
+.page-item .page-link {
+    color: var(--fireopal);
+    background-color: var(--white);
+    border: 1px solid var(--fireopal);
+    
+}
+
+.page-item .page-link:hover {
+    color: var(--venetianred);
+}
+
+
 .page-item.active .page-link {
     background-color: var(--fireopal);
     border: 1px solid var(--fireopal);
 }  
 
-.page-item.active .page-link:focus {
+.page-item.active .page-link:focus,
+.page-item.next .page-link:focus,
+.page-item.previous .page-link:focus {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(233 124 114 / 25%);
+}
+
+.page-item.active .page-link:hover {
+    color: var(--white);
+    background-color: var(--venetianred);
 }
