@@ -70,6 +70,7 @@ body {
 /*-- Alert Links --*/
 .alert a {
     color: var(--vividiangreen);
+    font-weight: 500;
     text-decoration: None;
 }
 
@@ -78,7 +79,7 @@ body {
 .alert a:active,
 .alert a:focus,
 .alert a:visited {
-    font-weight: 500;
+    text-decoration: underline;
 }
 
 /*-- Buttons --*/
