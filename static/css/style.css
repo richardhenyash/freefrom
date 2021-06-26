@@ -70,17 +70,17 @@ body {
 /*-- Alert Links --*/
 .alert a {
     font-weight: 500;
-    color: var(--fireopal);
-    text-decoration: none;
+    color: var(--white);
+    text-decoration: underline;
 }
 
 /*-- Alert Link Pseudo Class Styling --*/
 .alert a:hover,
 .alert a:active,
-.alert a:focus,
+.alert a:focus, 
 .alert a:visited {
-    color: var(--venetianred);
-    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
 }
 
 /*-- Buttons --*/
