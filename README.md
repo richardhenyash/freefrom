@@ -617,8 +617,9 @@ and [Flask Blueprints](https://flask.palletsprojects.com/en/2.0.x/blueprints/).
 * [hex 2 rgba](http://hex2rgba.devoth.com/) for the hex to RGBA conversion tool.
 * The excellent [Code Institute](https://codeinstitute.net/) course material which enabled me to succefully implement the project.
 * [ColorSpace](https://mycolor.space/) for the colour ideas generated using the colour pallete generator.
-* The following link for information on 
-[DataTables page and page number styling](https://datatables.net/forums/discussion/51763/page-paging-number-color-styles)
+* [favicon.io](https://favicon.io/favicon-converter/) for the favicon conversion tool.
+* The following [link](https://datatables.net/forums/discussion/51763/page-paging-number-color-styles) for information on DataTables 
+page and page number styling.
 
 ## Acknowledgements ##
 
