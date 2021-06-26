@@ -106,7 +106,7 @@
                             <!-- If user is signed in -->
                             {% if session.user %}
                                 <!-- Show Edit Product button -->
-                                <a href="{{ url_for('products.edit', product_id=product._id) }}"class="btn btn-lg btn-danger btn-fireopal" role="button">Edit
+                                <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal" role="button">Edit
                                     Product</a>
                                 <!-- Show Add Product button -->
                                 <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow" role="button">Add Product</a>
