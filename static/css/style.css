@@ -69,9 +69,8 @@ body {
 
 /*-- Alert Links --*/
 .alert a {
-    font-weight: 500;
-    color: var(--fireopal);
-    text-decoration: none;
+    color: var(--vividiangreen);
+    text-decoration: None;
 }
 
 /*-- Alert Link Pseudo Class Styling --*/
@@ -79,8 +78,7 @@ body {
 .alert a:active,
 .alert a:focus,
 .alert a:visited {
-    color: var(--venetianred);
-    text-decoration: none;
+    font-weight: 500;
 }
 
 /*-- Buttons --*/
