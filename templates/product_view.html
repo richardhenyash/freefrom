@@ -102,14 +102,14 @@
                         <div class="col-md-3"></div>
                         <div class="col-12 col-md-6 pt-4">
                             <!-- Back button redirects to product search -->
-                            <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary">Back</a>
+                            <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary" role="button">Back</a>
                             <!-- If user is signed in -->
                             {% if session.user %}
                                 <!-- Show Edit Product button -->
-                                <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal">Edit
+                                <a href="{{ url_for('products.edit', product_id=product._id) }}"class="btn btn-lg btn-danger btn-fireopal" role="button">Edit
                                     Product</a>
                                 <!-- Show Add Product button -->
-                                <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow">Add Product</a>
+                                <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow" role="button">Add Product</a>
                             {% endif %}
                         </div>
                         <div class="col-md-3"></div>
