@@ -86,11 +86,9 @@ passed, the user is registered on the database, redirected back to the **Home** 
 at the top of the screen. The **Home Page Alert** is updated to remove the **Sign In** and **Register** links and shows the 
 **User Name** of the signed in user. The **Navigation Menu** shows a link to **Sign Out**:  
 
-<img src="/static/testing/user-stories/home-signedout.png" width="600px" style="margin: 5px; border=1px solid black">
-
-<img src="/static/testing/user-stories/register.png" width="400px" style="margin: 5px; border=1px solid black">  
-
-<img src="/static/testing/user-stories/home-signedin.png" width="600px" style="margin: 5px; border=1px solid black">  
+<img src="/static/testing/user-stories/home-signedout.png" width="600px" style="margin: 5px;">  
+<img src="/static/testing/user-stories/register.png" width="400px" style="margin: 5px;">  
+<img src="/static/testing/user-stories/home-signedin.png" width="600px" style="margin: 5px;">  
 
 * ***As a User, I would like to be able to sign in to the site.***  
 The user is able to **Sign In** to the site using the **Sign In** form which can be accessed from **Home Page Alert Links** 
