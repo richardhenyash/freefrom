@@ -79,13 +79,11 @@ body {
 .alert a:active,
 .alert a:focus {
     color: var(--venetianred);
-    font-weight: 600;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .alert a:visited {
-    color: var(--fireopal);
-    font-weight: 500;
+    color: var(--venetianred);
     text-decoration: none;
 }
 
