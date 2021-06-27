@@ -103,12 +103,21 @@ to contribute to would suit this demographic.
 * Responsive design is required as users may be viewing the site on Mobile, Tablet or Desktop.
 
 #### User Stories ####
+* ***As a User, I would like to be able to register on the site.***
+* ***As a User, I would like to be able to sign in to the site.***
+* ***As a User, I would like to be able to sign out of the site.***
 * ***As a User, I am searching for a product which is free from one or more allergens.***
 * ***As a User, I have found a product which is free from one or more allergens, and I want to add it to the database.***
 * ***As a User, I have tried a product and would like to rate it.***
 * ***As a User, I have tried a product and would like to review it.***
+* ***As a User, I would like to edit an existing product.***
+* ***As a User, I would like to delete an existing product.***
 * ***As a User, I would like to add a new product category.***
+* ***As a User, I would like to edit an existing product category.***
+* ***As a User, I would like to delete an existing product category.***
 * ***As a User, I would like to add a new allergen.***
+* ***As a User, I would like to edit an existing allergen.***
+* ***As a User, I would like to delete an existing allergen.***
 * ***As a User, I would like to be able to contact the developer.***
 
 #### Constraints #####
@@ -120,7 +129,8 @@ can be succesfully implemented during the phase 1 development.
 
 #### Functional Requirements ####
 * The User needs to be able to register.
-* The User needs to be able to login and logout.
+* The User needs to be able to sign in.
+* The User needs to be able to sign out.
 * The User needs to be able to search for products which are free from one or more allergens.
 * The User needs to be able to add products.
 * The User needs to be able to rate products.
