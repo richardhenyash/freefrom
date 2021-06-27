@@ -125,7 +125,6 @@ def search():
                 allergen_names.append(allergen_name)
             # add allergen list to product object
             product["free_from_allergen_names"] = allergen_names
-        print(allergen_list)
         return render_template(
             "home.html", categories=categories.rewind(),
             allergens=allergens.rewind(), products=products,

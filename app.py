@@ -52,8 +52,10 @@ def home():
     """
     Route for home
     """
-    categories = mongo.db.categories.find()
-    allergens = mongo.db.allergens.find()
+    # Get categories collection from database
+    categories = mongo.db.categories.find().sort("name", 1)
+    # Get allergens collection from database
+    allergens = mongo.db.allergens.find().sort("name", 1)
     if categories and allergens:
         return render_template(
             "home.html", categories=categories, allergens=allergens)
