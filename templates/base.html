@@ -5,23 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="FreeFrom - Find, rate, review and add products which are free from one or more common allergens.">
-    <meta name="keywords" content="Allergy, Allergen, Intolerance, Allergy Database, 
+    <meta name="description" 
+        content="FreeFrom - Find, rate, review and add products which are free from one or more common allergens.">
+    <meta name="keywords" 
+        content="Allergy, Allergen, Intolerance, Allergy Database, 
     Allergen Database, Intolerance Database, ">
     <meta name="author" content="Richard Ash">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Link to Dove Favicon -->
     <link rel="shortcut icon" href="static/images/dove-favicon.ico" type="image/x-icon">    
     <!-- Link to Bootstrap 5.0.1 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- Link to Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- Link to Architects Daughter font -->
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <!-- Link to Montserrat font -->
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <!-- Link to Open Sans font -->
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Montserrat:wght@400;500;600&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Montserrat:wght@400;500;600&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <!-- Link to Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/7863bec69d.js" crossorigin="anonymous"></script>
     <!-- Link to DataTables CSS -->
@@ -39,9 +44,12 @@
         <!-- Bootstrap navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand logo" href="{{ url_for ('home') }}">FreeFrom <img src="/static/images/dove94x100.png" alt="white dove" width="47" height="50"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand logo" href="{{ url_for ('home') }}">FreeFrom
+                    <img src="/static/images/dove94x100.png" alt="white dove" width="47" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -58,27 +66,39 @@
                                     Allergens
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="allergenDropdown">
-                                    <li><a class="dropdown-item" href="{{ url_for('allergens.allergen_add') }}">Add Allergen</a></li>
-                                    <li><a class="dropdown-item" href="{{ url_for('allergens.allergen_edit') }}">Edit Allergen</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url_for('allergens.allergen_add') }}">Add Allergen</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url_for('allergens.allergen_edit') }}">Edit Allergen</a>
+                                    </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="{{ url_for('allergens.allergen_delete') }}">Delete Allergen</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url_for('allergens.allergen_delete') }}">Delete Allergen</a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- Show categories menu -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" 
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Categories
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-                                    <li><a class="dropdown-item" href="{{ url_for('categories.category_add') }}">Add Category</a></li>
-                                    <li><a class="dropdown-item" href="{{ url_for('categories.category_edit') }}">Edit Category</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url_for('categories.category_add') }}">Add Category</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url_for('categories.category_edit') }}">Edit Category</a>
+                                    </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="{{ url_for('categories.category_delete') }}">Delete Category</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url_for('categories.category_delete') }}">Delete Category</a>
+                                    </li>
                                 </ul>
                             </li>
                         {% endif %}
@@ -117,7 +137,8 @@
         <div class="container-footer pt-4 pb-4 text-center">
             <a href="{{ url_for('mail.contact') }}">Contact Developer</a>
             <span>&nbsp;</span>
-            <a href="https://github.com/richardhenyash" aria-label="Link to developer GitHub page" rel="noreferrer noopener" target="_blank"><i class="fab fa-github-square fa-lg"></i></a>
+            <a href="https://github.com/richardhenyash" aria-label="Link to developer GitHub page" 
+                rel="noreferrer noopener" target="_blank"><i class="fab fa-github-square fa-lg"></i></a>
         </div>
     </footer>
     <!-- JavaScript links -->

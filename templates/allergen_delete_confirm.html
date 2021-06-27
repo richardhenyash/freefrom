@@ -4,7 +4,8 @@
     <section id="allergen-delete-confirm" class="container-sm" aria-label="Confirm Allergen Delete">
         <div class="row">
             <!-- Allergen delete confirm form -->
-            <form id="allergen-delete-confirm-form" method="POST" action="{{ url_for('allergens.allergen_delete_confirm', allergen_id=allergen_id) }}">
+            <form id="allergen-delete-confirm-form" method="POST"
+                action="{{ url_for('allergens.allergen_delete_confirm', allergen_id=allergen_id) }}">
                 <div class="row">
                     <div class="col-12 container-search pb-1">
                         <div class="alert alert-danger text-center alert-orangeyellow" role="alert">
@@ -16,7 +17,8 @@
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4 text-center">
                         <!-- Cancel button redirects to allergen delete -->
-                        <a href="{{ url_for('allergens.allergen_delete') }}" class="btn btn-lg btn-secondary" role="button">Cancel</a>
+                        <a href="{{ url_for('allergens.allergen_delete') }}" class="btn btn-lg btn-secondary"
+                            role="button">Cancel</a>
                         <!-- Delete button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Delete</button>
                     </div>

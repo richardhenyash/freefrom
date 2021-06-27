@@ -22,7 +22,8 @@
         {% endif %}
         <div class="row">
             <!-- Product view form -->
-            <form id="product-view-form" method="POST" action="{{ url_for('products.view', product_id=product._id) }}">
+            <form id="product-view-form" method="POST" 
+                action="{{ url_for('products.view', product_id=product._id) }}">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-12 col-md-6 pt-4">
@@ -102,14 +103,17 @@
                         <div class="col-md-3"></div>
                         <div class="col-12 col-md-6 pt-4">
                             <!-- Back button redirects to product search -->
-                            <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary" role="button">Back</a>
+                            <a href="{{ url_for('products.search') }}" 
+                                class="btn btn-lg btn-secondary" role="button">Back</a>
                             <!-- If user is signed in -->
                             {% if session.user %}
                                 <!-- Show Edit Product button -->
-                                <a href="{{ url_for('products.edit', product_id=product._id) }}" class="btn btn-lg btn-danger btn-fireopal" role="button">Edit
+                                <a href="{{ url_for('products.edit', product_id=product._id) }}" 
+                                    class="btn btn-lg btn-danger btn-fireopal" role="button">Edit
                                     Product</a>
                                 <!-- Show Add Product button -->
-                                <a href="{{ url_for('products.add') }}" class="btn btn-lg btn-danger btn-orangeyellow" role="button">Add Product</a>
+                                <a href="{{ url_for('products.add') }}" 
+                                    class="btn btn-lg btn-danger btn-orangeyellow" role="button">Add Product</a>
                             {% endif %}
                         </div>
                         <div class="col-md-3"></div>
@@ -129,7 +133,8 @@
                     <h3 class="section-heading">Reviews</h3>
                 {% endif %}
                 <!-- Reviews DataTable -->
-                <table id="reviewsTable" class="table table-striped responsive results-table" style="width:100%">
+                <table id="reviewsTable" 
+                    class="table table-striped responsive results-table" style="width:100%">
                     <!-- Table header -->
                     <thead>
                         <tr class="table-primary results-table-header">

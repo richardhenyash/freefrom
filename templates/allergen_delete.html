@@ -12,13 +12,13 @@
                         <label class="form-label input-label" for="allergenSelector">Existing Allergen Name</label>
                         <select class="form-select form-select-lg input-title" id="allergenSelector"
                             name="allergenSelector" aria-label="Allergen Selector">
-                                <option selected>allergen...</option>
-                                <!-- Iterate over allergens and populate drop down allergen selector -->
-                                {% for allergen in allergens %}
-                                    <option value="{{ allergen.name }}">{{ allergen.name }}</option>
-                                {% endfor %}
+                            <option selected>allergen...</option>
+                            <!-- Iterate over allergens and populate drop down allergen selector -->
+                            {% for allergen in allergens %}
+                                <option value="{{ allergen.name }}">{{ allergen.name }}</option>
+                            {% endfor %}
                         </select>
-                    </div> 
+                    </div>
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
@@ -27,7 +27,8 @@
                         <!-- Delete button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Delete</button>
                         <!-- Cancel button redirects to product search -->
-                        <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary" role="button">Cancel</a>
+                        <a href="{{ url_for('products.search') }}" class="btn btn-lg btn-secondary"
+                            role="button">Cancel</a>
                     </div>
                     <div class="col-md-3"></div>
                 </div>

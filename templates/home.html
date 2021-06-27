@@ -29,7 +29,9 @@
                 <div class="input-group input-group-lg">
                     <!-- Search text input -->
                     <div class="col-12 col-md-5 container-input">
-                        <input type="search" id="search" name="search" class="form-control form-control-lg input-title pt-0 pb-0" placeholder="search....">
+                        <input type="search" id="search" name="search" 
+                            class="form-control form-control-lg input-title pt-0 pb-0" 
+                            placeholder="search....">
                     </div>
                     <!-- Category selector -->
                     <div class="col-8 col-md-5 container-input">
@@ -108,7 +110,8 @@
             <div class="row">
                 <div class="col-12 container-results">
                     <!-- Search results DataTable -->
-                    <table id="productsTable" class="table table-striped responsive results-table" style="width:100%">
+                    <table id="productsTable" class="table table-striped responsive results-table" 
+                        style="width:100%">
                         <!-- Table headers -->
                         <thead>
                             <tr class="table-primary results-table-header">
@@ -124,7 +127,9 @@
                             {% for product in products %}
                                 <tr class="table-light results-table-row">
                                     <!-- Product name -->
-                                    <td><a href="{{ url_for('products.view', product_id=product._id) }}">{{ product.name }}</a></td>
+                                    <td>
+                                        <a href="{{ url_for('products.view', product_id=product._id) }}">{{ product.name }}</a>
+                                    </td>
                                     <!-- Product manufacturer -->
                                     <td>{{ product.manufacturer }}</td>
                                     <!-- Product category -->
