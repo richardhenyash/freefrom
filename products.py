@@ -116,18 +116,20 @@ def search():
 
             # get allergens from product object
             allergen_id_list = product["free_from_allergens"]
-            # initialise allergen list
-            allergen_list = []
+            # initialise allergen names list
+            allergen_names = []
             # get allergen names from allergen object id's
             for allergen in allergen_id_list:
                 allergen_name = mongo.db.allergens.find_one(
                     {"_id": allergen})["name"]
-                allergen_list.append(allergen_name)
+                allergen_names.append(allergen_name)
             # add allergen list to product object
-            product["free_from_allergen_names"] = allergen_list
+            product["free_from_allergen_names"] = allergen_names
+        print(allergen_list)
         return render_template(
             "home.html", categories=categories.rewind(),
             allergens=allergens.rewind(), products=products,
+            selected_category=category, search_str=search_str,
             selected_allergens=allergen_list)
     return render_template(
         "home.html", categories=categories,
@@ -241,12 +243,11 @@ def add():
             product_id = mongo.db.products.find_one(
                 {"name": product_name})["_id"]
             return redirect(url_for('products.view', product_id=product_id))
-
         return render_template(
             "product_add.html", categories=categories.rewind(),
             allergens=allergens.rewind(),
             product_category=product_category,
-            selected_allergens=selected_allergens, form=form)
+            selected_allergens=allergen_list, form=form)
 
     form.rating.data = None
     return render_template(

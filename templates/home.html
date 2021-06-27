@@ -28,20 +28,46 @@
             <div class="row">
                 <div class="input-group input-group-lg">
                     <!-- Search text input -->
-                    <div class="col-12 col-md-5 container-input">
-                        <input type="search" id="search" name="search" 
-                            class="form-control form-control-lg input-title pt-0 pb-0" 
-                            placeholder="search....">
-                    </div>
+                    {% if search_str %}
+                        <div class="col-12 col-md-5 container-input">
+                            <input type="search" id="search" name="search" 
+                                class="form-control form-control-lg input-title pt-0 pb-0" 
+                                placeholder="search...." value="{{ search_str }}">
+                        </div>
+                    {% else %}
+                        <div class="col-12 col-md-5 container-input">
+                            <input type="search" id="search" name="search" 
+                                class="form-control form-control-lg input-title pt-0 pb-0" 
+                                placeholder="search....">
+                        </div>
+                    {% endif %}
                     <!-- Category selector -->
                     <div class="col-8 col-md-5 container-input">
                         <select class="form-select form-select-lg input-title" id="categorySelector"
                             name="categorySelector" aria-label="Category Selector">
-                            <option selected>category...</option>
-                            <!-- Iterate over categories and populate drop down category selector -->
-                            {% for category in categories %}
-                                <option value="{{ category.name }}">{{ category.name }}</option>
-                            {% endfor %}
+                            <!-- If selected_category is passed through as an argument -->
+                            {% if selected_category %}
+                                <!-- Populate category selector -->
+                                <option selected>{{ selected_category }}</option>
+                            {% else %}
+                                <!-- Else display category... in selector -->
+                                <option selected>category...</option>
+                            {% endif %}
+                            <!-- If selected_category is passed through as an argument -->
+                            {% if selected_category %}
+                                <!-- Iterate over categories and populate drop down category selector -->   
+                                {% for category in categories %}
+                                    <!-- Populate drop down category selector if category is not equal to selected_category --> 
+                                    {% if category.name != selected_category %}
+                                        <option value="{{ category.name }}">{{ category.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <!-- Else iterate over categories and populate drop down category selector -->   
+                                {% for category in categories %}
+                                    <option value="{{ category.name }}">{{ category.name }}</option>
+                                {% endfor %}
+                            {% endif %}
                         </select>
                     </div>
                     <!-- If user is signed in -->
