@@ -386,4 +386,4 @@ using a combination of manual testing across various devices and the [Browsersta
 * [Firefox](https://www.mozilla.org/en-GB/firefox/new/) ([Windows 10](https://www.microsoft.com/en-us/windows) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).
 * [Opera](https://www.opera.com/) ([Windows 10](https://www.microsoft.com/en-us/windows) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).  
 
-No issues were uncovered during **Browser Compatibility Testing**
+No issues were uncovered during **Browser Compatibility Testing**.
