@@ -388,8 +388,8 @@ User reviews are shown below in the **User Reviews Table**:
 <img src="/static/testing/contact.png" width="300px" style="margin: 5px;">  
 
 * **Error Page**, returns a customised error message and link to the **Home** page if an error is encountered:  
-<img src="/static/testing/error.png" width="300px" style="margin: 5px;">
-
+<img src="/static/testing/error-page-not-found.png" width="300px" style="margin: 5px;">
+<img src="/static/testing/error-product-not-found.png" width="300px" style="margin: 5px;">
 
 #### Features To Be Implemented In Future Development Phases ####
 * Currently, when the user navigates back to the **Home** page from the **Product View** page, 
