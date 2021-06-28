@@ -387,6 +387,10 @@ User reviews are shown below in the **User Reviews Table**:
 * **Contact Developer**, enables developer to be contacted by email:  
 <img src="/static/testing/contact.png" width="300px" style="margin: 5px;">  
 
+* **Error Page**, returns a customised error message and link to the **Home** page if an error is encountered:  
+<img src="/static/testing/error.png" width="300px" style="margin: 5px;">
+
+
 #### Features To Be Implemented In Future Development Phases ####
 * Currently, when the user navigates back to the **Home** page from the **Product View** page, 
 the previous search results are not displayed. Adding this functionality was investigated and
@@ -402,9 +406,10 @@ the user to edit **Categories** and **Allergens**. Currently this has to be done
 
 #### Design Changes During The Phase 1 Development ####
 The following design changes were implemented following initial user feedback:
-* The **Home** page alert was updated to include links to **Sign In** and **Register** 
+* The **Home** and **Product View** page alerts were updated to include links to **Sign In** and **Register** 
 if the user is not signed in:  
 <img src="/static/testing/home-alert-new.png" width="700px" style="margin: 5px;">
+<img src="/static/testing/product-view-alert.png" width="300px" style="margin: 5px;">
 
 * The **Home** page search button was updated to take up the space of the search and add buttons 
 if the user is not signed in:  

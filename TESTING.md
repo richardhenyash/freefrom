@@ -375,3 +375,15 @@ The following **Responsive** featueres were specifically tested:
 * The **Product Results Table** and **User Reviews Table** columns collapse on smaller devices as intended:  
 <img src="/static/testing/responsive/search-results-collapsed.png" width="200px" align="left" style="margin: 15px;">
 <img src="/static/testing/responsive/reviews-collapsed.png" width="150px" style="margin: 15px;">  
+
+### Browser Compatibility Testing ###
+The website was tested on the following browsers and operating systems, 
+using a combination of manual testing across various devices and the [Browserstack](https://www.browserstack.com/) emulator:
+* [Google Chrome](https://www.google.com/intl/en_uk/chrome/) ([Windows 10](https://www.microsoft.com/en-us/windows), [Android 11](https://www.android.com/android-11/) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).
+* [Microsoft Edge](https://www.microsoft.com/en-us/edge) ([Windows 10](https://www.microsoft.com/en-us/windows) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).
+* [Microsoft Internet Explorer 11](https://support.microsoft.com/en-us/topic/internet-explorer-downloads-d49e1f0d-571c-9a7b-d97e-be248806ca70#ID0EBBD=Windows_10) ([Windows 10](https://www.microsoft.com/en-us/windows)).
+* [Safari](https://www.apple.com/uk/safari/) ([Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/) and [iOS](https://www.apple.com/uk/ios/ios-14/)).
+* [Firefox](https://www.mozilla.org/en-GB/firefox/new/) ([Windows 10](https://www.microsoft.com/en-us/windows) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).
+* [Opera](https://www.opera.com/) ([Windows 10](https://www.microsoft.com/en-us/windows) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).  
+
+No issues were uncovered during **Browser Compatibility Testing**
