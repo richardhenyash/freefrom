@@ -40,7 +40,7 @@ See [Github Link](https://github.com/w3c/css-validator/pull/173).
 ### JavaScript Code Testing ##
 The [JavaScript Event Handler Module](/static/js/events.js) was validated using the 
 [JSHint](https://jshint.com/about/) static code analysis tool, and passed without errors or warnings.
-See [JavaScript Event Handler Module Validation](/static/testing/js/events-jshint-validation.pdf). 
+See [JavaScript Event Handler Module Validation](/static/testing/validation/js/events-jshint-validation.pdf). 
 Due to the lack of complexity of **JavaScript** code implemented on the project, **Automated Unit Testing** 
 of the **JavaScript** code was considered unecessary. All **JavaScript** event handlers in the event 
 handler module have been thoroughly manually tested as part of the [Manual Testing](#manual-testing) process.
@@ -368,8 +368,10 @@ See [Responsive Design Testing](/static/testing/responsive) screen prints, a sel
 The following **Responsive** featueres were specifically tested:
 * The **Navigation Menu** collapses as intended to an icon on small devices less than 768 pixels wide:  
 <img src="/static/testing/responsive/navigation-menu-phone-collapsed.png" width="200px" style="margin: 15px;">  
+
 * The **Search Input**, **Category Selector**, **Search Button** and **Add Button** stack as intended on small devices less than 768 pixels wide.  
 <img src="/static/testing/responsive/home-stacked.png" width="250px" style="margin: 15px;">  
+
 * The **Product Results Table** and **User Reviews Table** columns collapse on smaller devices as intended:  
 <img src="/static/testing/responsive/search-results-collapsed.png" width="200px" align="left" style="margin: 15px;">
 <img src="/static/testing/responsive/reviews-collapsed.png" width="150px" style="margin: 15px;">  
