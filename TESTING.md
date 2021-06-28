@@ -30,7 +30,7 @@ The following error was found during the final **HTML** validation check:
 All HTML code now passes validation with no error or warnings. See [HTML Validation Reports](/static/testing/validation/html)
 
 ### Custom CSS Styling ###
-[Custom CSS styling](./assets/css/style.css) was validated using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
+[Custom CSS styling](/static/css/style.css) was validated using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
 No errors were generated. 10 "unknown vendor extension" warnings were generated. See [CSS Validation Report](/static/testing/validation/css/css-validation.pdf).  
 The warnings are related to the 10 global variables declared at the top of the [Custom CSS](/static/css/style.css). 
 The warnings are generated because the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) 
@@ -344,7 +344,7 @@ thoroughly manually tested. See [Form Validation Testing Screen Prints](/static/
 to emulate viewing the website on a number of devices with varying screen dimensions, 
 including iPhone 5/SE, iPhone 6/7/8, iPhone 6/7/8 plus, iPhone 11, iPad, iPad Pro, Moto G4, Galaxy S5, Surface Duo, 
 Galaxy Fold, Widescreen Laptop and Desktop PC. 
-See [Responsive Design Testing](/assets/testing/responsive) screen prints, a selection of which are shown below:  
+See [Responsive Design Testing](/static/testing/responsive/) screen prints, a selection of which are shown below:  
 <img src="/static/testing/responsive/home-phone.png" width="250px" align="left" style="margin: 5px;">
 <img src="/static/testing/responsive/product-view-phone.png" width="250px" style="margin: 5px;">  
 <img src="/static/testing/responsive/home-ipad.png" width="250px" align="left" style="margin: 5px;">
@@ -358,8 +358,8 @@ See [Responsive Design Testing](/assets/testing/responsive) screen prints, a sel
 * Responsive design was then further tested using the 
 [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
 plug in for chrome. This emulates viewing the website on a large number of devices, 
-including iPhone XR, iPhone XS Max, iPhone XS, iPhone X, Galaxy S9 Plus, Galaxy S8 Plus, Galaxy S9, Note 8, Note S8, Pixel 3 and Pixel 3XL. 
-See [Responsive Design Testing](/assets/testing/responsive) screen prints, a selection of which are also shown below:  
+including iPhone XR, iPhone XS Max, iPhone XS, iPhone X, Galaxy S9 Plus, Galaxy S8 Plus, Galaxy S9, Note 8, Note S8, Pixel 3 and Pixel 3XL.  
+See [Responsive Design Testing](/static/testing/responsive) screen prints, a selection of which are also shown below:  
 <img src="/static/testing/responsive/responsive-viewer-home-phone1.png" width="250px" align="left" style="margin: 15px;">
 <img src="/static/testing/responsive/responsive-viewer-home-phone2.png" width="250px" style="margin: 15px;">  
 <img src="/static/testing/responsive/responsive-viewer-product-edit-phone1.png" width="250px" align="left" style="margin: 15px;">
