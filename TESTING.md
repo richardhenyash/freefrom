@@ -365,7 +365,7 @@ See [Responsive Design Testing](/static/testing/responsive) screen prints, a sel
 <img src="/static/testing/responsive/responsive-viewer-product-edit-phone1.png" width="250px" align="left" style="margin: 15px;">
 <img src="/static/testing/responsive/responsive-viewer-product-edit-phone2.png" width="250px" style="margin: 15px;">   
 
-The following **Responsive** featueres were specifically tested:
+The following **Responsive** features were specifically tested:
 * The **Navigation Menu** collapses as intended to an icon on small devices less than 768 pixels wide:  
 <img src="/static/testing/responsive/navigation-menu-phone-collapsed.png" width="200px" style="margin: 15px;">  
 
