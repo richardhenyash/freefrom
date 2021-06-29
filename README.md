@@ -395,7 +395,7 @@ User reviews are shown below in the **User Reviews Table**:
 * Currently, when the user navigates back to the **Home** page from the **Product View** page, 
 the previous search results are not displayed. Adding this functionality was investigated and
 is likely to involve significant restructuring and re-testing of the python code. This feature 
-is recommended to be implemented in a future development phase.
+is recommended to be implemented in a **Future Development Phase**.
 * Functionality for deleting user accounts should be added. Currently this has to be done in the 
 [Mongo DB](https://www.mongodb.com/) back end.
 * Functionality to enable an **Admin** user to assign **Admin** rights to another user, to enable

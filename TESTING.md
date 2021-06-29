@@ -70,7 +70,8 @@ buttons as required on the **Home** page.
 
 To improve **Best Practices** and **Performance**, the [FreeFrom logo](/static/testing/logo.png) was re-sized to 
 94px x 100px and compressed using the [GIMP](https://www.gimp.org/) and [RIOT](https://riot-optimizer.com/) 
-image manipulation and optimisation tools.
+image manipulation and optimisation tools and the *defer* attribute was added to the script HTML tags, 
+to defer loading of the **JavaScript** files.
 
 Final [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) scores were:
 * **Performance** 86%
@@ -78,6 +79,11 @@ Final [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdco
 * **Best Practices** 100%
 * **SEO** 94%  
 See [Final Lighthouse Report](/static/testing/validation/performance/lighthouse-report-2.pdf).
+
+Note that the slightly lower performance score of 86% is due to render blocking resources (mainly from **Bootstrap**) and 
+unused CSS (also from **Bootstrap**). To improve performance, consideration should be given in a **Future Development Phase** 
+to optimising **Bootstrap** and **DataTables** by only importing the required components. 
+See this [Link](https://getbootstrap.com/docs/5.0/customize/optimize/) for further information.
 
 ## User Stories Testing ###
 * ***As a User, I would like to be able to register on the site.***  
@@ -387,3 +393,15 @@ using a combination of manual testing across various devices and the [Browsersta
 * [Opera](https://www.opera.com/) ([Windows 10](https://www.microsoft.com/en-us/windows) and [Mac OS Big Sur](https://www.apple.com/uk/macos/big-sur/)).  
 
 No issues were uncovered during **Browser Compatibility Testing**.
+
+### Bugs Fixed During Testing ###
+* **Search Input**, **Category Selector**,  and **Allergen Selector** now populate with previously selected values when search results are displayed.
+* **Product Results Table**, **Allergen Selector** and **Category Selector** are now sorted in alphabetic order.
+* A missing CSS class was added to the **Edit Product** button.
+* A bug was fixed where **Products** rating one star were not correctly displayed in the **Product Results Table**.
+* On the **Product View** form, newly added user **Reviews** and **Ratings** are now added or updated in the 
+**Reviews Table** after hitting the **Add**or **Update** button.
+* The **Product Add** route was updated to redirect to the **Product View** of the successfully added product. 
+
+### Bugs Remaining ###
+* There are no known bugs remaining.
