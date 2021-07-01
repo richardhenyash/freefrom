@@ -84,13 +84,12 @@ def user_check(user_name):
     """
     Check if user name exists in the database
     """
+    user_check = False
     if mongo.db.users.find_one({"username": user_name}):
         # Display flash message
         flash("Username already exists", "warning")
         user_check = True
-    else:
-        user_check = False
-    return(user_check)
+    return user_check
 
 
 def user_get(user_name):
@@ -100,7 +99,7 @@ def user_get(user_name):
     existing_user = mongo.db.users.find_one({"username": user_name})
     if not(existing_user):
         flash("Incorrect username and/or password", "warning")
-    return(existing_user)
+    return existing_user
 
 
 def user_password_check(user_name, entered_password, existing_user):
@@ -116,7 +115,7 @@ def user_password_check(user_name, entered_password, existing_user):
     else:
         flash("Incorrect username and/or password", "warning")
         password_check = False
-    return(password_check)
+    return password_check
 
 
 def user_register(user_name, form):
@@ -137,4 +136,4 @@ def user_register(user_name, form):
     # set user admin
     session["admin"] = False
     flash("Registration successful", "success")
-    return(user_name)
+    return user_name
