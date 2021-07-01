@@ -161,13 +161,12 @@ def category_check(category_name):
     """
     Check if category name already exists in the database
     """
+    category_check = True
     if mongo.db.categories.find_one({"name": category_name}):
         # Display flash message
         flash("Category already exists", "warning")
         category_check = False
-    else:
-        category_check = True
-    return(category_check)
+    return category_check
 
 
 def category_get_id(category_name):
@@ -175,6 +174,7 @@ def category_get_id(category_name):
     Get category id from category name
     """
     category = mongo.db.categories.find_one({"name": category_name})
+    category_id = None
     # Check if category exists in database
     if category:
         category_id = category["_id"]
@@ -182,7 +182,7 @@ def category_get_id(category_name):
         flash(
             "Ooops.... category " + category_name +
             " no longer exists in the database", "danger")
-    return(category_id)
+    return category_id
 
 
 def category_get_selection(category_method):
@@ -196,7 +196,7 @@ def category_get_selection(category_method):
         # Display flash message
         flash("Please select Category to " + category_method, "warning")
         category_name = None
-    return(category_name)
+    return category_name
 
 
 def category_update(category_id, category_name):
@@ -207,4 +207,4 @@ def category_update(category_id, category_name):
     mongo.db.categories.update(
         {"_id": ObjectId(category_id)}, {"name": category_name})
     flash("Category " + category_name + " succesfully updated", "success")
-    return(category_name)
+    return category_name

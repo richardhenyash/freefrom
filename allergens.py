@@ -149,13 +149,12 @@ def allergen_check(allergen_name):
     """
     Check if allergen name already exists in the database
     """
+    allergen_check = True
     if mongo.db.allergens.find_one({"name": allergen_name}):
         # Display flash message
         flash("Allergen already exists", "warning")
         allergen_check = False
-    else:
-        allergen_check = True
-    return(allergen_check)
+    return allergen_check
 
 
 def allergen_get_id(allergen_name):
@@ -163,6 +162,7 @@ def allergen_get_id(allergen_name):
     Get allergen id from allergen name
     """
     allergen = mongo.db.allergens.find_one({"name": allergen_name})
+    allergen_id = None
     # Check if allergen exists in database
     if allergen:
         allergen_id = allergen["_id"]
@@ -170,7 +170,7 @@ def allergen_get_id(allergen_name):
         flash(
             "Ooops.... allergen " + allergen_name +
             " no longer exists in the database", "danger")
-    return(allergen_id)
+    return allergen_id
 
 
 def allergen_get_selection(allergen_method):
@@ -184,7 +184,7 @@ def allergen_get_selection(allergen_method):
         # Display flash message
         flash("Please select Allergen to " + allergen_method, "warning")
         allergen_name = None
-    return(allergen_name)
+    return allergen_name
 
 
 def allergen_update(allergen_id, allergen_name):
@@ -195,4 +195,4 @@ def allergen_update(allergen_id, allergen_name):
     mongo.db.allergens.update(
         {"_id": ObjectId(allergen_id)}, {"name": allergen_name})
     flash("Allergen " + allergen_name + " succesfully updated", "success")
-    return(allergen_name)
+    return allergen_name
