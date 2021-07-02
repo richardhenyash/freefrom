@@ -165,7 +165,7 @@ def category_check(category_name):
         category_check = False
     else:
         category_check = True
-    return(category_check)
+    return category_check
 
 
 def category_get_id(category_name):
@@ -181,7 +181,7 @@ def category_get_id(category_name):
         flash(
             "Ooops.... category " + category_name +
             " no longer exists in the database", "danger")
-    return(category_id)
+    return category_id
 
 
 def category_get_name(category_id):
@@ -197,7 +197,7 @@ def category_get_name(category_id):
         flash(
             "Ooops.... category " +
             " no longer exists in the database", "danger")
-    return(category_name)
+    return category_name
 
 
 def category_get_selection(category_method):
@@ -211,7 +211,7 @@ def category_get_selection(category_method):
         # Display flash message
         flash("Please select Category to " + category_method, "warning")
         category_name = None
-    return(category_name)
+    return category_name
 
 
 def category_update(category_id, category_name):
@@ -222,4 +222,4 @@ def category_update(category_id, category_name):
     mongo.db.categories.update(
         {"_id": ObjectId(category_id)}, {"name": category_name})
     flash("Category " + category_name + " succesfully updated", "success")
-    return(category_name)
+    return category_name

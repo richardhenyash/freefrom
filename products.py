@@ -396,14 +396,13 @@ def delete(product_id):
     Route for product delete
     """
     if request.method == "POST":
-        # Get product name from database
-        product_name = mongo.db.products.find_one(
-            {"_id": (ObjectId(product_id))})["name"]
+        product_name = product_get_name(product_id)
         # Delete product from database
-        mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
-        flash(
-            product_name +
-            " succesfully deleted from products", "success")
+        if product_name:
+            mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
+            flash(
+                product_name +
+                " succesfully deleted from products", "success")
         return redirect(url_for('products.search'))
 
     product = mongo.db.products.find_one(
@@ -423,7 +422,38 @@ def product_check(product_name):
         product_check = False
     else:
         product_check = True
-    return(product_check)
+    return product_check
+
+
+def product_get_id(product_name):
+    """
+    Get product id from product name
+    """
+    product_id = None
+    product = mongo.db.products.find_one({"name": product_name})
+    # Check if product exists in database
+    if product:
+        product_id = product["_id"]
+    else:
+        flash(
+            "Ooops.... product " + product_name +
+            " no longer exists in the database", "danger")
+    return product_id
+
+
+def product_get_name(product_id):
+    """
+    Get product name from product id
+    """
+    product_name = None
+    product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
+    if product:
+        product_name = product["name"]
+    else:
+        flash(
+            "Ooops.... product " +
+            " no longer exists in the database", "danger")
+    return product_name
 
 
 def product_get_reviews(product):

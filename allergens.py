@@ -42,6 +42,7 @@ def allergen_add():
             return redirect(url_for('products.search'))
         else:
             return render_template("allergen_add.html", form=form)
+    return render_template("allergen_add.html", form=form)
 
 
 @allergens.route("/allergen_edit", methods=["GET", "POST"])
@@ -152,7 +153,7 @@ def allergen_check(allergen_name):
         allergen_check = False
     else:
         allergen_check = True
-    return(allergen_check)
+    return allergen_check
 
 
 def allergen_get_id(allergen_name):
@@ -168,7 +169,7 @@ def allergen_get_id(allergen_name):
         flash(
             "Ooops.... allergen " + allergen_name +
             " no longer exists in the database", "danger")
-    return(allergen_id)
+    return allergen_id
 
 
 def allergen_get_id_list(allergens):
@@ -217,7 +218,7 @@ def allergen_get_selected_checkboxes(allergens):
         if checkbox_value:
             # Append selected allergens to allergen_list
             allergen_list.append(allergen)
-    return(allergen_list)
+    return allergen_list
 
 
 def allergen_get_selection(allergen_method):
@@ -231,7 +232,7 @@ def allergen_get_selection(allergen_method):
         # Display flash message
         flash("Please select Allergen to " + allergen_method, "warning")
         allergen_name = None
-    return(allergen_name)
+    return allergen_name
 
 
 def allergen_update(allergen_id, allergen_name):
@@ -242,4 +243,4 @@ def allergen_update(allergen_id, allergen_name):
     mongo.db.allergens.update(
         {"_id": ObjectId(allergen_id)}, {"name": allergen_name})
     flash("Allergen " + allergen_name + " succesfully updated", "success")
-    return(allergen_name)
+    return allergen_name
