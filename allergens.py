@@ -31,12 +31,7 @@ def allergen_add():
     if request.method == "POST" and form.validate():
         # Set new allergen name variable
         allergen_name = form.name.data.lower()
-        # Check if new allergen name exists in database
-        if mongo.db.allergens.find_one({"name": allergen_name}):
-            # Display flash message
-            flash("Allergen already exists", "warning")
-            return render_template("allergen_add.html", form=form)
-        else:
+        if allergen_check(allergen_name):
             # Add new allergen to the database
             mongo.db.allergens.insert_one(
                 {"name": allergen_name})
@@ -44,8 +39,9 @@ def allergen_add():
             flash(
                 "Allergen " + allergen_name +
                 " succesfully added", "success")
-        return redirect(url_for('products.search'))
-    return render_template("allergen_add.html", form=form)
+            return redirect(url_for('products.search'))
+        else:
+            return render_template("allergen_add.html", form=form)
 
 
 @allergens.route("/allergen_edit", methods=["GET", "POST"])
@@ -149,20 +145,22 @@ def allergen_check(allergen_name):
     """
     Check if allergen name already exists in the database
     """
-    allergen_check = True
     if mongo.db.allergens.find_one({"name": allergen_name}):
         # Display flash message
-        flash("Allergen already exists", "warning")
+        flash(allergen_name +
+              " already exists in the database", "warning")
         allergen_check = False
-    return allergen_check
+    else:
+        allergen_check = True
+    return(allergen_check)
 
 
 def allergen_get_id(allergen_name):
     """
     Get allergen id from allergen name
     """
-    allergen = mongo.db.allergens.find_one({"name": allergen_name})
     allergen_id = None
+    allergen = mongo.db.allergens.find_one({"name": allergen_name})
     # Check if allergen exists in database
     if allergen:
         allergen_id = allergen["_id"]
@@ -170,7 +168,56 @@ def allergen_get_id(allergen_name):
         flash(
             "Ooops.... allergen " + allergen_name +
             " no longer exists in the database", "danger")
-    return allergen_id
+    return(allergen_id)
+
+
+def allergen_get_id_list(allergens):
+    """
+    Get allergen id list from list of allergens
+    """
+    allergen_id_list = []
+    for allergen in allergens:
+        allergen_id_list.append(allergen["_id"])
+    return allergen_id_list
+
+
+def allergen_get_name_list(allergens):
+    """
+    Get allergen name list from list of allergens
+    """
+    allergen_name_list = []
+    for allergen in allergens:
+        allergen_name_list.append(allergen["name"])
+    return allergen_name_list
+
+
+def allergen_get_name_list_from_id_list(allergen_id_list):
+    """
+    Get allergen name list from list of allergen id's
+    """
+    allergen_name_list = []
+    for allergen in allergen_id_list:
+        allergen_name = mongo.db.allergens.find_one(
+            {"_id": allergen})["name"]
+        allergen_name_list.append(allergen_name)
+    return allergen_name_list
+
+
+def allergen_get_selected_checkboxes(allergens):
+    """
+    Return list of selected allergens
+    """
+    allergen_list = []
+    for allergen in allergens.rewind():
+        # Get checkbox name
+        checkbox_name = allergen["name"] + "Checkbox"
+        # Get checkbox value from form
+        checkbox_value = request.form.get(checkbox_name)
+        # If checkbox is set, add allergen to allergen_list
+        if checkbox_value:
+            # Append selected allergens to allergen_list
+            allergen_list.append(allergen)
+    return(allergen_list)
 
 
 def allergen_get_selection(allergen_method):
@@ -184,7 +231,7 @@ def allergen_get_selection(allergen_method):
         # Display flash message
         flash("Please select Allergen to " + allergen_method, "warning")
         allergen_name = None
-    return allergen_name
+    return(allergen_name)
 
 
 def allergen_update(allergen_id, allergen_name):
@@ -195,4 +242,4 @@ def allergen_update(allergen_id, allergen_name):
     mongo.db.allergens.update(
         {"_id": ObjectId(allergen_id)}, {"name": allergen_name})
     flash("Allergen " + allergen_name + " succesfully updated", "success")
-    return allergen_name
+    return(allergen_name)

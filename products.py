@@ -10,6 +10,12 @@ from flask import (
     redirect, request, session, url_for)
 from bson.objectid import ObjectId
 from forms import ProductForm, ProductEditForm, ProductViewForm
+from allergens import (allergen_get_id_list,
+                       allergen_get_name_list_from_id_list,
+                       allergen_get_selected_checkboxes)
+from categories import (category_get_id, category_get_name,
+                        category_get_selection)
+from userauth import user_get
 
 # Import PyMongo database instance
 from database import mongo
@@ -34,97 +40,25 @@ def search():
         # Get search string from form
         search_str = request.form.get("search").lower()
         # Set search_str to None if not specified
-        if search_str == "":
-            search_str = None
-
+        search_str = None if (search_str == "") else search_str
         # Get category from form
         category = request.form.get("categorySelector").lower()
-        # Set category and category_id variables to None
-        # if no category is selected
-        if category == "category...":
-            category = None
-            category_id = None
-        # Otherwise get category_id from category collection
-        else:
-            category_id = mongo.db.categories.find_one(
-                {"name": category})["_id"]
-
-        # Initialise allergen list
-        allergen_list = []
-        allergen_id_list = []
-        # Cycle through allergens in database
-        for allergen in allergens:
-            # Get checkbox name
-            checkbox_name = allergen["name"] + "Checkbox"
-            # Get checkbox value from form
-            checkbox_value = request.form.get(checkbox_name)
-            # If checkbox is set, add allergen_id to allergen_id_list
-            if checkbox_value:
-                # Get allergen id from allergen
-                # collection based on name returned from checkbox
-                allergen_id = mongo.db.allergens.find_one(
-                    {"name": checkbox_value})["_id"]
-                # Append allergen id to allergen_id_list
-                allergen_id_list.append(allergen_id)
-                # Append selected allergens to allergen_list
-                allergen_list.append(allergen)
-
-        # Build mongo db search dictionary
-        search_dict = {}
-        if search_str:
-            search_dict["$text"] = {"$search": search_str}
-        if category_id:
-            search_dict["category_id"] = ObjectId(category_id)
-        if allergen_id_list:
-            search_dict["free_from_allergens"] = {"$all": allergen_id_list}
-
+        # Set category to None if not specified
+        category = None if (category == "category...") else category
+        # Get category_id if category is specified, oelse set category to None
+        category_id = category_get_id(category) if category else None
+        allergen_list = allergen_get_selected_checkboxes(allergens)
+        allergen_id_list = allergen_get_id_list(allergen_list)
+        # Build products search dictionary
+        search_dict = product_get_search_dict(
+            search_str, category_id, allergen_id_list)
         # Search the database based on the dictionary
         if search_dict:
             products = list(
                 mongo.db.products.find(search_dict))
         else:
             products = list(mongo.db.products.find())
-
-        # Process the search results
-        for product in products:
-
-            # get category id from product object
-            category_id = product["category_id"]
-            category_name = mongo.db.categories.find_one(
-                {"_id": category_id})["name"]
-            # add category name to product object
-            product["category_name"] = category_name
-
-            # process reviews to get average rating
-            reviews = product["reviews"]
-            # initialise rating quantity counter
-            rq = 0
-            # initialise totalrating counter
-            totalrating = 0
-            # calculate average rating from reviews
-            for review in reviews:
-                rating = review["rating"]
-                if rating:
-                    totalrating = totalrating + rating
-                    rq = rq + 1
-            # if product has been rated
-            if totalrating > 0:
-                avrating = round(((totalrating / rq) * 2)) / 2
-                # avrating = round(totalrating / rq)
-                # add average rating to product object
-                product["average_rating"] = avrating
-
-            # get allergens from product object
-            allergen_id_list = product["free_from_allergens"]
-            # initialise allergen names list
-            allergen_names = []
-            # get allergen names from allergen object id's
-            for allergen in allergen_id_list:
-                allergen_name = mongo.db.allergens.find_one(
-                    {"_id": allergen})["name"]
-                allergen_names.append(allergen_name)
-            # add allergen list to product object
-            product["free_from_allergen_names"] = allergen_names
+        products = product_process_search_results(products)
         return render_template(
             "home.html", categories=categories.rewind(),
             allergens=allergens.rewind(), products=products,
@@ -151,32 +85,19 @@ def add():
         # Get product name, manufacturer and category
         product_name = form.name.data.lower()
         product_manufacturer = form.manufacturer.data.lower()
-        # Get selected category
         product_category = request.form.get("categorySelector").lower()
-        # Get selected allergens
-        allergen_list = get_selected_allergen_list(allergens)
-        # Add selected allergen names to selected_allergens list
-        selected_allergens = []
-        for allergen in allergen_list:
-            selected_allergens.append(allergen["name"])
+        allergen_list = allergen_get_selected_checkboxes(allergens)
         # Check if category has been selected from drop down
-        if form.validate():
-            if product_category == "category...":
-                # Display flash message
-                flash(
-                    ("Please select Product Category. " +
-                        "If you would like to add a product category, " +
-                        "please contact the site Administrator"),
-                    "warning")
-                proceed = False
-            else:
+        cstr = ("add Product. " +
+                "If you would like to add a product category, " +
+                "please contact the site Administrator")
+        proceed = False
+        if product_check(product_name) and form.validate():
+            product_category = category_get_selection(cstr)
+            if product_category:
                 proceed = True
-        else:
-            proceed = False
         if proceed:
-            # Get category id
-            product_category_id = mongo.db.categories.find_one(
-                {"name": product_category})["_id"]
+            product_category_id = category_get_id(product_category)
             # Check if any allergens are selected
             if allergen_list:
                 proceed = True
@@ -189,21 +110,15 @@ def add():
                         "please contact the site Administrator"),
                     "warning")
                 proceed = False
-        # Get allergen id's and add to list
         if proceed:
-            allergen_id_list = []
-            for allergen in allergen_list:
-                allergen_id = ObjectId(allergen["_id"])
-                if allergen_id:
-                    allergen_id_list.append(allergen_id)
+            allergen_id_list = allergen_get_id_list(allergens)
         if proceed:
             # Get product rating
             product_rating = form.rating.data
-            if product_rating == "":
-                product_rating = None
+            product_rating = None if product_rating == "" else int(
+                product_rating)
             if product_rating:
                 proceed = True
-                product_rating = int(product_rating)
             else:
                 # Display flash message
                 flash("Please rate product", "warning")
@@ -214,7 +129,7 @@ def add():
             # Get user name
             user_name = session["user"]
             # Get user id from user name
-            user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+            user_id = user_get(user_name)["_id"]
             # Set new product variable
             new_product = {
                 "name": product_name,
@@ -345,7 +260,7 @@ def view(product_id):
                     form.rating.data = user_review["rating"]
                     # Set review in form object
                     form.review.data = user_review["review"]
-        reviews = get_reviews(product)
+        reviews = product_get_reviews(product)
 
         return render_template(
             "product_view.html",
@@ -404,7 +319,7 @@ def edit(product_id):
             product_category_id = mongo.db.categories.find_one(
                 {"name": product_category})["_id"]
             # Get selected allergens
-            allergen_list = get_selected_allergen_list(allergens)
+            allergen_list = allergen_get_selected_checkboxes(allergens)
             # Check if any allergens are selected
             if allergen_list:
                 proceed = True
@@ -497,24 +412,21 @@ def delete(product_id):
         "product_delete_confirm.html", product_id=product_id, product=product)
 
 
-def get_selected_allergen_list(allergens):
+def product_check(product_name):
     """
-    Return list of selected allergens
+    Check if product name already exists in the database
     """
-    allergen_list = []
-    for allergen in allergens.rewind():
-        # Get checkbox name
-        checkbox_name = allergen["name"] + "Checkbox"
-        # Get checkbox value from form
-        checkbox_value = request.form.get(checkbox_name)
-        # If checkbox is set, add allergen to allergen_list
-        if checkbox_value:
-            # Append selected allergens to allergen_list
-            allergen_list.append(allergen)
-    return(allergen_list)
+    if mongo.db.products.find_one({"name": product_name}):
+        # Display flash message
+        flash(product_name +
+              " already exists in the database", "warning")
+        product_check = False
+    else:
+        product_check = True
+    return(product_check)
 
 
-def get_reviews(product):
+def product_get_reviews(product):
     """
     Return reviews for product, with username
     """
@@ -534,3 +446,52 @@ def get_reviews(product):
             }
             reviews.append(user_review)
     return reviews
+
+
+def product_get_search_dict(search_str, category_id, allergen_id_list):
+    """
+    Return product search dictionary
+    """
+    search_dict = {}
+    if search_str:
+        search_dict["$text"] = {"$search": search_str}
+    if category_id:
+        search_dict["category_id"] = ObjectId(category_id)
+    if allergen_id_list:
+        search_dict["free_from_allergens"] = {"$all": allergen_id_list}
+    return search_dict
+
+
+def product_process_search_results(products):
+    """
+    Process product search results, add category name, average rating and
+    allergen names to product object
+    """
+    for product in products:
+        # Add category name to product object
+        product["category_name"] = category_get_name(product["category_id"])
+        # Process reviews to get average rating and add to product object
+        reviews = product["reviews"]
+        # Initialise rating quantity counter
+        rq = 0
+        # Initialise totalrating counter
+        totalrating = 0
+        # Calculate average rating from reviews
+        for review in reviews:
+            rating = review["rating"]
+            if rating:
+                totalrating = totalrating + rating
+                rq = rq + 1
+        # if product has been rated
+        if totalrating > 0:
+            avrating = round(((totalrating / rq) * 2)) / 2
+            # avrating = round(totalrating / rq)
+            # add average rating to product object
+            product["average_rating"] = avrating
+        # Get allergen id's
+        allergen_id_list = product["free_from_allergens"]
+        # Get allergen names
+        allergen_name_list = allergen_get_name_list_from_id_list(
+            allergen_id_list)
+        product["free_from_allergen_names"] = allergen_name_list
+    return products
