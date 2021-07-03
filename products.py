@@ -186,7 +186,7 @@ def view(product_id):
         form.name.data = product["name"]
         # Get category id from product object
         category_id = product["category_id"]
-        # Get category name from categories collection       
+        # Get category name from categories collection
         category_name = category_get_name(category_id)
         # Set category name in form object
         form.category.data = category_name
@@ -231,38 +231,19 @@ def edit(product_id):
     # Get product from product_id
     product = mongo.db.products.find_one(
         {"_id": (ObjectId(product_id))})
-    if request.method == "POST" and form.validate():
+    product_name = form.name.data
+    pchk = True
+    if product_name.lower() != product["name"]:
+        pchk = product_check(product_name)
+    if request.method == "POST" and form.validate() and pchk:
         # Get product name from form
-        product_name = form.name.data
         # Get product manufacturer from form
         product_manufacturer = form.manufacturer.data
         # Get product category
-        product_category = request.form.get(
-            "categorySelector").lower()
-        # Check if category has been selected from drop down
+        product_category = category_get_selection("edit")
         if product_category:
-            if product_category == "category...":
-                # Display flash message
-                flash(
-                    ("Please select Product Category. " +
-                        "If you would like to add a product category, " +
-                        "please contact the site Administrator"),
-                    "warning")
-                proceed = False
-            else:
-                proceed = True
-        else:
-            # Display flash message
-            flash(
-                ("Please select Product Category. " +
-                    "If you would like to add a product category, " +
-                    "please contact the site Administrator"),
-                "warning")
-            proceed = False
-        if proceed:
             # Get category id
-            product_category_id = mongo.db.categories.find_one(
-                {"name": product_category})["_id"]
+            product_category_id = category_get_id(product_category)
             # Get selected allergens
             allergen_list = allergen_get_selected_checkboxes(allergens)
             # Check if any allergens are selected
@@ -279,11 +260,7 @@ def edit(product_id):
                 proceed = False
         # Get allergen id's and add to list
         if proceed:
-            allergen_id_list = []
-            for allergen in allergen_list:
-                allergen_id = ObjectId(allergen["_id"])
-                if allergen_id:
-                    allergen_id_list.append(allergen_id)
+            allergen_id_list = allergen_get_id_list(allergen_list)
         # Get user name
         user_name = session["user"]
         # Get user id from user name
@@ -312,11 +289,8 @@ def edit(product_id):
     form.name.data = product["name"]
     # Update product manufcaturer in form
     form.manufacturer.data = product["manufacturer"]
-    # Get product category id
-    product_category_id = product["category_id"]
     # Get product category
-    product_category = mongo.db.categories.find_one(
-        {"_id": product_category_id})["name"]
+    product_category = category_get_name(product["category_id"])
     # Get Selected allergens
     selected_allergens = product["free_from_allergens"]
     # Get user name
@@ -357,7 +331,7 @@ def product_check(product_name):
     """
     if mongo.db.products.find_one({"name": product_name}):
         # Display flash message
-        flash(product_name +
+        flash("Product " + product_name +
               " already exists in the database", "warning")
         product_check = False
     else:
