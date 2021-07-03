@@ -111,7 +111,7 @@ def add():
                     "warning")
                 proceed = False
         if proceed:
-            allergen_id_list = allergen_get_id_list(allergens)
+            allergen_id_list = allergen_get_id_list(allergen_list)
         if proceed:
             # Get product rating
             product_rating = form.rating.data
@@ -179,55 +179,15 @@ def view(product_id):
     # Get product from product_id
     product = mongo.db.products.find_one({"_id": (ObjectId(product_id))})
     if product and request.method == "POST" and form.validate():
-        # Get user name
-        user_name = session["user"]
-        # Get user id from user name
-        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-        # Set new review flag
-        review_newflag = True
-        # Get reviews
-        reviews = product["reviews"]
-        # Loop through reviews, find review that belongs to logged in user
-        for review in reviews:
-            # Update user review
-            if review["user_id"] == user_id:
-                review["rating"] = int(form.rating.data)
-                review["review"] = form.review.data
-                review_newflag = False
-                user_review = {
-                    "user_id": user_id,
-                    "rating": int(form.rating.data),
-                    "review": form.review.data
-                }
-        # If user has not reviewed product before
-        if review_newflag:
-            # Create new review object
-            review_new = {
-                "user_id": user_id,
-                "rating": int(form.rating.data),
-                "review": form.review.data
-            }
-            # Append new review to reviews
-            reviews.append(review_new)
-            # Update product object with new or edited review
-            product["reviews"] = reviews
-
-        # Update product in database
-        mongo.db.products.update({"_id": ObjectId(product_id)}, product)
-        # Display flash message
-        flash(
-            "Rating and review succesfully " +
-            "updated for " + product["name"],
-            "success")
+        product = product_update_review(product, form)
         return redirect(url_for('products.view', product_id=product_id))
     elif product:
         # Set product name in form object
         form.name.data = product["name"]
         # Get category id from product object
         category_id = product["category_id"]
-        # Get category name from categories collection
-        category_name = mongo.db.categories.find_one(
-            {"_id": category_id})["name"]
+        # Get category name from categories collection       
+        category_name = category_get_name(category_id)
         # Set category name in form object
         form.category.data = category_name
         # Set manufacturer name in form object
@@ -235,33 +195,18 @@ def view(product_id):
         # Get product allergen id list
         product_allergen_id_list = product["free_from_allergens"]
         # Get allergen names from allergen collection
-        product_free_from_allergens_list = []
-        for allergen_id in product_allergen_id_list:
-            allergen_name = mongo.db.allergens.find_one(
-                {"_id": allergen_id})["name"]
-            product_free_from_allergens_list.append(allergen_name)
+        product_free_from_allergens_list = (
+            allergen_get_name_list_from_id_list(product_allergen_id_list))
         # Set free from in form object
         form.freefrom.data = ', '.join(
             map(str, product_free_from_allergens_list))
-
-        # Get user name
-        user_review = None
-        if session:
-            # Get user name
-            user_name = session["user"]
-            # Get user id from user name
-            user_id = mongo.db.users.find_one({"username": user_name})["_id"]
-            # Cycle through product reviews
-            for review in product["reviews"]:
-                # If review belongs to logged in user
-                if review["user_id"] == (ObjectId(user_id)):
-                    user_review = review
-                    # Set rating in form object
-                    form.rating.data = user_review["rating"]
-                    # Set review in form object
-                    form.review.data = user_review["review"]
+        user_review = product_get_user_review(product)
+        if user_review:
+            # Set rating in form object
+            form.rating.data = user_review["rating"]
+            # Set review in form object
+            form.review.data = user_review["review"]
         reviews = product_get_reviews(product)
-
         return render_template(
             "product_view.html",
             product=product, product_id=product_id,
@@ -382,6 +327,7 @@ def edit(product_id):
         user_product = True
     else:
         user_product = False
+    print(product)
     return render_template(
         "product_edit.html", categories=categories.rewind(),
         allergens=allergens.rewind(), product_id=product_id,
@@ -396,13 +342,7 @@ def delete(product_id):
     Route for product delete
     """
     if request.method == "POST":
-        product_name = product_get_name(product_id)
-        # Delete product from database
-        if product_name:
-            mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
-            flash(
-                product_name +
-                " succesfully deleted from products", "success")
+        product_delete(product_id)
         return redirect(url_for('products.search'))
 
     product = mongo.db.products.find_one(
@@ -423,6 +363,22 @@ def product_check(product_name):
     else:
         product_check = True
     return product_check
+
+
+def product_delete(product_id):
+    """
+    Delete product from database
+    """
+    product_name = product_get_name(product_id)
+    res = False
+    # Delete product from database
+    if product_name:
+        mongo.db.products.delete_one({"_id": (ObjectId(product_id))})
+        flash(
+            product_name +
+            " succesfully deleted from products", "success")
+        res = True
+    return res
 
 
 def product_get_id(product_name):
@@ -454,6 +410,21 @@ def product_get_name(product_id):
             "Ooops.... product " +
             " no longer exists in the database", "danger")
     return product_name
+
+
+def product_get_user_review(product):
+    user_review = None
+    if session:
+        # Get user name
+        user_name = session["user"]
+        # Get user id from user name
+        user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+        # Cycle through product reviews
+        for review in product["reviews"]:
+            # If review belongs to logged in user
+            if review["user_id"] == (ObjectId(user_id)):
+                user_review = review
+    return user_review
 
 
 def product_get_reviews(product):
@@ -525,3 +496,43 @@ def product_process_search_results(products):
             allergen_id_list)
         product["free_from_allergen_names"] = allergen_name_list
     return products
+
+
+def product_update_review(product, form):
+    """
+    Update product review
+    """
+    # Get user name
+    user_name = session["user"]
+    # Get user id from user name
+    user_id = mongo.db.users.find_one({"username": user_name})["_id"]
+    # Set new review flag
+    review_newflag = True
+    # Get reviews
+    reviews = product["reviews"]
+    # Loop through reviews, find review that belongs to logged in user
+    for review in reviews:
+        # Update user review
+        if review["user_id"] == user_id:
+            review["rating"] = int(form.rating.data)
+            review["review"] = form.review.data
+            review_newflag = False
+    # If user has not reviewed product before
+    if review_newflag:
+        # Create new review object
+        review_new = {
+            "user_id": user_id,
+            "rating": int(form.rating.data),
+            "review": form.review.data
+        }
+        # Append new review to reviews
+        reviews.append(review_new)
+    # Update product object with new or edited review
+    product["reviews"] = reviews
+    mongo.db.products.update({"_id": product["_id"]}, product)
+    # Display flash message
+    flash(
+        "Rating and review succesfully " +
+        "updated for " + product["name"],
+        "success")
+    return product

@@ -75,8 +75,8 @@
                             <div class="form-check form-check-inline">
                                 <!-- If selected_allergens is passed through as an argument -->
                                 {% if selected_allergens %}
-                                    <!-- If allergen name is in selected_allergens -->
-                                    {% if allergen.name in selected_allergens %}
+                                    <!-- If allergen is in selected_allergens -->
+                                    {% if allergen in selected_allergens %}
                                         <!-- Show check box as checked -->
                                         <input class="form-check-input" type="checkbox" id="{{ allergen.name }}Checkbox"
                                             value="{{ allergen.name }}" name="{{ allergen.name }}Checkbox" checked>
