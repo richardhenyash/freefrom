@@ -95,7 +95,7 @@ def user_check(user_name):
 
 def user_get(user_name):
     """
-    Get existing user from database
+    Return existing user from database
     """
     existing_user = mongo.db.users.find_one({"username": user_name})
     if not(existing_user):
