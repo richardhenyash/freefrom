@@ -10,9 +10,7 @@ import smtplib
 from flask import (Blueprint, flash, render_template, request, session)
 from email.message import EmailMessage
 from forms import ContactForm
-
-# Import PyMongo database instance
-from database import mongo
+from userauth import user_get
 
 
 # Initiate Blueprint
@@ -42,20 +40,8 @@ def contact():
         contact_name = form.name.data
         contact_email = form.email.data
         contact_message = form.message.data
-        # Build message string, include user name if logged in
-        if user_name:
-            message = (
-                "Message from FreeFrom \nName: " +
-                contact_name +
-                "\nUser Name: " + user_name +
-                "\nEmail Address: " + contact_email +
-                "\nMessage: " + contact_message)
-        else:
-            message = (
-                "Message from FreeFrom \nName: " +
-                contact_name +
-                "\nEmail Address: " + contact_email +
-                "\nMessage: " + contact_message)
+        message = contact_get_message_string(
+            user_name, contact_name, contact_email, contact_message)
         # Set server variable
         server = smtplib.SMTP("smtp.gmail.com", 587)
         # Put the SMTP connection in TLS (Transport Layer Security) mode
@@ -96,7 +82,26 @@ def contact():
 
     # If user is logged in, set email address field automatically
     if user_name:
-        user_email = mongo.db.users.find_one(
-            {"username": user_name})["email"]
-        form.email.data = user_email
+        form.email.data = user_get(user_name)["email"]
     return render_template("contact.html", form=form)
+
+
+def contact_get_message_string(user_name, contact_name, contact_email,
+                               contact_message):
+    """
+    Return message string, include user name if signed in
+    """
+    if user_name:
+        message = (
+            "Message from FreeFrom \nName: " +
+            contact_name +
+            "\nUser Name: " + user_name +
+            "\nEmail Address: " + contact_email +
+            "\nMessage: " + contact_message)
+    else:
+        message = (
+            "Message from FreeFrom \nName: " +
+            contact_name +
+            "\nEmail Address: " + contact_email +
+            "\nMessage: " + contact_message)
+    return message

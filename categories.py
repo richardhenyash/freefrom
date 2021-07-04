@@ -30,19 +30,16 @@ def category_add():
     if request.method == "POST" and form.validate():
         # Set new category name variable
         category_name = form.name.data.lower()
-        # Check if new category name exists in database
-        if mongo.db.categories.find_one({"name": category_name}):
-            # Display flash message
-            flash("Category already exists", "warning")
-            return render_template("category_add.html", form=form)
-        else:
+        if category_check(category_name):
             # Add new category to the database
             mongo.db.categories.insert_one({"name": category_name})
             # Display flash message
             flash(
                 "Category " + category_name +
                 " succesfully added", "success")
-        return redirect(url_for('products.search'))
+            return redirect(url_for('products.search'))
+        else:
+            return render_template("category_add.html", form=form)
     return render_template("category_add.html", form=form)
 
 
@@ -55,60 +52,28 @@ def category_edit():
     form = CategoryForm(request.form)
     # Get categories collection from database
     categories = mongo.db.categories.find().sort("name", 1)
+    existing_category_name = None
+    if request.method == "POST":
+        existing_category_name = category_get_selection("Update")
     if request.method == "POST" and form.validate():
-        # Get existing category name
-        existing_category_name = request.form.get(
-            "categorySelector").lower()
-        # Check if category has been selected from drop down
-        if existing_category_name:
-            if existing_category_name == "category...":
-                # Display flash message
-                flash("Please select Category to update", "warning")
-                proceed = False
-            else:
-                proceed = True
-        else:
-            # Display flash message
-            flash("Please select Category to update", "warning")
-            proceed = False
-        if proceed:
-            # Set new category name variable
-            category_name = form.name.data.lower()
-            # Check if new category name exists in database
-            if mongo.db.categories.find_one({"name": category_name}):
-                # Display flash message
-                flash("Category already exists", "warning")
-                proceed = False
-        if proceed:
-            # Get category id
-            category = mongo.db.categories.find_one(
-                {"name": existing_category_name})
-            # Check if category is still in database
-            if category:
-                category_id = category["_id"]
-                # Update category in the database
-                category_update = {"name": category_name}
-                mongo.db.categories.update(
-                    {"_id": ObjectId(category_id)}, category_update)
-                # Display flash message
-                flash(
-                    "Category " + category_name +
-                    " succesfully updated", "success")
+        category_name = form.name.data.lower()
+        if existing_category_name and category_check(category_name):
+            category_id = category_get_id(existing_category_name)
+            # Update category in the database
+            if category_id:
+                category_update(category_id, category_name)
                 return redirect(url_for('products.search'))
             else:
-                # Display flash message
-                flash(
-                    "Ooops.... category " + existing_category_name +
-                    " no longer exists in the database", "danger")
                 return redirect(url_for('categories.category_edit'))
         else:
             return render_template(
-                "category_edit.html",
-                categories=categories, form=form)
+                "category_edit.html", categories=categories,
+                existing_category_name=existing_category_name,
+                form=form)
 
     return render_template(
-        "category_edit.html",
-        categories=categories, form=form)
+        "category_edit.html", categories=categories,
+        existing_category_name=existing_category_name, form=form)
 
 
 @categories.route("/categories_delete", methods=["GET", "POST"])
@@ -192,3 +157,74 @@ def category_delete_confirm(category_id):
     return render_template(
         "category_delete_confirm.html",
         category_id=category_id, category=category)
+
+
+def category_check(category_name):
+    """
+    Check if category name already exists in the database
+    """
+    if mongo.db.categories.find_one({"name": category_name}):
+        # Display flash message
+        flash("Category " + category_name +
+              " already exists in the database", "warning")
+        category_check = False
+    else:
+        category_check = True
+    return category_check
+
+
+def category_get_id(category_name):
+    """
+    Get category id from category name
+    """
+    category_id = None
+    category = mongo.db.categories.find_one({"name": category_name})
+    # Check if category exists in database
+    if category:
+        category_id = category["_id"]
+    else:
+        flash(
+            "Ooops.... category " + category_name +
+            " no longer exists in the database", "danger")
+    return category_id
+
+
+def category_get_name(category_id):
+    """
+    Get category name from category id
+    """
+    category_name = None
+    category = mongo.db.categories.find_one({"_id": category_id})
+    # Check if category exists in database
+    if category:
+        category_name = category["name"]
+    else:
+        flash(
+            "Ooops.... category " +
+            " no longer exists in the database", "danger")
+    return category_name
+
+
+def category_get_selection(category_method):
+    """
+    Get category name selected in Category Selector
+    """
+    # Get existing category name
+    category_name = request.form.get("categorySelector").lower()
+    # If category has not been selected
+    if category_name == "category...":
+        # Display flash message
+        flash("Please select Category to " + category_method, "warning")
+        category_name = None
+    return category_name
+
+
+def category_update(category_id, category_name):
+    """
+    Update category in the database given category id and new category name
+    Returns category name
+    """
+    mongo.db.categories.update(
+        {"_id": ObjectId(category_id)}, {"name": category_name})
+    flash("Category " + category_name + " succesfully updated", "success")
+    return category_name
