@@ -52,8 +52,10 @@ def category_edit():
     form = CategoryForm(request.form)
     # Get categories collection from database
     categories = mongo.db.categories.find().sort("name", 1)
-    if request.method == "POST" and form.validate():
+    existing_category_name = None
+    if request.method == "POST":
         existing_category_name = category_get_selection("Update")
+    if request.method == "POST" and form.validate():        
         category_name = form.name.data.lower()
         if existing_category_name and category_check(category_name):
             category_id = category_get_id(existing_category_name)
@@ -65,10 +67,13 @@ def category_edit():
                 return redirect(url_for('categories.category_edit'))
         else:
             return render_template(
-                "category_edit.html", categories=categories, form=form)
+                "category_edit.html", categories=categories,
+                existing_category_name=existing_category_name,
+                form=form)
 
     return render_template(
-        "category_edit.html", categories=categories, form=form)
+        "category_edit.html", categories=categories,
+        existing_category_name=existing_category_name, form=form)
 
 
 @categories.route("/categories_delete", methods=["GET", "POST"])
@@ -160,7 +165,7 @@ def category_check(category_name):
     """
     if mongo.db.categories.find_one({"name": category_name}):
         # Display flash message
-        flash(category_name +
+        flash("Category " + category_name +
               " already exists in the database", "warning")
         category_check = False
     else:
@@ -202,7 +207,7 @@ def category_get_name(category_id):
 
 def category_get_selection(category_method):
     """
-    Returns category name selected in Category Selector
+    Get category name selected in Category Selector
     """
     # Get existing category name
     category_name = request.form.get("categorySelector").lower()

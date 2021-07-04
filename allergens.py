@@ -54,6 +54,9 @@ def allergen_edit():
     form = AllergenForm(request.form)
     # Get allergens collection from database
     allergens = mongo.db.allergens.find().sort("name", 1)
+    existing_allergen_name = None
+    if request.method == "POST":
+        existing_allergen_name = allergen_get_selection("Update")
     if request.method == "POST" and form.validate():
         existing_allergen_name = allergen_get_selection("Update")
         allergen_name = form.name.data.lower()
@@ -68,10 +71,13 @@ def allergen_edit():
         else:
             return render_template(
                 "allergen_edit.html",
-                allergens=allergens, form=form)
+                allergens=allergens,
+                existing_allergen_name=existing_allergen_name,
+                form=form)
 
     return render_template(
-        "allergen_edit.html", allergens=allergens, form=form)
+        "allergen_edit.html", allergens=allergens,
+        existing_allergen_name=existing_allergen_name, form=form)
 
 
 @allergens.route("/allergen_delete", methods=["GET", "POST"])
@@ -148,7 +154,7 @@ def allergen_check(allergen_name):
     """
     if mongo.db.allergens.find_one({"name": allergen_name}):
         # Display flash message
-        flash(allergen_name +
+        flash("Allergen " + allergen_name +
               " already exists in the database", "warning")
         allergen_check = False
     else:
@@ -174,7 +180,7 @@ def allergen_get_id(allergen_name):
 
 def allergen_get_id_list(allergens):
     """
-    Get allergen id list from list of allergens
+    Return allergen id list from list of allergens
     """
     allergen_id_list = []
     for allergen in allergens:
@@ -184,7 +190,7 @@ def allergen_get_id_list(allergens):
 
 def allergen_get_name_list(allergens):
     """
-    Get allergen name list from list of allergens
+    Return allergen name list from list of allergens
     """
     allergen_name_list = []
     for allergen in allergens:
@@ -194,7 +200,7 @@ def allergen_get_name_list(allergens):
 
 def allergen_get_name_list_from_id_list(allergen_id_list):
     """
-    Get allergen name list from list of allergen id's
+    Return allergen name list from list of allergen id's
     """
     allergen_name_list = []
     for allergen in allergen_id_list:
@@ -223,7 +229,7 @@ def allergen_get_selected_checkboxes(allergens):
 
 def allergen_get_selection(allergen_method):
     """
-    Returns allergen name selected in Allergen Selector
+    Get allergen name selected in Allergen Selector
     """
     # Get existing allergen name
     allergen_name = request.form.get("allergenSelector").lower()

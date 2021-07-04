@@ -14,7 +14,14 @@
                         <label class="form-label input-label" for="allergenSelector">Existing Allergen Name</label>
                         <select class="form-select form-select-lg input-title" id="allergenSelector"
                             name="allergenSelector" aria-label="Allergen Selector">
-                                <option selected>allergen...</option>
+                                <!-- If existing_allergen_name is passed through as an argument -->
+                                {% if existing_allergen_name %}
+                                    <!-- Populate allergen selector -->
+                                    <option selected>{{ existing_allergen_name }}</option>
+                                {% else %}
+                                    <!-- Else display allergen... in selector -->
+                                    <option selected>allergen...</option>
+                                {% endif %}
                                 <!-- Iterate over allergens and populate drop down allergen selector -->
                                 {% for allergen in allergens %}
                                     <option value="{{ allergen.name }}">{{ allergen.name }}</option>

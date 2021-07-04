@@ -14,7 +14,14 @@
                         <label class="form-label input-label" for="categorySelector">Category</label>
                         <select class="form-select form-select-lg input-title" id="categorySelector"
                             name="categorySelector" aria-label="Category Selector">
-                            <option selected>category...</option>
+                            <!-- If existing_category_name is passed through as an argument -->
+                            {% if existing_category_name %}
+                                <!-- Populate allergen selector -->
+                                <option selected>{{ existing_category_name }}</option>
+                            {% else %}
+                                <!-- Else display category... in selector -->
+                                <option selected>category...</option>
+                            {% endif %}
                             <!-- Iterate over categories and populate drop down category selector -->
                             {% for category in categories %}
                                 <option value="{{ category.name }}">{{ category.name }}</option>
