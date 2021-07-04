@@ -582,6 +582,20 @@ The code may also be downloaded to a local computer by following these steps:
 For further information on *Cloning* a [GitHub](https://github.com/) repository, see the 
 [GitHub Documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
+To set up the local testing environment once the code has been *Cloned* or *Forked*, an [env.py](/static/testing/deployment/example_env.py) file should be created in the root directory. The [env.py](/static/testing/deployment/example_env.py) file should be included in the *gitignore* file, as it contains sensitive information and should not be committed to a public **GitHub** repository. The [env.py](/static/testing/deployment/example_env.py) file should include the following *environment* variables:  
+
+Variable|Value|
+--------|-----|
+IP|0.0.0.0|
+PORT|5000
+SECRET_KEY|`your_secret_key`
+MONGO_DBNAME|The Mongo database name, currently set to `freefrom`
+MONGO_URI|The Mongo connection string, currently set to `mongodb+srv://<username>:<password>@<clustername>.z6xjx.mongodb.net/<database_name>?retryWrites=true&w=majority`
+MAIL_USERNAME|The mail account that **Contact** emails will be sent to. Currently set to `freefrom.contact@gmail.com`
+MAIL_PASSWORD|The mail password associated with the mail account that **Contact** emails will be sent to.  
+
+Please see [Example env.py file](/static/testing/deployment/example_env.py).
+
 The steps required to deploy the website to [Heroku](https://dashboard.heroku.com/) are as follows:
 * Use the `pip freeze > requirements.txt` terminal command to to create a `requirements.txt` file, 
 which lists all the **Python** dependencies.
@@ -604,7 +618,7 @@ Variable|Value|
 IP|0.0.0.0|
 PORT|5000
 SECRET_KEY|`your_secret_key`
-MONGO_DB|The Mongo database name, currently set to `freefrom`
+MONGO_DBNAME|The Mongo database name, currently set to `freefrom`
 MONGO_URI|The Mongo connection string, currently set to `mongodb+srv://<username>:<password>@<clustername>.z6xjx.mongodb.net/<database_name>?retryWrites=true&w=majority`
 MAIL_USERNAME|The mail account that **Contact** emails will be sent to. Currently set to `freefrom.contact@gmail.com`
 MAIL_PASSWORD|The mail password associated with the mail account that **Contact** emails will be sent to.
