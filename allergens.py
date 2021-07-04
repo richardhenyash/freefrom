@@ -58,7 +58,6 @@ def allergen_edit():
     if request.method == "POST":
         existing_allergen_name = allergen_get_selection("Update")
     if request.method == "POST" and form.validate():
-        existing_allergen_name = allergen_get_selection("Update")
         allergen_name = form.name.data.lower()
         if existing_allergen_name and allergen_check(allergen_name):
             allergen_id = allergen_get_id(existing_allergen_name)
