@@ -55,7 +55,7 @@ def category_edit():
     existing_category_name = None
     if request.method == "POST":
         existing_category_name = category_get_selection("Update")
-    if request.method == "POST" and form.validate():        
+    if request.method == "POST" and form.validate():
         category_name = form.name.data.lower()
         if existing_category_name and category_check(category_name):
             category_id = category_get_id(existing_category_name)

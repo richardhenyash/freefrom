@@ -12,9 +12,6 @@ from email.message import EmailMessage
 from forms import ContactForm
 from userauth import user_get
 
-# Import PyMongo database instance
-from database import mongo
-
 
 # Initiate Blueprint
 mail = Blueprint("mail", __name__, static_folder="static",
