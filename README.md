@@ -261,7 +261,7 @@ is shown below:
 * [wftorms-validators](https://pypi.org/project/wtforms-validators/), for additional form validators.
 * [Jinja](https://jinja.palletsprojects.com/en/3.0.x/), to enable easy display of database information using templating.
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/), to enable generation and checking of secure password hashes.
-* [SMTPLib](https://docs.python.org/3/library/smtplib.html), to enable contact email to be sent.
+* [SMTPLib](https://docs.python.org/3/library/smtplib.html), to enable contact emails to be sent.
 
 ### Browser Support ###
 The following browsers are all supported by **FreeFrom**.
@@ -398,9 +398,7 @@ is likely to involve significant restructuring and re-testing of the python code
 is recommended to be implemented in a **Future Development Phase**.
 * Functionality for deleting user accounts should be added. Currently this has to be done in the 
 [Mongo DB](https://www.mongodb.com/) back end.
-* Functionality to enable an **Admin** user to assign **Admin** rights to another user, to enable
-the user to edit **Categories** and **Allergens**. Currently this has to be done in the 
-[Mongo DB](https://www.mongodb.com/) back end.
+* Functionality to enable an **Admin** user to assign **Admin** rights to another user, which would allow the user to edit **Categories** and **Allergens**. Currently **Admin** rights have to be assigned in the [Mongo DB](https://www.mongodb.com/) back end.
 * Functionality to enable pictures of **Products** to be uploaded.
 * Functionality to enable **Products** to be added by scanning barcodes.
 

@@ -63,6 +63,7 @@ Initial [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmd
 * **Accessibility** 90%
 * **Best Practices** 93%
 * **SEO** 94%  
+
 See [Initial Lighthouse Report](/static/testing/validation/performance/lighthouse-report-1.pdf).
 
 To improve **Accesibility**, the *name* and *aria-label* atttributes were added to the **Search** and **Add** 
@@ -78,6 +79,7 @@ Final [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdco
 * **Accessibility** 98%
 * **Best Practices** 100%
 * **SEO** 94%  
+
 See [Final Lighthouse Report](/static/testing/validation/performance/lighthouse-report-2.pdf).
 
 Note that the slightly lower performance score of 86% is due to render blocking resources (mainly from **Bootstrap**) and 
@@ -400,8 +402,9 @@ No issues were uncovered during **Browser Compatibility Testing**.
 * A missing CSS class was added to the **Edit Product** button.
 * A bug was fixed where **Products** rating one star were not correctly displayed in the **Product Results Table**.
 * On the **Product View** form, newly added user **Reviews** and **Ratings** are now added or updated in the 
-**Reviews Table** after hitting the **Add**or **Update** button.
+**Reviews Table** after hitting the **Add** or **Update** button.
 * The **Product Add** route was updated to redirect to the **Product View** of the successfully added product. 
+* The **Category Edit** and **Allergen Edit** routes were updated to populate the **Category** or **Allergen** selector with previously selected values if the **Edit** form fails **Validation** or **Checking**.
 
 ### Bugs Remaining ###
 * There are no known bugs remaining.
