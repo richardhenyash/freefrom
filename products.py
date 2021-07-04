@@ -387,6 +387,9 @@ def product_get_name(product_id):
 
 
 def product_get_user_review(product):
+    """
+    Return signed in user reviews from product
+    """
     user_review = None
     if session:
         # Get user name
@@ -395,7 +398,7 @@ def product_get_user_review(product):
         user_id = mongo.db.users.find_one({"username": user_name})["_id"]
         # Cycle through product reviews
         for review in product["reviews"]:
-            # If review belongs to logged in user
+            # If review belongs to signed in user
             if review["user_id"] == (ObjectId(user_id)):
                 user_review = review
     return user_review
