@@ -483,12 +483,14 @@ The high level code logic is explained in the [UML Diagrams](/static/wireframes/
 After attending an online [Code Institute](https://codeinstitute.net/) seminar on [Python Classes](https://www.w3schools.com/python/python_classes.asp) 
 given by [Ben Kavanagh](https://github.com/BAK2K3), consideration was given to re-factoring the code using an object orientated approach. 
 A new [Class](https://github.com/richardhenyash/freefrom/tree/class) branch was created on in the 
-[Project Code Repository Location](https://github.com/richardhenyash/freefrom). Classes and class methods were created in the 
+[Project Code Repository](https://github.com/richardhenyash/freefrom). Classes and class methods were created in the 
 **products**, **allergens**, **categories** and **userauth** python code modules. The class orientated approach was succesfully 
 implemented as a test on the **Product View** route, which resulted in a significant simplification of the code. Unfortunately, 
 due to time constaints, it was not possible to implement the object orientated approach across the project, but this should 
-definitely be considered for a future project development phase, and as a better method of working for future
-projects.
+definitely be considered for a future project development phase, and as a better method of working for future projects.
+
+Due to time constraints, the developer decided to re-factor the **Python Code** using **Procedural Programming**. The code was reviewed at a high level, and functions that could be split out and re-used were identified. A [Refactor](https://github.com/richardhenyash/freefrom/tree/refactor) branch was created in the [Project Code Repository](https://github.com/richardhenyash/freefrom). The **Products**, **Categories**, **Allergens**, **User Authentication** and **Mail** modules were refactored, the site was re-tested and the **Refactor** branch was merged into the **Master** branch in in the [Project Code Repository](https://github.com/richardhenyash/freefrom). The refactoring has made the code much easier to read and understand 
+and will make any further future development and bug fixes much easier to incorporate.
 
 ### Form Validation ###
 Form validation is achieved in [Python](https://www.python.org/) using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
