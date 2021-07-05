@@ -185,7 +185,7 @@ The user can pick **Edit Category** from the **Categories Menu**, pick the **Cat
 and populate the new **Category** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the **Category** has been succesfully edited, 
 the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/category-edit.png" width="300px" align="left" style="margin: 10px;">
+<img src="/static/testing/user-stories/category-edit.png" width="300px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/category-edit-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing product category.***
@@ -212,7 +212,7 @@ The user can pick **Edit Allergen** from the **Allergen Menu**, pick the **Aller
 and populate the new **Allergen** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the **Allergen** has been succesfully edited, the user is notified with a message 
 at the top of the screen:  
-<img src="/static/testing/user-stories/allergen-edit.png" width="300px" align="left" style="margin: 10px;">
+<img src="/static/testing/user-stories/allergen-edit.png" width="300px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/allergen-edit-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing allergen.***
@@ -232,6 +232,11 @@ been succesfully submitted, a message is displayed at the top of the screen:
 <img src="/static/testing/user-stories/contact-developer.png" width="300px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/contact-developer-success.png" width="200px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/contact-developer-email.png" width="300px" style="margin: 10px;">  
+
+
+
+
+
 
 ## Manual Testing ##
 The site has been manually tested thoroughly over a 3 week period. See [Bugs Fixed During Testing](#bugs-fixed-during-testing) 
