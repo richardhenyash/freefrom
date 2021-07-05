@@ -168,7 +168,7 @@ using the **Delete** button. If the **Delete** button is clicked, the user is as
 If the user clicks **Cancel**, they are redirected back to the **Product Edit** form. If the user clicks **Delete**, the product is 
 deleted from the database and the user is redirected to the **Home** page and notified with a message at the top of the screen:  
 <img src="/static/testing/user-stories/product-delete.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/product-delete-confirm.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/product-delete-confirm.png" width="80%" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-delete-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to add a new product category.***
@@ -195,7 +195,7 @@ The user can pick **Delete Category** from the **Categories Menu**, and pick the
 If the user clicks **Cancel**, they are redirected back to the **Category Delete** form. If the user clicks **Delete**, the **Category** is 
 deleted from the database, the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
 <img src="/static/testing/user-stories/category-delete.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/category-delete-confirm.png" align="left" width="400px" style="margin: 10px;">
+<img src="/static/testing/user-stories/category-delete-confirm.png" width="80%" style="margin: 10px;">
 <img src="/static/testing/user-stories/category-delete-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to add a new allergen.***  
@@ -222,7 +222,7 @@ The user can pick **Delete Allergen** from the **Allergens Menu**, and pick the 
 If the user clicks **Cancel**, they are redirected back to the **Allergen Delete** form. If the user clicks **Delete**, the **Allergen** is 
 deleted from the database and the user is notified with a message at the top of the screen:  
 <img src="/static/testing/user-stories/allergen-delete.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/allergen-delete-confirm.png" align="left" width="400px" style="margin: 10px;">
+<img src="/static/testing/user-stories/allergen-delete-confirm.png" width="80%" style="margin: 10px;">
 <img src="/static/testing/user-stories/allergen-delete-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to be able to contact the developer.***   
