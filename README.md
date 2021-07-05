@@ -1,7 +1,7 @@
 # FreeFrom #
 [FreeFrom Live Site](https://freefrom.herokuapp.com/)  
 
-<img src="/static/testing/responsive/freefrom-responsive.png" width="100%" style="margin: 15px;">
+<img src="/static/testing/responsive/freefrom-responsive.png" width="100%" style="margin: 10px;">
 
 ## Contents ##
 - [Background](#background)
@@ -86,7 +86,7 @@ Create database| Create an online, searchable database that enables consumers to
 Enable User contribution|Enable users to contribute to the database|5|3|Op-2
 Showcase developer's skills|The site will serve as a showcase for the developer's skills, and increase the developer's standing within the tech community|4|3|Op-3
 
-<img src="/static/wireframes/strategy-matrix.png" width="400px" style="margin: 15px;">
+<img src="/static/wireframes/strategy-matrix.png" width="400px" style="margin: 10px;">
 
 ### Project Scope ###
 #### User Demographics ####
@@ -172,24 +172,24 @@ GitHub Link|Link to developer github page|4|5|Op-3|1
 Upload Pictures|Enables users to add pictures of products and ingredients|1|2|Op-2|2
 Barcode Scanner|Enables users to automatically add products by scanning a product barcode with their device camera|1|1|Op-2|2
 
-<img src="/static/wireframes/scope-matrix.png" width="600px" style="margin: 15px;">
+<img src="/static/wireframes/scope-matrix.png" width="600px" style="margin: 10px;">
 
 ### Site Map ###
 An initial [Site Map](/static/wireframes/site-map.png) was produced, and is shown below:  
-<img src="/static/wireframes/site-map.png" width="400px" style="margin: 15px;">
+<img src="/static/wireframes/site-map.png" width="400px" style="margin: 10px;">
 
 ### Wireframes ### 
 [Initial Wireframes](/static/wireframes/rev0) were produced showing the **Home**, **Sign In**, **Register**, **View Product**, 
 **Edit Product**, **Add Product**, **Add Category**, **Edit Category**, **Delete Category**, **Add Allergen**, **Edit Allergen**, **Delete Allergen** and 
 **Contact Developer** page layouts. The **Home** page is shown below:  
 
-<img src="/static/wireframes/rev0/home.png" width="600px" style="margin: 15px;">
+<img src="/static/wireframes/rev0/home.png" width="600px" style="margin: 10px;">
 
 [Responsive design wireframes](/static/wireframes/rev1) were then produced showing the **Home** page layout on **Tablet** and **Phone**. 
 The [Responsive design wireframes](/static/wireframes/rev1) are shown below:  
 
-<img src="/static/wireframes/rev1/home-tablet.png" width="300px" align="left" style="margin: 15px;">
-<img src="/static/wireframes/rev1/home-phone.png" width="300px" style="margin: 15px;">
+<img src="/static/wireframes/rev1/home-tablet.png" width="300px" align="left" style="margin: 10px;">
+<img src="/static/wireframes/rev1/home-phone.png" width="300px" style="margin: 10px;">
 
 ### Design Choices ###
 
@@ -221,7 +221,7 @@ Bright foreground colours were chosen to contrast with the white background. Col
 using the [ColorSpace](https://mycolor.space/) **Colour Palette** generator. The final **Colour Palette** selected 
 is shown below: 
 
-<img src="/static/wireframes/colour-palette.png" width="800px" style="margin: 15px;">  
+<img src="/static/wireframes/colour-palette.png" width="800px" style="margin: 10px;">  
 
 * #FFFFFF - "White" - used for the background.
 * #009EA3 - "Vividian Green" - used for results and review table links.
@@ -281,7 +281,7 @@ which provides an easily scalable platform to base the [FreeFrom](https://freefr
 The project data schema 
 was modelled using [Moon Modeller](https://www.datensen.com/data-modeling/moon-modeler-for-databases.html) and is shown below:  
 
-<img src="/static/wireframes/schema.png" width="800px" style="margin: 15px;"> 
+<img src="/static/wireframes/schema.png" width="800px" style="margin: 10px;"> 
 
 As shown in the schema diagram, there are four collections, **Users**, **Products**, **Categories** and **Allergens**.  
 
@@ -296,45 +296,45 @@ For further information see [Deployment](#deployment).
 
 #### Features Implemented in Phase 1 ####
 * **Home Page**, enables users to search for products which are free from one or more allergens:  
-<img src="/static/testing/home.png" width="800px" style="margin: 5px;"> 
+<img src="/static/testing/home.png" width="800px" style="margin: 10px;"> 
 
 * **FreeFrom** logo, links to home page if selected:  
-<img src="/static/testing/logo.png" width="300px" style="margin: 5px;"> 
+<img src="/static/testing/logo.png" width="300px" style="margin: 10px;"> 
 
 * **Home Page Alert**, explains the purpose of the site, shows user name if signed in:  
-<img src="/static/testing/home-alert.png" width="700px" style="margin: 5px;"> 
+<img src="/static/testing/home-alert.png" width="700px" style="margin: 10px;"> 
 
 * **Navigation Menu**, enables navigation to the **Home** and **Sign In** pages if the user is not **Signed In**. 
 If the user is **Signed In**, enables **Sign Out**. If the user is signed in with **Admin** privelages, 
 displays the **Allergens** and **Categories** menus:  
-<img src="/static/testing/navigation-menu-guest.png" width="150px" style="margin: 5px;">
-<img src="/static/testing/navigation-menu-user.png" width="150px" style="margin: 5px;">
-<img src="/static/testing/navigation-menu-admin.png" width="400px" style="margin: 5px;"> 
+<img src="/static/testing/navigation-menu-guest.png" width="150px" style="margin: 10px;">
+<img src="/static/testing/navigation-menu-user.png" width="150px" style="margin: 10px;">
+<img src="/static/testing/navigation-menu-admin.png" width="400px" style="margin: 10px;"> 
 
 * **Search Input**, allows the user to optionally input product search criteria to filter search results:  
-<img src="/static/testing/search.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/search.png" width="500px" style="margin: 10px;">  
 
 * **Category Selector**, allows the user to optionally select category to filter search results:  
-<img src="/static/testing/category.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/category.png" width="500px" style="margin: 10px;">  
 
 * **Search Button**, searches the database and returns matched products in the **Product Results Table**. 
 Resizes if the user is not signed in and add button is not displayed:  
-<img src="/static/testing/search-button.png" width="100px" style="margin: 5px;">  
+<img src="/static/testing/search-button.png" width="100px" style="margin: 10px;">  
 
 * **Add Button**, links to the **Product Add** form. Only shown if the user is signed in:  
-<img src="/static/testing/add-button.png" width="100px" style="margin: 5px;">  
+<img src="/static/testing/add-button.png" width="100px" style="margin: 10px;">  
 
 * **Allergen Selector**, allows the user to optionally select allergens to filter search results:  
-<img src="/static/testing/allergen-selector.png" width="80%" style="margin: 5px;">  
+<img src="/static/testing/allergen-selector.png" width="80%" style="margin: 10px;">  
 
 * **Product Results Table**, displays product search results. Product name links to **Product View** page:
-<img src="/static/testing/results-table.png" width="80%" style="margin: 5px;"> 
+<img src="/static/testing/results-table.png" width="80%" style="margin: 10px;"> 
 
 * **Sign In**, displays form allowing the user to sign in. Includes link to **Register**:  
-<img src="/static/testing/signin.png" width="500px" style="margin: 5px;"> 
+<img src="/static/testing/signin.png" width="500px" style="margin: 10px;"> 
 
 * **Register**, displays form allowing the user to register:  
-<img src="/static/testing/register.png" width="500px" style="margin: 5px;"> 
+<img src="/static/testing/register.png" width="500px" style="margin: 10px;"> 
 
 * **Product View**, displays product details. If the user is signed in, allows review and rating to 
 be added or updated.   
@@ -343,51 +343,51 @@ be added or updated.
 **Update** button updates review and rating if product has already been reviewed by the user.  
 **Product Edit** button links to **Product Edit** page.  
 User reviews are shown below in the **User Reviews Table**:  
-<img src="/static/testing/product-view-add-review.png" width="500px" style="margin: 5px;">  
-<img src="/static/testing/product-view-update-review.png" width="500px%" style="margin: 5px;">  
+<img src="/static/testing/product-view-add-review.png" width="500px" style="margin: 10px;">  
+<img src="/static/testing/product-view-update-review.png" width="500px%" style="margin: 10px;">  
 
 * **Product Edit**, displays form allowing product to be edited:  
-<img src="/static/testing/product-edit.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/product-edit.png" width="500px" style="margin: 10px;">  
 
 * **Product Add**, displays form allowing product to be added:  
-<img src="/static/testing/product-add.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/product-add.png" width="500px" style="margin: 10px;">  
 
 * **Allergen Add**, displays form allowing Allergen to be added:  
-<img src="/static/testing/allergen-add.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/allergen-add.png" width="500px" style="margin: 10px;">  
 
 * **Allergen Edit**, displays form allowing Allergen to be edited:  
-<img src="/static/testing/allergen-edit.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/allergen-edit.png" width="500px" style="margin: 10px;">  
 
 * **Allergen Delete**, displays form allowing Allergen to be deleted:  
-<img src="/static/testing/allergen-delete.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/allergen-delete.png" width="500px" style="margin: 10px;">  
 
 * **Allergen Delete Confirm**, displays form confirming Allergen should be deleted:  
-<img src="/static/testing/allergen-delete-confirm.png" width="800px" style="margin: 5px;">  
+<img src="/static/testing/allergen-delete-confirm.png" width="800px" style="margin: 10px;">  
 
 * **Category Add**, displays form allowing Category to be added:  
-<img src="/static/testing/category-add.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/category-add.png" width="500px" style="margin: 10px;">  
 
 * **Category Edit**, displays form allowing Category to be edited:  
-<img src="/static/testing/category-edit.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/category-edit.png" width="500px" style="margin: 10px;">  
 
 * **Category Delete**, displays form allowing Category to be deleted:  
-<img src="/static/testing/category-delete.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/category-delete.png" width="500px" style="margin: 10px;">  
 
 * **Category Delete Confirm**, displays form confirming Category should be deleted:  
-<img src="/static/testing/category-delete-confirm.png" width="800px" style="margin: 5px;">  
+<img src="/static/testing/category-delete-confirm.png" width="800px" style="margin: 10px;">  
 
 * **Footer Contact Developer Link**, links to **Contact Developer** form:  
-<img src="/static/testing/contact-link.png" width="150px" style="margin: 5px;">  
+<img src="/static/testing/contact-link.png" width="150px" style="margin: 10px;">  
 
 * **Footer GitHub Link**, links to developer page on [GitHub](https://github.com/richardhenyash):  
-<img src="/static/testing/github-link.png" width="40px" style="margin: 5px;">  
+<img src="/static/testing/github-link.png" width="40px" style="margin: 10px;">  
 
 * **Contact Developer**, enables developer to be contacted by email:  
-<img src="/static/testing/contact.png" width="300px" style="margin: 5px;">  
+<img src="/static/testing/contact.png" width="300px" style="margin: 10px;">  
 
 * **Error Page**, returns a customised error message and link to the **Home** page if an error is encountered:  
-<img src="/static/testing/error-page-not-found.png" width="400px" style="margin: 5px;">
-<img src="/static/testing/error-product-not-found.png" width="400px" style="margin: 5px;">
+<img src="/static/testing/error-page-not-found.png" width="400px" style="margin: 10px;">
+<img src="/static/testing/error-product-not-found.png" width="400px" style="margin: 10px;">
 
 #### Features To Be Implemented In Future Development Phases ####
 * Currently, when the user navigates back to the **Home** page from the **Product View** page, 
@@ -404,22 +404,22 @@ is recommended to be implemented in a **Future Development Phase**.
 The following design changes were implemented following initial user feedback:
 * The **Home** and **Product View** page alerts were updated to include links to **Sign In** and **Register** 
 if the user is not signed in:  
-<img src="/static/testing/home-alert-new.png" width="700px" style="margin: 5px;">
-<img src="/static/testing/product-view-alert.png" width="300px" style="margin: 5px;">
+<img src="/static/testing/home-alert-new.png" width="700px" style="margin: 10px;">
+<img src="/static/testing/product-view-alert.png" width="300px" style="margin: 10px;">
 
 * The **Home** page search button was updated to take up the space of the search and add buttons 
 if the user is not signed in:  
-<img src="/static/testing/search-new.png" width="700px" style="margin: 5px;">  
-<img src="/static/testing/search-new-signedin.png" width="700px" style="margin: 5px;">
+<img src="/static/testing/search-new.png" width="700px" style="margin: 10px;">  
+<img src="/static/testing/search-new-signedin.png" width="700px" style="margin: 10px;">
 
 * The **Register** form was updated to include a link to **Sign In**:  
-<img src="/static/testing/register-new.png" width="500px" style="margin: 5px;">  
+<img src="/static/testing/register-new.png" width="500px" style="margin: 10px;">  
 
 * The **Product Add** route was updated to redirect to the **Product View** of the 
 successfully added product.  
 
 * The **Product View** form was updated to include an **Add Product** button:  
-<img src="/static/testing/product-view-update-review-new.png" width="500px" style="margin: 5px;"> 
+<img src="/static/testing/product-view-update-review-new.png" width="500px" style="margin: 10px;"> 
 
 * **Form Validation** for the **Product** form was updated to allow special characters 
 (e.g. "&", "-" etc) in product names, and to allow **Product** and **Manufacturer** 
@@ -461,19 +461,19 @@ The **Python Code** for the project has been split into the following modules, u
 The high level code logic is explained in the [UML Diagrams](/static/wireframes/uml/) below: 
 
 #### [Products](/static/wireframes/uml/products-logic.png) ####
-<img src="/static/wireframes/uml/products-logic.png" width="800px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/products-logic.png" width="800px" style="margin: 10px;">  
 
 #### [Categories](/static/wireframes/uml/categories-logic.png) ####
-<img src="/static/wireframes/uml/categories-logic.png" width="700px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/categories-logic.png" width="700px" style="margin: 10px;">  
 
 #### [Allergens](/static/wireframes/uml/allergens-logic.png) ####
-<img src="/static/wireframes/uml/allergens-logic.png" width="700px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/allergens-logic.png" width="700px" style="margin: 10px;">  
 
 #### [User Authentication](/static/wireframes/uml/userauth-logic.png) ####
-<img src="/static/wireframes/uml/userauth-logic.png" width="700px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/userauth-logic.png" width="700px" style="margin: 10px;">  
 
 #### [Mail](/static/wireframes/uml/mail-logic.png) ####
-<img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 5px;"> 
+<img src="/static/wireframes/uml/mail-logic.png" width="400px" style="margin: 10px;"> 
 
 ### Python Code Refactoring ###
 After attending an online [Code Institute](https://codeinstitute.net/) seminar on [Python Classes](https://www.w3schools.com/python/python_classes.asp) 
@@ -538,7 +538,7 @@ are updated to reflect the correct rating value.
 
 See [UML Diagram](/static/wireframes/uml/) below:  
 
-<img src="/static/wireframes/uml/events-logic.png" width="300px" style="margin: 15px;">  
+<img src="/static/wireframes/uml/events-logic.png" width="300px" style="margin: 10px;">  
 
 ## Testing ##
 
