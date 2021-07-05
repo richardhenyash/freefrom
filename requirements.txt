@@ -9,7 +9,9 @@ is-disposable-email==1.0.0
 itsdangerous==2.0.0
 Jinja2==3.0.0
 MarkupSafe==2.0.0
+mongomock==3.23.0
 pymongo==3.11.4
+sentinels==1.0.0
 Werkzeug==2.0.0
 WTForms==2.3.3
 wtforms-validators==1.0.0

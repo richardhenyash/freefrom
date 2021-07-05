@@ -22,4 +22,14 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "dark",
    "editor.defaultFormatter": "HookyQR.beautify",
+   "python.testing.unittestArgs": [
+      "-v",
+      "-s",
+      ".",
+      "-p",
+      "*test.py"
+   ],
+   "python.testing.pytestEnabled": false,
+   "python.testing.nosetestsEnabled": false,
+   "python.testing.unittestEnabled": true,
 }
