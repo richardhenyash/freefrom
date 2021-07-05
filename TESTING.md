@@ -176,7 +176,7 @@ If the user is **Signed In** and has **Admin** privileges, the **Categories** me
 The user can pick **Add Category** from the **Categories Menu** and populate the new **Category** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the new **Category** has been succesfully added, 
 the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/category-add.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/category-add.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/category-add-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing product category.***
@@ -185,7 +185,7 @@ The user can pick **Edit Category** from the **Categories Menu**, pick the **Cat
 and populate the new **Category** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the **Category** has been succesfully edited, 
 the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/category-edit.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/category-edit.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/category-edit-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing product category.***
@@ -203,7 +203,7 @@ If the user is **Signed In** and has **Admin** privileges, the **Allergens** men
 The user can pick **Add Allergen** from the **Allergens Menu** and populate the new **Allergen** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the new **Allergen** has been added, the user is redirected to the 
 **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/allergen-add.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/allergen-add.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/allergen-add-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing allergen.***
@@ -212,7 +212,7 @@ The user can pick **Edit Allergen** from the **Allergen Menu**, pick the **Aller
 and populate the new **Allergen** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the **Allergen** has been succesfully edited, the user is notified with a message 
 at the top of the screen:  
-<img src="/static/testing/user-stories/allergen-edit.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/allergen-edit.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/allergen-edit-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing allergen.***
