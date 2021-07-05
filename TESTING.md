@@ -129,8 +129,8 @@ returned into the product list below. Each product can be viewed in more detail 
 the **Product Name Link** in the **Product Results Table**.
 The **Search** also works if no details are input (all products are returned into the product list). 
 Screen prints showing the results of various typical product searches are shown below:  
-<img src="/static/testing/user-stories/product-search-1.png" width="100%" style="margin: 10px;">  
-<img src="/static/testing/user-stories/product-search-2.png" width="100%" style="margin: 10px;">  
+<img src="/static/testing/user-stories/product-search-1.png" width="90%" style="margin: 10px;">  
+<img src="/static/testing/user-stories/product-search-2.png" width="90%" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-search-3.png" width="90%" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-search-4.png" width="90%" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-search-5.png" width="90%" style="margin: 10px;">  
@@ -142,7 +142,7 @@ Screen prints showing the results of various typical product searches are shown 
 If the user is **Signed In**, they may add a product to the database using the **Add** button on the **Home** page. 
 Once the [Form Validation](#form-validation) and checking has been passed, the new **Product** is added to the database and the user is redirected 
 to the **Product View** page, and notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/product-add.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/product-add.png" width="400px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/product-add-success.png" width="400px" style="margin: 10px;">  
 
 * ***As a User, I have tried a product and would like to rate it.***  
