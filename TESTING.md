@@ -112,9 +112,9 @@ Once the **Sign In** form has been populated and the [Form Validation](#form-val
 redirected back to the **Home** page, and notified with a message at the top of the screen. 
 The **Home Page Alert** is updated to remove the **Sign In** and **Register** links and shows the 
 **User Name** of the signed in user. The **Navigation Menu** shows a link to **Sign Out**:  
-<img src="/static/testing/user-stories/home-signedout.png" width="600px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/signin.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/home-signedin.png" width="600px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/home-signedout.png" width="90%" style="margin: 10px;">  
+<img src="/static/testing/user-stories/signin.png" width="90%" style="margin: 10px;">  
+<img src="/static/testing/user-stories/home-signedin.png" width="90&" style="margin: 10px;">  
 
 * ***As a User, I would like to be able to sign out of the site.***  
 If the user is **Signed In**, the **Navigation Menu** shows a link to **Sign Out**. If the link is clicked, the user 
