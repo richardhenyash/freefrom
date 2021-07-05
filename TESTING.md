@@ -54,6 +54,11 @@ imported but not used. This is not considered to be a problem as *env* is only b
 environment to initialise the environmental variables, and is not imported in the production version of 
 the site. See [Python Code Flake8 Validation](/static/testing/validation/python/python-flake8-validation.png).
 
+Python **Unit Testing** was also implemented using the [unittest](https://docs.python.org/3/library/unittest.html) python unit testing framework.  
+[mongomock](https://github.com/mongomock/mongomock) was used to create a "mock" of the Mongo DB to carry out a selection of **Unit Tests** on. Please note that 
+due to time constraints, not all functions and routes have been fully tested. A total of 9 **Unit Tests** have been created in the [FreeFrom Test Python module](/test.py). 
+All 9 **Unit Tests** pass without errors, see [Python Unit Test Results](/static/testing/unit-tests/python-unit-tests.png).
+
 ### Automated Performance And Quality Testing ###
 Performance and Quality was tested with the [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) 
 extension for [Google Chrome](https://www.google.com/intl/en_uk/chrome/). 

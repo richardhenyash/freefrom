@@ -250,18 +250,20 @@ is shown below:
 * [Python](https://www.python.org/)
 
 ### Frameworks Libraries and Tools ###
-* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/), to assist with responsive design.
-* [Font Awesome](https://fontawesome.com/), for icons.
-* [Google Fonts](https://fonts.google.com/), for fonts.
-* [jQuery](https://jquery.com/), to assist with JavaScript coding and DOM manipulation.
-* [PyMongo](https://pypi.org/project/pymongo/), to enable interaction with [Mongo DB](https://www.mongodb.com/).
-* [Flask](https://flask.palletsprojects.com/en/2.0.x/), to render and display web pages.
-* [DataTables](https://datatables.net/), to enable easy display of data tables.
-* [WTForms](https://wtforms.readthedocs.io/en/2.3.x/), for **Form Validation**.
-* [wftorms-validators](https://pypi.org/project/wtforms-validators/), for additional form validators.
-* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/), to enable easy display of database information using templating.
-* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/), to enable generation and checking of secure password hashes.
-* [SMTPLib](https://docs.python.org/3/library/smtplib.html), to enable contact emails to be sent.
+* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - to assist with responsive design.
+* [Font Awesome](https://fontawesome.com/) - for icons.
+* [Google Fonts](https://fonts.google.com/) - for fonts.
+* [jQuery](https://jquery.com/) - to assist with JavaScript coding and DOM manipulation.
+* [PyMongo](https://pypi.org/project/pymongo/) - to enable interaction with [Mongo DB](https://www.mongodb.com/).
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - to render and display web pages.
+* [DataTables](https://datatables.net/) - to enable easy display of data tables.
+* [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) - for **Form Validation**.
+* [wftorms-validators](https://pypi.org/project/wtforms-validators/) - for additional form validators.
+* [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) - to enable easy display of database information using templating.
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/) - to enable generation and checking of secure password hashes.
+* [SMTPLib](https://docs.python.org/3/library/smtplib.html) - to enable contact emails to be sent.
+* [unittest](https://docs.python.org/3/library/unittest.html#) - framework for **Python Unit Testing**.
+* [mongomock](https://pypi.org/project/mongomock/) - used to create a "mock" of the **Mongo DB** for **Python Unit Testing**.
 
 ### Browser Support ###
 The following browsers are all supported by **FreeFrom**.
@@ -647,14 +649,18 @@ and [Flask Blueprints](https://flask.palletsprojects.com/en/2.0.x/blueprints/).
 * The excellent [Code Institute](https://codeinstitute.net/) course material which enabled me to succefully implement the project.
 * [ColorSpace](https://mycolor.space/) for the colour ideas generated using the colour pallete generator.
 * [favicon.io](https://favicon.io/favicon-converter/) for the favicon conversion tool.
-* The following [link](https://datatables.net/forums/discussion/51763/page-paging-number-color-styles) for information on DataTables 
+* The following [link](https://datatables.net/forums/discussion/51763/page-paging-number-color-styles) for information on **DataTables** 
 page and page number styling.
+* The following [link](https://docs.python.org/3/library/unittest.html#) for information on **unittest**, used for **Python Unit Testing**.
+* The following [link](http://docs.mongoengine.org/guide/mongomock.html) for information on **mongomock**, used to create a "mock" of 
+the **Mongo DB** for **Python Unit Testing**.
+
 
 ## Acknowledgements ##
 
 Many thanks to the following for help and inspiration during this project:
-* My mentor [Reuben Ferrante](https://github.com/arex18) for helping to get me started off on the right footing and for the insightful
-review and comments on the site.
+* My mentor [Reuben Ferrante](https://github.com/arex18) for helping to get me started off on the right footing, for the insightful
+review and comments on the site and for the help with form validation, blueprints, code re-factoring and python unit testing.
 * [Neringa Bickmore](https://github.com/neringabickmore) for your encouragement with my project idea.
 * [Ben Kavanagh](https://github.com/BAK2K3) for the very helpful comments on the site and general 
  encouragement, and for the excellent online seminar on **Python Classes**.
