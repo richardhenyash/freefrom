@@ -167,7 +167,7 @@ privileges, they may **Delete** any product from the database. The **Product Del
 using the **Delete** button. If the **Delete** button is clicked, the user is asked to confirm that they want to **Delete** the **Product**. 
 If the user clicks **Cancel**, they are redirected back to the **Product Edit** form. If the user clicks **Delete**, the product is 
 deleted from the database and the user is redirected to the **Home** page and notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/product-delete.png" width="400px" align="left" style="margin: 10px;">
+<img src="/static/testing/user-stories/product-delete.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-delete-confirm.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-delete-success.png" width="200px" style="margin: 10px;">  
 
