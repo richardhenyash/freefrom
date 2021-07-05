@@ -337,12 +337,12 @@ User reviews are displayed as intended below in the **User Reviews Table**:
 * **Contact Developer** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**), enabling developer to be contacted by email:  
 <img src="/static/testing/user-stories/contact-developer.png" width="300px" style="margin: 5px;">  
 <img src="/static/testing/user-stories/contact-developer-success.png" width="200px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/contact-developer-email.png" width="300px" style="margin: 5px;">
+<img src="/static/testing/user-stories/contact-developer-email.png" width="400px" style="margin: 5px;">
 
 * **Error Page** functions correctly and returns a customised error message and link to the **Home** page if an error is encountered. 
 Link hover styling functions correctly:  
-<img src="/static/testing/error-page-not-found.png" width="300px" style="margin: 5px;">
-<img src="/static/testing/error-product-not-found.png" width="300px" style="margin: 5px;">
+<img src="/static/testing/error-page-not-found.png" width="400px" style="margin: 5px;">
+<img src="/static/testing/error-product-not-found.png" width="400px" style="margin: 5px;">
 
 ### Form Validation ###
 Validation for all **Forms** implemented using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) and **Python** has been 
