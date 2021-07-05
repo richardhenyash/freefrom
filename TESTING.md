@@ -150,7 +150,7 @@ to the **Product View** page, and notified with a message at the top of the scre
 If the user is **Signed In**, they may rate and review products on the **Product View** page. 
 Once the [Form Validation](#form-validation) and checking has been passed and the review and rating has been 
 succesfully added, the user is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/product-rate-review.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/product-rate-review.png" width="400px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/product-rate-review-success.png" width="400px" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing product.***
@@ -158,7 +158,7 @@ If the user is **Signed In**, they may **Edit** a product by clicking the **Edit
 page. The **Product Edit** form is presented, and once the [Form Validation](#form-validation) and checking has been passed and the product has been 
 successfully updated, the user is redirected to the **Product View** page for the updated **Product**, 
 and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/product-edit.png" width="400px" style="margin: 10px;">   
+<img src="/static/testing/user-stories/product-edit.png" width="400px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/product-edit-success.png" width="400px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing product.***
@@ -167,7 +167,7 @@ privileges, they may **Delete** any product from the database. The **Product Del
 using the **Delete** button. If the **Delete** button is clicked, the user is asked to confirm that they want to **Delete** the **Product**. 
 If the user clicks **Cancel**, they are redirected back to the **Product Edit** form. If the user clicks **Delete**, the product is 
 deleted from the database and the user is redirected to the **Home** page and notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/product-delete.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/product-delete.png" width="400px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/product-delete-confirm.png" width="400px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/product-delete-success.png" width="200px" style="margin: 10px;">  
 
@@ -176,7 +176,7 @@ If the user is **Signed In** and has **Admin** privileges, the **Categories** me
 The user can pick **Add Category** from the **Categories Menu** and populate the new **Category** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the new **Category** has been succesfully added, 
 the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/category-add.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/category-add.png" width="300px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/category-add-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing product category.***
@@ -185,7 +185,7 @@ The user can pick **Edit Category** from the **Categories Menu**, pick the **Cat
 and populate the new **Category** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the **Category** has been succesfully edited, 
 the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/category-edit.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/category-edit.png" width="300px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/category-edit-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing product category.***
@@ -195,7 +195,7 @@ The user can pick **Delete Category** from the **Categories Menu**, and pick the
 If the user clicks **Cancel**, they are redirected back to the **Category Delete** form. If the user clicks **Delete**, the **Category** is 
 deleted from the database, the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
 <img src="/static/testing/user-stories/category-delete.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/category-delete-confirm.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/category-delete-confirm.png" align="left" width="400px" style="margin: 10px;">
 <img src="/static/testing/user-stories/category-delete-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to add a new allergen.***  
@@ -203,7 +203,7 @@ If the user is **Signed In** and has **Admin** privileges, the **Allergens** men
 The user can pick **Add Allergen** from the **Allergens Menu** and populate the new **Allergen** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the new **Allergen** has been added, the user is redirected to the 
 **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/allergen-add.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/allergen-add.png" width="300px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/allergen-add-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing allergen.***
@@ -212,7 +212,7 @@ The user can pick **Edit Allergen** from the **Allergen Menu**, pick the **Aller
 and populate the new **Allergen** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the **Allergen** has been succesfully edited, the user is notified with a message 
 at the top of the screen:  
-<img src="/static/testing/user-stories/allergen-edit.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/allergen-edit.png" width="300px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/allergen-edit-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to delete an existing allergen.***
@@ -222,14 +222,14 @@ The user can pick **Delete Allergen** from the **Allergens Menu**, and pick the 
 If the user clicks **Cancel**, they are redirected back to the **Allergen Delete** form. If the user clicks **Delete**, the **Allergen** is 
 deleted from the database and the user is notified with a message at the top of the screen:  
 <img src="/static/testing/user-stories/allergen-delete.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/allergen-delete-confirm.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/allergen-delete-confirm.png" align="left" width="400px" style="margin: 10px;">
 <img src="/static/testing/user-stories/allergen-delete-success.png" width="200px" style="margin: 10px;">  
 
 * ***As a User, I would like to be able to contact the developer.***   
 The user may access the **Contact Form** from the **Footer Link**. If the user is **Signed In**, their email address is populated 
 automatically. Once the user has populated the **Contact Form** and the form has passed [Form Validation](#form-validation) and checking and has 
 been succesfully submitted, a message is displayed at the top of the screen:  
-<img src="/static/testing/user-stories/contact-developer.png" width="300px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/contact-developer.png" width="300px" align="left" style="margin: 10px;">
 <img src="/static/testing/user-stories/contact-developer-success.png" width="200px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/contact-developer-email.png" width="300px" style="margin: 10px;">  
 
