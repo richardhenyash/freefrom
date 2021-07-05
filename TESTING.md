@@ -248,8 +248,8 @@ The following **Features** have been explicitly tested:
 <img src="/static/testing/home-alert-new.png" width="700px" style="margin: 10px;">  
 
 * **Navigation Menu** has been tested and works as intended. When user is not **Signed In**, **Home** and **Sign in** links are displayed and 
-the links function correctly. If user is **Signed In** but does not have **Admin** privelages, **Home** and **Sign Out** links are displayed 
-and function correctly. If user is **Signed In** and has **Admin** privelages, **Home**, **Allergens**, **Categories**, and **Sign Out** links 
+the links function correctly. If user is **Signed In** but does not have **Admin** privileges, **Home** and **Sign Out** links are displayed 
+and function correctly. If user is **Signed In** and has **Admin** privileges, **Home**, **Allergens**, **Categories**, and **Sign Out** links 
 are displayed and function correctly. **Allergens** and **Categories** drop down menus function correctly. 
 **Navigation Menu Hover Styling** has been implemented and is working as intended:  
 <img src="/static/testing/navigation-menu-guest.png" width="150px" style="margin: 10px;">
@@ -291,8 +291,8 @@ correctly (including form validation and hover styling).
 **Add** button text functions as intended and is changed to **Update** if the user has already reviewed the product.  
 **Update** button functions as intended (including form validation and hover styling) and updates review and rating if the product 
 has already been reviewed by the user.  
-**Edit Product** button is displayed of user is **Signed In** and functions correctly (including hover styling), linking to **Product Edit** page.  
-**Add Product** button is displayed of user is **Signed In** and functions correctly (including hover styling), to **Product Add** page.  
+**Edit Product** button is displayed if user is **Signed In** and functions correctly (including hover styling), linking to **Product Edit** page.  
+**Add Product** button is displayed if user is **Signed In** and functions correctly (including hover styling), to **Product Add** page.  
 User reviews are displayed as intended below in the **User Reviews Table**:  
 <img src="/static/testing/product-view-signedout.png" width="500px" style="margin: 10px;">  
 <img src="/static/testing/product-view-add-review-new.png" width="500px" style="margin: 10px;">  
@@ -313,7 +313,7 @@ User reviews are displayed as intended below in the **User Reviews Table**:
 * **Allergen Delete** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**):  
 <img src="/static/testing/allergen-delete.png" width="500px" style="margin: 10px;">  
 
-* **Allergen Delete Confirm** form functions correctly:  
+* **Allergen Delete Confirm** form functions correctly (including button **Hover Styling**):  
 <img src="/static/testing/allergen-delete-confirm.png" width="800px" style="margin: 10px;">  
 
 * **Category Add** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**):  
@@ -325,7 +325,7 @@ User reviews are displayed as intended below in the **User Reviews Table**:
 * **Category Delete** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**):  
 <img src="/static/testing/category-delete.png" width="500px" style="margin: 10px;">  
 
-* **Category Delete Confirm** form functions correctly:  
+* **Category Delete Confirm** form functions correctly (including button **Hover Styling**):  
 <img src="/static/testing/category-delete-confirm.png" width="800px" style="margin: 10px;">  
 
 * **Footer Contact Developer Link** functions correctly (including **Hover Styling**) and links to **Contact Developer** form:  
@@ -347,8 +347,8 @@ Link hover styling functions correctly:
 ### Form Validation ###
 Validation for all **Forms** implemented using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) and **Python** has been 
 thoroughly manually tested. See [Form Validation Testing Screen Prints](/static/testing/forms), a selection of which are shown below:  
-<img src="/static/testing/forms/product-add-form-validation.png" width="400px" style="margin: 10px;">  
-<img src="/static/testing/forms/allergen-add-form-validation.png" width="400px" style="margin: 10px;">  
+<img src="/static/testing/forms/product-add-form-validation.png" width="600px" style="margin: 10px;">  
+<img src="/static/testing/forms/allergen-add-form-validation.png" width="600px" style="margin: 10px;">  
 <img src="/static/testing/forms/register-form-validation.png" width="500px" style="margin: 10px;">  
 <img src="/static/testing/forms/contact-form-validation.png" width="500px" style="margin: 10px;">  
 

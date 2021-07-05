@@ -135,13 +135,13 @@ can be succesfully implemented during the phase 1 development.
 * The User needs to be able to rate products.
 * The User needs to be able to review products.
 * The User needs to be able to edit products.
-* The User needs to be able to delete products (this should be restricted to users with the correct privelages).
-* The User needs to be able to add product categories (this should be restricted to users with the correct privelages).
-* The User needs to be able to edit product categories (this should be restricted to users with the correct privelages).
-* The User needs to be able to delete product categories (this should be restricted to users with the correct privelages).
-* The User needs to be able to add allergens (this should be restricted to users with the correct privelages).
-* The User needs to be able to edit allergens (this should be restricted to users with the correct privelages).
-* The User needs to be able to delete allergens (this should be restricted to users with the correct privelages).
+* The User needs to be able to delete products (this should be restricted to users with the correct privileges).
+* The User needs to be able to add product categories (this should be restricted to users with the correct privileges).
+* The User needs to be able to edit product categories (this should be restricted to users with the correct privileges).
+* The User needs to be able to delete product categories (this should be restricted to users with the correct privileges).
+* The User needs to be able to add allergens (this should be restricted to users with the correct privileges).
+* The User needs to be able to edit allergens (this should be restricted to users with the correct privileges).
+* The User needs to be able to delete allergens (this should be restricted to users with the correct privileges).
 * The User needs to be able to contact the developer.
 
 #### Business Rules ####
@@ -159,12 +159,12 @@ Registration Form|User registration form|5|3|Op-2|1
 Login/Logout|User login/logout form|5|3|Op-2|1
 Search|Enables users to search the database based on one or more allergies or intolerances|5|3|Op-1|1
 Add Product|Enables users to add a product to the database|3|3|Op-2|1
-Add Category|Enables users with required privelages to add product categories to the database|3|3|Op-1, Op-2|1
-Edit Category|Enables users with required privelages to edit product categories in the database|3|3|Op-1, Op-2|1
-Delete Category|Enables users with required privelages to delete product categories from the database|3|3|Op-1, Op-2|1
-Add Allergen|Enables users with the required privelages to add allergens to the database|3|3|Op-1, Op-2|1
-Edit Allergen|Enables users with the required privelages to edit allergens in the database|3|3|Op-1, Op-2|1
-Delete Allergen|Enables users with the required privelages to delete allergens in the database|3|3|Op-1, Op-2|1
+Add Category|Enables users with required privileges to add product categories to the database|3|3|Op-1, Op-2|1
+Edit Category|Enables users with required privileges to edit product categories in the database|3|3|Op-1, Op-2|1
+Delete Category|Enables users with required privileges to delete product categories from the database|3|3|Op-1, Op-2|1
+Add Allergen|Enables users with the required privileges to add allergens to the database|3|3|Op-1, Op-2|1
+Edit Allergen|Enables users with the required privileges to edit allergens in the database|3|3|Op-1, Op-2|1
+Delete Allergen|Enables users with the required privileges to delete allergens in the database|3|3|Op-1, Op-2|1
 Rate Product|Enables users to give a star rating to a product|2|2|Op-2|1
 Review Product|Enables users to review a product|2|2|Op-2|1
 Contact Form|Form to contact developer|4|5|Op-3|1
@@ -305,7 +305,7 @@ For further information see [Deployment](#deployment).
 <img src="/static/testing/home-alert.png" width="700px" style="margin: 10px;"> 
 
 * **Navigation Menu**, enables navigation to the **Home** and **Sign In** pages if the user is not **Signed In**. 
-If the user is **Signed In**, enables **Sign Out**. If the user is signed in with **Admin** privelages, 
+If the user is **Signed In**, enables **Sign Out**. If the user is signed in with **Admin** privileges, 
 displays the **Allergens** and **Categories** menus:  
 <img src="/static/testing/navigation-menu-guest.png" width="150px" style="margin: 10px;">
 <img src="/static/testing/navigation-menu-user.png" width="150px" style="margin: 10px;">

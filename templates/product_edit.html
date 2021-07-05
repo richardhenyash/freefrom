@@ -89,7 +89,7 @@
                             role="button" class="btn btn-lg btn-secondary">Cancel</a>
                         <!-- Update button submits form -->
                         <button type="submit" class="btn btn-lg btn-danger btn-fireopal">Update</button>
-                        <!-- If user is signed in with admin privelages or if product belongs to user -->
+                        <!-- If user is signed in with admin privileges or if product belongs to user -->
                         {% if session.admin or user_product %}
                             <!-- Show delete button -->
                             <a href="{{ url_for('products.delete', product_id=product_id) }}" 
