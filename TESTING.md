@@ -119,8 +119,8 @@ The **Home Page Alert** is updated to remove the **Sign In** and **Register** li
 * ***As a User, I would like to be able to sign out of the site.***  
 If the user is **Signed In**, the **Navigation Menu** shows a link to **Sign Out**. If the link is clicked, the user 
 is redirected back to the **Home** page and notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/navigation-menu-signedout.png" align="left" width="600px" style="margin: 10px;">
-<img src="/static/testing/user-stories/signout-success.png" width="150px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/navigation-menu-signedout.png" align="left" width="70%" style="margin: 10px;">
+<img src="/static/testing/user-stories/signout-success.png" width="20%" style="margin: 10px;">  
 
 * ***As a User, I am searching for a product which is free from one or more allergens.***  
 The user is able to optionally type part or all of a **Product** name into the **Search** input and 
