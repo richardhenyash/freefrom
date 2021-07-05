@@ -27,14 +27,14 @@ using **Google Chrome** (right click, *View page source*) and passed through the
 The following error was found during the final **HTML** validation check:
 * A stray closing *i* tag was found in the **Product View** template. This was removed, the HTML was revalidated and passed.
 
-All HTML code now passes validation with no error or warnings. See [HTML Validation Reports](/static/testing/validation/html)
+All HTML code now passes validation with no errors or warnings. See [HTML Validation Reports](/static/testing/validation/html)
 
 ### Custom CSS Styling ###
 [Custom CSS styling](/static/css/style.css) was validated using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).  
 No errors were generated. 10 "unknown vendor extension" warnings were generated. See [CSS Validation Report](/static/testing/validation/css/css-validation.pdf).  
 The warnings are related to the 10 global variables declared at the top of the [Custom CSS](/static/css/style.css). 
 The warnings are generated because the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) 
-does not currently support CSS global variable declaration are are not considered to be an issue. 
+does not currently support CSS global variable declaration and are not considered to be an issue. 
 See [Github Link](https://github.com/w3c/css-validator/pull/173).
 
 ### JavaScript Code Testing ##
@@ -129,14 +129,14 @@ returned into the product list below. Each product can be viewed in more detail 
 the **Product Name Link** in the **Product Results Table**.
 The **Search** also works if no details are input (all products are returned into the product list). 
 Screen prints showing the results of various typical product searches are shown below:  
-<img src="/static/testing/user-stories/product-search-1.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-2.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-3.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-4.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-5.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-6.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-7.png" width="600px" style="margin: 5px;">  
-<img src="/static/testing/user-stories/product-search-8.png" width="600px" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-1.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-2.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-3.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-4.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-5.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-6.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-7.png" width="100%" style="margin: 5px;">  
+<img src="/static/testing/user-stories/product-search-8.png" width="100%" style="margin: 5px;">  
 
 * ***As a User, I have found a product which is free from one or more allergens, and I want to add it to the database.***  
 If the user is **Signed In**, they may add a product to the database using the **Add** button on the **Home** page. 
