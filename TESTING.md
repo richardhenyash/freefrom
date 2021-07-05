@@ -229,14 +229,9 @@ deleted from the database and the user is notified with a message at the top of 
 The user may access the **Contact Form** from the **Footer Link**. If the user is **Signed In**, their email address is populated 
 automatically. Once the user has populated the **Contact Form** and the form has passed [Form Validation](#form-validation) and checking and has 
 been succesfully submitted, a message is displayed at the top of the screen:  
-<img src="/static/testing/user-stories/contact-developer.png" width="300px" align="left" style="margin: 10px;">
+<img src="/static/testing/user-stories/contact-developer.png" width="300px" style="margin: 10px;">  
 <img src="/static/testing/user-stories/contact-developer-success.png" width="200px" style="margin: 10px;">  
-<img src="/static/testing/user-stories/contact-developer-email.png" width="300px" style="margin: 10px;">  
-
-
-
-
-
+<img src="/static/testing/user-stories/contact-developer-email.png" width="500px" style="margin: 10px;">  
 
 ## Manual Testing ##
 The site has been manually tested thoroughly over a 3 week period. See [Bugs Fixed During Testing](#bugs-fixed-during-testing) 
