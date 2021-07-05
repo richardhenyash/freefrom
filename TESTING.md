@@ -383,7 +383,7 @@ The following **Responsive** features were specifically tested:
 <img src="/static/testing/responsive/navigation-menu-phone-collapsed.png" width="250px" style="margin: 15px;">  
 
 * The **Search Input**, **Category Selector**, **Search Button** and **Add Button** stack as intended on small devices less than 768 pixels wide.  
-<img src="/static/testing/responsive/home-stacked.png" width="250px" style="margin: 15px;">  
+<img src="/static/testing/responsive/home-stacked.png" width="300px" style="margin: 15px;">  
 
 * The **Product Results Table** and **User Reviews Table** columns collapse on smaller devices as intended:  
 <img src="/static/testing/responsive/search-results-collapsed.png" width="300px" align="left" style="margin: 15px;">
