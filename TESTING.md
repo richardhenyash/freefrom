@@ -358,14 +358,14 @@ to emulate viewing the website on a number of devices with varying screen dimens
 including iPhone 5/SE, iPhone 6/7/8, iPhone 6/7/8 plus, iPhone 11, iPad, iPad Pro, Moto G4, Galaxy S5, Surface Duo, 
 Galaxy Fold, Widescreen Laptop and Desktop PC. 
 See [Responsive Design Testing](/static/testing/responsive/) screen prints, a selection of which are shown below:  
-<img src="/static/testing/responsive/home-phone.png" width="250px" align="left" style="margin: 5px;">
-<img src="/static/testing/responsive/product-view-phone.png" width="250px" style="margin: 5px;">  
-<img src="/static/testing/responsive/home-ipad.png" width="250px" align="left" style="margin: 5px;">
-<img src="/static/testing/responsive/product-view-ipad.png" width="250px" style="margin: 5px;">  
-<img src="/static/testing/responsive/home-medium.png" width="250px" align="left" style="margin: 5px;">
-<img src="/static/testing/responsive/product-view-medium.png" width="250px" style="margin: 5px;">  
-<img src="/static/testing/responsive/home-widescreen.png" width="250px" align="left" style="margin: 5px;">
-<img src="/static/testing/responsive/product-view-widescreen.png" width="250px" style="margin: 5px;">  
+<img src="/static/testing/responsive/home-phone.png" width="300px" align="left" style="margin: 5px;">
+<img src="/static/testing/responsive/product-view-phone.png" width="300px" style="margin: 5px;">  
+<img src="/static/testing/responsive/home-ipad.png" width="300px" align="left" style="margin: 5px;">
+<img src="/static/testing/responsive/product-view-ipad.png" width="300px" style="margin: 5px;">  
+<img src="/static/testing/responsive/home-medium.png" width="300px" align="left" style="margin: 5px;">
+<img src="/static/testing/responsive/product-view-medium.png" width="300px" style="margin: 5px;">  
+<img src="/static/testing/responsive/home-widescreen.png" width="300px" align="left" style="margin: 5px;">
+<img src="/static/testing/responsive/product-view-widescreen.png" width="300px" style="margin: 5px;">  
 
 
 * Responsive design was then further tested using the 
@@ -373,14 +373,14 @@ See [Responsive Design Testing](/static/testing/responsive/) screen prints, a se
 plug in for chrome. This emulates viewing the website on a large number of devices, 
 including iPhone XR, iPhone XS Max, iPhone XS, iPhone X, Galaxy S9 Plus, Galaxy S8 Plus, Galaxy S9, Note 8, Note S8, Pixel 3 and Pixel 3XL.  
 See [Responsive Design Testing](/static/testing/responsive) screen prints, a selection of which are also shown below:  
-<img src="/static/testing/responsive/responsive-viewer-home-phone1.png" width="250px" align="left" style="margin: 15px;">
-<img src="/static/testing/responsive/responsive-viewer-home-phone2.png" width="250px" style="margin: 15px;">  
-<img src="/static/testing/responsive/responsive-viewer-product-edit-phone1.png" width="250px" align="left" style="margin: 15px;">
-<img src="/static/testing/responsive/responsive-viewer-product-edit-phone2.png" width="250px" style="margin: 15px;">   
+<img src="/static/testing/responsive/responsive-viewer-home-phone1.png" width="300px" align="left" style="margin: 15px;">
+<img src="/static/testing/responsive/responsive-viewer-home-phone2.png" width="300px" style="margin: 15px;">  
+<img src="/static/testing/responsive/responsive-viewer-product-edit-phone1.png" width="300px" align="left" style="margin: 15px;">
+<img src="/static/testing/responsive/responsive-viewer-product-edit-phone2.png" width="300px" style="margin: 15px;">   
 
 The following **Responsive** features were specifically tested:
 * The **Navigation Menu** collapses as intended to an icon on small devices less than 768 pixels wide:  
-<img src="/static/testing/responsive/navigation-menu-phone-collapsed.png" width="200px" style="margin: 15px;">  
+<img src="/static/testing/responsive/navigation-menu-phone-collapsed.png" width="250px" style="margin: 15px;">  
 
 * The **Search Input**, **Category Selector**, **Search Button** and **Add Button** stack as intended on small devices less than 768 pixels wide.  
 <img src="/static/testing/responsive/home-stacked.png" width="250px" style="margin: 15px;">  
