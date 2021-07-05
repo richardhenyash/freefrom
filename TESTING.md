@@ -176,8 +176,8 @@ If the user is **Signed In** and has **Admin** privileges, the **Categories** me
 The user can pick **Add Category** from the **Categories Menu** and populate the new **Category** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the new **Category** has been succesfully added, 
 the user is redirected to the **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/category-add.png" width="300px" align="left" style="margin: 10px;">
-<img src="/static/testing/user-stories/category-add-success.png" width="200px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/category-add.png" width="60%" align="left" style="margin: 10px;">
+<img src="/static/testing/user-stories/category-add-success.png" width="20%" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing product category.***
 If the user is **Signed In** and has **Admin** privileges, the **Categories** menu is shown in the **Navigation Menu**. 
@@ -203,8 +203,8 @@ If the user is **Signed In** and has **Admin** privileges, the **Allergens** men
 The user can pick **Add Allergen** from the **Allergens Menu** and populate the new **Allergen** name in the form input. 
 Once the form has passed [Form Validation](#form-validation) and checking and the new **Allergen** has been added, the user is redirected to the 
 **Home** page and is notified with a message at the top of the screen:  
-<img src="/static/testing/user-stories/allergen-add.png" width="300px" align="left" style="margin: 10px;">
-<img src="/static/testing/user-stories/allergen-add-success.png" width="200px" style="margin: 10px;">  
+<img src="/static/testing/user-stories/allergen-add.png" width="60%" align="left" style="margin: 10px;">
+<img src="/static/testing/user-stories/allergen-add-success.png" width="20%" style="margin: 10px;">  
 
 * ***As a User, I would like to edit an existing allergen.***
 If the user is **Signed In** and has **Admin** privileges, the **Allergens** menu is shown in the **Navigation Menu**. 
