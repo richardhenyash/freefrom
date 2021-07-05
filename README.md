@@ -25,7 +25,7 @@
         - [Fonts](#fonts)
         - [Colours](#colours)
 - [Technologies](#technologies)
-    - [Integrated Development Environment](#integrated-development-environment])
+    - [Integrated Development Environment](#integrated-development-environment)
     - [Database](#database)
     - [Deployment](#deployment)
     - [Languages](#languages)
