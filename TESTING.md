@@ -386,8 +386,8 @@ The following **Responsive** features were specifically tested:
 <img src="/static/testing/responsive/home-stacked.png" width="250px" style="margin: 15px;">  
 
 * The **Product Results Table** and **User Reviews Table** columns collapse on smaller devices as intended:  
-<img src="/static/testing/responsive/search-results-collapsed.png" width="200px" align="left" style="margin: 15px;">
-<img src="/static/testing/responsive/reviews-collapsed.png" width="150px" style="margin: 15px;">  
+<img src="/static/testing/responsive/search-results-collapsed.png" width="300px" align="left" style="margin: 15px;">
+<img src="/static/testing/responsive/reviews-collapsed.png" width="250px" style="margin: 15px;">  
 
 ### Browser Compatibility Testing ###
 The website was tested on the following browsers and operating systems, 
