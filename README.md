@@ -537,6 +537,7 @@ between 1 and 5 using the **JavaScript** on click event handlers defined in the 
 are updated to reflect the correct rating value.
 
 See [UML Diagram](/static/wireframes/uml/) below:  
+
 <img src="/static/wireframes/uml/events-logic.png" width="300px" style="margin: 15px;">  
 
 ## Testing ##
