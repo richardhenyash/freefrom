@@ -27,7 +27,6 @@
 - [Technologies](#technologies)
     - [Integrated Development Environment](#integrated-development-environment)
     - [Database](#database)
-    - [Deployment](#deployment)
     - [Languages](#languages)
     - [Frameworks Libraries and Tools](#frameworks-libraries-and-tools)
     - [Browser Support](#browser-support)
@@ -165,7 +164,7 @@ Edit Category|Enables users with required privelages to edit product categories 
 Delete Category|Enables users with required privelages to delete product categories from the database|3|3|Op-1, Op-2|1
 Add Allergen|Enables users with the required privelages to add allergens to the database|3|3|Op-1, Op-2|1
 Edit Allergen|Enables users with the required privelages to edit allergens in the database|3|3|Op-1, Op-2|1
-Delete Allergen|Enables users with the required privelages to deelte allergens in the database|3|3|Op-1, Op-2|1
+Delete Allergen|Enables users with the required privelages to delete allergens in the database|3|3|Op-1, Op-2|1
 Rate Product|Enables users to give a star rating to a product|2|2|Op-2|1
 Review Product|Enables users to review a product|2|2|Op-2|1
 Contact Form|Form to contact developer|4|5|Op-3|1
@@ -180,13 +179,13 @@ An initial [Site Map](/static/wireframes/site-map.png) was produced, and is show
 <img src="/static/wireframes/site-map.png" width="400px" style="margin: 15px;">
 
 ### Wireframes ### 
-[Initial Wireframes](/static/wireframes/rev0) were produced showing the Home, Sign In, Register, View Product, 
-Edit Product, Add Product, Add Category, Edit Category, Delete Category, Add Allergen, Edit Allergen, Delete Allergen and 
-Contact Developer page layouts. The Home page is shown below:  
+[Initial Wireframes](/static/wireframes/rev0) were produced showing the **Home**, **Sign In**, **Register**, **View Product**, 
+**Edit Product**, **Add Product**, **Add Category**, **Edit Category**, **Delete Category**, **Add Allergen**, **Edit Allergen**, **Delete Allergen** and 
+**Contact Developer** page layouts. The **Home** page is shown below:  
 
 <img src="/static/wireframes/rev0/home.png" width="600px" style="margin: 15px;">
 
-[Responsive design wireframes](/static/wireframes/rev1) were then produced showing the Home page layout on Table and Phone. 
+[Responsive design wireframes](/static/wireframes/rev1) were then produced showing the **Home** page layout on **Tablet** and **Phone**. 
 The [Responsive design wireframes](/static/wireframes/rev1) are shown below:  
 
 <img src="/static/wireframes/rev1/home-tablet.png" width="300px" align="left" style="margin: 15px;">
@@ -217,9 +216,9 @@ are available from [Google Fonts](https://fonts.google.com/) and are licensed un
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
 #### Colours ####
-White was chosen as the background colour to enable a smple and clear design to be implemented.  
+White was chosen as the background colour to enable a simple and clear design to be implemented.  
 Bright foreground colours were chosen to contrast with the white background. Colour ideas were generated 
-using the [ColorSpace](https://mycolor.space/) colour palette generator. The final colour palette selected 
+using the [ColorSpace](https://mycolor.space/) **Colour Palette** generator. The final **Colour Palette** selected 
 is shown below: 
 
 <img src="/static/wireframes/colour-palette.png" width="800px" style="margin: 15px;">  
@@ -227,7 +226,7 @@ is shown below:
 * #FFFFFF - "White" - used for the background.
 * #009EA3 - "Vividian Green" - used for results and review table links.
 * #E97C72 - "Salmon" - used for form control borders and results and review table next and previous buttons.
-* #E35B4F - "Fire Opal" - used for navbar backgorund, buttons, results table header backround, inputs and footer links.
+* #E35B4F - "Fire Opal" - used for navbar background, buttons, results table header backround, inputs and footer links.
 * #C22C1E - "Venetian Red" - used as a higlighting colour for items coloured with "Fire Opal".
 * #F5B800 - "Orange Yellow" - used for alerts, buttons, results and review table row borders and stars.
 * #CC9900 - "Lemon Curry" - used as a higlighting colour for items coloured with "Orange Yellow".
@@ -239,9 +238,6 @@ is shown below:
 
 ### Database ###
 * [Mongo DB](https://www.mongodb.com/)
-
-### Deployment ###
-* [Heroku](https://dashboard.heroku.com/)
 
 ### Languages ###
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -309,40 +305,40 @@ For further information see [Deployment](#deployment).
 <img src="/static/testing/home-alert.png" width="700px" style="margin: 5px;"> 
 
 * **Navigation Menu**, enables navigation to the **Home** and **Sign In** pages if the user is not **Signed In**. 
-If the user is **Signed In** , enables **Sign Out**. If the user is signed in with **Admin** privelages, 
+If the user is **Signed In**, enables **Sign Out**. If the user is signed in with **Admin** privelages, 
 displays the **Allergens** and **Categories** menus:  
 <img src="/static/testing/navigation-menu-guest.png" width="150px" style="margin: 5px;">
 <img src="/static/testing/navigation-menu-user.png" width="150px" style="margin: 5px;">
 <img src="/static/testing/navigation-menu-admin.png" width="400px" style="margin: 5px;"> 
 
-* **Search Input**, allows user to optionally input product search criteria to filter search results:  
+* **Search Input**, allows the user to optionally input product search criteria to filter search results:  
 <img src="/static/testing/search.png" width="500px" style="margin: 5px;">  
 
-* **Category Selector**, allows user to optionally select category to filter search results:  
+* **Category Selector**, allows the user to optionally select category to filter search results:  
 <img src="/static/testing/category.png" width="500px" style="margin: 5px;">  
 
 * **Search Button**, searches the database and returns matched products in the **Product Results Table**. 
-Resizes if user is not signed in and add button is not displayed:  
+Resizes if the user is not signed in and add button is not displayed:  
 <img src="/static/testing/search-button.png" width="100px" style="margin: 5px;">  
 
-* **Add Button**, links to the **Product Add** form. Only shown if user is signed in:  
+* **Add Button**, links to the **Product Add** form. Only shown if the user is signed in:  
 <img src="/static/testing/add-button.png" width="100px" style="margin: 5px;">  
 
-* **Allergen Selector**, allows user to optionally select allergens to filter search results:  
+* **Allergen Selector**, allows the user to optionally select allergens to filter search results:  
 <img src="/static/testing/allergen-selector.png" width="80%" style="margin: 5px;">  
 
 * **Product Results Table**, displays product search results. Product name links to **Product View** page:
 <img src="/static/testing/results-table.png" width="80%" style="margin: 5px;"> 
 
-* **Sign In**, displays form allowing user to sign in. Includes link to **Register**:  
+* **Sign In**, displays form allowing the user to sign in. Includes link to **Register**:  
 <img src="/static/testing/signin.png" width="500px" style="margin: 5px;"> 
 
-* **Register**, displays form allowing user to register:  
+* **Register**, displays form allowing the user to register:  
 <img src="/static/testing/register.png" width="500px" style="margin: 5px;"> 
 
-* **Product View**, displays product details. If user is signed in, allows review and rating to 
+* **Product View**, displays product details. If the user is signed in, allows review and rating to 
 be added or updated.   
-**Add** button enables user to review and rate product.  
+**Add** button enables the user to review and rate product.  
 **Add** button text is changed to **Update** if the user has already reviewed the product.  
 **Update** button updates review and rating if product has already been reviewed by the user.  
 **Product Edit** button links to **Product Edit** page.  
@@ -365,7 +361,7 @@ User reviews are shown below in the **User Reviews Table**:
 * **Allergen Delete**, displays form allowing Allergen to be deleted:  
 <img src="/static/testing/allergen-delete.png" width="500px" style="margin: 5px;">  
 
-* **Allergen Delete Confirm**, displays form confirming Allergen sohuld be deleted:  
+* **Allergen Delete Confirm**, displays form confirming Allergen should be deleted:  
 <img src="/static/testing/allergen-delete-confirm.png" width="800px" style="margin: 5px;">  
 
 * **Category Add**, displays form allowing Category to be added:  
@@ -390,8 +386,8 @@ User reviews are shown below in the **User Reviews Table**:
 <img src="/static/testing/contact.png" width="300px" style="margin: 5px;">  
 
 * **Error Page**, returns a customised error message and link to the **Home** page if an error is encountered:  
-<img src="/static/testing/error-page-not-found.png" width="300px" style="margin: 5px;">
-<img src="/static/testing/error-product-not-found.png" width="300px" style="margin: 5px;">
+<img src="/static/testing/error-page-not-found.png" width="400px" style="margin: 5px;">
+<img src="/static/testing/error-product-not-found.png" width="400px" style="margin: 5px;">
 
 #### Features To Be Implemented In Future Development Phases ####
 * Currently, when the user navigates back to the **Home** page from the **Product View** page, 
@@ -429,7 +425,7 @@ successfully added product.
 (e.g. "&", "-" etc) in product names, and to allow **Product** and **Manufacturer** 
 names to be a minumum of 3 characters long.
 
-* Selection higlighting was turned off on the **Product View** form fields.
+* Selection highlighting was turned off on the **Product View** form fields.
 
 * Font sizes were increased slightly.
 
@@ -444,7 +440,7 @@ and stack on small devices less than 768 pixels wide.
 * The **Product Results Table** and **User Reviews Table** are responsively styled, so that columns are collapsed 
 on smaller devices. This is implemented using the [DataTables](https://datatables.net/) 
 [Responsive Extension](https://datatables.net/extensions/responsive/). The class **responsive** is added to the 
-**table** html classes. Table colummns are assigned a **prioirity** by adding the **data-priority** attribute to 
+**table** html classes. Table columns are assigned a **prioirity** by adding the **data-priority** attribute to 
 the **table header** html.
 
 See **Responsive Design** section in [TESTING.md](TESTING.md) for further information and [Responsive Testing](/static/testing/responsive) screen prints.
@@ -486,7 +482,7 @@ A new [Class](https://github.com/richardhenyash/freefrom/tree/class) branch was 
 [Project Code Repository](https://github.com/richardhenyash/freefrom). Classes and class methods were created in the 
 **products**, **allergens**, **categories** and **userauth** python code modules. The class orientated approach was succesfully 
 implemented as a test on the **Product View** route, which resulted in a significant simplification of the code. Unfortunately, 
-due to time constaints, it was not possible to implement the object orientated approach across the project, but this should 
+due to time constraints, it was not possible to implement the object orientated approach across the project, but this should 
 definitely be considered for a future project development phase, and as a better method of working for future projects.
 
 Due to time constraints, the developer decided to re-factor the **Python Code** using **Procedural Programming**. The code was reviewed at a high level, and functions that could be split out and re-used were identified. A [Refactor](https://github.com/richardhenyash/freefrom/tree/refactor) branch was created in the [Project Code Repository](https://github.com/richardhenyash/freefrom). The **Products**, **Categories**, **Allergens**, **User Authentication** and **Mail** modules were refactored, the site was re-tested and the **Refactor** branch was merged into the **Master** branch in in the [Project Code Repository](https://github.com/richardhenyash/freefrom). The refactoring has greatly improved the readability of the code 
@@ -541,7 +537,7 @@ between 1 and 5 using the **JavaScript** on click event handlers defined in the 
 are updated to reflect the correct rating value.
 
 See [UML Diagram](/static/wireframes/uml/) below:  
-<img src="/static/wireframes/uml/events-logic.png" width="300px" style="margin: 5px;">  
+<img src="/static/wireframes/uml/events-logic.png" width="300px" style="margin: 15px;">  
 
 ## Testing ##
 
@@ -642,8 +638,7 @@ will be automatically pushed to **Heroku**.
 * [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) for the excellent form validation library and 
 [Crash Course](https://wtforms.readthedocs.io/en/2.3.x/crash_course/) which I followed to implement the **Form Validation**.
 * [wftorms-validators](https://pypi.org/project/wtforms-validators/) for the awesome additional form validation library.
-* My mentor [Reuben Ferrante](https://github.com/arex18) for the examples which helped me implement the **Form Validation** 
-and [Flask Blueprints](https://flask.palletsprojects.com/en/2.0.x/blueprints/).
+* My mentor [Reuben Ferrante](https://github.com/arex18) for the examples which helped me implement the **Form Validation**, [Flask Blueprints](https://flask.palletsprojects.com/en/2.0.x/blueprints/) and **Python Unit Testing**.
 * [Google Fonts](https://fonts.google.com/) for the attractive fonts used on the site, which enabled me to get started quickly.
 * [hex 2 rgba](http://hex2rgba.devoth.com/) for the hex to RGBA conversion tool.
 * The excellent [Code Institute](https://codeinstitute.net/) course material which enabled me to succefully implement the project.
@@ -660,7 +655,7 @@ the **Mongo DB** for **Python Unit Testing**.
 
 Many thanks to the following for help and inspiration during this project:
 * My mentor [Reuben Ferrante](https://github.com/arex18) for helping to get me started off on the right footing, for the insightful
-review and comments on the site and for the help with form validation, blueprints, code re-factoring and python unit testing.
+review and comments on the site and for the help with **Form validation**, [Flask Blueprints](https://flask.palletsprojects.com/en/2.0.x/blueprints/), **Python Code Refactoring** and **Python Unit Testing**.  
 * [Neringa Bickmore](https://github.com/neringabickmore) for your encouragement with my project idea.
 * [Ben Kavanagh](https://github.com/BAK2K3) for the very helpful comments on the site and general 
  encouragement, and for the excellent online seminar on **Python Classes**.
