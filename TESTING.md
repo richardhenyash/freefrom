@@ -297,7 +297,6 @@ has already been reviewed by the user.
 **Add Product** button is displayed if user is **Signed In** and functions correctly (including hover styling), to **Product Add** page.  
 User reviews are displayed as intended below in the **User Reviews Table**:  
 <img src="/static/testing/product-view-signedout.png" width="500px" style="margin: 10px;">  
-<img src="/static/testing/product-view-add-review-new.png" width="500px" style="margin: 10px;">  
 <img src="/static/testing/product-view-update-review-new.png" width="500px" style="margin: 10px;">  
   
 * **Product Edit** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**). 
