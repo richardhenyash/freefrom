@@ -453,8 +453,8 @@ The **Python Code** for the project has been split into the following modules, u
 
 * [Application](/app.py) - Flask routes and functions related to the **Flask Application** and **Error Handling**.
 * [Database](/database.py) - Functions related to the **Mongo Database**.
-* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Products](/products.py) - Flask routes and functions related to **Products**.
+* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Allergens](/allergens.py) - Flask routes and functions related to **Allergens**.
 * [Forms](/forms.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
 * [User Authentication](userauth.py) - Flask routes and functions related to **User Authentication**.
