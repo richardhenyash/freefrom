@@ -252,7 +252,7 @@ def edit(product_id):
             else:
                 # Display flash message
                 flash(
-                    ("Please select allergens that the" +
+                    ("Please select allergens that the " +
                         "product is Free From. " +
                         "If you would like to add an Allergen, " +
                         "please contact the site Administrator"),
