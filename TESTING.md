@@ -346,8 +346,8 @@ User reviews are displayed as intended below in the **User Reviews Table**:
 
 * **Error Page** functions correctly and returns a customised error message and link to the **Home** page if an error is encountered. 
 Link hover styling functions correctly:  
-<img src="/static/testing/error-page-not-found.png" width="400px" style="margin: 10px;">
-<img src="/static/testing/error-product-not-found.png" width="400px" style="margin: 10px;">
+<img src="/static/testing/error-page-not-found.png" width="400px" align="left" style="margin: 10px;">
+<img src="/static/testing/error-product-not-found.png" width="400px" style="margin: 10px;">  
 
 ### Form Validation ###
 Validation for all **Forms** implemented using [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) and **Python** has been 
