@@ -293,6 +293,8 @@ and unfortunately the free 14 day trial for the software ended.
 For further information see [Deployment](#deployment).
 
 ### Features Implemented ###
+Please note that an account with **Admin** privileges has been created for testing purposes. This will facilitate testing of 
+features which require **Admin** privileges. The username is *testadmin1* and the password is *testadmin1*.
 
 #### Features Implemented in Phase 1 ####
 * **Home Page**, enables users to search for products which are free from one or more allergens:  
