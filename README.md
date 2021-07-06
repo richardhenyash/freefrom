@@ -456,8 +456,8 @@ The **Python Code** for the project has been split into the following modules, u
 * [Application](/app.py) - Flask routes and functions related to the **Flask Application** and **Error Handling**.
 * [Database](/database.py) - Functions related to the **Mongo Database**.
 * [Products](/products.py) - Flask routes and functions related to **Products**.
-* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Allergens](/allergens.py) - Flask routes and functions related to **Allergens**.
+* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Forms](/forms.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
 * [User Authentication](userauth.py) - Flask routes and functions related to **User Authentication**.
 * [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
@@ -467,11 +467,11 @@ The high level code logic is explained in the [UML Diagrams](/static/wireframes/
 #### [Products](/static/wireframes/uml/products-logic.png) ####
 <img src="/static/wireframes/uml/products-logic.png" width="800px" style="margin: 10px;">  
 
-#### [Categories](/static/wireframes/uml/categories-logic.png) ####
-<img src="/static/wireframes/uml/categories-logic.png" width="700px" style="margin: 10px;">  
-
 #### [Allergens](/static/wireframes/uml/allergens-logic.png) ####
 <img src="/static/wireframes/uml/allergens-logic.png" width="700px" style="margin: 10px;">  
+
+#### [Categories](/static/wireframes/uml/categories-logic.png) ####
+<img src="/static/wireframes/uml/categories-logic.png" width="700px" style="margin: 10px;">  
 
 #### [User Authentication](/static/wireframes/uml/userauth-logic.png) ####
 <img src="/static/wireframes/uml/userauth-logic.png" width="700px" style="margin: 10px;">  
