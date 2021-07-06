@@ -452,12 +452,13 @@ The **Python Code** for the project has been split into the following modules, u
 [Flask Blueprint](https://flask.palletsprojects.com/en/2.0.x/blueprints/) function:
 
 * [Application](/app.py) - Flask routes and functions related to the **Flask Application** and **Error Handling**.
-* [Allergens](/allergens.py) - Flask routes and functions related to **Allergens**.
-* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Database](/database.py) - Functions related to the **Mongo Database**.
+* [Categories](/categories.py) - Flask routes and functions related to **Categories**.
+* [Products](/products.py) - Flask routes and functions related to **Products**.
+* [Allergens](/allergens.py) - Flask routes and functions related to **Allergens**.
 * [Forms](/forms.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
-* [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
 * [User Authentication](userauth.py) - Flask routes and functions related to **User Authentication**.
+* [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
 
 The high level code logic is explained in the [UML Diagrams](/static/wireframes/uml/) below: 
 
