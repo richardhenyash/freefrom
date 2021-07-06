@@ -401,6 +401,7 @@ is recommended to be implemented in a **Future Development Phase**.
 * Functionality for deleting user accounts should be added. Currently this has to be done in the 
 [Mongo DB](https://www.mongodb.com/) back end.
 * Functionality to enable an **Admin** user to assign **Admin** rights to another user, which would allow the user to edit **Categories** and **Allergens**. Currently **Admin** rights have to be assigned in the [Mongo DB](https://www.mongodb.com/) back end.
+* Functionality to enable a user to change their password and to delete their account.
 * Functionality to enable pictures of **Products** to be uploaded.
 * Functionality to enable **Products** to be added by scanning barcodes.
 
