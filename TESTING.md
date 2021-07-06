@@ -235,7 +235,9 @@ been succesfully submitted, a message is displayed at the top of the screen:
 
 ## Manual Testing ##
 The site has been manually tested thoroughly over a 3 week period. See [Bugs Fixed During Testing](#bugs-fixed-during-testing) 
-for bugs uncovered and fixed during the manual testing process.
+for bugs uncovered and fixed during the manual testing process. Please note that an account with **Admin** privileges has been 
+created for testing purposes. This will facilitate testing of features which require **Admin** privileges. 
+The username is *testadmin1* and the password is *testadmin1*.
 
 
 ### Features ###
@@ -298,8 +300,12 @@ User reviews are displayed as intended below in the **User Reviews Table**:
 <img src="/static/testing/product-view-add-review-new.png" width="500px" style="margin: 10px;">  
 <img src="/static/testing/product-view-update-review-new.png" width="500px" style="margin: 10px;">  
   
-* **Product Edit** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**):  
+* **Product Edit** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**). 
+**Delete** button is shown if the product has been added by the signed in **User**, or if the signed in **User** has **Admin** privileges:  
 <img src="/static/testing/product-edit.png" width="500px" style="margin: 10px;">  
+
+* **Product Delete Confirm** form functions correctly (including button **Hover Styling**):  
+<img src="/static/testing/product-delete-confirm.png" width="800px" style="margin: 10px;">  
 
 * **Product Add** form functions correctly (including [Form Validation](#form-validation) and button **Hover Styling**):  
 <img src="/static/testing/product-add.png" width="500px" style="margin: 10px;">  

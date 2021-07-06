@@ -336,44 +336,48 @@ Resizes if the user is not signed in and add button is not displayed:
 * **Register**, displays form allowing the user to register:  
 <img src="/static/testing/register.png" width="500px" style="margin: 10px;"> 
 
-* **Product View**, displays product details. If the user is signed in, allows review and rating to 
+* **Product View**, displays **Product** details. If the user is signed in, allows review and rating to 
 be added or updated.   
-**Add** button enables the user to review and rate product.  
-**Add** button text is changed to **Update** if the user has already reviewed the product.  
-**Update** button updates review and rating if product has already been reviewed by the user.  
+**Add** button enables the user to review and rate **Product**.  
+**Add** button text is changed to **Update** if the user has already reviewed the **Product**.  
+**Update** button updates review and rating if **Product** has already been reviewed by the user.  
 **Product Edit** button links to **Product Edit** page.  
 User reviews are shown below in the **User Reviews Table**:  
 <img src="/static/testing/product-view-add-review.png" width="500px" style="margin: 10px;">  
 <img src="/static/testing/product-view-update-review.png" width="500px%" style="margin: 10px;">  
 
-* **Product Edit**, displays form allowing product to be edited:  
+* **Product Edit**, displays form allowing **Product** to be edited. If the **Product** has been added by the 
+signed in **User**, or if the signed in **User** has **Admin** privileges, **Delete** button is shown:  
 <img src="/static/testing/product-edit.png" width="500px" style="margin: 10px;">  
 
-* **Product Add**, displays form allowing product to be added:  
+* **Product Delete Confirm**, displays form confirming **Product** should be deleted:  
+<img src="/static/testing/product-delete-confirm.png" width="800px" style="margin: 10px;">  
+
+* **Product Add**, displays form allowing **Product** to be added:  
 <img src="/static/testing/product-add.png" width="500px" style="margin: 10px;">  
 
-* **Allergen Add**, displays form allowing Allergen to be added:  
+* **Allergen Add**, displays form allowing **Allergen** to be added:  
 <img src="/static/testing/allergen-add.png" width="500px" style="margin: 10px;">  
 
-* **Allergen Edit**, displays form allowing Allergen to be edited:  
+* **Allergen Edit**, displays form allowing **Allergen** to be edited:  
 <img src="/static/testing/allergen-edit.png" width="500px" style="margin: 10px;">  
 
-* **Allergen Delete**, displays form allowing Allergen to be deleted:  
+* **Allergen Delete**, displays form allowing **Allergen** to be deleted:  
 <img src="/static/testing/allergen-delete.png" width="500px" style="margin: 10px;">  
 
-* **Allergen Delete Confirm**, displays form confirming Allergen should be deleted:  
+* **Allergen Delete Confirm**, displays form confirming **Allergen** should be deleted:  
 <img src="/static/testing/allergen-delete-confirm.png" width="800px" style="margin: 10px;">  
 
-* **Category Add**, displays form allowing Category to be added:  
+* **Category Add**, displays form allowing **Category** to be added:  
 <img src="/static/testing/category-add.png" width="500px" style="margin: 10px;">  
 
-* **Category Edit**, displays form allowing Category to be edited:  
+* **Category Edit**, displays form allowing **Category** to be edited:  
 <img src="/static/testing/category-edit.png" width="500px" style="margin: 10px;">  
 
-* **Category Delete**, displays form allowing Category to be deleted:  
+* **Category Delete**, displays form allowing **Category** to be deleted:  
 <img src="/static/testing/category-delete.png" width="500px" style="margin: 10px;">  
 
-* **Category Delete Confirm**, displays form confirming Category should be deleted:  
+* **Category Delete Confirm**, displays form confirming **Category** should be deleted:  
 <img src="/static/testing/category-delete-confirm.png" width="800px" style="margin: 10px;">  
 
 * **Footer Contact Developer Link**, links to **Contact Developer** form:  
