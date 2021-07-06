@@ -456,7 +456,6 @@ The **Python Code** for the project has been split into the following modules, u
 * [Allergens](/allergens.py) - Flask routes and functions related to **Allergens**.
 * [Categories](/categories.py) - Flask routes and functions related to **Categories**.
 * [Database](/database.py) - Functions related to the **Mongo Database**.
-* [Environment](/database.py) - Environmental variables, imported when working locally in debug mode.
 * [Forms](/forms.py) - [WTForms](https://wtforms.readthedocs.io/en/2.3.x/) form class definitions.
 * [Mail](/mail.py) - Flask routes and functions related to sending an email via the **Contact Developer** form.
 * [User Authentication](userauth.py) - Flask routes and functions related to **User Authentication**.
