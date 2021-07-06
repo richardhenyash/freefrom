@@ -434,7 +434,6 @@ names to be a minumum of 3 characters long.
 
 * Additional error checking was implemented.
 
-
 ### Responsive Styling ###
 * The **Navigation Menu** is collapsible, and collapses to an icon on small devices less than 768 pixels wide. 
 This is implemented using the [Bootstrap Navbar](https://getbootstrap.com/docs/5.0/components/navbar/) component.  
